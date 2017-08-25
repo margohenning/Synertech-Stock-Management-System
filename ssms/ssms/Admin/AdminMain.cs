@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ssms.Admin
+{
+    public partial class AdminMain : UserControl
+    {
+        public AdminMain()
+        {
+            InitializeComponent();
+        }
+
+        private void AdminMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void ChangeView<T>() where T : Control, new()
+        {
+            try
+            {
+
+                panel2.Controls.Clear();
+                T find = new T();
+                find.Parent = panel2;
+                find.Dock = DockStyle.Fill;
+                find.BringToFront();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void buttonBooks_Click(object sender, EventArgs e)
+        {
+            ChangeView<Admin.Stock.Stock>();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangeView<StockOut>();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ChangeView<Store>();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ChangeView<Settings>();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ChangeView<Users>();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ChangeView<MyAccount>();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to log out from the Synertech Stock Management System?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                ((Form1)this.Parent.Parent).loggedIn = null;
+                ((Form1)this.Parent.Parent).ChangeView<Welcome>();
+            }
+            else
+            {
+                
+            }
+            
+        }
+    }
+}

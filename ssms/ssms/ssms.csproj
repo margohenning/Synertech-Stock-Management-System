@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\itextsharp.pdfa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -46,6 +54,139 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Settings\AddSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings\AddSettings.Designer.cs">
+      <DependentUpon>AddSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\AddBrand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\AddBrand.Designer.cs">
+      <DependentUpon>AddBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\AddCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\AddStock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\AddStock.Designer.cs">
+      <DependentUpon>AddStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\Brands.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\Brands.Designer.cs">
+      <DependentUpon>Brands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\Categories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\Categories.Designer.cs">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\UpdateBrand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\UpdateBrand.Designer.cs">
+      <DependentUpon>UpdateBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\UpdateStock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\UpdateStock.Designer.cs">
+      <DependentUpon>UpdateStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Store\AddStore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Store\AddStore.Designer.cs">
+      <DependentUpon>AddStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\User\AddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\User\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminMain.Designer.cs">
+      <DependentUpon>AdminMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\User\DeactivateUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\User\DeactivateUser.Designer.cs">
+      <DependentUpon>DeactivateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MyAccount\MyAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\MyAccount\MyAccount.Designer.cs">
+      <DependentUpon>MyAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings\Settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\Stock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\Stock.Designer.cs">
+      <DependentUpon>Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StockOut\StockOut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\StockOut\StockOut.Designer.cs">
+      <DependentUpon>StockOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Store\Store.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Store\Store.Designer.cs">
+      <DependentUpon>Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MyAccount\UpdateMyAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\MyAccount\UpdateMyAccount.Designer.cs">
+      <DependentUpon>UpdateMyAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings\UpdateSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings\UpdateSettings.Designer.cs">
+      <DependentUpon>UpdateSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Store\UpdateStore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Store\UpdateStore.Designer.cs">
+      <DependentUpon>UpdateStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\User\UpdateUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\User\UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\User\Users.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\User\Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataClasses\antenna.cs" />
     <Compile Include="DAT\DataAccess.cs" />
     <Compile Include="DAT\DataAccessXml.cs" />
     <Compile Include="Form1.cs">
@@ -56,8 +197,74 @@
     </Compile>
     <Compile Include="LTS\LTSBase.cs" />
     <Compile Include="LTS\LTSDC.cs" />
+    <Compile Include="Normal\NormalMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Normal\NormalMain.Designer.cs">
+      <DependentUpon>NormalMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin\Settings\AddSettings.resx">
+      <DependentUpon>AddSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\Categories.resx">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Store\AddStore.resx">
+      <DependentUpon>AddStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\User\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\AdminMain.resx">
+      <DependentUpon>AdminMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\User\DeactivateUser.resx">
+      <DependentUpon>DeactivateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\MyAccount\MyAccount.resx">
+      <DependentUpon>MyAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Settings\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\Stock.resx">
+      <DependentUpon>Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\StockOut\StockOut.resx">
+      <DependentUpon>StockOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Store\Store.resx">
+      <DependentUpon>Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\MyAccount\UpdateMyAccount.resx">
+      <DependentUpon>UpdateMyAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Settings\UpdateSettings.resx">
+      <DependentUpon>UpdateSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Store\UpdateStore.resx">
+      <DependentUpon>UpdateStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\User\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\User\Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Normal\NormalMain.resx">
+      <DependentUpon>NormalMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -66,7 +273,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="LTS\LTSGenerator.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -81,5 +292,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="itextsharp.dll" />
+    <Content Include="itextsharp.pdfa.dll" />
+    <None Include="Resources\rubbish-bin %281%29.png" />
+    <None Include="Resources\rubbish-bin.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\reply %281%29.png" />
+    <None Include="Resources\reply.png" />
+    <None Include="Resources\right-arrow.png" />
+    <None Include="Resources\user-account-box.png" />
+    <None Include="Resources\multiple-users-silhouette.png" />
+    <None Include="Resources\settings-gears.png" />
+    <None Include="Resources\warehouse.png" />
+    <None Include="Resources\sign-out-option.png" />
+    <None Include="Resources\stock %281%29.png" />
+    <None Include="Resources\stock.png" />
+    <None Include="Resources\ok-appproval-acceptance %281%29.png" />
+    <None Include="Resources\ok-appproval-acceptance.png" />
+    <None Include="Resources\Synertech-RFID.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

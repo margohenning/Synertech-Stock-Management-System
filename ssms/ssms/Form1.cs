@@ -13,29 +13,23 @@ namespace ssms
 {
     public partial class Form1 : Form
     {
-        public string loggedIn = "";
+        public LTS.User loggedIn;
         public Form1()
         {
-            Thread t = new Thread(new ThreadStart(splash));
-            t.Start();
-            Thread.Sleep(6000);
+            
             Application.EnableVisualStyles();
 
             InitializeComponent();
 
-            t.Abort();
-            Program.style();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           // ChangeView<Welcome>();
+           ChangeView<Welcome>();
         }
 
-        public void splash()
-        {
-            Application.Run(new SPLASH());
-        }
+        
 
         public void ChangeView<T>() where T : Control, new()
         {
