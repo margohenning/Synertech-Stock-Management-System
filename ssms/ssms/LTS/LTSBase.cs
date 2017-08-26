@@ -39,9 +39,6 @@ namespace ssms.LTS
     partial void InsertBookOut(BookOut instance);
     partial void UpdateBookOut(BookOut instance);
     partial void DeleteBookOut(BookOut instance);
-    partial void InsertBookOutItem(BookOutItem instance);
-    partial void UpdateBookOutItem(BookOutItem instance);
-    partial void DeleteBookOutItem(BookOutItem instance);
     partial void InsertBrand(Brand instance);
     partial void UpdateBrand(Brand instance);
     partial void DeleteBrand(Brand instance);
@@ -51,18 +48,15 @@ namespace ssms.LTS
     partial void InsertItem(Item instance);
     partial void UpdateItem(Item instance);
     partial void DeleteItem(Item instance);
+    partial void InsertProduct(Product instance);
+    partial void UpdateProduct(Product instance);
+    partial void DeleteProduct(Product instance);
     partial void InsertReader(Reader instance);
     partial void UpdateReader(Reader instance);
     partial void DeleteReader(Reader instance);
-    partial void InsertStock(Stock instance);
-    partial void UpdateStock(Stock instance);
-    partial void DeleteStock(Stock instance);
     partial void InsertStore(Store instance);
     partial void UpdateStore(Store instance);
     partial void DeleteStore(Store instance);
-    partial void InsertTag(Tag instance);
-    partial void UpdateTag(Tag instance);
-    partial void DeleteTag(Tag instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
@@ -116,14 +110,6 @@ namespace ssms.LTS
 			}
 		}
 		
-		public System.Data.Linq.Table<BookOutItem> BookOutItem
-		{
-			get
-			{
-				return this.GetTable<BookOutItem>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Brand> Brand
 		{
 			get
@@ -148,6 +134,14 @@ namespace ssms.LTS
 			}
 		}
 		
+		public System.Data.Linq.Table<Product> Product
+		{
+			get
+			{
+				return this.GetTable<Product>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Reader> Reader
 		{
 			get
@@ -156,27 +150,11 @@ namespace ssms.LTS
 			}
 		}
 		
-		public System.Data.Linq.Table<Stock> Stock
-		{
-			get
-			{
-				return this.GetTable<Stock>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Store> Store
 		{
 			get
 			{
 				return this.GetTable<Store>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Tag> Tag
-		{
-			get
-			{
-				return this.GetTable<Tag>();
 			}
 		}
 		
@@ -212,14 +190,6 @@ namespace ssms.LTS
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBookOutItem")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int DeleteBookOutItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookOutItemID", DbType="Int")] System.Nullable<int> bookOutItemID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bookOutItemID);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteBrand")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
 		public int DeleteBrand([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BrandID", DbType="Int")] System.Nullable<int> brandID)
@@ -244,19 +214,19 @@ namespace ssms.LTS
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteProduct")]
+		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
+		public int DeleteProduct([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductID", DbType="Int")] System.Nullable<int> productID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), productID);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteReader")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
 		public int DeleteReader([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReaderID", DbType="Int")] System.Nullable<int> readerID)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), readerID);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteStock")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int DeleteStock([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StockID", DbType="Int")] System.Nullable<int> stockID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), stockID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -273,14 +243,6 @@ namespace ssms.LTS
 		public int Deletesysdiagrams([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> diagram_id)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), diagram_id);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteTag")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int DeleteTag([global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagID", DbType="Int")] System.Nullable<int> tagID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), tagID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -319,19 +281,10 @@ namespace ssms.LTS
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBookOut")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int InsertBookOut([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="DateTime")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project", DbType="VarChar(200)")] string project, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Reason", DbType="VarChar(300)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
+		public int InsertBookOut([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="DateTime")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project", DbType="VarChar(200)")] string project, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Reason", DbType="VarChar(300)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, project, reason, userID, iD);
-			iD = ((System.Nullable<int>)(result.GetParameterValue(4)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertBookOutItem")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int InsertBookOutItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookOutID", DbType="Int")] System.Nullable<int> bookOutID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Int")] System.Nullable<int> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bookOutID, itemID, quantity, iD);
-			iD = ((System.Nullable<int>)(result.GetParameterValue(3)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, itemID, project, reason, userID, iD);
+			iD = ((System.Nullable<int>)(result.GetParameterValue(5)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -355,10 +308,19 @@ namespace ssms.LTS
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertItem")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int InsertItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BarcodeID", DbType="Int")] System.Nullable<int> barcodeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BrandID", DbType="Int")] System.Nullable<int> brandID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemDescription", DbType="VarChar(200)")] string itemDescription, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="VarChar(200)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemStatus", DbType="Bit")] System.Nullable<bool> itemStatus, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagID", DbType="Int")] System.Nullable<int> tagID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
+		public int InsertItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemStatus", DbType="Bit")] System.Nullable<bool> itemStatus, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductID", DbType="Int")] System.Nullable<int> productID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagEPC", DbType="VarChar(200)")] string tagEPC, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), barcodeID, brandID, categoryID, itemDescription, itemName, itemStatus, tagID, iD);
-			iD = ((System.Nullable<int>)(result.GetParameterValue(7)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemStatus, productID, storeID, tagEPC, iD);
+			iD = ((System.Nullable<int>)(result.GetParameterValue(4)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertProduct")]
+		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
+		public int InsertProduct([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BarcodeID", DbType="Int")] System.Nullable<int> barcodeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BrandID", DbType="Int")] System.Nullable<int> brandID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductDescription", DbType="VarChar(200)")] string productDescription, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductName", DbType="VarChar(200)")] string productName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), barcodeID, brandID, categoryID, productDescription, productName, iD);
+			iD = ((System.Nullable<int>)(result.GetParameterValue(5)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -371,21 +333,12 @@ namespace ssms.LTS
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertStock")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int InsertStock([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Int")] System.Nullable<int> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemID, quantity, storeID, iD);
-			iD = ((System.Nullable<int>)(result.GetParameterValue(3)));
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertStore")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int InsertStore([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BarcodeID", DbType="Int")] System.Nullable<int> barcodeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemStatus", DbType="Bit")] System.Nullable<bool> itemStatus, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreLocation", DbType="VarChar(200)")] string storeLocation, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreName", DbType="VarChar(200)")] string storeName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagID", DbType="Int")] System.Nullable<int> tagID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
+		public int InsertStore([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreLocation", DbType="VarChar(200)")] string storeLocation, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreName", DbType="VarChar(200)")] string storeName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), barcodeID, itemStatus, storeLocation, storeName, tagID, iD);
-			iD = ((System.Nullable<int>)(result.GetParameterValue(5)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), storeLocation, storeName, iD);
+			iD = ((System.Nullable<int>)(result.GetParameterValue(2)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -395,15 +348,6 @@ namespace ssms.LTS
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), definition, name, principal_id, version, iD);
 			iD = ((System.Nullable<int>)(result.GetParameterValue(4)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertTag")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int InsertTag([global::System.Data.Linq.Mapping.ParameterAttribute(Name="EPC", DbType="VarChar(200)")] string ePC, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ePC, iD);
-			iD = ((System.Nullable<int>)(result.GetParameterValue(1)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -480,17 +424,9 @@ namespace ssms.LTS
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateBookOut")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int UpdateBookOut([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="DateTime")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project", DbType="VarChar(200)")] string project, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Reason", DbType="VarChar(300)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookOutID", DbType="Int")] System.Nullable<int> bookOutID)
+		public int UpdateBookOut([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="DateTime")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project", DbType="VarChar(200)")] string project, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Reason", DbType="VarChar(300)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookOutID", DbType="Int")] System.Nullable<int> bookOutID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, project, reason, userID, bookOutID);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateBookOutItem")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int UpdateBookOutItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookOutID", DbType="Int")] System.Nullable<int> bookOutID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Int")] System.Nullable<int> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BookOutItemID", DbType="Int")] System.Nullable<int> bookOutItemID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bookOutID, itemID, quantity, bookOutItemID);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date, itemID, project, reason, userID, bookOutID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -512,9 +448,17 @@ namespace ssms.LTS
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateItem")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int UpdateItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BarcodeID", DbType="Int")] System.Nullable<int> barcodeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BrandID", DbType="Int")] System.Nullable<int> brandID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemDescription", DbType="VarChar(200)")] string itemDescription, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="VarChar(200)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemStatus", DbType="Bit")] System.Nullable<bool> itemStatus, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagID", DbType="Int")] System.Nullable<int> tagID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID)
+		public int UpdateItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemStatus", DbType="Bit")] System.Nullable<bool> itemStatus, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductID", DbType="Int")] System.Nullable<int> productID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagEPC", DbType="VarChar(200)")] string tagEPC, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), barcodeID, brandID, categoryID, itemDescription, itemName, itemStatus, tagID, itemID);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemStatus, productID, storeID, tagEPC, itemID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateProduct")]
+		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
+		public int UpdateProduct([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BarcodeID", DbType="Int")] System.Nullable<int> barcodeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BrandID", DbType="Int")] System.Nullable<int> brandID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductDescription", DbType="VarChar(200)")] string productDescription, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductName", DbType="VarChar(200)")] string productName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductID", DbType="Int")] System.Nullable<int> productID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), barcodeID, brandID, categoryID, productDescription, productName, productID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -526,19 +470,11 @@ namespace ssms.LTS
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateStock")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int UpdateStock([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Int")] System.Nullable<int> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StockID", DbType="Int")] System.Nullable<int> stockID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemID, quantity, storeID, stockID);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateStore")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int UpdateStore([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BarcodeID", DbType="Int")] System.Nullable<int> barcodeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemStatus", DbType="Bit")] System.Nullable<bool> itemStatus, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreLocation", DbType="VarChar(200)")] string storeLocation, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreName", DbType="VarChar(200)")] string storeName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagID", DbType="Int")] System.Nullable<int> tagID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID)
+		public int UpdateStore([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreLocation", DbType="VarChar(200)")] string storeLocation, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreName", DbType="VarChar(200)")] string storeName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), barcodeID, itemStatus, storeLocation, storeName, tagID, storeID);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), storeLocation, storeName, storeID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -547,14 +483,6 @@ namespace ssms.LTS
 		public int Updatesysdiagrams([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarBinary(MAX)")] System.Data.Linq.Binary definition, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(128)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> principal_id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> version, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> diagram_id)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), definition, name, principal_id, version, diagram_id);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateTag")]
-		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int UpdateTag([global::System.Data.Linq.Mapping.ParameterAttribute(Name="EPC", DbType="VarChar(200)")] string ePC, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TagID", DbType="Int")] System.Nullable<int> tagID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ePC, tagID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -776,7 +704,7 @@ namespace ssms.LTS
 		
 		private string _BarcodeNumber;
 		
-		private EntitySet<Item> _Item;
+		private EntitySet<Product> _Product;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -790,7 +718,7 @@ namespace ssms.LTS
 		
 		public Barcode()
 		{
-			this._Item = new EntitySet<Item>(new Action<Item>(this.attach_Item), new Action<Item>(this.detach_Item));
+			this._Product = new EntitySet<Product>(new Action<Product>(this.attach_Product), new Action<Product>(this.detach_Product));
 			OnCreated();
 		}
 		
@@ -834,16 +762,16 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemBarcode", Storage="_Item", ThisKey="BarcodeID", OtherKey="BarcodeID", DeleteRule="NO ACTION")]
-		public EntitySet<Item> Item
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemBarcode", Storage="_Product", ThisKey="BarcodeID", OtherKey="BarcodeID", DeleteRule="NO ACTION")]
+		public EntitySet<Product> Product
 		{
 			get
 			{
-				return this._Item;
+				return this._Product;
 			}
 			set
 			{
-				this._Item.Assign(value);
+				this._Product.Assign(value);
 			}
 		}
 		
@@ -867,13 +795,13 @@ namespace ssms.LTS
 			}
 		}
 		
-		private void attach_Item(Item entity)
+		private void attach_Product(Product entity)
 		{
 			this.SendPropertyChanging();
 			entity.Barcode = this;
 		}
 		
-		private void detach_Item(Item entity)
+		private void detach_Product(Product entity)
 		{
 			this.SendPropertyChanging();
 			entity.Barcode = null;
@@ -896,7 +824,9 @@ namespace ssms.LTS
 		
 		private int _UserID;
 		
-		private EntitySet<BookOutItem> _BookOutItem;
+		private int _ItemID;
+		
+		private EntityRef<Item> _Item;
 		
 		private EntityRef<User> _User;
 		
@@ -914,11 +844,13 @@ namespace ssms.LTS
     partial void OnDateChanged();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
+    partial void OnItemIDChanging(int value);
+    partial void OnItemIDChanged();
     #endregion
 		
 		public BookOut()
 		{
-			this._BookOutItem = new EntitySet<BookOutItem>(new Action<BookOutItem>(this.attach_BookOutItem), new Action<BookOutItem>(this.detach_BookOutItem));
+			this._Item = default(EntityRef<Item>);
 			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
@@ -1027,16 +959,61 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_BookOut_Item", Storage="_BookOutItem", ThisKey="BookOutID", OtherKey="BookOutID", DeleteRule="NO ACTION")]
-		public EntitySet<BookOutItem> BookOutItem
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemID", DbType="Int NOT NULL")]
+		public int ItemID
 		{
 			get
 			{
-				return this._BookOutItem;
+				return this._ItemID;
 			}
 			set
 			{
-				this._BookOutItem.Assign(value);
+				if ((this._ItemID != value))
+				{
+					if (this._Item.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnItemIDChanging(value);
+					this.SendPropertyChanging();
+					this._ItemID = value;
+					this.SendPropertyChanged("ItemID");
+					this.OnItemIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_BookOutItem", Storage="_Item", ThisKey="ItemID", OtherKey="ItemID", IsForeignKey=true)]
+		public Item Item
+		{
+			get
+			{
+				return this._Item.Entity;
+			}
+			set
+			{
+				Item previousValue = this._Item.Entity;
+				if (((previousValue != value) 
+							|| (this._Item.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Item.Entity = null;
+						previousValue.BookOut.Remove(this);
+					}
+					this._Item.Entity = value;
+					if ((value != null))
+					{
+						value.BookOut.Add(this);
+						this._ItemID = value.ItemID;
+					}
+					else
+					{
+						this._ItemID = default(int);
+					}
+					this.SendPropertyChanged("Item");
+				}
 			}
 		}
 		
@@ -1093,234 +1070,6 @@ namespace ssms.LTS
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_BookOutItem(BookOutItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.BookOut = this;
-		}
-		
-		private void detach_BookOutItem(BookOutItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.BookOut = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BookOutItem")]
-	public partial class BookOutItem : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _BookOutItemID;
-		
-		private int _Quantity;
-		
-		private int _BookOutID;
-		
-		private int _ItemID;
-		
-		private EntityRef<BookOut> _BookOut;
-		
-		private EntityRef<Item> _Item;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnBookOutItemIDChanging(int value);
-    partial void OnBookOutItemIDChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnBookOutIDChanging(int value);
-    partial void OnBookOutIDChanged();
-    partial void OnItemIDChanging(int value);
-    partial void OnItemIDChanged();
-    #endregion
-		
-		public BookOutItem()
-		{
-			this._BookOut = default(EntityRef<BookOut>);
-			this._Item = default(EntityRef<Item>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookOutItemID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int BookOutItemID
-		{
-			get
-			{
-				return this._BookOutItemID;
-			}
-			set
-			{
-				if ((this._BookOutItemID != value))
-				{
-					this.OnBookOutItemIDChanging(value);
-					this.SendPropertyChanging();
-					this._BookOutItemID = value;
-					this.SendPropertyChanged("BookOutItemID");
-					this.OnBookOutItemIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookOutID", DbType="Int NOT NULL")]
-		public int BookOutID
-		{
-			get
-			{
-				return this._BookOutID;
-			}
-			set
-			{
-				if ((this._BookOutID != value))
-				{
-					if (this._BookOut.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnBookOutIDChanging(value);
-					this.SendPropertyChanging();
-					this._BookOutID = value;
-					this.SendPropertyChanged("BookOutID");
-					this.OnBookOutIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemID", DbType="Int NOT NULL")]
-		public int ItemID
-		{
-			get
-			{
-				return this._ItemID;
-			}
-			set
-			{
-				if ((this._ItemID != value))
-				{
-					if (this._Item.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnItemIDChanging(value);
-					this.SendPropertyChanging();
-					this._ItemID = value;
-					this.SendPropertyChanged("ItemID");
-					this.OnItemIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_BookOut_Item", Storage="_BookOut", ThisKey="BookOutID", OtherKey="BookOutID", IsForeignKey=true)]
-		public BookOut BookOut
-		{
-			get
-			{
-				return this._BookOut.Entity;
-			}
-			set
-			{
-				BookOut previousValue = this._BookOut.Entity;
-				if (((previousValue != value) 
-							|| (this._BookOut.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._BookOut.Entity = null;
-						previousValue.BookOutItem.Remove(this);
-					}
-					this._BookOut.Entity = value;
-					if ((value != null))
-					{
-						value.BookOutItem.Add(this);
-						this._BookOutID = value.BookOutID;
-					}
-					else
-					{
-						this._BookOutID = default(int);
-					}
-					this.SendPropertyChanged("BookOut");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_BookOutItem_Item", Storage="_Item", ThisKey="ItemID", OtherKey="ItemID", IsForeignKey=true)]
-		public Item Item
-		{
-			get
-			{
-				return this._Item.Entity;
-			}
-			set
-			{
-				Item previousValue = this._Item.Entity;
-				if (((previousValue != value) 
-							|| (this._Item.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Item.Entity = null;
-						previousValue.BookOutItem.Remove(this);
-					}
-					this._Item.Entity = value;
-					if ((value != null))
-					{
-						value.BookOutItem.Add(this);
-						this._ItemID = value.ItemID;
-					}
-					else
-					{
-						this._ItemID = default(int);
-					}
-					this.SendPropertyChanged("Item");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Brand")]
@@ -1335,7 +1084,7 @@ namespace ssms.LTS
 		
 		private string _BrandDescription;
 		
-		private EntitySet<Item> _Item;
+		private EntitySet<Product> _Product;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1351,7 +1100,7 @@ namespace ssms.LTS
 		
 		public Brand()
 		{
-			this._Item = new EntitySet<Item>(new Action<Item>(this.attach_Item), new Action<Item>(this.detach_Item));
+			this._Product = new EntitySet<Product>(new Action<Product>(this.attach_Product), new Action<Product>(this.detach_Product));
 			OnCreated();
 		}
 		
@@ -1415,16 +1164,16 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemBrand", Storage="_Item", ThisKey="BrandID", OtherKey="BrandID", DeleteRule="NO ACTION")]
-		public EntitySet<Item> Item
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemBrand", Storage="_Product", ThisKey="BrandID", OtherKey="BrandID", DeleteRule="NO ACTION")]
+		public EntitySet<Product> Product
 		{
 			get
 			{
-				return this._Item;
+				return this._Product;
 			}
 			set
 			{
-				this._Item.Assign(value);
+				this._Product.Assign(value);
 			}
 		}
 		
@@ -1448,13 +1197,13 @@ namespace ssms.LTS
 			}
 		}
 		
-		private void attach_Item(Item entity)
+		private void attach_Product(Product entity)
 		{
 			this.SendPropertyChanging();
 			entity.Brand = this;
 		}
 		
-		private void detach_Item(Item entity)
+		private void detach_Product(Product entity)
 		{
 			this.SendPropertyChanging();
 			entity.Brand = null;
@@ -1473,7 +1222,7 @@ namespace ssms.LTS
 		
 		private string _CategoryDescription;
 		
-		private EntitySet<Item> _Item;
+		private EntitySet<Product> _Product;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1489,7 +1238,7 @@ namespace ssms.LTS
 		
 		public Category()
 		{
-			this._Item = new EntitySet<Item>(new Action<Item>(this.attach_Item), new Action<Item>(this.detach_Item));
+			this._Product = new EntitySet<Product>(new Action<Product>(this.attach_Product), new Action<Product>(this.detach_Product));
 			OnCreated();
 		}
 		
@@ -1553,16 +1302,16 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemCategory", Storage="_Item", ThisKey="CategoryID", OtherKey="CategoryID", DeleteRule="NO ACTION")]
-		public EntitySet<Item> Item
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemCategory", Storage="_Product", ThisKey="CategoryID", OtherKey="CategoryID", DeleteRule="NO ACTION")]
+		public EntitySet<Product> Product
 		{
 			get
 			{
-				return this._Item;
+				return this._Product;
 			}
 			set
 			{
-				this._Item.Assign(value);
+				this._Product.Assign(value);
 			}
 		}
 		
@@ -1586,13 +1335,13 @@ namespace ssms.LTS
 			}
 		}
 		
-		private void attach_Item(Item entity)
+		private void attach_Product(Product entity)
 		{
 			this.SendPropertyChanging();
 			entity.Category = this;
 		}
 		
-		private void detach_Item(Item entity)
+		private void detach_Product(Product entity)
 		{
 			this.SendPropertyChanging();
 			entity.Category = null;
@@ -1607,31 +1356,19 @@ namespace ssms.LTS
 		
 		private int _ItemID;
 		
-		private string _ItemName;
-		
-		private string _ItemDescription;
+		private string _TagEPC;
 		
 		private bool _ItemStatus;
 		
-		private int _TagID;
+		private int _ProductID;
 		
-		private int _BarcodeID;
+		private int _StoreID;
 		
-		private int _BrandID;
+		private EntitySet<BookOut> _BookOut;
 		
-		private int _CategoryID;
+		private EntityRef<Product> _Product;
 		
-		private EntitySet<BookOutItem> _BookOutItem;
-		
-		private EntityRef<Barcode> _Barcode;
-		
-		private EntityRef<Brand> _Brand;
-		
-		private EntityRef<Category> _Category;
-		
-		private EntityRef<Tag> _Tag;
-		
-		private EntitySet<Stock> _Stock;
+		private EntityRef<Store> _Store;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1639,30 +1376,21 @@ namespace ssms.LTS
     partial void OnCreated();
     partial void OnItemIDChanging(int value);
     partial void OnItemIDChanged();
-    partial void OnItemNameChanging(string value);
-    partial void OnItemNameChanged();
-    partial void OnItemDescriptionChanging(string value);
-    partial void OnItemDescriptionChanged();
+    partial void OnTagEPCChanging(string value);
+    partial void OnTagEPCChanged();
     partial void OnItemStatusChanging(bool value);
     partial void OnItemStatusChanged();
-    partial void OnTagIDChanging(int value);
-    partial void OnTagIDChanged();
-    partial void OnBarcodeIDChanging(int value);
-    partial void OnBarcodeIDChanged();
-    partial void OnBrandIDChanging(int value);
-    partial void OnBrandIDChanged();
-    partial void OnCategoryIDChanging(int value);
-    partial void OnCategoryIDChanged();
+    partial void OnProductIDChanging(int value);
+    partial void OnProductIDChanged();
+    partial void OnStoreIDChanging(int value);
+    partial void OnStoreIDChanged();
     #endregion
 		
 		public Item()
 		{
-			this._BookOutItem = new EntitySet<BookOutItem>(new Action<BookOutItem>(this.attach_BookOutItem), new Action<BookOutItem>(this.detach_BookOutItem));
-			this._Barcode = default(EntityRef<Barcode>);
-			this._Brand = default(EntityRef<Brand>);
-			this._Category = default(EntityRef<Category>);
-			this._Tag = default(EntityRef<Tag>);
-			this._Stock = new EntitySet<Stock>(new Action<Stock>(this.attach_Stock), new Action<Stock>(this.detach_Stock));
+			this._BookOut = new EntitySet<BookOut>(new Action<BookOut>(this.attach_BookOut), new Action<BookOut>(this.detach_BookOut));
+			this._Product = default(EntityRef<Product>);
+			this._Store = default(EntityRef<Store>);
 			OnCreated();
 		}
 		
@@ -1686,42 +1414,22 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string ItemName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TagEPC", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string TagEPC
 		{
 			get
 			{
-				return this._ItemName;
+				return this._TagEPC;
 			}
 			set
 			{
-				if ((this._ItemName != value))
+				if ((this._TagEPC != value))
 				{
-					this.OnItemNameChanging(value);
+					this.OnTagEPCChanging(value);
 					this.SendPropertyChanging();
-					this._ItemName = value;
-					this.SendPropertyChanged("ItemName");
-					this.OnItemNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemDescription", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string ItemDescription
-		{
-			get
-			{
-				return this._ItemDescription;
-			}
-			set
-			{
-				if ((this._ItemDescription != value))
-				{
-					this.OnItemDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._ItemDescription = value;
-					this.SendPropertyChanged("ItemDescription");
-					this.OnItemDescriptionChanged();
+					this._TagEPC = value;
+					this.SendPropertyChanged("TagEPC");
+					this.OnTagEPCChanged();
 				}
 			}
 		}
@@ -1746,26 +1454,277 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TagID", DbType="Int NOT NULL")]
-		public int TagID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int NOT NULL")]
+		public int ProductID
 		{
 			get
 			{
-				return this._TagID;
+				return this._ProductID;
 			}
 			set
 			{
-				if ((this._TagID != value))
+				if ((this._ProductID != value))
 				{
-					if (this._Tag.HasLoadedOrAssignedValue)
+					if (this._Product.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnTagIDChanging(value);
+					this.OnProductIDChanging(value);
 					this.SendPropertyChanging();
-					this._TagID = value;
-					this.SendPropertyChanged("TagID");
-					this.OnTagIDChanged();
+					this._ProductID = value;
+					this.SendPropertyChanged("ProductID");
+					this.OnProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL")]
+		public int StoreID
+		{
+			get
+			{
+				return this._StoreID;
+			}
+			set
+			{
+				if ((this._StoreID != value))
+				{
+					if (this._Store.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStoreIDChanging(value);
+					this.SendPropertyChanging();
+					this._StoreID = value;
+					this.SendPropertyChanged("StoreID");
+					this.OnStoreIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_BookOutItem", Storage="_BookOut", ThisKey="ItemID", OtherKey="ItemID", DeleteRule="NO ACTION")]
+		public EntitySet<BookOut> BookOut
+		{
+			get
+			{
+				return this._BookOut;
+			}
+			set
+			{
+				this._BookOut.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemProduct", Storage="_Product", ThisKey="ProductID", OtherKey="ProductID", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.Item.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.Item.Add(this);
+						this._ProductID = value.ProductID;
+					}
+					else
+					{
+						this._ProductID = default(int);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemStore", Storage="_Store", ThisKey="StoreID", OtherKey="StoreID", IsForeignKey=true)]
+		public Store Store
+		{
+			get
+			{
+				return this._Store.Entity;
+			}
+			set
+			{
+				Store previousValue = this._Store.Entity;
+				if (((previousValue != value) 
+							|| (this._Store.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Store.Entity = null;
+						previousValue.Item.Remove(this);
+					}
+					this._Store.Entity = value;
+					if ((value != null))
+					{
+						value.Item.Add(this);
+						this._StoreID = value.StoreID;
+					}
+					else
+					{
+						this._StoreID = default(int);
+					}
+					this.SendPropertyChanged("Store");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BookOut(BookOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = this;
+		}
+		
+		private void detach_BookOut(BookOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
+	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ProductID;
+		
+		private string _ProductName;
+		
+		private string _ProductDescription;
+		
+		private int _BarcodeID;
+		
+		private int _BrandID;
+		
+		private int _CategoryID;
+		
+		private EntityRef<Barcode> _Barcode;
+		
+		private EntityRef<Brand> _Brand;
+		
+		private EntityRef<Category> _Category;
+		
+		private EntitySet<Item> _Item;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProductIDChanging(int value);
+    partial void OnProductIDChanged();
+    partial void OnProductNameChanging(string value);
+    partial void OnProductNameChanged();
+    partial void OnProductDescriptionChanging(string value);
+    partial void OnProductDescriptionChanged();
+    partial void OnBarcodeIDChanging(int value);
+    partial void OnBarcodeIDChanged();
+    partial void OnBrandIDChanging(int value);
+    partial void OnBrandIDChanged();
+    partial void OnCategoryIDChanging(int value);
+    partial void OnCategoryIDChanged();
+    #endregion
+		
+		public Product()
+		{
+			this._Barcode = default(EntityRef<Barcode>);
+			this._Brand = default(EntityRef<Brand>);
+			this._Category = default(EntityRef<Category>);
+			this._Item = new EntitySet<Item>(new Action<Item>(this.attach_Item), new Action<Item>(this.detach_Item));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProductID
+		{
+			get
+			{
+				return this._ProductID;
+			}
+			set
+			{
+				if ((this._ProductID != value))
+				{
+					this.OnProductIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProductID = value;
+					this.SendPropertyChanged("ProductID");
+					this.OnProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string ProductName
+		{
+			get
+			{
+				return this._ProductName;
+			}
+			set
+			{
+				if ((this._ProductName != value))
+				{
+					this.OnProductNameChanging(value);
+					this.SendPropertyChanging();
+					this._ProductName = value;
+					this.SendPropertyChanged("ProductName");
+					this.OnProductNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductDescription", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string ProductDescription
+		{
+			get
+			{
+				return this._ProductDescription;
+			}
+			set
+			{
+				if ((this._ProductDescription != value))
+				{
+					this.OnProductDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._ProductDescription = value;
+					this.SendPropertyChanged("ProductDescription");
+					this.OnProductDescriptionChanged();
 				}
 			}
 		}
@@ -1842,19 +1801,6 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_BookOutItem_Item", Storage="_BookOutItem", ThisKey="ItemID", OtherKey="ItemID", DeleteRule="NO ACTION")]
-		public EntitySet<BookOutItem> BookOutItem
-		{
-			get
-			{
-				return this._BookOutItem;
-			}
-			set
-			{
-				this._BookOutItem.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemBarcode", Storage="_Barcode", ThisKey="BarcodeID", OtherKey="BarcodeID", IsForeignKey=true)]
 		public Barcode Barcode
 		{
@@ -1872,12 +1818,12 @@ namespace ssms.LTS
 					if ((previousValue != null))
 					{
 						this._Barcode.Entity = null;
-						previousValue.Item.Remove(this);
+						previousValue.Product.Remove(this);
 					}
 					this._Barcode.Entity = value;
 					if ((value != null))
 					{
-						value.Item.Add(this);
+						value.Product.Add(this);
 						this._BarcodeID = value.BarcodeID;
 					}
 					else
@@ -1906,12 +1852,12 @@ namespace ssms.LTS
 					if ((previousValue != null))
 					{
 						this._Brand.Entity = null;
-						previousValue.Item.Remove(this);
+						previousValue.Product.Remove(this);
 					}
 					this._Brand.Entity = value;
 					if ((value != null))
 					{
-						value.Item.Add(this);
+						value.Product.Add(this);
 						this._BrandID = value.BrandID;
 					}
 					else
@@ -1940,12 +1886,12 @@ namespace ssms.LTS
 					if ((previousValue != null))
 					{
 						this._Category.Entity = null;
-						previousValue.Item.Remove(this);
+						previousValue.Product.Remove(this);
 					}
 					this._Category.Entity = value;
 					if ((value != null))
 					{
-						value.Item.Add(this);
+						value.Product.Add(this);
 						this._CategoryID = value.CategoryID;
 					}
 					else
@@ -1957,50 +1903,16 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemTag", Storage="_Tag", ThisKey="TagID", OtherKey="TagID", IsForeignKey=true)]
-		public Tag Tag
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemProduct", Storage="_Item", ThisKey="ProductID", OtherKey="ProductID", DeleteRule="NO ACTION")]
+		public EntitySet<Item> Item
 		{
 			get
 			{
-				return this._Tag.Entity;
+				return this._Item;
 			}
 			set
 			{
-				Tag previousValue = this._Tag.Entity;
-				if (((previousValue != value) 
-							|| (this._Tag.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tag.Entity = null;
-						previousValue.Item.Remove(this);
-					}
-					this._Tag.Entity = value;
-					if ((value != null))
-					{
-						value.Item.Add(this);
-						this._TagID = value.TagID;
-					}
-					else
-					{
-						this._TagID = default(int);
-					}
-					this.SendPropertyChanged("Tag");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_StockItem", Storage="_Stock", ThisKey="ItemID", OtherKey="ItemID", DeleteRule="NO ACTION")]
-		public EntitySet<Stock> Stock
-		{
-			get
-			{
-				return this._Stock;
-			}
-			set
-			{
-				this._Stock.Assign(value);
+				this._Item.Assign(value);
 			}
 		}
 		
@@ -2024,28 +1936,16 @@ namespace ssms.LTS
 			}
 		}
 		
-		private void attach_BookOutItem(BookOutItem entity)
+		private void attach_Item(Item entity)
 		{
 			this.SendPropertyChanging();
-			entity.Item = this;
+			entity.Product = this;
 		}
 		
-		private void detach_BookOutItem(BookOutItem entity)
+		private void detach_Item(Item entity)
 		{
 			this.SendPropertyChanging();
-			entity.Item = null;
-		}
-		
-		private void attach_Stock(Stock entity)
-		{
-			this.SendPropertyChanging();
-			entity.Item = this;
-		}
-		
-		private void detach_Stock(Stock entity)
-		{
-			this.SendPropertyChanging();
-			entity.Item = null;
+			entity.Product = null;
 		}
 	}
 	
@@ -2252,222 +2152,6 @@ namespace ssms.LTS
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Stock")]
-	public partial class Stock : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _StockID;
-		
-		private int _Quantity;
-		
-		private int _ItemID;
-		
-		private int _StoreID;
-		
-		private EntityRef<Item> _Item;
-		
-		private EntityRef<Store> _Store;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnStockIDChanging(int value);
-    partial void OnStockIDChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnItemIDChanging(int value);
-    partial void OnItemIDChanged();
-    partial void OnStoreIDChanging(int value);
-    partial void OnStoreIDChanged();
-    #endregion
-		
-		public Stock()
-		{
-			this._Item = default(EntityRef<Item>);
-			this._Store = default(EntityRef<Store>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int StockID
-		{
-			get
-			{
-				return this._StockID;
-			}
-			set
-			{
-				if ((this._StockID != value))
-				{
-					this.OnStockIDChanging(value);
-					this.SendPropertyChanging();
-					this._StockID = value;
-					this.SendPropertyChanged("StockID");
-					this.OnStockIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemID", DbType="Int NOT NULL")]
-		public int ItemID
-		{
-			get
-			{
-				return this._ItemID;
-			}
-			set
-			{
-				if ((this._ItemID != value))
-				{
-					if (this._Item.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnItemIDChanging(value);
-					this.SendPropertyChanging();
-					this._ItemID = value;
-					this.SendPropertyChanged("ItemID");
-					this.OnItemIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL")]
-		public int StoreID
-		{
-			get
-			{
-				return this._StoreID;
-			}
-			set
-			{
-				if ((this._StoreID != value))
-				{
-					if (this._Store.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnStoreIDChanging(value);
-					this.SendPropertyChanging();
-					this._StoreID = value;
-					this.SendPropertyChanged("StoreID");
-					this.OnStoreIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_StockItem", Storage="_Item", ThisKey="ItemID", OtherKey="ItemID", IsForeignKey=true)]
-		public Item Item
-		{
-			get
-			{
-				return this._Item.Entity;
-			}
-			set
-			{
-				Item previousValue = this._Item.Entity;
-				if (((previousValue != value) 
-							|| (this._Item.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Item.Entity = null;
-						previousValue.Stock.Remove(this);
-					}
-					this._Item.Entity = value;
-					if ((value != null))
-					{
-						value.Stock.Add(this);
-						this._ItemID = value.ItemID;
-					}
-					else
-					{
-						this._ItemID = default(int);
-					}
-					this.SendPropertyChanged("Item");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_StockStore", Storage="_Store", ThisKey="StoreID", OtherKey="StoreID", IsForeignKey=true)]
-		public Store Store
-		{
-			get
-			{
-				return this._Store.Entity;
-			}
-			set
-			{
-				Store previousValue = this._Store.Entity;
-				if (((previousValue != value) 
-							|| (this._Store.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Store.Entity = null;
-						previousValue.Stock.Remove(this);
-					}
-					this._Store.Entity = value;
-					if ((value != null))
-					{
-						value.Stock.Add(this);
-						this._StoreID = value.StoreID;
-					}
-					else
-					{
-						this._StoreID = default(int);
-					}
-					this.SendPropertyChanged("Store");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Store")]
 	public partial class Store : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2480,15 +2164,9 @@ namespace ssms.LTS
 		
 		private string _StoreLocation;
 		
-		private bool _ItemStatus;
-		
-		private int _TagID;
-		
-		private int _BarcodeID;
+		private EntitySet<Item> _Item;
 		
 		private EntitySet<Reader> _Reader;
-		
-		private EntitySet<Stock> _Stock;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2500,18 +2178,12 @@ namespace ssms.LTS
     partial void OnStoreNameChanged();
     partial void OnStoreLocationChanging(string value);
     partial void OnStoreLocationChanged();
-    partial void OnItemStatusChanging(bool value);
-    partial void OnItemStatusChanged();
-    partial void OnTagIDChanging(int value);
-    partial void OnTagIDChanged();
-    partial void OnBarcodeIDChanging(int value);
-    partial void OnBarcodeIDChanged();
     #endregion
 		
 		public Store()
 		{
+			this._Item = new EntitySet<Item>(new Action<Item>(this.attach_Item), new Action<Item>(this.detach_Item));
 			this._Reader = new EntitySet<Reader>(new Action<Reader>(this.attach_Reader), new Action<Reader>(this.detach_Reader));
-			this._Stock = new EntitySet<Stock>(new Action<Stock>(this.attach_Stock), new Action<Stock>(this.detach_Stock));
 			OnCreated();
 		}
 		
@@ -2575,63 +2247,16 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemStatus", DbType="Bit NOT NULL")]
-		public bool ItemStatus
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemStore", Storage="_Item", ThisKey="StoreID", OtherKey="StoreID", DeleteRule="NO ACTION")]
+		public EntitySet<Item> Item
 		{
 			get
 			{
-				return this._ItemStatus;
+				return this._Item;
 			}
 			set
 			{
-				if ((this._ItemStatus != value))
-				{
-					this.OnItemStatusChanging(value);
-					this.SendPropertyChanging();
-					this._ItemStatus = value;
-					this.SendPropertyChanged("ItemStatus");
-					this.OnItemStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TagID", DbType="Int NOT NULL")]
-		public int TagID
-		{
-			get
-			{
-				return this._TagID;
-			}
-			set
-			{
-				if ((this._TagID != value))
-				{
-					this.OnTagIDChanging(value);
-					this.SendPropertyChanging();
-					this._TagID = value;
-					this.SendPropertyChanged("TagID");
-					this.OnTagIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BarcodeID", DbType="Int NOT NULL")]
-		public int BarcodeID
-		{
-			get
-			{
-				return this._BarcodeID;
-			}
-			set
-			{
-				if ((this._BarcodeID != value))
-				{
-					this.OnBarcodeIDChanging(value);
-					this.SendPropertyChanging();
-					this._BarcodeID = value;
-					this.SendPropertyChanged("BarcodeID");
-					this.OnBarcodeIDChanged();
-				}
+				this._Item.Assign(value);
 			}
 		}
 		
@@ -2645,145 +2270,6 @@ namespace ssms.LTS
 			set
 			{
 				this._Reader.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_StockStore", Storage="_Stock", ThisKey="StoreID", OtherKey="StoreID", DeleteRule="NO ACTION")]
-		public EntitySet<Stock> Stock
-		{
-			get
-			{
-				return this._Stock;
-			}
-			set
-			{
-				this._Stock.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Reader(Reader entity)
-		{
-			this.SendPropertyChanging();
-			entity.Store = this;
-		}
-		
-		private void detach_Reader(Reader entity)
-		{
-			this.SendPropertyChanging();
-			entity.Store = null;
-		}
-		
-		private void attach_Stock(Stock entity)
-		{
-			this.SendPropertyChanging();
-			entity.Store = this;
-		}
-		
-		private void detach_Stock(Stock entity)
-		{
-			this.SendPropertyChanging();
-			entity.Store = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tag")]
-	public partial class Tag : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _TagID;
-		
-		private string _EPC;
-		
-		private EntitySet<Item> _Item;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTagIDChanging(int value);
-    partial void OnTagIDChanged();
-    partial void OnEPCChanging(string value);
-    partial void OnEPCChanged();
-    #endregion
-		
-		public Tag()
-		{
-			this._Item = new EntitySet<Item>(new Action<Item>(this.attach_Item), new Action<Item>(this.detach_Item));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TagID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int TagID
-		{
-			get
-			{
-				return this._TagID;
-			}
-			set
-			{
-				if ((this._TagID != value))
-				{
-					this.OnTagIDChanging(value);
-					this.SendPropertyChanging();
-					this._TagID = value;
-					this.SendPropertyChanged("TagID");
-					this.OnTagIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EPC", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string EPC
-		{
-			get
-			{
-				return this._EPC;
-			}
-			set
-			{
-				if ((this._EPC != value))
-				{
-					this.OnEPCChanging(value);
-					this.SendPropertyChanging();
-					this._EPC = value;
-					this.SendPropertyChanged("EPC");
-					this.OnEPCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ItemTag", Storage="_Item", ThisKey="TagID", OtherKey="TagID", DeleteRule="NO ACTION")]
-		public EntitySet<Item> Item
-		{
-			get
-			{
-				return this._Item;
-			}
-			set
-			{
-				this._Item.Assign(value);
 			}
 		}
 		
@@ -2810,13 +2296,25 @@ namespace ssms.LTS
 		private void attach_Item(Item entity)
 		{
 			this.SendPropertyChanging();
-			entity.Tag = this;
+			entity.Store = this;
 		}
 		
 		private void detach_Item(Item entity)
 		{
 			this.SendPropertyChanging();
-			entity.Tag = null;
+			entity.Store = null;
+		}
+		
+		private void attach_Reader(Reader entity)
+		{
+			this.SendPropertyChanging();
+			entity.Store = this;
+		}
+		
+		private void detach_Reader(Reader entity)
+		{
+			this.SendPropertyChanging();
+			entity.Store = null;
 		}
 	}
 	

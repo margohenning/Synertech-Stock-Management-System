@@ -29,5 +29,10 @@ namespace ssms.Admin
             activated.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserActivated.ToString();
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<UpdateMyAccount>();
+        }
     }
 }

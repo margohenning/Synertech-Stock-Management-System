@@ -1,4 +1,4 @@
-﻿namespace ssms.Admin
+﻿namespace ssms.Admin.Settings
 {
     partial class Settings
     {

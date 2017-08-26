@@ -215,7 +215,7 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.InsertBookOut(bookOut.Date, bookOut.Project, bookOut.Reason, bookOut.UserID, ref BookOutID);
+                    access.InsertBookOut(bookOut.Date, bookOut.ItemID, bookOut.Project, bookOut.Reason, bookOut.UserID, ref BookOutID);
                 }
             }
             catch (Exception ex)
@@ -246,88 +246,7 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.UpdateBookOut(bookOut.Date, bookOut.Project, bookOut.Reason, bookOut.UserID, bookOut.BookOutID);
-                    completed = true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                completed = false;
-            }
-            return completed;
-        }
-        #endregion;
-        #region BookOutItem
-        public static LTS.BookOutItem GetBookOutItemItemByID(int? BookOutItemID)
-        {
-            LTS.BookOutItem bookOutItem = new LTS.BookOutItem();
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    bookOutItem = access.BookOutItem.Where(o => o.BookOutItemID == BookOutItemID).FirstOrDefault();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return bookOutItem;
-        }
-        public static List<LTS.BookOutItem> GetBookOutItem()
-        {
-            List<LTS.BookOutItem> bookOutItem = new List<LTS.BookOutItem>();
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    bookOutItem = access.BookOutItem.ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return bookOutItem;
-        }
-        public static int AddBookOutItem(LTS.BookOutItem bookOutItem)
-        {
-            int? BookOutItemID = -1;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.InsertBookOutItem(bookOutItem.BookOutID, bookOutItem.ItemID, bookOutItem.Quantity, ref BookOutItemID);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return BookOutItemID.Value;
-        }
-        public static bool RemoveBookOutItem(int BookOutItemID)
-        {
-            bool deleted = false;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.DeleteBookOutItem(BookOutItemID);
-                    deleted = true;
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return deleted;
-        }
-        public static bool UpdateBookOutItem(LTS.BookOutItem bookOutItem)
-        {
-            bool completed = false;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.UpdateBookOutItem(bookOutItem.BookOutID, bookOutItem.ItemID, bookOutItem.Quantity, bookOutItem.BookOutItemID);
+                    access.UpdateBookOut(bookOut.Date, bookOut.ItemID, bookOut.Project, bookOut.Reason, bookOut.UserID, bookOut.BookOutID);
                     completed = true;
                 }
 
@@ -539,7 +458,7 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.InsertItem(item.BarcodeID, item.BrandID, item.CategoryID, item.ItemDescription, item.ItemName, item.ItemStatus, item.TagID, ref ItemID);
+                    access.InsertItem(item.ItemStatus, item.ProductID, item.StoreID, item.TagEPC, ref ItemID);
                 }
             }
             catch (Exception ex)
@@ -570,7 +489,88 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.UpdateItem(item.BarcodeID, item.BrandID, item.CategoryID, item.ItemDescription, item.ItemName, item.ItemStatus, item.TagID, item.ItemID);
+                    access.UpdateItem(item.ItemStatus, item.ProductID, item.StoreID, item.TagEPC, item.ItemID);
+                    completed = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                completed = false;
+            }
+            return completed;
+        }
+        #endregion;
+        #region Product
+        public static LTS.Product GetProductItemByID(int? ProductID)
+        {
+            LTS.Product product = new LTS.Product();
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    product = access.Product.Where(o => o.ProductID == ProductID).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return product;
+        }
+        public static List<LTS.Product> GetProduct()
+        {
+            List<LTS.Product> product = new List<LTS.Product>();
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    product = access.Product.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return product;
+        }
+        public static int AddProduct(LTS.Product product)
+        {
+            int? ProductID = -1;
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    access.InsertProduct(product.BarcodeID, product.BrandID, product.CategoryID, product.ProductDescription, product.ProductName, ref ProductID);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return ProductID.Value;
+        }
+        public static bool RemoveProduct(int ProductID)
+        {
+            bool deleted = false;
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    access.DeleteProduct(ProductID);
+                    deleted = true;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return deleted;
+        }
+        public static bool UpdateProduct(LTS.Product product)
+        {
+            bool completed = false;
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    access.UpdateProduct(product.BarcodeID, product.BrandID, product.CategoryID, product.ProductDescription, product.ProductName, product.ProductID);
                     completed = true;
                 }
 
@@ -663,87 +663,6 @@ namespace ssms.DAT
             return completed;
         }
         #endregion;
-        #region Stock
-        public static LTS.Stock GetStockItemByID(int? StockID)
-        {
-            LTS.Stock stock = new LTS.Stock();
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    stock = access.Stock.Where(o => o.StockID == StockID).FirstOrDefault();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return stock;
-        }
-        public static List<LTS.Stock> GetStock()
-        {
-            List<LTS.Stock> stock = new List<LTS.Stock>();
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    stock = access.Stock.ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return stock;
-        }
-        public static int AddStock(LTS.Stock stock)
-        {
-            int? StockID = -1;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.InsertStock(stock.ItemID, stock.Quantity, stock.StoreID, ref StockID);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return StockID.Value;
-        }
-        public static bool RemoveStock(int StockID)
-        {
-            bool deleted = false;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.DeleteStock(StockID);
-                    deleted = true;
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return deleted;
-        }
-        public static bool UpdateStock(LTS.Stock stock)
-        {
-            bool completed = false;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.UpdateStock(stock.ItemID, stock.Quantity, stock.StoreID, stock.StockID);
-                    completed = true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                completed = false;
-            }
-            return completed;
-        }
-        #endregion;
         #region Store
         public static LTS.Store GetStoreItemByID(int? StoreID)
         {
@@ -782,7 +701,7 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.InsertStore(store.BarcodeID, store.ItemStatus, store.StoreLocation, store.StoreName, store.TagID, ref StoreID);
+                    access.InsertStore(store.StoreLocation, store.StoreName, ref StoreID);
                 }
             }
             catch (Exception ex)
@@ -813,88 +732,7 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.UpdateStore(store.BarcodeID, store.ItemStatus, store.StoreLocation, store.StoreName, store.TagID, store.StoreID);
-                    completed = true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                completed = false;
-            }
-            return completed;
-        }
-        #endregion;
-        #region Tag
-        public static LTS.Tag GetTagItemByID(int? TagID)
-        {
-            LTS.Tag tag = new LTS.Tag();
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    tag = access.Tag.Where(o => o.TagID == TagID).FirstOrDefault();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return tag;
-        }
-        public static List<LTS.Tag> GetTag()
-        {
-            List<LTS.Tag> tag = new List<LTS.Tag>();
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    tag = access.Tag.ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return tag;
-        }
-        public static int AddTag(LTS.Tag tag)
-        {
-            int? TagID = -1;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.InsertTag(tag.EPC, ref TagID);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return TagID.Value;
-        }
-        public static bool RemoveTag(int TagID)
-        {
-            bool deleted = false;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.DeleteTag(TagID);
-                    deleted = true;
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return deleted;
-        }
-        public static bool UpdateTag(LTS.Tag tag)
-        {
-            bool completed = false;
-            try
-            {
-                using (LTS.LTSBase access = new LTS.LTSDC())
-                {
-                    access.UpdateTag(tag.EPC, tag.TagID);
+                    access.UpdateStore(store.StoreLocation, store.StoreName, store.StoreID);
                     completed = true;
                 }
 
@@ -987,6 +825,8 @@ namespace ssms.DAT
             return completed;
         }
         #endregion;
+
+
 
 
 

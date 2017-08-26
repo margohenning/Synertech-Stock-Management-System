@@ -1,4 +1,4 @@
-﻿namespace ssms.Admin
+﻿namespace ssms.Admin.StockOut
 {
     partial class StockOut
     {

@@ -108,6 +108,7 @@
             this.button3.TabIndex = 92;
             this.button3.Text = "Update User";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -123,6 +124,7 @@
             this.button1.TabIndex = 91;
             this.button1.Text = "Add User";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -162,6 +164,7 @@
             this.button2.TabIndex = 97;
             this.button2.Text = "Deactivate User";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Users
             // 

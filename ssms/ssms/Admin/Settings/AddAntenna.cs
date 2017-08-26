@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ssms.Admin.StockOut
+namespace ssms.Admin.Settings
 {
-    public partial class StockOut : UserControl
+    public partial class AddAntenna : UserControl
     {
-        public StockOut()
+        public AddAntenna()
         {
             InitializeComponent();
-        }
-
-        private void StockOut_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

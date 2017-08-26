@@ -20,15 +20,9 @@ namespace ssms.Admin.Stock
             InitializeComponent();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
+        
 
-        }
-
-        private void txtSur_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {

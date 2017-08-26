@@ -72,7 +72,7 @@
             this.txtSur.Name = "txtSur";
             this.txtSur.Size = new System.Drawing.Size(245, 26);
             this.txtSur.TabIndex = 214;
-            this.txtSur.TextChanged += new System.EventHandler(this.txtSur_TextChanged);
+            
             // 
             // txtName
             // 
@@ -103,7 +103,7 @@
             this.label6.Size = new System.Drawing.Size(139, 19);
             this.label6.TabIndex = 211;
             this.label6.Text = "Item Description:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            
             // 
             // label1
             // 

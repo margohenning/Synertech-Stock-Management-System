@@ -54,11 +54,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Settings\AddAntenna.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings\AddAntenna.Designer.cs">
+      <DependentUpon>AddAntenna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings\AddReader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings\AddReader.Designer.cs">
+      <DependentUpon>AddReader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Settings\AddSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Admin\Settings\AddSettings.Designer.cs">
       <DependentUpon>AddSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StockOut\BookStockOut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\StockOut\BookStockOut.Designer.cs">
+      <DependentUpon>BookStockOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StockOut\StockBookOutRemoval.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\StockOut\StockBookOutRemoval.Designer.cs">
+      <DependentUpon>StockBookOutRemoval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StockOut\StockOutUpdate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\StockOut\StockOutUpdate.Designer.cs">
+      <DependentUpon>StockOutUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Stock\AddBrand.cs">
       <SubType>UserControl</SubType>
@@ -66,11 +96,23 @@
     <Compile Include="Admin\Stock\AddBrand.Designer.cs">
       <DependentUpon>AddBrand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Stock\AddBrandSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\AddBrandSmall.Designer.cs">
+      <DependentUpon>AddBrandSmall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Stock\AddCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Admin\Stock\AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock\AddCategorySmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\AddCategorySmall.Designer.cs">
+      <DependentUpon>AddCategorySmall.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Stock\AddStock.cs">
       <SubType>UserControl</SubType>
@@ -96,6 +138,12 @@
     <Compile Include="Admin\Stock\UpdateBrand.Designer.cs">
       <DependentUpon>UpdateBrand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Stock\UpdateCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock\UpdateCategory.Designer.cs">
+      <DependentUpon>UpdateCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Stock\UpdateStock.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +155,12 @@
     </Compile>
     <Compile Include="Admin\Store\AddStore.Designer.cs">
       <DependentUpon>AddStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Store\AddStoreSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Store\AddStoreSmall.Designer.cs">
+      <DependentUpon>AddStoreSmall.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\User\AddUser.cs">
       <SubType>UserControl</SubType>
@@ -211,14 +265,50 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\Settings\AddAntenna.resx">
+      <DependentUpon>AddAntenna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Settings\AddReader.resx">
+      <DependentUpon>AddReader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Settings\AddSettings.resx">
       <DependentUpon>AddSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\AddBrand.resx">
+      <DependentUpon>AddBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\AddBrandSmall.resx">
+      <DependentUpon>AddBrandSmall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\AddCategorySmall.resx">
+      <DependentUpon>AddCategorySmall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\AddStock.resx">
+      <DependentUpon>AddStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\Brands.resx">
+      <DependentUpon>Brands.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Stock\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\UpdateBrand.resx">
+      <DependentUpon>UpdateBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\UpdateCategory.resx">
+      <DependentUpon>UpdateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Stock\UpdateStock.resx">
+      <DependentUpon>UpdateStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Store\AddStore.resx">
       <DependentUpon>AddStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Store\AddStoreSmall.resx">
+      <DependentUpon>AddStoreSmall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\User\AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
@@ -295,6 +385,9 @@
   <ItemGroup>
     <Content Include="itextsharp.dll" />
     <Content Include="itextsharp.pdfa.dll" />
+    <None Include="Resources\cancel-music.png" />
+    <None Include="Resources\icons8-RFID Signal-64.png" />
+    <None Include="Resources\icons8-RFID Signal Filled-50.png" />
     <None Include="Resources\rubbish-bin %281%29.png" />
     <None Include="Resources\rubbish-bin.png" />
     <None Include="Resources\search.png" />

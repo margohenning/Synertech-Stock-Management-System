@@ -46,17 +46,17 @@ namespace ssms.Admin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeView<StockOut>();
+            ChangeView<StockOut.StockOut>();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ChangeView<Store>();
+            ChangeView<Store.Store>();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ChangeView<Settings>();
+            ChangeView<Admin.Settings.Settings>();
         }
 
         private void button5_Click(object sender, EventArgs e)
