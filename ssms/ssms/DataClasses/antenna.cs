@@ -8,9 +8,9 @@ namespace ssms.DataClasses
 {
     class antenna
     {
-        public int antennaID { get; set; }
-        public double txPower { get; set; }
-        public double rxPower { get; set; }
+        public int antennaNumber { get; set; }
+        public decimal txPower { get; set; }
+        public decimal rxPower { get; set; }
 
         public antenna()
         {

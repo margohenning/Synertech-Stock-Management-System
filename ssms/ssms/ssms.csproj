@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Impinj.OctaneSdk, Version=2.0.2.240, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Octane SDK\Impinj.OctaneSdk.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\itextsharp.dll</HintPath>
@@ -39,6 +43,14 @@
     <Reference Include="itextsharp.pdfa, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="LLRP, Version=10.18.1.5, Culture=neutral, PublicKeyToken=450cec67a1cde3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Octane SDK\LLRP.dll</HintPath>
+    </Reference>
+    <Reference Include="LLRP.Impinj, Version=10.18.1.5, Culture=neutral, PublicKeyToken=450cec67a1cde3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Octane SDK\LLRP.Impinj.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,23 +66,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Settings\AddAntenna.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Admin\Settings\AddAntenna.Designer.cs">
-      <DependentUpon>AddAntenna.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Settings\AddReader.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Admin\Settings\AddReader.Designer.cs">
-      <DependentUpon>AddReader.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Settings\AddSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Admin\Settings\AddSettings.Designer.cs">
       <DependentUpon>AddSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings\AntennaConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings\AntennaConfig.designer.cs">
+      <DependentUpon>AntennaConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\StockOut\BookStockOut.cs">
       <SubType>UserControl</SubType>
@@ -241,6 +247,8 @@
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
     <Compile Include="DataClasses\antenna.cs" />
+    <Compile Include="DataClasses\ImpinjRevolution.cs" />
+    <Compile Include="DataClasses\Reader.cs" />
     <Compile Include="DAT\DataAccess.cs" />
     <Compile Include="DAT\DataAccessXml.cs" />
     <Compile Include="Form1.cs">
@@ -265,14 +273,11 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Admin\Settings\AddAntenna.resx">
-      <DependentUpon>AddAntenna.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Settings\AddReader.resx">
-      <DependentUpon>AddReader.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Settings\AddSettings.resx">
       <DependentUpon>AddSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Settings\AntennaConfig.resx">
+      <DependentUpon>AntennaConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Stock\AddBrand.resx">
       <DependentUpon>AddBrand.cs</DependentUpon>
@@ -385,6 +390,9 @@
   <ItemGroup>
     <Content Include="itextsharp.dll" />
     <Content Include="itextsharp.pdfa.dll" />
+    <Content Include="Octane SDK\Impinj.OctaneSdk.dll" />
+    <Content Include="Octane SDK\LLRP.dll" />
+    <Content Include="Octane SDK\LLRP.Impinj.dll" />
     <None Include="Resources\cancel-music.png" />
     <None Include="Resources\icons8-RFID Signal-64.png" />
     <None Include="Resources\icons8-RFID Signal Filled-50.png" />
