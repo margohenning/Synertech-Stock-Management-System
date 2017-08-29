@@ -50,7 +50,7 @@ namespace ssms
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            if (MessageBox.Show("Are you sure you want to exit the Synertech Stock Management System?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to exit the Synertech Items Management System?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
             }

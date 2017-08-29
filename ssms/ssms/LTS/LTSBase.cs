@@ -54,6 +54,9 @@ namespace ssms.LTS
     partial void InsertReader(Reader instance);
     partial void UpdateReader(Reader instance);
     partial void DeleteReader(Reader instance);
+    partial void InsertSettings(Settings instance);
+    partial void UpdateSettings(Settings instance);
+    partial void DeleteSettings(Settings instance);
     partial void InsertStore(Store instance);
     partial void UpdateStore(Store instance);
     partial void DeleteStore(Store instance);
@@ -150,6 +153,14 @@ namespace ssms.LTS
 			}
 		}
 		
+		public System.Data.Linq.Table<Settings> Settings
+		{
+			get
+			{
+				return this.GetTable<Settings>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Store> Store
 		{
 			get
@@ -227,6 +238,14 @@ namespace ssms.LTS
 		public int DeleteReader([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReaderID", DbType="Int")] System.Nullable<int> readerID)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), readerID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteSettings")]
+		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
+		public int DeleteSettings([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsID", DbType="Int")] System.Nullable<int> settingsID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), settingsID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -326,9 +345,18 @@ namespace ssms.LTS
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertReader")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int InsertReader([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPaddress", DbType="VarChar(200)")] string iPaddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumAntennas", DbType="Int")] System.Nullable<int> numAntennas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
+		public int InsertReader([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPaddress", DbType="VarChar(200)")] string iPaddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumAntennas", DbType="Int")] System.Nullable<int> numAntennas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsID", DbType="Int")] System.Nullable<int> settingsID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iPaddress, numAntennas, storeID, iD);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iPaddress, numAntennas, settingsID, iD);
+			iD = ((System.Nullable<int>)(result.GetParameterValue(3)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertSettings")]
+		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
+		public int InsertSettings([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsName", DbType="VarChar(200)")] string settingsName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsSelect", DbType="Bit")] System.Nullable<bool> settingsSelect, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] ref System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), settingsName, settingsSelect, storeID, iD);
 			iD = ((System.Nullable<int>)(result.GetParameterValue(3)));
 			return ((int)(result.ReturnValue));
 		}
@@ -464,9 +492,17 @@ namespace ssms.LTS
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateReader")]
 		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
-		public int UpdateReader([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPaddress", DbType="VarChar(200)")] string iPaddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumAntennas", DbType="Int")] System.Nullable<int> numAntennas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReaderID", DbType="Int")] System.Nullable<int> readerID)
+		public int UpdateReader([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IPaddress", DbType="VarChar(200)")] string iPaddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NumAntennas", DbType="Int")] System.Nullable<int> numAntennas, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsID", DbType="Int")] System.Nullable<int> settingsID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReaderID", DbType="Int")] System.Nullable<int> readerID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iPaddress, numAntennas, storeID, readerID);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iPaddress, numAntennas, settingsID, readerID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateSettings")]
+		[return: global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")]
+		public int UpdateSettings([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsName", DbType="VarChar(200)")] string settingsName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsSelect", DbType="Bit")] System.Nullable<bool> settingsSelect, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StoreID", DbType="Int")] System.Nullable<int> storeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SettingsID", DbType="Int")] System.Nullable<int> settingsID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), settingsName, settingsSelect, storeID, settingsID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -1961,11 +1997,11 @@ namespace ssms.LTS
 		
 		private int _NumAntennas;
 		
-		private int _StoreID;
+		private int _SettingsID;
 		
 		private EntitySet<Antenna> _Antenna;
 		
-		private EntityRef<Store> _Store;
+		private EntityRef<Settings> _Settings;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1977,14 +2013,14 @@ namespace ssms.LTS
     partial void OnIPaddressChanged();
     partial void OnNumAntennasChanging(int value);
     partial void OnNumAntennasChanged();
-    partial void OnStoreIDChanging(int value);
-    partial void OnStoreIDChanged();
+    partial void OnSettingsIDChanging(int value);
+    partial void OnSettingsIDChanged();
     #endregion
 		
 		public Reader()
 		{
 			this._Antenna = new EntitySet<Antenna>(new Action<Antenna>(this.attach_Antenna), new Action<Antenna>(this.detach_Antenna));
-			this._Store = default(EntityRef<Store>);
+			this._Settings = default(EntityRef<Settings>);
 			OnCreated();
 		}
 		
@@ -2048,26 +2084,26 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL")]
-		public int StoreID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SettingsID", DbType="Int NOT NULL")]
+		public int SettingsID
 		{
 			get
 			{
-				return this._StoreID;
+				return this._SettingsID;
 			}
 			set
 			{
-				if ((this._StoreID != value))
+				if ((this._SettingsID != value))
 				{
-					if (this._Store.HasLoadedOrAssignedValue)
+					if (this._Settings.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnStoreIDChanging(value);
+					this.OnSettingsIDChanging(value);
 					this.SendPropertyChanging();
-					this._StoreID = value;
-					this.SendPropertyChanged("StoreID");
-					this.OnStoreIDChanged();
+					this._SettingsID = value;
+					this.SendPropertyChanged("SettingsID");
+					this.OnSettingsIDChanged();
 				}
 			}
 		}
@@ -2085,36 +2121,36 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ReaderStore", Storage="_Store", ThisKey="StoreID", OtherKey="StoreID", IsForeignKey=true)]
-		public Store Store
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_SettingsReader", Storage="_Settings", ThisKey="SettingsID", OtherKey="SettingsID", IsForeignKey=true)]
+		public Settings Settings
 		{
 			get
 			{
-				return this._Store.Entity;
+				return this._Settings.Entity;
 			}
 			set
 			{
-				Store previousValue = this._Store.Entity;
+				Settings previousValue = this._Settings.Entity;
 				if (((previousValue != value) 
-							|| (this._Store.HasLoadedOrAssignedValue == false)))
+							|| (this._Settings.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Store.Entity = null;
+						this._Settings.Entity = null;
 						previousValue.Reader.Remove(this);
 					}
-					this._Store.Entity = value;
+					this._Settings.Entity = value;
 					if ((value != null))
 					{
 						value.Reader.Add(this);
-						this._StoreID = value.StoreID;
+						this._SettingsID = value.SettingsID;
 					}
 					else
 					{
-						this._StoreID = default(int);
+						this._SettingsID = default(int);
 					}
-					this.SendPropertyChanged("Store");
+					this.SendPropertyChanged("Settings");
 				}
 			}
 		}
@@ -2152,6 +2188,209 @@ namespace ssms.LTS
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Settings")]
+	public partial class Settings : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SettingsID;
+		
+		private string _SettingsName;
+		
+		private bool _SettingsSelect;
+		
+		private int _StoreID;
+		
+		private EntitySet<Reader> _Reader;
+		
+		private EntityRef<Store> _Store;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSettingsIDChanging(int value);
+    partial void OnSettingsIDChanged();
+    partial void OnSettingsNameChanging(string value);
+    partial void OnSettingsNameChanged();
+    partial void OnSettingsSelectChanging(bool value);
+    partial void OnSettingsSelectChanged();
+    partial void OnStoreIDChanging(int value);
+    partial void OnStoreIDChanged();
+    #endregion
+		
+		public Settings()
+		{
+			this._Reader = new EntitySet<Reader>(new Action<Reader>(this.attach_Reader), new Action<Reader>(this.detach_Reader));
+			this._Store = default(EntityRef<Store>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SettingsID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SettingsID
+		{
+			get
+			{
+				return this._SettingsID;
+			}
+			set
+			{
+				if ((this._SettingsID != value))
+				{
+					this.OnSettingsIDChanging(value);
+					this.SendPropertyChanging();
+					this._SettingsID = value;
+					this.SendPropertyChanged("SettingsID");
+					this.OnSettingsIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SettingsName", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string SettingsName
+		{
+			get
+			{
+				return this._SettingsName;
+			}
+			set
+			{
+				if ((this._SettingsName != value))
+				{
+					this.OnSettingsNameChanging(value);
+					this.SendPropertyChanging();
+					this._SettingsName = value;
+					this.SendPropertyChanged("SettingsName");
+					this.OnSettingsNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SettingsSelect", DbType="Bit NOT NULL")]
+		public bool SettingsSelect
+		{
+			get
+			{
+				return this._SettingsSelect;
+			}
+			set
+			{
+				if ((this._SettingsSelect != value))
+				{
+					this.OnSettingsSelectChanging(value);
+					this.SendPropertyChanging();
+					this._SettingsSelect = value;
+					this.SendPropertyChanged("SettingsSelect");
+					this.OnSettingsSelectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL")]
+		public int StoreID
+		{
+			get
+			{
+				return this._StoreID;
+			}
+			set
+			{
+				if ((this._StoreID != value))
+				{
+					if (this._Store.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStoreIDChanging(value);
+					this.SendPropertyChanging();
+					this._StoreID = value;
+					this.SendPropertyChanged("StoreID");
+					this.OnStoreIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_SettingsReader", Storage="_Reader", ThisKey="SettingsID", OtherKey="SettingsID", DeleteRule="NO ACTION")]
+		public EntitySet<Reader> Reader
+		{
+			get
+			{
+				return this._Reader;
+			}
+			set
+			{
+				this._Reader.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_StoreSettings", Storage="_Store", ThisKey="StoreID", OtherKey="StoreID", IsForeignKey=true)]
+		public Store Store
+		{
+			get
+			{
+				return this._Store.Entity;
+			}
+			set
+			{
+				Store previousValue = this._Store.Entity;
+				if (((previousValue != value) 
+							|| (this._Store.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Store.Entity = null;
+						previousValue.Settings.Remove(this);
+					}
+					this._Store.Entity = value;
+					if ((value != null))
+					{
+						value.Settings.Add(this);
+						this._StoreID = value.StoreID;
+					}
+					else
+					{
+						this._StoreID = default(int);
+					}
+					this.SendPropertyChanged("Store");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Reader(Reader entity)
+		{
+			this.SendPropertyChanging();
+			entity.Settings = this;
+		}
+		
+		private void detach_Reader(Reader entity)
+		{
+			this.SendPropertyChanging();
+			entity.Settings = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Store")]
 	public partial class Store : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2166,7 +2405,7 @@ namespace ssms.LTS
 		
 		private EntitySet<Item> _Item;
 		
-		private EntitySet<Reader> _Reader;
+		private EntitySet<Settings> _Settings;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2183,7 +2422,7 @@ namespace ssms.LTS
 		public Store()
 		{
 			this._Item = new EntitySet<Item>(new Action<Item>(this.attach_Item), new Action<Item>(this.detach_Item));
-			this._Reader = new EntitySet<Reader>(new Action<Reader>(this.attach_Reader), new Action<Reader>(this.detach_Reader));
+			this._Settings = new EntitySet<Settings>(new Action<Settings>(this.attach_Settings), new Action<Settings>(this.detach_Settings));
 			OnCreated();
 		}
 		
@@ -2260,16 +2499,16 @@ namespace ssms.LTS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_ReaderStore", Storage="_Reader", ThisKey="StoreID", OtherKey="StoreID", DeleteRule="NO ACTION")]
-		public EntitySet<Reader> Reader
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FK_StoreSettings", Storage="_Settings", ThisKey="StoreID", OtherKey="StoreID", DeleteRule="NO ACTION")]
+		public EntitySet<Settings> Settings
 		{
 			get
 			{
-				return this._Reader;
+				return this._Settings;
 			}
 			set
 			{
-				this._Reader.Assign(value);
+				this._Settings.Assign(value);
 			}
 		}
 		
@@ -2305,13 +2544,13 @@ namespace ssms.LTS
 			entity.Store = null;
 		}
 		
-		private void attach_Reader(Reader entity)
+		private void attach_Settings(Settings entity)
 		{
 			this.SendPropertyChanging();
 			entity.Store = this;
 		}
 		
-		private void detach_Reader(Reader entity)
+		private void detach_Settings(Settings entity)
 		{
 			this.SendPropertyChanging();
 			entity.Store = null;

@@ -66,226 +66,226 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Items\ScanItemsInStore.cs">
+    <Compile Include="Pages\Items\ScanItemsInStore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\ScanItemsInStore.Designer.cs">
+    <Compile Include="Pages\Items\ScanItemsInStore.Designer.cs">
       <DependentUpon>ScanItemsInStore.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\ViewItemsPerStore.cs">
+    <Compile Include="Pages\Items\ViewItemsPerStore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\ViewItemsPerStore.Designer.cs">
+    <Compile Include="Pages\Items\ViewItemsPerStore.Designer.cs">
       <DependentUpon>ViewItemsPerStore.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Products\AddProduct.cs">
+    <Compile Include="Pages\Products\AddProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Products\AddProduct.Designer.cs">
+    <Compile Include="Pages\Products\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Products\Product.cs">
+    <Compile Include="Pages\Products\Product.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Products\Product.Designer.cs">
+    <Compile Include="Pages\Products\Product.Designer.cs">
       <DependentUpon>Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Products\UpdateProduct.cs">
+    <Compile Include="Pages\Products\UpdateProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Products\UpdateProduct.Designer.cs">
+    <Compile Include="Pages\Products\UpdateProduct.Designer.cs">
       <DependentUpon>UpdateProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Settings\AddSettings.cs">
+    <Compile Include="Pages\Settings\AddSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Settings\AddSettings.Designer.cs">
+    <Compile Include="Pages\Settings\AddSettings.Designer.cs">
       <DependentUpon>AddSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Settings\AntennaConfig.cs">
+    <Compile Include="Pages\Settings\AntennaConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Settings\AntennaConfig.designer.cs">
+    <Compile Include="Pages\Settings\AntennaConfig.designer.cs">
       <DependentUpon>AntennaConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Settings\SelectSetting.cs">
+    <Compile Include="Pages\Settings\SelectSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Settings\SelectSetting.Designer.cs">
+    <Compile Include="Pages\Settings\SelectSetting.Designer.cs">
       <DependentUpon>SelectSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\StockOut\BookStockOut.cs">
+    <Compile Include="Pages\StockOut\BookStockOut.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\StockOut\BookStockOut.Designer.cs">
+    <Compile Include="Pages\StockOut\BookStockOut.Designer.cs">
       <DependentUpon>BookStockOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\StockOut\StockBookOutRemoval.cs">
+    <Compile Include="Pages\StockOut\StockBookOutRemoval.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\StockOut\StockBookOutRemoval.Designer.cs">
+    <Compile Include="Pages\StockOut\StockBookOutRemoval.Designer.cs">
       <DependentUpon>StockBookOutRemoval.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\StockOut\StockOutUpdate.cs">
+    <Compile Include="Pages\StockOut\StockOutUpdate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\StockOut\StockOutUpdate.Designer.cs">
+    <Compile Include="Pages\StockOut\StockOutUpdate.Designer.cs">
       <DependentUpon>StockOutUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\AddBrand.cs">
+    <Compile Include="Pages\Items\AddBrand.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\AddBrand.Designer.cs">
+    <Compile Include="Pages\Items\AddBrand.Designer.cs">
       <DependentUpon>AddBrand.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\AddBrandSmall.cs">
+    <Compile Include="Pages\Items\AddBrandSmall.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\AddBrandSmall.Designer.cs">
+    <Compile Include="Pages\Items\AddBrandSmall.Designer.cs">
       <DependentUpon>AddBrandSmall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\AddCategory.cs">
+    <Compile Include="Pages\Items\AddCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\AddCategory.Designer.cs">
+    <Compile Include="Pages\Items\AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\AddCategorySmall.cs">
+    <Compile Include="Pages\Items\AddCategorySmall.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\AddCategorySmall.Designer.cs">
+    <Compile Include="Pages\Items\AddCategorySmall.Designer.cs">
       <DependentUpon>AddCategorySmall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\AddItem.cs">
+    <Compile Include="Pages\Items\AddItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\AddItem.Designer.cs">
+    <Compile Include="Pages\Items\AddItem.Designer.cs">
       <DependentUpon>AddItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\Brands.cs">
+    <Compile Include="Pages\Items\Brands.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\Brands.Designer.cs">
+    <Compile Include="Pages\Items\Brands.Designer.cs">
       <DependentUpon>Brands.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\Categories.cs">
+    <Compile Include="Pages\Items\Categories.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\Categories.Designer.cs">
+    <Compile Include="Pages\Items\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\ShowProductDetails.cs">
+    <Compile Include="Pages\Items\ShowProductDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\ShowProductDetails.Designer.cs">
+    <Compile Include="Pages\Items\ShowProductDetails.Designer.cs">
       <DependentUpon>ShowProductDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\UpdateBrand.cs">
+    <Compile Include="Pages\Items\UpdateBrand.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\UpdateBrand.Designer.cs">
+    <Compile Include="Pages\Items\UpdateBrand.Designer.cs">
       <DependentUpon>UpdateBrand.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\UpdateCategory.cs">
+    <Compile Include="Pages\Items\UpdateCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\UpdateCategory.Designer.cs">
+    <Compile Include="Pages\Items\UpdateCategory.Designer.cs">
       <DependentUpon>UpdateCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\UpdateItem.cs">
+    <Compile Include="Pages\Items\UpdateItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\UpdateItem.Designer.cs">
+    <Compile Include="Pages\Items\UpdateItem.Designer.cs">
       <DependentUpon>UpdateItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Store\AddStore.cs">
+    <Compile Include="Pages\Store\AddStore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Store\AddStore.Designer.cs">
+    <Compile Include="Pages\Store\AddStore.Designer.cs">
       <DependentUpon>AddStore.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Store\AddStoreSmall.cs">
+    <Compile Include="Pages\Store\AddStoreSmall.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Store\AddStoreSmall.Designer.cs">
+    <Compile Include="Pages\Store\AddStoreSmall.Designer.cs">
       <DependentUpon>AddStoreSmall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\User\AddUser.cs">
+    <Compile Include="Pages\User\AddUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\User\AddUser.Designer.cs">
+    <Compile Include="Pages\User\AddUser.Designer.cs">
       <DependentUpon>AddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminMain.cs">
+    <Compile Include="Pages\Main.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\AdminMain.Designer.cs">
-      <DependentUpon>AdminMain.cs</DependentUpon>
+    <Compile Include="Pages\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\User\DeactivateUser.cs">
+    <Compile Include="Pages\User\DeactivateUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\User\DeactivateUser.Designer.cs">
+    <Compile Include="Pages\User\DeactivateUser.Designer.cs">
       <DependentUpon>DeactivateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\MyAccount\MyAccount.cs">
+    <Compile Include="Pages\MyAccount\MyAccount.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\MyAccount\MyAccount.Designer.cs">
+    <Compile Include="Pages\MyAccount\MyAccount.Designer.cs">
       <DependentUpon>MyAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Settings\Settings.cs">
+    <Compile Include="Pages\Settings\Settings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Settings\Settings.Designer.cs">
+    <Compile Include="Pages\Settings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Items\Item.cs">
+    <Compile Include="Pages\Items\Item.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Items\Item.Designer.cs">
+    <Compile Include="Pages\Items\Item.Designer.cs">
       <DependentUpon>Item.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\StockOut\StockOut.cs">
+    <Compile Include="Pages\StockOut\StockOut.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\StockOut\StockOut.Designer.cs">
+    <Compile Include="Pages\StockOut\StockOut.Designer.cs">
       <DependentUpon>StockOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Store\Store.cs">
+    <Compile Include="Pages\Store\Store.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Store\Store.Designer.cs">
+    <Compile Include="Pages\Store\Store.Designer.cs">
       <DependentUpon>Store.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\MyAccount\UpdateMyAccount.cs">
+    <Compile Include="Pages\MyAccount\UpdateMyAccount.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\MyAccount\UpdateMyAccount.Designer.cs">
+    <Compile Include="Pages\MyAccount\UpdateMyAccount.Designer.cs">
       <DependentUpon>UpdateMyAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Settings\UpdateSettings.cs">
+    <Compile Include="Pages\Settings\UpdateSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Settings\UpdateSettings.Designer.cs">
+    <Compile Include="Pages\Settings\UpdateSettings.Designer.cs">
       <DependentUpon>UpdateSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Store\UpdateStore.cs">
+    <Compile Include="Pages\Store\UpdateStore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Store\UpdateStore.Designer.cs">
+    <Compile Include="Pages\Store\UpdateStore.Designer.cs">
       <DependentUpon>UpdateStore.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\User\UpdateUser.cs">
+    <Compile Include="Pages\User\UpdateUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\User\UpdateUser.Designer.cs">
+    <Compile Include="Pages\User\UpdateUser.Designer.cs">
       <DependentUpon>UpdateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\User\Users.cs">
+    <Compile Include="Pages\User\Users.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\User\Users.Designer.cs">
+    <Compile Include="Pages\User\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
     <Compile Include="DataClasses\antenna.cs" />
@@ -303,121 +303,126 @@
     <Compile Include="LTS\LTSDC.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Welcome.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Admin\Items\ScanItemsInStore.resx">
+    <EmbeddedResource Include="Pages\Items\ScanItemsInStore.resx">
       <DependentUpon>ScanItemsInStore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\ViewItemsPerStore.resx">
+    <EmbeddedResource Include="Pages\Items\ViewItemsPerStore.resx">
       <DependentUpon>ViewItemsPerStore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Products\AddProduct.resx">
+    <EmbeddedResource Include="Pages\Products\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Products\Product.resx">
+    <EmbeddedResource Include="Pages\Products\Product.resx">
       <DependentUpon>Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Products\UpdateProduct.resx">
+    <EmbeddedResource Include="Pages\Products\UpdateProduct.resx">
       <DependentUpon>UpdateProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Settings\AddSettings.resx">
+    <EmbeddedResource Include="Pages\Settings\AddSettings.resx">
       <DependentUpon>AddSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Settings\AntennaConfig.resx">
+    <EmbeddedResource Include="Pages\Settings\AntennaConfig.resx">
       <DependentUpon>AntennaConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Settings\SelectSetting.resx">
+    <EmbeddedResource Include="Pages\Settings\SelectSetting.resx">
       <DependentUpon>SelectSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\StockOut\BookStockOut.resx">
+    <EmbeddedResource Include="Pages\StockOut\BookStockOut.resx">
       <DependentUpon>BookStockOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\StockOut\StockBookOutRemoval.resx">
+    <EmbeddedResource Include="Pages\StockOut\StockBookOutRemoval.resx">
       <DependentUpon>StockBookOutRemoval.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\StockOut\StockOutUpdate.resx">
+    <EmbeddedResource Include="Pages\StockOut\StockOutUpdate.resx">
       <DependentUpon>StockOutUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\AddBrand.resx">
+    <EmbeddedResource Include="Pages\Items\AddBrand.resx">
       <DependentUpon>AddBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\AddBrandSmall.resx">
+    <EmbeddedResource Include="Pages\Items\AddBrandSmall.resx">
       <DependentUpon>AddBrandSmall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\AddCategory.resx">
+    <EmbeddedResource Include="Pages\Items\AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\AddCategorySmall.resx">
+    <EmbeddedResource Include="Pages\Items\AddCategorySmall.resx">
       <DependentUpon>AddCategorySmall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\AddItem.resx">
+    <EmbeddedResource Include="Pages\Items\AddItem.resx">
       <DependentUpon>AddItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\Brands.resx">
+    <EmbeddedResource Include="Pages\Items\Brands.resx">
       <DependentUpon>Brands.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\Categories.resx">
+    <EmbeddedResource Include="Pages\Items\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\ShowProductDetails.resx">
+    <EmbeddedResource Include="Pages\Items\ShowProductDetails.resx">
       <DependentUpon>ShowProductDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\UpdateBrand.resx">
+    <EmbeddedResource Include="Pages\Items\UpdateBrand.resx">
       <DependentUpon>UpdateBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\UpdateCategory.resx">
+    <EmbeddedResource Include="Pages\Items\UpdateCategory.resx">
       <DependentUpon>UpdateCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\UpdateItem.resx">
+    <EmbeddedResource Include="Pages\Items\UpdateItem.resx">
       <DependentUpon>UpdateItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Store\AddStore.resx">
+    <EmbeddedResource Include="Pages\Store\AddStore.resx">
       <DependentUpon>AddStore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Store\AddStoreSmall.resx">
+    <EmbeddedResource Include="Pages\Store\AddStoreSmall.resx">
       <DependentUpon>AddStoreSmall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\User\AddUser.resx">
+    <EmbeddedResource Include="Pages\User\AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AdminMain.resx">
-      <DependentUpon>AdminMain.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\User\DeactivateUser.resx">
+    <EmbeddedResource Include="Pages\User\DeactivateUser.resx">
       <DependentUpon>DeactivateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\MyAccount\MyAccount.resx">
+    <EmbeddedResource Include="Pages\MyAccount\MyAccount.resx">
       <DependentUpon>MyAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Settings\Settings.resx">
+    <EmbeddedResource Include="Pages\Settings\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Items\Item.resx">
+    <EmbeddedResource Include="Pages\Items\Item.resx">
       <DependentUpon>Item.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\StockOut\StockOut.resx">
+    <EmbeddedResource Include="Pages\StockOut\StockOut.resx">
       <DependentUpon>StockOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Store\Store.resx">
+    <EmbeddedResource Include="Pages\Store\Store.resx">
       <DependentUpon>Store.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\MyAccount\UpdateMyAccount.resx">
+    <EmbeddedResource Include="Pages\MyAccount\UpdateMyAccount.resx">
       <DependentUpon>UpdateMyAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Settings\UpdateSettings.resx">
+    <EmbeddedResource Include="Pages\Settings\UpdateSettings.resx">
       <DependentUpon>UpdateSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Store\UpdateStore.resx">
+    <EmbeddedResource Include="Pages\Store\UpdateStore.resx">
       <DependentUpon>UpdateStore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\User\UpdateUser.resx">
+    <EmbeddedResource Include="Pages\User\UpdateUser.resx">
       <DependentUpon>UpdateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\User\Users.resx">
+    <EmbeddedResource Include="Pages\User\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -425,14 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>

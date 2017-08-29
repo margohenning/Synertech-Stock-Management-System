@@ -620,7 +620,7 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.InsertReader(reader.IPaddress, reader.NumAntennas, reader.StoreID, ref ReaderID);
+                    access.InsertReader(reader.IPaddress, reader.NumAntennas, reader.SettingsID, ref ReaderID);
                 }
             }
             catch (Exception ex)
@@ -651,7 +651,88 @@ namespace ssms.DAT
             {
                 using (LTS.LTSBase access = new LTS.LTSDC())
                 {
-                    access.UpdateReader(reader.IPaddress, reader.NumAntennas, reader.StoreID, reader.ReaderID);
+                    access.UpdateReader(reader.IPaddress, reader.NumAntennas, reader.SettingsID, reader.ReaderID);
+                    completed = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                completed = false;
+            }
+            return completed;
+        }
+        #endregion;
+        #region Settings
+        public static LTS.Settings GetSettingsItemByID(int? SettingsID)
+        {
+            LTS.Settings settings = new LTS.Settings();
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    settings = access.Settings.Where(o => o.SettingsID == SettingsID).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return settings;
+        }
+        public static List<LTS.Settings> GetSettings()
+        {
+            List<LTS.Settings> settings = new List<LTS.Settings>();
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    settings = access.Settings.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return settings;
+        }
+        public static int AddSettings(LTS.Settings settings)
+        {
+            int? SettingsID = -1;
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    access.InsertSettings(settings.SettingsName, settings.SettingsSelect, settings.StoreID, ref SettingsID);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return SettingsID.Value;
+        }
+        public static bool RemoveSettings(int SettingsID)
+        {
+            bool deleted = false;
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    access.DeleteSettings(SettingsID);
+                    deleted = true;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return deleted;
+        }
+        public static bool UpdateSettings(LTS.Settings settings)
+        {
+            bool completed = false;
+            try
+            {
+                using (LTS.LTSBase access = new LTS.LTSDC())
+                {
+                    access.UpdateSettings(settings.SettingsName, settings.SettingsSelect, settings.StoreID, settings.SettingsID);
                     completed = true;
                 }
 
@@ -825,6 +906,7 @@ namespace ssms.DAT
             return completed;
         }
         #endregion;
+
 
 
 

@@ -66,7 +66,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(235, 20);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Synertech Stock Management System";
+            this.label4.Text = "Synertech Items Management System";
             // 
             // panel
             // 

@@ -48,7 +48,7 @@ namespace ssms
                         LTS.User u = DAT.DataAccess.GetUser().Where(i => i.UserEmail == username).FirstOrDefault();
                         ((Form1)this.Parent.Parent).loggedIn = u;
 
-                        ((Form1)this.Parent.Parent).ChangeView<Admin.AdminMain>();
+                        ((Form1)this.Parent.Parent).ChangeView<Pages.Main>();
                         
                     }
 
