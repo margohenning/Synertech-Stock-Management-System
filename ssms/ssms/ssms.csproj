@@ -66,6 +66,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Items\ScanItemsInStore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Items\ScanItemsInStore.Designer.cs">
+      <DependentUpon>ScanItemsInStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Items\ViewItemsPerStore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Items\ViewItemsPerStore.Designer.cs">
+      <DependentUpon>ViewItemsPerStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Products\AddProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -297,6 +309,12 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\Items\ScanItemsInStore.resx">
+      <DependentUpon>ScanItemsInStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Items\ViewItemsPerStore.resx">
+      <DependentUpon>ViewItemsPerStore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Products\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -438,6 +456,10 @@
     <Content Include="Octane SDK\Impinj.OctaneSdk.dll" />
     <Content Include="Octane SDK\LLRP.dll" />
     <Content Include="Octane SDK\LLRP.Impinj.dll" />
+    <None Include="Resources\play-button %281%292.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\play-button %281%29.png" />
+    <None Include="Resources\play-button.png" />
     <None Include="Resources\icons8-RFID Signal-64SMALL.png" />
     <None Include="Resources\icons8-RFID Signal-64.png" />
     <None Include="Resources\trolley.png" />

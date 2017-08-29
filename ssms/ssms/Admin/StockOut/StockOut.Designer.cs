@@ -54,7 +54,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -93,7 +93,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button2.BackColor = System.Drawing.Color.DodgerBlue;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -108,7 +108,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button3.BackColor = System.Drawing.Color.DodgerBlue;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

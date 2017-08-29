@@ -31,5 +31,15 @@ namespace ssms.Admin.Stock
         {
             ((AdminMain)this.Parent.Parent).ChangeView<UpdateStock>();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<Admin.Items.ViewItemsPerStore>();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<Admin.Items.ScanItemsInStore>();
+        }
     }
 }
