@@ -282,6 +282,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UpdateMyAccount";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.UpdateMyAccount_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

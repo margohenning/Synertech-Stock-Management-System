@@ -16,5 +16,16 @@ namespace ssms.Admin.StockOut
         {
             InitializeComponent();
         }
+
+        private void btnlogin_Click(object sender, EventArgs e)
+        {
+            //change item status to false
+            //make bookOut record
+        }
+
+        private void name_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

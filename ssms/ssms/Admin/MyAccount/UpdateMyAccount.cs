@@ -16,5 +16,15 @@ namespace ssms.Admin
         {
             InitializeComponent();
         }
+
+        private void UpdateMyAccount_Load(object sender, EventArgs e)
+        {
+            if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserAdmin == false)
+            {
+                comboBoxAdmin.Enabled = false;
+                comboBoxActiv.Enabled = false;
+
+            }
+        }
     }
 }

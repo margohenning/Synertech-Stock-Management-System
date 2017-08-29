@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ssms.Admin.Settings;
+using ssms.DataClasses;
 
 namespace ssms.Admin
 {
@@ -131,14 +132,14 @@ namespace ssms.Admin
                 reader.Add(r);
 
                 comboBoxStore.Enabled = true;
-                txtName.Enabled = true;
-                dataGridView1.Enabled = true;
+                textBox2.Enabled = true;
+                dataGridView2.Enabled = true;
                 button2.Enabled = true;
                 button3.Enabled = true;
-                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
                 for (int x = 0; x < reader.Count; x++)
                 {
-                    dataGridView1.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
+                    dataGridView2.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
                 }
                 panel1.Visible = false;
                 textBox1.Text = "";

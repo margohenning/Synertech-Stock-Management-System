@@ -61,7 +61,14 @@ namespace ssms.Admin
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ChangeView<Users>();
+            if (((Form1)this.Parent.Parent).loggedIn.UserAdmin != true ) {
+
+                MessageBox.Show("Sorry you do not have Admin Permission to access the Users section.");
+                          
+            }
+            else {
+                ChangeView<Users>();
+            } 
         }
 
         private void button4_Click(object sender, EventArgs e)

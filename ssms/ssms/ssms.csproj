@@ -259,12 +259,6 @@
     </Compile>
     <Compile Include="LTS\LTSBase.cs" />
     <Compile Include="LTS\LTSDC.cs" />
-    <Compile Include="Normal\NormalMain.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Normal\NormalMain.Designer.cs">
-      <DependentUpon>NormalMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Welcome.cs">
@@ -278,6 +272,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Settings\AntennaConfig.resx">
       <DependentUpon>AntennaConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\StockOut\BookStockOut.resx">
+      <DependentUpon>BookStockOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\StockOut\StockBookOutRemoval.resx">
+      <DependentUpon>StockBookOutRemoval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\StockOut\StockOutUpdate.resx">
+      <DependentUpon>StockOutUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Stock\AddBrand.resx">
       <DependentUpon>AddBrand.cs</DependentUpon>
@@ -356,9 +359,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Normal\NormalMain.resx">
-      <DependentUpon>NormalMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
