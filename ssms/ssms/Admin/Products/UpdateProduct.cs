@@ -8,33 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ssms.Admin.Stock
+namespace ssms.Admin.Products
 {
-    public partial class UpdateStock : UserControl
+    public partial class UpdateProduct : UserControl
     {
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
-        List<LTS.Store> listS;
-        public UpdateStock()
+        public UpdateProduct()
         {
             InitializeComponent();
         }
 
-        private void UpdateStock_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            button3.Enabled = false;
-            comboBoxBrand.Enabled = false;
-            comboBoxCategory.Enabled = false;
-            comboBoxStore.Enabled = false;
-
-            ChangeView<AddBrandSmall>();
-        }
-        //to change the content of the small panel
         public void ChangeView<T>() where T : Control, new()
         {
             try
@@ -52,22 +36,33 @@ namespace ssms.Admin.Stock
             }
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            button3.Enabled = false;
+            comboBoxBrand.Enabled = false;
+            comboBoxCategory.Enabled = false;
+            
+
+            ChangeView<Stock.AddBrandSmall>();
+        }
+
         private void button6_Click(object sender, EventArgs e)
         {
             button3.Enabled = false;
             comboBoxBrand.Enabled = false;
             comboBoxCategory.Enabled = false;
-            comboBoxStore.Enabled = false;
-            ChangeView<AddCategorySmall>();
+            
+            ChangeView<Stock.AddCategorySmall>();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            button3.Enabled = false;
-            comboBoxBrand.Enabled = false;
-            comboBoxCategory.Enabled = false;
-            comboBoxStore.Enabled = false;
-            ChangeView<Store.AddStoreSmall>();
+            ((AdminMain)this.Parent.Parent).ChangeView<Admin.Products.Product>();
+        }
+
+        private void UpdateProduct_Load(object sender, EventArgs e)
+        {
+
         }
 
         //after a brand is added in the small panel you need to update the combobox
@@ -88,7 +83,7 @@ namespace ssms.Admin.Stock
             button3.Enabled = true;
             comboBoxBrand.Enabled = true;
             comboBoxCategory.Enabled = true;
-            comboBoxStore.Enabled = true;
+            
         }
 
         //after a category is added in the small panel you need to update the combobox
@@ -109,29 +104,7 @@ namespace ssms.Admin.Stock
             button3.Enabled = true;
             comboBoxBrand.Enabled = true;
             comboBoxCategory.Enabled = true;
-            comboBoxStore.Enabled = true;
+            
         }
-
-        //after a store is added in the small panel you need to update the combobox
-        public void doneStore()
-        {
-            panel1.Controls.Clear();
-            comboBoxStore.DataSource = null;
-            listS.Clear();
-            listS = DAT.DataAccess.GetStore().ToList();
-            List<string> S = new List<string>();
-
-            for (int x = 0; x < listS.Count; x++)
-            {
-                S.Add(listS[x].StoreName);
-            }
-            comboBoxStore.DataSource = S;
-
-            button3.Enabled = true;
-            comboBoxBrand.Enabled = true;
-            comboBoxCategory.Enabled = true;
-            comboBoxStore.Enabled = true;
-        }
-
     }
 }

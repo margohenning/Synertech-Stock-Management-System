@@ -26,5 +26,10 @@ namespace ssms.Admin
 
             }
         }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<MyAccount>();
+        }
     }
 }

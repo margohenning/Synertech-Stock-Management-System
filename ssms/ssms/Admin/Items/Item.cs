@@ -21,5 +21,15 @@ namespace ssms.Admin.Stock
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<AddStock>();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<UpdateStock>();
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label7 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.userID = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -37,16 +37,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
             this.comboBoxActiv = new System.Windows.Forms.ComboBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.comboBoxAdmin = new System.Windows.Forms.ComboBox();
-            this.txtSur = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.txtIdentityNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnlogin = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -61,15 +61,15 @@
             this.label7.TabIndex = 172;
             this.label7.Text = "Identity Number";
             // 
-            // label2
+            // userID
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(221, 117);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 18);
-            this.label2.TabIndex = 171;
-            this.label2.Text = "userID";
+            this.userID.AutoSize = true;
+            this.userID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userID.Location = new System.Drawing.Point(221, 117);
+            this.userID.Name = "userID";
+            this.userID.Size = new System.Drawing.Size(53, 18);
+            this.userID.TabIndex = 171;
+            this.userID.Text = "userID";
             // 
             // label16
             // 
@@ -148,13 +148,13 @@
             this.label1.TabIndex = 159;
             this.label1.Text = "Update MyAccount";
             // 
-            // txtEmail
+            // txtSurname
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(213, 212);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(245, 26);
-            this.txtEmail.TabIndex = 179;
+            this.txtSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSurname.Location = new System.Drawing.Point(213, 212);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(245, 26);
+            this.txtSurname.TabIndex = 179;
             // 
             // comboBoxActiv
             // 
@@ -165,13 +165,13 @@
             this.comboBoxActiv.Size = new System.Drawing.Size(245, 28);
             this.comboBoxActiv.TabIndex = 178;
             // 
-            // txtUsername
+            // txtEmail
             // 
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(213, 249);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(245, 26);
-            this.txtUsername.TabIndex = 176;
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(213, 249);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(245, 26);
+            this.txtEmail.TabIndex = 176;
             // 
             // comboBoxAdmin
             // 
@@ -182,21 +182,21 @@
             this.comboBoxAdmin.Size = new System.Drawing.Size(245, 28);
             this.comboBoxAdmin.TabIndex = 175;
             // 
-            // txtSur
-            // 
-            this.txtSur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSur.Location = new System.Drawing.Point(213, 176);
-            this.txtSur.Name = "txtSur";
-            this.txtSur.Size = new System.Drawing.Size(245, 26);
-            this.txtSur.TabIndex = 174;
-            // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(213, 141);
+            this.txtName.Location = new System.Drawing.Point(213, 176);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(245, 26);
-            this.txtName.TabIndex = 173;
+            this.txtName.TabIndex = 174;
+            // 
+            // txtIdentityNumber
+            // 
+            this.txtIdentityNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdentityNumber.Location = new System.Drawing.Point(213, 141);
+            this.txtIdentityNumber.Name = "txtIdentityNumber";
+            this.txtIdentityNumber.Size = new System.Drawing.Size(245, 26);
+            this.txtIdentityNumber.TabIndex = 173;
             // 
             // label5
             // 
@@ -208,41 +208,42 @@
             this.label5.TabIndex = 181;
             this.label5.Text = "Update";
             // 
-            // button1
+            // buttonBack
             // 
-            this.button1.BackgroundImage = global::ssms.Properties.Resources.reply__1_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(956, 405);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 113);
-            this.button1.TabIndex = 182;
-            this.button1.Text = "Back";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonBack.BackgroundImage = global::ssms.Properties.Resources.reply__1_;
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.buttonBack.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonBack.Location = new System.Drawing.Point(956, 405);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(61, 113);
+            this.buttonBack.TabIndex = 182;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
-            // btnlogin
+            // btnUpdate
             // 
-            this.btnlogin.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
-            this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(378, 413);
-            this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(80, 61);
-            this.btnlogin.TabIndex = 180;
-            this.btnlogin.UseVisualStyleBackColor = true;
+            this.btnUpdate.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
+            this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Location = new System.Drawing.Point(378, 413);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(80, 61);
+            this.btnUpdate.TabIndex = 180;
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtPassword
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(213, 287);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(245, 26);
-            this.textBox1.TabIndex = 184;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(213, 287);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(245, 26);
+            this.txtPassword.TabIndex = 184;
             // 
             // label3
             // 
@@ -260,19 +261,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnlogin);
-            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.comboBoxActiv);
-            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.comboBoxAdmin);
-            this.Controls.Add(this.txtSur);
             this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtIdentityNumber);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.userID);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label19);
@@ -290,7 +291,7 @@
 
         #endregion
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label userID;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label19;
@@ -298,16 +299,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.ComboBox comboBoxActiv;
-        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.ComboBox comboBoxAdmin;
-        private System.Windows.Forms.TextBox txtSur;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtIdentityNumber;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnlogin;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
     }
 }

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.label5 = new System.Windows.Forms.Label();
-            this.btnlogin = new System.Windows.Forms.Button();
-            this.txtSur = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtCatDesc = new System.Windows.Forms.TextBox();
+            this.txtCatName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -48,33 +48,33 @@
             this.label5.TabIndex = 228;
             this.label5.Text = "Add";
             // 
-            // btnlogin
+            // btnAdd
             // 
-            this.btnlogin.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
-            this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(15, 174);
-            this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(80, 61);
-            this.btnlogin.TabIndex = 227;
-            this.btnlogin.UseVisualStyleBackColor = true;
+            this.btnAdd.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Location = new System.Drawing.Point(15, 174);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(80, 61);
+            this.btnAdd.TabIndex = 227;
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // txtSur
+            // txtCatDesc
             // 
-            this.txtSur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSur.Location = new System.Drawing.Point(15, 142);
-            this.txtSur.Name = "txtSur";
-            this.txtSur.Size = new System.Drawing.Size(245, 26);
-            this.txtSur.TabIndex = 226;
+            this.txtCatDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCatDesc.Location = new System.Drawing.Point(15, 142);
+            this.txtCatDesc.Name = "txtCatDesc";
+            this.txtCatDesc.Size = new System.Drawing.Size(245, 26);
+            this.txtCatDesc.TabIndex = 226;
             // 
-            // txtName
+            // txtCatName
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(15, 75);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(245, 26);
-            this.txtName.TabIndex = 225;
+            this.txtCatName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCatName.Location = new System.Drawing.Point(15, 75);
+            this.txtCatName.Name = "txtCatName";
+            this.txtCatName.Size = new System.Drawing.Size(245, 26);
+            this.txtCatName.TabIndex = 225;
             // 
             // label7
             // 
@@ -109,32 +109,32 @@
             this.label1.TabIndex = 222;
             this.label1.Text = "Add Category";
             // 
-            // button2
+            // buttonCancel
             // 
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.button2.Image = global::ssms.Properties.Resources.cancel_music;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(200, 189);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 69);
-            this.button2.TabIndex = 230;
-            this.button2.Text = "Cancel";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.buttonCancel.Image = global::ssms.Properties.Resources.cancel_music;
+            this.buttonCancel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonCancel.Location = new System.Drawing.Point(200, 189);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(80, 69);
+            this.buttonCancel.TabIndex = 230;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // AddCategorySmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnlogin);
-            this.Controls.Add(this.txtSur);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.txtCatDesc);
+            this.Controls.Add(this.txtCatName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
@@ -147,12 +147,12 @@
 
         #endregion
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnlogin;
-        private System.Windows.Forms.TextBox txtSur;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtCatDesc;
+        private System.Windows.Forms.TextBox txtCatName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }

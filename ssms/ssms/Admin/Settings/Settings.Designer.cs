@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridViewSettings = new System.Windows.Forms.DataGridView();
+            this.buttonExportPDF = new System.Windows.Forms.Button();
+            this.buttonUpdateSettings = new System.Windows.Forms.Button();
+            this.buttonAddSettings = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -47,48 +48,65 @@
             this.label1.TabIndex = 80;
             this.label1.Text = "Settings";
             // 
-            // dataGridView1
+            // dataGridViewSettings
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(36, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(638, 397);
-            this.dataGridView1.TabIndex = 81;
+            this.dataGridViewSettings.AllowUserToAddRows = false;
+            this.dataGridViewSettings.AllowUserToDeleteRows = false;
+            this.dataGridViewSettings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSettings.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewSettings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSettings.Location = new System.Drawing.Point(36, 69);
+            this.dataGridViewSettings.Name = "dataGridViewSettings";
+            this.dataGridViewSettings.ReadOnly = true;
+            this.dataGridViewSettings.Size = new System.Drawing.Size(638, 397);
+            this.dataGridViewSettings.TabIndex = 81;
             // 
-            // button4
+            // buttonExportPDF
             // 
-            this.button4.BackColor = System.Drawing.Color.Silver;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(852, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(161, 46);
-            this.button4.TabIndex = 91;
-            this.button4.Text = "Export PDF";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonExportPDF.BackColor = System.Drawing.Color.Silver;
+            this.buttonExportPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonExportPDF.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExportPDF.ForeColor = System.Drawing.Color.White;
+            this.buttonExportPDF.Location = new System.Drawing.Point(852, 19);
+            this.buttonExportPDF.Name = "buttonExportPDF";
+            this.buttonExportPDF.Size = new System.Drawing.Size(161, 46);
+            this.buttonExportPDF.TabIndex = 91;
+            this.buttonExportPDF.Text = "Export PDF";
+            this.buttonExportPDF.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // buttonUpdateSettings
             // 
-            this.button3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(852, 156);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(161, 43);
-            this.button3.TabIndex = 90;
-            this.button3.Text = "Update Settings";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonUpdateSettings.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonUpdateSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonUpdateSettings.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonUpdateSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdateSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdateSettings.ForeColor = System.Drawing.Color.White;
+            this.buttonUpdateSettings.Location = new System.Drawing.Point(852, 219);
+            this.buttonUpdateSettings.Name = "buttonUpdateSettings";
+            this.buttonUpdateSettings.Size = new System.Drawing.Size(161, 43);
+            this.buttonUpdateSettings.TabIndex = 90;
+            this.buttonUpdateSettings.Text = "Update Settings";
+            this.buttonUpdateSettings.UseVisualStyleBackColor = false;
+            this.buttonUpdateSettings.Click += new System.EventHandler(this.buttonUpdateSettings_Click);
+            // 
+            // buttonAddSettings
+            // 
+            this.buttonAddSettings.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonAddSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAddSettings.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonAddSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddSettings.ForeColor = System.Drawing.Color.White;
+            this.buttonAddSettings.Location = new System.Drawing.Point(852, 152);
+            this.buttonAddSettings.Name = "buttonAddSettings";
+            this.buttonAddSettings.Size = new System.Drawing.Size(161, 43);
+            this.buttonAddSettings.TabIndex = 89;
+            this.buttonAddSettings.Text = "Add Settings";
+            this.buttonAddSettings.UseVisualStyleBackColor = false;
+            this.buttonAddSettings.Click += new System.EventHandler(this.button1_Click);
             // 
             // button1
             // 
@@ -98,27 +116,28 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(852, 89);
+            this.button1.Location = new System.Drawing.Point(852, 86);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 43);
-            this.button1.TabIndex = 89;
-            this.button1.Text = "Add Settings";
+            this.button1.TabIndex = 92;
+            this.button1.Text = "Select Setting";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonExportPDF);
+            this.Controls.Add(this.buttonUpdateSettings);
+            this.Controls.Add(this.buttonAddSettings);
+            this.Controls.Add(this.dataGridViewSettings);
             this.Controls.Add(this.label1);
             this.Name = "Settings";
             this.Size = new System.Drawing.Size(1031, 532);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,9 +146,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dataGridViewSettings;
+        private System.Windows.Forms.Button buttonExportPDF;
+        private System.Windows.Forms.Button buttonUpdateSettings;
+        private System.Windows.Forms.Button buttonAddSettings;
         private System.Windows.Forms.Button button1;
     }
 }

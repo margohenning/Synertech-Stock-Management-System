@@ -21,5 +21,15 @@ namespace ssms.Admin.Settings
         {
             ((AdminMain)this.Parent.Parent).ChangeView<AddSettings>();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<SelectSetting>();
+        }
+
+        private void buttonUpdateSettings_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<UpdateSettings>();
+        }
     }
 }

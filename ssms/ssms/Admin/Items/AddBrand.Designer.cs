@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnlogin = new System.Windows.Forms.Button();
-            this.txtSur = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtBrandDesc = new System.Windows.Forms.TextBox();
+            this.txtBrandName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonBack
             // 
-            this.button1.BackgroundImage = global::ssms.Properties.Resources.reply__1_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(939, 404);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 113);
-            this.button1.TabIndex = 217;
-            this.button1.Text = "Back";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonBack.BackgroundImage = global::ssms.Properties.Resources.reply__1_;
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.buttonBack.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonBack.Location = new System.Drawing.Point(939, 404);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(61, 113);
+            this.buttonBack.TabIndex = 217;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -64,33 +65,33 @@
             this.label5.TabIndex = 216;
             this.label5.Text = "Add";
             // 
-            // btnlogin
+            // btnAdd
             // 
-            this.btnlogin.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
-            this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(360, 150);
-            this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(80, 61);
-            this.btnlogin.TabIndex = 215;
-            this.btnlogin.UseVisualStyleBackColor = true;
+            this.btnAdd.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Location = new System.Drawing.Point(360, 150);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(80, 61);
+            this.btnAdd.TabIndex = 215;
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // txtSur
+            // txtBrandDesc
             // 
-            this.txtSur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSur.Location = new System.Drawing.Point(195, 118);
-            this.txtSur.Name = "txtSur";
-            this.txtSur.Size = new System.Drawing.Size(245, 26);
-            this.txtSur.TabIndex = 214;
+            this.txtBrandDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBrandDesc.Location = new System.Drawing.Point(195, 118);
+            this.txtBrandDesc.Name = "txtBrandDesc";
+            this.txtBrandDesc.Size = new System.Drawing.Size(245, 26);
+            this.txtBrandDesc.TabIndex = 214;
             // 
-            // txtName
+            // txtBrandName
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(195, 83);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(245, 26);
-            this.txtName.TabIndex = 213;
+            this.txtBrandName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBrandName.Location = new System.Drawing.Point(195, 83);
+            this.txtBrandName.Name = "txtBrandName";
+            this.txtBrandName.Size = new System.Drawing.Size(245, 26);
+            this.txtBrandName.TabIndex = 213;
             // 
             // label7
             // 
@@ -130,11 +131,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnlogin);
-            this.Controls.Add(this.txtSur);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.txtBrandDesc);
+            this.Controls.Add(this.txtBrandName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
@@ -147,11 +148,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnlogin;
-        private System.Windows.Forms.TextBox txtSur;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtBrandDesc;
+        private System.Windows.Forms.TextBox txtBrandName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;

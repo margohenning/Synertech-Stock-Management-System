@@ -83,6 +83,16 @@ namespace ssms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_RFID_Signal_64SMALL {
+            get {
+                object obj = ResourceManager.GetObject("icons8_RFID_Signal_64SMALL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_RFID_Signal_Filled_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8_RFID_Signal_Filled_50", resourceCulture);
@@ -206,6 +216,16 @@ namespace ssms.Properties {
         internal static System.Drawing.Bitmap Synertech_RFID {
             get {
                 object obj = ResourceManager.GetObject("Synertech_RFID", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trolley {
+            get {
+                object obj = ResourceManager.GetObject("trolley", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

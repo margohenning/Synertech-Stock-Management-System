@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ssms.Admin.Stock
+namespace ssms.Admin.Settings
 {
-    public partial class AddCategory : UserControl
+    public partial class SelectSetting : UserControl
     {
-        public AddCategory()
+        public SelectSetting()
         {
             InitializeComponent();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<Settings>();
         }
     }
 }

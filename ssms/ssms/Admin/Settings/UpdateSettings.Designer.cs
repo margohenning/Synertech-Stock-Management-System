@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.numAntennas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonRemoveReader = new System.Windows.Forms.Button();
+            this.buttonAddReader = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewReaders = new System.Windows.Forms.DataGridView();
             this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonSubmitReader = new System.Windows.Forms.Button();
+            this.buttonAddAntenna = new System.Windows.Forms.Button();
+            this.buttonRemoveAntenna = new System.Windows.Forms.Button();
             this.flpAntennaConfig = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIP = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnlogin = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.comboBoxSettingsName = new System.Windows.Forms.ComboBox();
+            this.txtNewSettingsName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,37 +63,37 @@
             this.numAntennas.Name = "numAntennas";
             this.numAntennas.ReadOnly = true;
             // 
-            // button3
+            // buttonRemoveReader
             // 
-            this.button3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(275, 343);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(135, 28);
-            this.button3.TabIndex = 298;
-            this.button3.Text = "Remove Reader";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonRemoveReader.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonRemoveReader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonRemoveReader.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonRemoveReader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRemoveReader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRemoveReader.ForeColor = System.Drawing.Color.White;
+            this.buttonRemoveReader.Location = new System.Drawing.Point(275, 343);
+            this.buttonRemoveReader.Name = "buttonRemoveReader";
+            this.buttonRemoveReader.Size = new System.Drawing.Size(135, 28);
+            this.buttonRemoveReader.TabIndex = 298;
+            this.buttonRemoveReader.Text = "Remove Reader";
+            this.buttonRemoveReader.UseVisualStyleBackColor = false;
+            this.buttonRemoveReader.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // buttonAddReader
             // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(134, 343);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 28);
-            this.button2.TabIndex = 297;
-            this.button2.Text = "Add Reader";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAddReader.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonAddReader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAddReader.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonAddReader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddReader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddReader.ForeColor = System.Drawing.Color.White;
+            this.buttonAddReader.Location = new System.Drawing.Point(134, 343);
+            this.buttonAddReader.Name = "buttonAddReader";
+            this.buttonAddReader.Size = new System.Drawing.Size(135, 28);
+            this.buttonAddReader.TabIndex = 297;
+            this.buttonAddReader.Text = "Add Reader";
+            this.buttonAddReader.UseVisualStyleBackColor = false;
+            this.buttonAddReader.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 
@@ -106,24 +106,24 @@
             this.label4.TabIndex = 296;
             this.label4.Text = "Readers:";
             // 
-            // dataGridView2
+            // dataGridViewReaders
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewReaders.AllowUserToAddRows = false;
+            this.dataGridViewReaders.AllowUserToDeleteRows = false;
+            this.dataGridViewReaders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewReaders.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewReaders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReaders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IPaddress,
             this.numAntennas});
-            this.dataGridView2.GridColor = System.Drawing.Color.White;
-            this.dataGridView2.Location = new System.Drawing.Point(16, 195);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(394, 142);
-            this.dataGridView2.TabIndex = 295;
+            this.dataGridViewReaders.GridColor = System.Drawing.Color.White;
+            this.dataGridViewReaders.Location = new System.Drawing.Point(16, 195);
+            this.dataGridViewReaders.MultiSelect = false;
+            this.dataGridViewReaders.Name = "dataGridViewReaders";
+            this.dataGridViewReaders.ReadOnly = true;
+            this.dataGridViewReaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewReaders.Size = new System.Drawing.Size(394, 142);
+            this.dataGridViewReaders.TabIndex = 295;
             // 
             // IPaddress
             // 
@@ -146,11 +146,11 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.buttonSubmitReader);
+            this.panel1.Controls.Add(this.buttonAddAntenna);
+            this.panel1.Controls.Add(this.buttonRemoveAntenna);
             this.panel1.Controls.Add(this.flpAntennaConfig);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtIP);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(475, 45);
@@ -169,50 +169,50 @@
             this.label8.TabIndex = 286;
             this.label8.Text = "Submit";
             // 
-            // button6
+            // buttonSubmitReader
             // 
-            this.button6.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(482, 263);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(51, 41);
-            this.button6.TabIndex = 286;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.buttonSubmitReader.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
+            this.buttonSubmitReader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSubmitReader.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonSubmitReader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSubmitReader.Location = new System.Drawing.Point(482, 263);
+            this.buttonSubmitReader.Name = "buttonSubmitReader";
+            this.buttonSubmitReader.Size = new System.Drawing.Size(51, 41);
+            this.buttonSubmitReader.TabIndex = 286;
+            this.buttonSubmitReader.UseVisualStyleBackColor = true;
+            this.buttonSubmitReader.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button4
+            // buttonAddAntenna
             // 
-            this.button4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(3, 290);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 28);
-            this.button4.TabIndex = 285;
-            this.button4.Text = "Add Antenna";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonAddAntenna.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonAddAntenna.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAddAntenna.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonAddAntenna.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddAntenna.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddAntenna.ForeColor = System.Drawing.Color.White;
+            this.buttonAddAntenna.Location = new System.Drawing.Point(3, 290);
+            this.buttonAddAntenna.Name = "buttonAddAntenna";
+            this.buttonAddAntenna.Size = new System.Drawing.Size(150, 28);
+            this.buttonAddAntenna.TabIndex = 285;
+            this.buttonAddAntenna.Text = "Add Antenna";
+            this.buttonAddAntenna.UseVisualStyleBackColor = false;
+            this.buttonAddAntenna.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // buttonRemoveAntenna
             // 
-            this.button5.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(159, 290);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(150, 28);
-            this.button5.TabIndex = 286;
-            this.button5.Text = "Remove Antenna";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.buttonRemoveAntenna.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonRemoveAntenna.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonRemoveAntenna.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonRemoveAntenna.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRemoveAntenna.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRemoveAntenna.ForeColor = System.Drawing.Color.White;
+            this.buttonRemoveAntenna.Location = new System.Drawing.Point(159, 290);
+            this.buttonRemoveAntenna.Name = "buttonRemoveAntenna";
+            this.buttonRemoveAntenna.Size = new System.Drawing.Size(150, 28);
+            this.buttonRemoveAntenna.TabIndex = 286;
+            this.buttonRemoveAntenna.Text = "Remove Antenna";
+            this.buttonRemoveAntenna.UseVisualStyleBackColor = false;
+            this.buttonRemoveAntenna.Click += new System.EventHandler(this.button5_Click);
             // 
             // flpAntennaConfig
             // 
@@ -225,13 +225,13 @@
             this.flpAntennaConfig.Size = new System.Drawing.Size(527, 180);
             this.flpAntennaConfig.TabIndex = 284;
             // 
-            // textBox1
+            // txtIP
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(99, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 26);
-            this.textBox1.TabIndex = 283;
+            this.txtIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIP.Location = new System.Drawing.Point(99, 45);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(187, 26);
+            this.txtIP.TabIndex = 283;
             // 
             // label7
             // 
@@ -275,21 +275,22 @@
             this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 290;
             // 
-            // button1
+            // buttonBack
             // 
-            this.button1.BackgroundImage = global::ssms.Properties.Resources.reply__1_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(939, 408);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 113);
-            this.button1.TabIndex = 289;
-            this.button1.Text = "Back";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonBack.BackgroundImage = global::ssms.Properties.Resources.reply__1_;
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.buttonBack.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonBack.Location = new System.Drawing.Point(939, 408);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(61, 113);
+            this.buttonBack.TabIndex = 289;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -312,34 +313,34 @@
             this.label9.TabIndex = 286;
             this.label9.Text = "Update Settings";
             // 
-            // btnlogin
+            // btnAdd
             // 
-            this.btnlogin.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
-            this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(853, 429);
-            this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(80, 61);
-            this.btnlogin.TabIndex = 287;
-            this.btnlogin.UseVisualStyleBackColor = true;
+            this.btnAdd.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Location = new System.Drawing.Point(853, 429);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(80, 61);
+            this.btnAdd.TabIndex = 287;
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBoxSettingsName
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(174, 93);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(245, 28);
-            this.comboBox1.TabIndex = 299;
+            this.comboBoxSettingsName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSettingsName.FormattingEnabled = true;
+            this.comboBoxSettingsName.Location = new System.Drawing.Point(174, 93);
+            this.comboBoxSettingsName.Name = "comboBoxSettingsName";
+            this.comboBoxSettingsName.Size = new System.Drawing.Size(245, 28);
+            this.comboBoxSettingsName.TabIndex = 299;
             // 
-            // textBox2
+            // txtNewSettingsName
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(174, 132);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(245, 26);
-            this.textBox2.TabIndex = 301;
+            this.txtNewSettingsName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNewSettingsName.Location = new System.Drawing.Point(174, 132);
+            this.txtNewSettingsName.Name = "txtNewSettingsName";
+            this.txtNewSettingsName.Size = new System.Drawing.Size(245, 26);
+            this.txtNewSettingsName.TabIndex = 301;
             // 
             // label1
             // 
@@ -357,24 +358,24 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtNewSettingsName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.comboBoxSettingsName);
+            this.Controls.Add(this.buttonRemoveReader);
+            this.Controls.Add(this.buttonAddReader);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridViewReaders);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxStore);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.btnlogin);
+            this.Controls.Add(this.btnAdd);
             this.Name = "UpdateSettings";
             this.Size = new System.Drawing.Size(1031, 532);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -385,29 +386,29 @@
         #endregion
 
         private System.Windows.Forms.DataGridViewTextBoxColumn numAntennas;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonRemoveReader;
+        private System.Windows.Forms.Button buttonAddReader;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewReaders;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPaddress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonSubmitReader;
+        private System.Windows.Forms.Button buttonAddAntenna;
+        private System.Windows.Forms.Button buttonRemoveAntenna;
         private System.Windows.Forms.FlowLayoutPanel flpAntennaConfig;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxStore;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnlogin;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ComboBox comboBoxSettingsName;
+        private System.Windows.Forms.TextBox txtNewSettingsName;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace ssms.Admin.Stock
 {
-    public partial class Categories : UserControl
+    public partial class AddBrand : UserControl
     {
-        public Categories()
+        public AddBrand()
         {
             InitializeComponent();
         }
 
-        private void Categories_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            ((AdminMain)this.Parent.Parent).ChangeView<Admin.Stock.Brands>();
         }
     }
 }

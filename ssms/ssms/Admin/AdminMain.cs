@@ -89,5 +89,10 @@ namespace ssms.Admin
             }
             
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ChangeView<Products.Product>();
+        }
     }
 }

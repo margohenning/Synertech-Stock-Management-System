@@ -66,6 +66,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Products\AddProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Products\AddProduct.Designer.cs">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Products\Product.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Products\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Products\UpdateProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Products\UpdateProduct.Designer.cs">
+      <DependentUpon>UpdateProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Settings\AddSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -77,6 +95,12 @@
     </Compile>
     <Compile Include="Admin\Settings\AntennaConfig.designer.cs">
       <DependentUpon>AntennaConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings\SelectSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings\SelectSetting.Designer.cs">
+      <DependentUpon>SelectSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\StockOut\BookStockOut.cs">
       <SubType>UserControl</SubType>
@@ -96,65 +120,71 @@
     <Compile Include="Admin\StockOut\StockOutUpdate.Designer.cs">
       <DependentUpon>StockOutUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\AddBrand.cs">
+    <Compile Include="Admin\Items\AddBrand.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\AddBrand.Designer.cs">
+    <Compile Include="Admin\Items\AddBrand.Designer.cs">
       <DependentUpon>AddBrand.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\AddBrandSmall.cs">
+    <Compile Include="Admin\Items\AddBrandSmall.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\AddBrandSmall.Designer.cs">
+    <Compile Include="Admin\Items\AddBrandSmall.Designer.cs">
       <DependentUpon>AddBrandSmall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\AddCategory.cs">
+    <Compile Include="Admin\Items\AddCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\AddCategory.Designer.cs">
+    <Compile Include="Admin\Items\AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\AddCategorySmall.cs">
+    <Compile Include="Admin\Items\AddCategorySmall.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\AddCategorySmall.Designer.cs">
+    <Compile Include="Admin\Items\AddCategorySmall.Designer.cs">
       <DependentUpon>AddCategorySmall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\AddStock.cs">
+    <Compile Include="Admin\Items\AddItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\AddStock.Designer.cs">
-      <DependentUpon>AddStock.cs</DependentUpon>
+    <Compile Include="Admin\Items\AddItem.Designer.cs">
+      <DependentUpon>AddItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\Brands.cs">
+    <Compile Include="Admin\Items\Brands.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\Brands.Designer.cs">
+    <Compile Include="Admin\Items\Brands.Designer.cs">
       <DependentUpon>Brands.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\Categories.cs">
+    <Compile Include="Admin\Items\Categories.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\Categories.Designer.cs">
+    <Compile Include="Admin\Items\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\UpdateBrand.cs">
+    <Compile Include="Admin\Items\ShowProductDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\UpdateBrand.Designer.cs">
+    <Compile Include="Admin\Items\ShowProductDetails.Designer.cs">
+      <DependentUpon>ShowProductDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Items\UpdateBrand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\Items\UpdateBrand.Designer.cs">
       <DependentUpon>UpdateBrand.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\UpdateCategory.cs">
+    <Compile Include="Admin\Items\UpdateCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\UpdateCategory.Designer.cs">
+    <Compile Include="Admin\Items\UpdateCategory.Designer.cs">
       <DependentUpon>UpdateCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\UpdateStock.cs">
+    <Compile Include="Admin\Items\UpdateItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\UpdateStock.Designer.cs">
-      <DependentUpon>UpdateStock.cs</DependentUpon>
+    <Compile Include="Admin\Items\UpdateItem.Designer.cs">
+      <DependentUpon>UpdateItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Store\AddStore.cs">
       <SubType>UserControl</SubType>
@@ -198,11 +228,11 @@
     <Compile Include="Admin\Settings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Stock\Stock.cs">
+    <Compile Include="Admin\Items\Item.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Stock\Stock.Designer.cs">
-      <DependentUpon>Stock.cs</DependentUpon>
+    <Compile Include="Admin\Items\Item.Designer.cs">
+      <DependentUpon>Item.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\StockOut\StockOut.cs">
       <SubType>UserControl</SubType>
@@ -267,11 +297,23 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\Products\AddProduct.resx">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Products\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Products\UpdateProduct.resx">
+      <DependentUpon>UpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Settings\AddSettings.resx">
       <DependentUpon>AddSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Settings\AntennaConfig.resx">
       <DependentUpon>AntennaConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Settings\SelectSetting.resx">
+      <DependentUpon>SelectSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\StockOut\BookStockOut.resx">
       <DependentUpon>BookStockOut.cs</DependentUpon>
@@ -282,35 +324,38 @@
     <EmbeddedResource Include="Admin\StockOut\StockOutUpdate.resx">
       <DependentUpon>StockOutUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\AddBrand.resx">
+    <EmbeddedResource Include="Admin\Items\AddBrand.resx">
       <DependentUpon>AddBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\AddBrandSmall.resx">
+    <EmbeddedResource Include="Admin\Items\AddBrandSmall.resx">
       <DependentUpon>AddBrandSmall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\AddCategory.resx">
+    <EmbeddedResource Include="Admin\Items\AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\AddCategorySmall.resx">
+    <EmbeddedResource Include="Admin\Items\AddCategorySmall.resx">
       <DependentUpon>AddCategorySmall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\AddStock.resx">
-      <DependentUpon>AddStock.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\Items\AddItem.resx">
+      <DependentUpon>AddItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\Brands.resx">
+    <EmbeddedResource Include="Admin\Items\Brands.resx">
       <DependentUpon>Brands.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\Categories.resx">
+    <EmbeddedResource Include="Admin\Items\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\UpdateBrand.resx">
+    <EmbeddedResource Include="Admin\Items\ShowProductDetails.resx">
+      <DependentUpon>ShowProductDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Items\UpdateBrand.resx">
       <DependentUpon>UpdateBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\UpdateCategory.resx">
+    <EmbeddedResource Include="Admin\Items\UpdateCategory.resx">
       <DependentUpon>UpdateCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\UpdateStock.resx">
-      <DependentUpon>UpdateStock.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\Items\UpdateItem.resx">
+      <DependentUpon>UpdateItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Store\AddStore.resx">
       <DependentUpon>AddStore.cs</DependentUpon>
@@ -333,8 +378,8 @@
     <EmbeddedResource Include="Admin\Settings\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Stock\Stock.resx">
-      <DependentUpon>Stock.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\Items\Item.resx">
+      <DependentUpon>Item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\StockOut\StockOut.resx">
       <DependentUpon>StockOut.cs</DependentUpon>
@@ -393,8 +438,10 @@
     <Content Include="Octane SDK\Impinj.OctaneSdk.dll" />
     <Content Include="Octane SDK\LLRP.dll" />
     <Content Include="Octane SDK\LLRP.Impinj.dll" />
-    <None Include="Resources\cancel-music.png" />
+    <None Include="Resources\icons8-RFID Signal-64SMALL.png" />
     <None Include="Resources\icons8-RFID Signal-64.png" />
+    <None Include="Resources\trolley.png" />
+    <None Include="Resources\cancel-music.png" />
     <None Include="Resources\icons8-RFID Signal Filled-50.png" />
     <None Include="Resources\rubbish-bin %281%29.png" />
     <None Include="Resources\rubbish-bin.png" />

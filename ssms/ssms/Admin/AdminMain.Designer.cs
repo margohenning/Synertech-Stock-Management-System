@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -44,6 +45,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1031, 532);
             this.panel2.TabIndex = 1;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Image = global::ssms.Properties.Resources.trolley;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button7.Location = new System.Drawing.Point(135, 13);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(126, 49);
+            this.button7.TabIndex = 37;
+            this.button7.Text = "Products";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -74,7 +94,7 @@
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Image = global::ssms.Properties.Resources.multiple_users_silhouette;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.Location = new System.Drawing.Point(596, 13);
+            this.button5.Location = new System.Drawing.Point(658, 13);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(126, 49);
             this.button5.TabIndex = 28;
@@ -93,9 +113,9 @@
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = global::ssms.Properties.Resources.user_account_box;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(740, 13);
+            this.button4.Location = new System.Drawing.Point(790, 13);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(136, 49);
+            this.button4.Size = new System.Drawing.Size(134, 49);
             this.button4.TabIndex = 27;
             this.button4.Text = "MyAccount";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,7 +132,7 @@
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = global::ssms.Properties.Resources.settings_gears;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.Location = new System.Drawing.Point(451, 13);
+            this.button3.Location = new System.Drawing.Point(526, 13);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 49);
             this.button3.TabIndex = 26;
@@ -123,7 +143,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -131,7 +151,7 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::ssms.Properties.Resources.warehouse;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(308, 13);
+            this.button2.Location = new System.Drawing.Point(394, 13);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 49);
             this.button2.TabIndex = 25;
@@ -142,7 +162,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -150,9 +170,9 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::ssms.Properties.Resources.sign_out_option;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(166, 13);
+            this.button1.Location = new System.Drawing.Point(267, 13);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 49);
+            this.button1.Size = new System.Drawing.Size(121, 49);
             this.button1.TabIndex = 24;
             this.button1.Text = "Stock Out";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,11 +189,11 @@
             this.buttonBooks.ForeColor = System.Drawing.Color.White;
             this.buttonBooks.Image = global::ssms.Properties.Resources.stock__1_;
             this.buttonBooks.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonBooks.Location = new System.Drawing.Point(21, 13);
+            this.buttonBooks.Location = new System.Drawing.Point(3, 13);
             this.buttonBooks.Name = "buttonBooks";
             this.buttonBooks.Size = new System.Drawing.Size(126, 49);
             this.buttonBooks.TabIndex = 23;
-            this.buttonBooks.Text = "Stock";
+            this.buttonBooks.Text = "Items";
             this.buttonBooks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonBooks.UseVisualStyleBackColor = false;
             this.buttonBooks.Click += new System.EventHandler(this.buttonBooks_Click);
@@ -183,6 +203,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -207,5 +228,6 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button buttonBooks;
         public System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Button button7;
     }
 }

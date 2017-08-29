@@ -1,6 +1,6 @@
 ﻿namespace ssms.Admin.Stock
 {
-    partial class UpdateCategory
+    partial class UpdateBrand
     {
         /// <summary> 
         /// Required designer variable.
@@ -53,10 +53,11 @@
             this.button1.Location = new System.Drawing.Point(950, 404);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(61, 113);
-            this.button1.TabIndex = 220;
+            this.button1.TabIndex = 209;
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -65,7 +66,7 @@
             this.label5.Location = new System.Drawing.Point(369, 404);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 25);
-            this.label5.TabIndex = 219;
+            this.label5.TabIndex = 208;
             this.label5.Text = "Update";
             // 
             // btnlogin
@@ -77,7 +78,7 @@
             this.btnlogin.Location = new System.Drawing.Point(370, 340);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(80, 61);
-            this.btnlogin.TabIndex = 218;
+            this.btnlogin.TabIndex = 207;
             this.btnlogin.UseVisualStyleBackColor = true;
             // 
             // txtSur
@@ -86,7 +87,7 @@
             this.txtSur.Location = new System.Drawing.Point(205, 308);
             this.txtSur.Name = "txtSur";
             this.txtSur.Size = new System.Drawing.Size(245, 26);
-            this.txtSur.TabIndex = 217;
+            this.txtSur.TabIndex = 206;
             // 
             // txtName
             // 
@@ -94,7 +95,7 @@
             this.txtName.Location = new System.Drawing.Point(205, 273);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(245, 26);
-            this.txtName.TabIndex = 216;
+            this.txtName.TabIndex = 205;
             // 
             // label7
             // 
@@ -103,9 +104,9 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(24, 277);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 19);
-            this.label7.TabIndex = 215;
-            this.label7.Text = "Category Name:";
+            this.label7.Size = new System.Drawing.Size(110, 19);
+            this.label7.TabIndex = 204;
+            this.label7.Text = "Brand Name:";
             // 
             // label2
             // 
@@ -113,9 +114,9 @@
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(212, 249);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 18);
-            this.label2.TabIndex = 214;
-            this.label2.Text = "categoryID";
+            this.label2.Size = new System.Drawing.Size(63, 18);
+            this.label2.TabIndex = 203;
+            this.label2.Text = "brandID";
             // 
             // label16
             // 
@@ -124,9 +125,9 @@
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label16.Location = new System.Drawing.Point(24, 249);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(105, 19);
-            this.label16.TabIndex = 213;
-            this.label16.Text = "Category ID:";
+            this.label16.Size = new System.Drawing.Size(82, 19);
+            this.label16.TabIndex = 202;
+            this.label16.Text = "Brand ID:";
             // 
             // label6
             // 
@@ -135,9 +136,9 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.Location = new System.Drawing.Point(24, 312);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(177, 19);
-            this.label6.TabIndex = 212;
-            this.label6.Text = "Category Description:";
+            this.label6.Size = new System.Drawing.Size(154, 19);
+            this.label6.TabIndex = 201;
+            this.label6.Text = "Brand Description:";
             // 
             // dataGridView1
             // 
@@ -150,7 +151,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
-            this.dataGridView1.TabIndex = 211;
+            this.dataGridView1.TabIndex = 200;
             // 
             // label1
             // 
@@ -159,11 +160,11 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(23, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(234, 33);
-            this.label1.TabIndex = 210;
-            this.label1.Text = "Update Category";
+            this.label1.Size = new System.Drawing.Size(193, 33);
+            this.label1.TabIndex = 199;
+            this.label1.Text = "Update Brand";
             // 
-            // UpdateCategory
+            // UpdateBrand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -179,7 +180,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
-            this.Name = "UpdateCategory";
+            this.Name = "UpdateBrand";
             this.Size = new System.Drawing.Size(1031, 532);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

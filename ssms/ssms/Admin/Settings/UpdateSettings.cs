@@ -24,18 +24,18 @@ namespace ssms.Admin
         private void button2_Click(object sender, EventArgs e)
         {
             comboBoxStore.Enabled = false;
-            comboBox1.Enabled = false;
-            dataGridView2.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
+            comboBoxSettingsName.Enabled = false;
+            dataGridViewReaders.Enabled = false;
+            buttonAddReader.Enabled = false;
+            buttonRemoveReader.Enabled = false;
             panel1.Visible = true;
-            textBox1.Text = "";
+            txtIP.Text = "";
             flpAntennaConfig.Controls.Clear();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.SelectedRows == null)
+            if (dataGridViewReaders.SelectedRows == null)
             {
 
             }
@@ -43,14 +43,14 @@ namespace ssms.Admin
             {
                 if (MessageBox.Show("Are You sure you want to remove this reader?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    using (DataGridViewRow item = this.dataGridView2.SelectedRows[0])
+                    using (DataGridViewRow item = this.dataGridViewReaders.SelectedRows[0])
                     {
                         int i = item.Index;
                         reader.RemoveAt(i);
-                        dataGridView2.Rows.Clear();
+                        dataGridViewReaders.Rows.Clear();
                         for (int x = 0; x < reader.Count; x++)
                         {
-                            dataGridView2.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
+                            dataGridViewReaders.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
                         }
 
                     }
@@ -116,10 +116,10 @@ namespace ssms.Admin
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (AntennaList.Count > 0 && textBox1.Text != "")
+            if (AntennaList.Count > 0 && txtIP.Text != "")
             {
                 Reader r = new Reader();
-                r.IPaddress = textBox1.Text;
+                r.IPaddress = txtIP.Text;
                 r.numAntennas = AntennaList.Count;
                 for (int i = 0; i < r.numAntennas; i++)
                 {
@@ -132,21 +132,26 @@ namespace ssms.Admin
                 reader.Add(r);
 
                 comboBoxStore.Enabled = true;
-                textBox2.Enabled = true;
-                dataGridView2.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = true;
-                dataGridView2.Rows.Clear();
+                txtNewSettingsName.Enabled = true;
+                dataGridViewReaders.Enabled = true;
+                buttonAddReader.Enabled = true;
+                buttonRemoveReader.Enabled = true;
+                dataGridViewReaders.Rows.Clear();
                 for (int x = 0; x < reader.Count; x++)
                 {
-                    dataGridView2.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
+                    dataGridViewReaders.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
                 }
                 panel1.Visible = false;
-                textBox1.Text = "";
+                txtIP.Text = "";
                 AntennaList.Clear();
                 flpAntennaConfig.Controls.Clear();
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((AdminMain)this.Parent.Parent).ChangeView<Admin.Settings.Settings>();
         }
     }
 }
