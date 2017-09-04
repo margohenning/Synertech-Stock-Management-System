@@ -19,7 +19,7 @@ namespace ssms.Pages
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ((Main)this.Parent.Parent).ChangeView<AddStore>();
+            ((Main)this.Parent.Parent).ChangeView<AddUser>();
         }
 
         private void button3_Click(object sender, EventArgs e)

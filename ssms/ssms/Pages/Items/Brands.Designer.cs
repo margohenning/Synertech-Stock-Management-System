@@ -32,6 +32,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BrandID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrandDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -66,6 +69,7 @@
             this.button3.TabIndex = 92;
             this.button3.Text = "Update Brand";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -81,6 +85,7 @@
             this.button1.TabIndex = 91;
             this.button1.Text = "Add Brand";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -89,11 +94,34 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BrandID,
+            this.BrandName,
+            this.BrandDescription});
             this.dataGridView1.Location = new System.Drawing.Point(17, 69);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(750, 428);
             this.dataGridView1.TabIndex = 90;
+            // 
+            // BrandID
+            // 
+            this.BrandID.HeaderText = "Brand ID";
+            this.BrandID.Name = "BrandID";
+            this.BrandID.ReadOnly = true;
+            // 
+            // BrandName
+            // 
+            this.BrandName.HeaderText = "Brand Name";
+            this.BrandName.Name = "BrandName";
+            this.BrandName.ReadOnly = true;
+            // 
+            // BrandDescription
+            // 
+            this.BrandDescription.HeaderText = "Brand Description";
+            this.BrandDescription.Name = "BrandDescription";
+            this.BrandDescription.ReadOnly = true;
             // 
             // label1
             // 
@@ -150,5 +178,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrandID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrandDescription;
     }
 }

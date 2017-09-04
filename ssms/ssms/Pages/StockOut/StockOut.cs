@@ -21,5 +21,20 @@ namespace ssms.Pages.StockOut
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.BookStockOut>();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOutUpdate>();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockBookOutRemoval>();
+        }
     }
 }

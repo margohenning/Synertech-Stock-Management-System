@@ -34,6 +34,12 @@
             this.buttonUpdateSettings = new System.Windows.Forms.Button();
             this.buttonAddSettings = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.SettingsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SettingsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SettingsSelect = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountReaders = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountAntennas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,9 +61,17 @@
             this.dataGridViewSettings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSettings.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSettings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSettings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SettingsID,
+            this.SettingsName,
+            this.SettingsSelect,
+            this.AmountReaders,
+            this.AmountAntennas,
+            this.StoreName});
             this.dataGridViewSettings.Location = new System.Drawing.Point(36, 69);
             this.dataGridViewSettings.Name = "dataGridViewSettings";
             this.dataGridViewSettings.ReadOnly = true;
+            this.dataGridViewSettings.RowHeadersVisible = false;
             this.dataGridViewSettings.Size = new System.Drawing.Size(638, 397);
             this.dataGridViewSettings.TabIndex = 81;
             // 
@@ -124,6 +138,42 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // SettingsID
+            // 
+            this.SettingsID.HeaderText = "Settings ID";
+            this.SettingsID.Name = "SettingsID";
+            this.SettingsID.ReadOnly = true;
+            // 
+            // SettingsName
+            // 
+            this.SettingsName.HeaderText = "Settings Name";
+            this.SettingsName.Name = "SettingsName";
+            this.SettingsName.ReadOnly = true;
+            // 
+            // SettingsSelect
+            // 
+            this.SettingsSelect.HeaderText = "Settings Select";
+            this.SettingsSelect.Name = "SettingsSelect";
+            this.SettingsSelect.ReadOnly = true;
+            // 
+            // AmountReaders
+            // 
+            this.AmountReaders.HeaderText = "Amount of Readers";
+            this.AmountReaders.Name = "AmountReaders";
+            this.AmountReaders.ReadOnly = true;
+            // 
+            // AmountAntennas
+            // 
+            this.AmountAntennas.HeaderText = "Amount of Antennas";
+            this.AmountAntennas.Name = "AmountAntennas";
+            this.AmountAntennas.ReadOnly = true;
+            // 
+            // StoreName
+            // 
+            this.StoreName.HeaderText = "Store Name";
+            this.StoreName.Name = "StoreName";
+            this.StoreName.ReadOnly = true;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,5 +201,11 @@
         private System.Windows.Forms.Button buttonUpdateSettings;
         private System.Windows.Forms.Button buttonAddSettings;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SettingsID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SettingsName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SettingsSelect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmountReaders;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmountAntennas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StoreName;
     }
 }

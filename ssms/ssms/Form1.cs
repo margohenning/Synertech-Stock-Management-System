@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ssms.Pages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,6 +63,19 @@ namespace ssms
 
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+            if (loggedIn != null) {
+                ChangeView<Main>();
+            }
+        }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (loggedIn != null)
+            {
+                ChangeView<Main>();
+            }
+        }
     }
 }

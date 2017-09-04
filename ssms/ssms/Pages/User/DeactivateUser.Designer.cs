@@ -31,12 +31,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnlogin = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserIDentityNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -67,19 +74,6 @@
             this.label5.Size = new System.Drawing.Size(114, 25);
             this.label5.TabIndex = 253;
             this.label5.Text = "Deactivate";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(701, 283);
-            this.dataGridView1.TabIndex = 233;
             // 
             // label1
             // 
@@ -135,23 +129,88 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UserID,
+            this.UserIDentityNumber,
+            this.UserName,
+            this.UserSurname,
+            this.UserEmail,
+            this.UserAdmin,
+            this.UserActivated});
+            this.dataGridView2.Location = new System.Drawing.Point(24, 52);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(711, 274);
+            this.dataGridView2.TabIndex = 257;
+            // 
+            // UserID
+            // 
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
+            // 
+            // UserIDentityNumber
+            // 
+            this.UserIDentityNumber.HeaderText = "Identity Number";
+            this.UserIDentityNumber.Name = "UserIDentityNumber";
+            this.UserIDentityNumber.ReadOnly = true;
+            // 
+            // UserName
+            // 
+            this.UserName.HeaderText = "Name";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // UserSurname
+            // 
+            this.UserSurname.HeaderText = "Surname";
+            this.UserSurname.Name = "UserSurname";
+            this.UserSurname.ReadOnly = true;
+            // 
+            // UserEmail
+            // 
+            this.UserEmail.HeaderText = "Email";
+            this.UserEmail.Name = "UserEmail";
+            this.UserEmail.ReadOnly = true;
+            // 
+            // UserAdmin
+            // 
+            this.UserAdmin.HeaderText = "Admin";
+            this.UserAdmin.Name = "UserAdmin";
+            this.UserAdmin.ReadOnly = true;
+            // 
+            // UserActivated
+            // 
+            this.UserActivated.HeaderText = "Activated";
+            this.UserActivated.Name = "UserActivated";
+            this.UserActivated.ReadOnly = true;
             // 
             // DeactivateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnlogin);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "DeactivateUser";
             this.Size = new System.Drawing.Size(1031, 532);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,7 +224,14 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnlogin;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserIDentityNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserSurname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserAdmin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserActivated;
     }
 }

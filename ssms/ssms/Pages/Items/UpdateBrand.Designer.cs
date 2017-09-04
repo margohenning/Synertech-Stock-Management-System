@@ -39,6 +39,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.BrandID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrandDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,9 +150,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BrandID,
+            this.BrandName,
+            this.BrandDescription});
             this.dataGridView1.Location = new System.Drawing.Point(20, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 200;
             // 
@@ -163,6 +171,24 @@
             this.label1.Size = new System.Drawing.Size(193, 33);
             this.label1.TabIndex = 199;
             this.label1.Text = "Update Brand";
+            // 
+            // BrandID
+            // 
+            this.BrandID.HeaderText = "Brand ID";
+            this.BrandID.Name = "BrandID";
+            this.BrandID.ReadOnly = true;
+            // 
+            // BrandName
+            // 
+            this.BrandName.HeaderText = "Brand Name";
+            this.BrandName.Name = "BrandName";
+            this.BrandName.ReadOnly = true;
+            // 
+            // BrandDescription
+            // 
+            this.BrandDescription.HeaderText = "Brand Description";
+            this.BrandDescription.Name = "BrandDescription";
+            this.BrandDescription.ReadOnly = true;
             // 
             // UpdateBrand
             // 
@@ -201,5 +227,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrandID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrandDescription;
     }
 }

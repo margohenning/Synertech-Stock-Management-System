@@ -63,7 +63,7 @@ namespace ssms.Pages
         {
             if (((Form1)this.Parent.Parent).loggedIn.UserAdmin != true ) {
 
-                MessageBox.Show("Sorry you do not have Pages Permission to access the Users section.");
+                MessageBox.Show("Sorry you do not have Admin Permission to access the Users section.");
                           
             }
             else {

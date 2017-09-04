@@ -37,6 +37,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserIDentityNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,9 +140,18 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UserID,
+            this.UserIDentityNumber,
+            this.UserName,
+            this.UserSurname,
+            this.UserEmail,
+            this.UserAdmin,
+            this.UserActivated});
             this.dataGridView1.Location = new System.Drawing.Point(36, 58);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(750, 428);
             this.dataGridView1.TabIndex = 90;
             // 
@@ -165,6 +181,48 @@
             this.button2.Text = "Deactivate User";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // UserID
+            // 
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
+            // 
+            // UserIDentityNumber
+            // 
+            this.UserIDentityNumber.HeaderText = "Identity Number";
+            this.UserIDentityNumber.Name = "UserIDentityNumber";
+            this.UserIDentityNumber.ReadOnly = true;
+            // 
+            // UserName
+            // 
+            this.UserName.HeaderText = "Name";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // UserSurname
+            // 
+            this.UserSurname.HeaderText = "Surname";
+            this.UserSurname.Name = "UserSurname";
+            this.UserSurname.ReadOnly = true;
+            // 
+            // UserEmail
+            // 
+            this.UserEmail.HeaderText = "Email";
+            this.UserEmail.Name = "UserEmail";
+            this.UserEmail.ReadOnly = true;
+            // 
+            // UserAdmin
+            // 
+            this.UserAdmin.HeaderText = "Admin";
+            this.UserAdmin.Name = "UserAdmin";
+            this.UserAdmin.ReadOnly = true;
+            // 
+            // UserActivated
+            // 
+            this.UserActivated.HeaderText = "Activated";
+            this.UserActivated.Name = "UserActivated";
+            this.UserActivated.ReadOnly = true;
             // 
             // Users
             // 
@@ -198,5 +256,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserIDentityNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserSurname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserAdmin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserActivated;
     }
 }

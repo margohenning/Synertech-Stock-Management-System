@@ -39,6 +39,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.StoreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StoreLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,9 +52,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StoreID,
+            this.StoreName,
+            this.StoreLocation});
             this.dataGridView1.Location = new System.Drawing.Point(17, 69);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 95;
             // 
@@ -163,6 +171,24 @@
             this.btnlogin.TabIndex = 196;
             this.btnlogin.UseVisualStyleBackColor = true;
             // 
+            // StoreID
+            // 
+            this.StoreID.HeaderText = "Store ID";
+            this.StoreID.Name = "StoreID";
+            this.StoreID.ReadOnly = true;
+            // 
+            // StoreName
+            // 
+            this.StoreName.HeaderText = "Store Name";
+            this.StoreName.Name = "StoreName";
+            this.StoreName.ReadOnly = true;
+            // 
+            // StoreLocation
+            // 
+            this.StoreLocation.HeaderText = "Store Location";
+            this.StoreLocation.Name = "StoreLocation";
+            this.StoreLocation.ReadOnly = true;
+            // 
             // UpdateStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,5 +225,8 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StoreID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StoreName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StoreLocation;
     }
 }

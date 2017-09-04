@@ -22,5 +22,15 @@ namespace ssms.Pages.Items
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.Items.AddBrand>();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.Items.UpdateBrand>();
+        }
     }
 }
