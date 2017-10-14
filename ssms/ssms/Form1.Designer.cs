@@ -65,9 +65,9 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(12, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(234, 20);
+            this.label4.Size = new System.Drawing.Size(235, 20);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Synertech Items Management System";
+            this.label4.Text = "Synertech Stock Management System";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel

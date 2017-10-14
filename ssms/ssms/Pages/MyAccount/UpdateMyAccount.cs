@@ -17,9 +17,11 @@ namespace ssms.Pages
             InitializeComponent();
         }
 
+
         //Marius
         private void UpdateMyAccount_Load(object sender, EventArgs e)
         {
+            //Margo
             if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserAdmin == false)
             {
                 cbAdmin.Enabled = false;
@@ -63,6 +65,7 @@ namespace ssms.Pages
             cbActivated.Text = isUserActivated;
         }
 
+        //Margo
         private void buttonBack_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<MyAccount>();

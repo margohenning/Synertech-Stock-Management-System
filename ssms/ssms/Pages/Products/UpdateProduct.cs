@@ -22,6 +22,7 @@ namespace ssms.Pages.Products
             InitializeComponent();
         }
 
+        //Margo
         public void ChangeView<T>() where T : Control, new()
         {
             try
@@ -39,25 +40,42 @@ namespace ssms.Pages.Products
             }
         }
 
+        //Margo
         private void button4_Click(object sender, EventArgs e)
         {
             button3.Enabled = false;
+
             cbBrandName.Enabled = false;
             cbCategoryName.Enabled = false;
+
+            button2.Enabled = false;
+            dataGridView2.Enabled = false;
+
+            
             
 
             ChangeView<Items.AddBrandSmall>();
         }
 
+        //Margo
         private void button6_Click(object sender, EventArgs e)
         {
             button3.Enabled = false;
+
             cbBrandName.Enabled = false;
             cbCategoryName.Enabled = false;
             
+
+            
+            
+            button2.Enabled = false;
+            dataGridView2.Enabled = false;
+
+
             ChangeView<Items.AddCategorySmall>();
         }
 
+        //Margo
         private void button1_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
@@ -104,11 +122,20 @@ namespace ssms.Pages.Products
         }
 
         //after a brand is added in the small panel you need to update the combobox
+        //Margo
         public void doneBrand()
         {
             panel1.Controls.Clear();
+
             cbBrandName.DataSource = null;
-            listB.Clear();
+            
+
+            
+            if (listB != null)
+            {
+                listB.Clear();
+            }
+
             listB = DAT.DataAccess.GetBrand().ToList();
             List<string> B = new List<string>();
 
@@ -119,17 +146,34 @@ namespace ssms.Pages.Products
             cbBrandName.DataSource = B;
 
             button3.Enabled = true;
+
             cbBrandName.Enabled = true;
             cbCategoryName.Enabled = true;
             
+
+            
+           
+            button2.Enabled = true;
+            dataGridView2.Enabled = true;
+
+
         }
 
         //after a category is added in the small panel you need to update the combobox
+        //Margo
         public void doneCategory()
         {
             panel1.Controls.Clear();
+
             cbCategoryName.DataSource = null;
-            listC.Clear();
+            
+
+            
+            if (listC != null)
+            {
+                listC.Clear();
+            }
+
             listC = DAT.DataAccess.GetCategory().ToList();
             List<string> C = new List<string>();
 
@@ -140,9 +184,16 @@ namespace ssms.Pages.Products
             cbCategoryName.DataSource = C;
 
             button3.Enabled = true;
+
             cbBrandName.Enabled = true;
             cbCategoryName.Enabled = true;
             
+
+            
+            button2.Enabled = true;
+            dataGridView2.Enabled = true;
+
+
         }
 
         //Marius

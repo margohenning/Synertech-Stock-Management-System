@@ -8,6 +8,7 @@ namespace ssms.DataClasses
 {
     class Reader
     {
+        public int readerID { get; set; }
         public string IPaddress { get; set; }
         public int numAntennas { get; set; }
         public double rxPower { get; set; }

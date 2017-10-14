@@ -33,7 +33,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +43,10 @@
             this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // button5
@@ -90,6 +95,7 @@
             this.button4.TabIndex = 93;
             this.button4.Text = "Export PDF";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -137,12 +143,14 @@
             this.BarcodeNumber,
             this.BrandName,
             this.CategoryName});
+
             this.dgvProducts.Location = new System.Drawing.Point(14, 69);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.Size = new System.Drawing.Size(750, 428);
             this.dgvProducts.TabIndex = 90;
+
             // 
             // ProductID
             // 
@@ -191,6 +199,12 @@
             this.label1.TabIndex = 89;
             this.label1.Text = "Products";
             // 
+
+            // saveFileDialog1
+          
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+
             // Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,5 +241,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
