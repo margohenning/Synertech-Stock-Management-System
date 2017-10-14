@@ -49,7 +49,7 @@ namespace ssms.Pages.Products
             cbCategoryName.Enabled = false;
 
             button2.Enabled = false;
-            dataGridView2.Enabled = false;
+            dgvUpdateProduct.Enabled = false;
 
             
             
@@ -69,7 +69,7 @@ namespace ssms.Pages.Products
             
             
             button2.Enabled = false;
-            dataGridView2.Enabled = false;
+            dgvUpdateProduct.Enabled = false;
 
 
             ChangeView<Items.AddCategorySmall>();
@@ -154,7 +154,7 @@ namespace ssms.Pages.Products
             
            
             button2.Enabled = true;
-            dataGridView2.Enabled = true;
+            dgvUpdateProduct.Enabled = true;
 
 
         }
@@ -191,7 +191,7 @@ namespace ssms.Pages.Products
 
             
             button2.Enabled = true;
-            dataGridView2.Enabled = true;
+            dgvUpdateProduct.Enabled = true;
 
 
         }
