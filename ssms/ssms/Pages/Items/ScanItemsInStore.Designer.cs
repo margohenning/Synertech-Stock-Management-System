@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lbxMissing = new System.Windows.Forms.ListBox();
             this.lbxIn = new System.Windows.Forms.ListBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // label2
@@ -78,6 +79,7 @@
             this.button4.TabIndex = 318;
             this.button4.Text = "Export PDF";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -219,6 +221,10 @@
             this.lbxIn.Size = new System.Drawing.Size(261, 346);
             this.lbxIn.TabIndex = 334;
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
             // ScanItemsInStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,5 +267,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lbxMissing;
         private System.Windows.Forms.ListBox lbxIn;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

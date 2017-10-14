@@ -182,7 +182,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(15, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(318, 33);
+            this.label1.Size = new System.Drawing.Size(317, 33);
             this.label1.TabIndex = 257;
             this.label1.Text = "Book Items Out Update";
             // 
@@ -219,6 +219,7 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnlogin
             // 

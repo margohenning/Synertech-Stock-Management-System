@@ -11,6 +11,7 @@ namespace ssms.Pages.Settings
 {
     public partial class AntennaConfig : UserControl
     {
+        //Margo
         public string PortNumber { get { return lblPortNumber.Text; } set { lblPortNumber.Text = value; } }
         public bool AntennaEnabled { get { return cbxEnabled.Checked; } set { cbxEnabled.Checked = value; } }
         public decimal RXPower { get { return nudRX.Value; } set { nudRX.Value = value; } }

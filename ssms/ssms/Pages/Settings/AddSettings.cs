@@ -13,13 +13,16 @@ namespace ssms.Pages.Settings
 {
     public partial class AddSettings : UserControl
     {
+        List<LTS.Store> listS = new List<LTS.Store>();
         List<AntennaConfig> AntennaList = new List<AntennaConfig>();
         List<Reader> reader = new List<Reader>();
+        SettingsMain sm = new SettingsMain();
         public AddSettings()
         {
             InitializeComponent();
         }
 
+        //Margo
         private void button4_Click(object sender, EventArgs e)
         {
             if (AntennaList.Count < 32)
@@ -53,6 +56,7 @@ namespace ssms.Pages.Settings
             }
         }
 
+        //Margo
         private void button5_Click(object sender, EventArgs e)
         {
             if (AntennaList.Count > 0)
@@ -78,9 +82,18 @@ namespace ssms.Pages.Settings
 
         private void AddSettings_Load(object sender, EventArgs e)
         {
+            // load store names into combo box from db
+             listS = DAT.DataAccess.GetStore().ToList();
+            List<string> S = new List<string>();
 
+            for (int x = 0; x < listS.Count; x++)
+            {
+                S.Add(listS[x].StoreName);
+            }
+            comboBoxStore.DataSource = S;
         }
 
+        //Margo
         private void button2_Click(object sender, EventArgs e)
         {
             comboBoxStore.Enabled = false;
@@ -93,42 +106,59 @@ namespace ssms.Pages.Settings
             flpAntennaConfig.Controls.Clear();
         }
 
+        //Margo
         private void button6_Click(object sender, EventArgs e)
         {
-            if (AntennaList.Count > 0 && txtIP.Text !="")
+            lblIP.Visible = false;
+            lblAntenna.Visible = false;
+            
+            if (AntennaList.Count > 0 )
             {
-                Reader r = new Reader();
-                r.IPaddress = txtIP.Text;
-                r.numAntennas = AntennaList.Count;
-                for (int i = 0; i < r.numAntennas; i++)
+                if (txtIP.Text != "")
                 {
-                    antenna a = new antenna();
-                    a.antennaNumber = Int32.Parse(AntennaList[i].PortNumber);
-                    a.rxPower = AntennaList[i].RXPower;
-                    a.txPower = AntennaList[i].TXPower;
-                    r.antenna.Add(a);
-                }
-                reader.Add(r);
+                    Reader r = new Reader();
+                    r.IPaddress = txtIP.Text;
+                    r.numAntennas = AntennaList.Count;
+                    for (int i = 0; i < r.numAntennas; i++)
+                    {
+                        antenna a = new antenna();
+                        a.antennaNumber = Int32.Parse(AntennaList[i].PortNumber);
+                        a.rxPower = AntennaList[i].RXPower;
+                        a.txPower = AntennaList[i].TXPower;
+                        r.antenna.Add(a);
+                    }
+                    reader.Add(r);
 
-                comboBoxStore.Enabled = true;
-                txtSettingsName.Enabled = true;
-                dataGridViewReaders.Enabled = true;
-                buttonAddReader.Enabled = true;
-                buttonRemoveReader.Enabled = true;
-                dataGridViewReaders.Rows.Clear();
-                for(int x =0; x < reader.Count; x++)
+                    comboBoxStore.Enabled = true;
+                    txtSettingsName.Enabled = true;
+                    dataGridViewReaders.Enabled = true;
+                    buttonAddReader.Enabled = true;
+                    buttonRemoveReader.Enabled = true;
+                    dataGridViewReaders.Rows.Clear();
+                    for (int x = 0; x < reader.Count; x++)
+                    {
+                        dataGridViewReaders.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
+                    }
+                    panel1.Visible = false;
+                    txtIP.Text = "";
+                    AntennaList.Clear();
+                    flpAntennaConfig.Controls.Clear();
+                }
+                else
                 {
-                    dataGridViewReaders.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
+                    lblIP.Visible = true;
                 }
-                panel1.Visible = false;
-                txtIP.Text = "";
-                AntennaList.Clear();
-                flpAntennaConfig.Controls.Clear();
+                
 
+            }
+            else
+            {
+                lblAntenna.Visible = true;
             }
             
         }
 
+        //Margo
         private void button3_Click(object sender, EventArgs e)
         {
             if (dataGridViewReaders.SelectedRows == null)
@@ -157,6 +187,136 @@ namespace ssms.Pages.Settings
         private void button1_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<Settings>();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            int totalNum =0;
+            lblName.Visible = false;
+            lblReader.Visible = false;
+            lblStore.Visible = false;
+            lblAntenna.Visible = false;
+            lblIP.Visible = false;
+
+            string name = txtSettingsName.Text;
+            
+            if (name != ""  )
+            {
+                if(comboBoxStore.DataSource != null)
+                {
+                    if (reader.Count != 0)
+                    {
+                        int index = comboBoxStore.SelectedIndex;
+                        int storeID = listS[index].StoreID;
+                        sm.StoreID = storeID;
+                        sm.SettingsName = name;
+                        sm.SettingsSelect = false;
+
+                        for (int x = 0; x < reader.Count; x++)
+                        {
+                            ReaderMain rm = new ReaderMain();
+                            rm.IPaddress = reader[x].IPaddress;
+                            rm.NumAntennas = reader[x].numAntennas;
+
+                            for (int y = 0; y < reader[x].antenna.Count; y++)
+                            {
+                                LTS.Antenna a = new LTS.Antenna();
+                                a.AntennaNumber = reader[x].antenna[y].antennaNumber;
+                                a.RxPower = reader[x].antenna[y].rxPower;
+                                a.TxPower = reader[x].antenna[y].txPower;
+                                rm.antennas.Add(a);
+
+                            }
+                            sm.Readers.Add(rm);
+
+                        }
+                        LTS.Settings set = new LTS.Settings();
+                        set.SettingsName = sm.SettingsName;
+                        set.SettingsSelect = sm.SettingsSelect;
+                        set.StoreID = sm.StoreID;
+
+                        int setDone = DAT.DataAccess.AddSettings(set);
+                        if (setDone != -1)
+                        {
+                            sm.SettingsID = setDone;
+                            for(int a = 0; a < sm.Readers.Count; a++)
+                            {
+                                LTS.Reader r = new LTS.Reader();
+                                r.IPaddress = sm.Readers[a].IPaddress;
+                                r.NumAntennas = sm.Readers[a].NumAntennas;
+                                r.SettingsID = sm.SettingsID;
+
+                                int rid = DAT.DataAccess.AddReader(r);
+                                if (rid != -1)
+                                {
+                                    sm.Readers[a].ReaderID = rid;
+                                    for(int b = 0; b < sm.Readers[a].antennas.Count; b++)
+                                    {
+                                        LTS.Antenna ant = new LTS.Antenna();
+                                        ant.AntennaNumber = sm.Readers[a].antennas[b].AntennaNumber;
+                                        ant.RxPower = sm.Readers[a].antennas[b].RxPower;
+                                        ant.TxPower = sm.Readers[a].antennas[b].TxPower;
+                                        ant.ReaderID = sm.Readers[a].ReaderID;
+                                        int aid = DAT.DataAccess.AddAntenna(ant);
+
+                                        if (aid != -1)
+                                        {
+                                            totalNum = totalNum + 1;
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Sorry, something went wrong, the setting was not added!");
+                                            ((Main)this.Parent.Parent).ChangeView<Settings>();
+                                            break;
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Sorry, something went wrong, the setting was not added!");
+                                    ((Main)this.Parent.Parent).ChangeView<Settings>();
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sorry, something went wrong, the setting was not added!");
+                            ((Main)this.Parent.Parent).ChangeView<Settings>();
+                        }
+                    }
+                    else
+                    {
+                        lblReader.Visible = true;
+                    }
+                    
+                }
+                else
+                {
+                    lblStore.Visible = true;
+                }
+                
+            }
+            else
+            {
+                lblName.Visible = true;
+            }
+
+            if(totalNum == sm.TotalAmountAntennas())
+            {
+                MessageBox.Show("The setting was added successfully!");
+                ((Main)this.Parent.Parent).ChangeView<Settings>();
+            }
+            else
+            {
+                MessageBox.Show("Sorry, something went wrong, the setting was not added!");
+                ((Main)this.Parent.Parent).ChangeView<Settings>();
+            }
+
+
+            
+
         }
     }
 }
