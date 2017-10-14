@@ -31,33 +31,36 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblProdID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.cbCategoryName = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxBrand = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbBrandName = new System.Windows.Forms.ComboBox();
+            this.tbBarcode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbProdDescr = new System.Windows.Forms.TextBox();
+            this.tbProdName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvUpdateProduct = new System.Windows.Forms.DataGridView();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.lblNameVal = new System.Windows.Forms.Label();
+            this.lblDesVal = new System.Windows.Forms.Label();
+            this.lblBarVal = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUpdateProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,15 +102,15 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // label5
+            // lblProdID
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(202, 232);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 18);
-            this.label5.TabIndex = 301;
-            this.label5.Text = "productID";
+            this.lblProdID.AutoSize = true;
+            this.lblProdID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProdID.Location = new System.Drawing.Point(202, 232);
+            this.lblProdID.Name = "lblProdID";
+            this.lblProdID.Size = new System.Drawing.Size(75, 18);
+            this.lblProdID.TabIndex = 301;
+            this.lblProdID.Text = "productID";
             // 
             // label2
             // 
@@ -131,14 +134,14 @@
             this.label8.TabIndex = 295;
             this.label8.Text = "Category Name:";
             // 
-            // comboBoxCategory
+            // cbCategoryName
             // 
-            this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(203, 390);
-            this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(245, 28);
-            this.comboBoxCategory.TabIndex = 294;
+            this.cbCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategoryName.FormattingEnabled = true;
+            this.cbCategoryName.Location = new System.Drawing.Point(203, 390);
+            this.cbCategoryName.Name = "cbCategoryName";
+            this.cbCategoryName.Size = new System.Drawing.Size(245, 28);
+            this.cbCategoryName.TabIndex = 294;
             // 
             // label4
             // 
@@ -151,22 +154,23 @@
             this.label4.TabIndex = 293;
             this.label4.Text = "Brand Name:";
             // 
-            // comboBoxBrand
+            // cbBrandName
             // 
-            this.comboBoxBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxBrand.FormattingEnabled = true;
-            this.comboBoxBrand.Location = new System.Drawing.Point(203, 356);
-            this.comboBoxBrand.Name = "comboBoxBrand";
-            this.comboBoxBrand.Size = new System.Drawing.Size(245, 28);
-            this.comboBoxBrand.TabIndex = 292;
+            this.cbBrandName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbBrandName.FormattingEnabled = true;
+            this.cbBrandName.Location = new System.Drawing.Point(203, 356);
+            this.cbBrandName.Name = "cbBrandName";
+            this.cbBrandName.Size = new System.Drawing.Size(245, 28);
+            this.cbBrandName.TabIndex = 292;
             // 
-            // textBox1
+            // tbBarcode
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(203, 324);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(245, 26);
-            this.textBox1.TabIndex = 291;
+            this.tbBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBarcode.Location = new System.Drawing.Point(203, 324);
+            this.tbBarcode.Name = "tbBarcode";
+            this.tbBarcode.Size = new System.Drawing.Size(245, 26);
+            this.tbBarcode.TabIndex = 291;
+            this.tbBarcode.TextChanged += new System.EventHandler(this.tbBarcode_TextChanged);
             // 
             // label3
             // 
@@ -189,21 +193,21 @@
             this.label12.TabIndex = 287;
             this.label12.Text = "Add";
             // 
-            // textBox4
+            // tbProdDescr
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(203, 289);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(245, 26);
-            this.textBox4.TabIndex = 285;
+            this.tbProdDescr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProdDescr.Location = new System.Drawing.Point(203, 289);
+            this.tbProdDescr.Name = "tbProdDescr";
+            this.tbProdDescr.Size = new System.Drawing.Size(245, 26);
+            this.tbProdDescr.TabIndex = 285;
             // 
-            // textBox5
+            // tbProdName
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(203, 257);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(245, 26);
-            this.textBox5.TabIndex = 284;
+            this.tbProdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProdName.Location = new System.Drawing.Point(203, 257);
+            this.tbProdName.Name = "tbProdName";
+            this.tbProdName.Size = new System.Drawing.Size(245, 26);
+            this.tbProdName.TabIndex = 284;
             // 
             // label13
             // 
@@ -249,6 +253,7 @@
             this.button3.Size = new System.Drawing.Size(80, 61);
             this.button3.TabIndex = 286;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -267,13 +272,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // tbSearch
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(385, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(245, 26);
-            this.textBox2.TabIndex = 308;
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(385, 17);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(245, 26);
+            this.tbSearch.TabIndex = 308;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // label6
             // 
@@ -301,27 +307,30 @@
             this.button2.Text = "Search";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dataGridView2
+            // dgvUpdateProduct
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUpdateProduct.AllowUserToAddRows = false;
+            this.dgvUpdateProduct.AllowUserToDeleteRows = false;
+            this.dgvUpdateProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUpdateProduct.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUpdateProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUpdateProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductID,
             this.ProductName,
             this.ProductDescription,
             this.BarcodeNumber,
             this.BrandName,
             this.CategoryName});
-            this.dataGridView2.Location = new System.Drawing.Point(26, 54);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(681, 175);
-            this.dataGridView2.TabIndex = 310;
+            this.dgvUpdateProduct.Location = new System.Drawing.Point(26, 54);
+            this.dgvUpdateProduct.Name = "dgvUpdateProduct";
+            this.dgvUpdateProduct.ReadOnly = true;
+            this.dgvUpdateProduct.RowHeadersVisible = false;
+            this.dgvUpdateProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUpdateProduct.Size = new System.Drawing.Size(681, 175);
+            this.dgvUpdateProduct.TabIndex = 310;
+            this.dgvUpdateProduct.SelectionChanged += new System.EventHandler(this.dgvUpdateProduct_SelectionChanged);
             // 
             // ProductID
             // 
@@ -359,30 +368,66 @@
             this.CategoryName.Name = "CategoryName";
             this.CategoryName.ReadOnly = true;
             // 
+            // lblNameVal
+            // 
+            this.lblNameVal.AutoSize = true;
+            this.lblNameVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameVal.ForeColor = System.Drawing.Color.Red;
+            this.lblNameVal.Location = new System.Drawing.Point(454, 261);
+            this.lblNameVal.Name = "lblNameVal";
+            this.lblNameVal.Size = new System.Drawing.Size(42, 16);
+            this.lblNameVal.TabIndex = 311;
+            this.lblNameVal.Text = "label2";
+            // 
+            // lblDesVal
+            // 
+            this.lblDesVal.AutoSize = true;
+            this.lblDesVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesVal.ForeColor = System.Drawing.Color.Red;
+            this.lblDesVal.Location = new System.Drawing.Point(454, 295);
+            this.lblDesVal.Name = "lblDesVal";
+            this.lblDesVal.Size = new System.Drawing.Size(42, 16);
+            this.lblDesVal.TabIndex = 312;
+            this.lblDesVal.Text = "label2";
+            // 
+            // lblBarVal
+            // 
+            this.lblBarVal.AutoSize = true;
+            this.lblBarVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBarVal.ForeColor = System.Drawing.Color.Red;
+            this.lblBarVal.Location = new System.Drawing.Point(454, 330);
+            this.lblBarVal.Name = "lblBarVal";
+            this.lblBarVal.Size = new System.Drawing.Size(42, 16);
+            this.lblBarVal.TabIndex = 313;
+            this.lblBarVal.Text = "label2";
+            // 
             // UpdateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.lblBarVal);
+            this.Controls.Add(this.lblDesVal);
+            this.Controls.Add(this.lblNameVal);
+            this.Controls.Add(this.dgvUpdateProduct);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblProdID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBoxCategory);
+            this.Controls.Add(this.cbCategoryName);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBoxBrand);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cbBrandName);
+            this.Controls.Add(this.tbBarcode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.tbProdDescr);
+            this.Controls.Add(this.tbProdName);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button1);
@@ -390,7 +435,7 @@
             this.Name = "UpdateProduct";
             this.Size = new System.Drawing.Size(1031, 532);
             this.Load += new System.EventHandler(this.UpdateProduct_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUpdateProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,31 +446,34 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblProdID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.ComboBox cbCategoryName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBoxBrand;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cbBrandName;
+        private System.Windows.Forms.TextBox tbBarcode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbProdDescr;
+        private System.Windows.Forms.TextBox tbProdName;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvUpdateProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
+        private System.Windows.Forms.Label lblNameVal;
+        private System.Windows.Forms.Label lblDesVal;
+        private System.Windows.Forms.Label lblBarVal;
     }
 }
