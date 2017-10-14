@@ -108,6 +108,7 @@
             this.btnlogin.Size = new System.Drawing.Size(80, 61);
             this.btnlogin.TabIndex = 235;
             this.btnlogin.UseVisualStyleBackColor = true;
+            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
             // button2
             // 
@@ -124,6 +125,7 @@
             this.button2.Text = "Cancel";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddStoreSmall
             // 
@@ -140,6 +142,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddStoreSmall";
             this.Size = new System.Drawing.Size(283, 272);
+            this.Load += new System.EventHandler(this.AddStoreSmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

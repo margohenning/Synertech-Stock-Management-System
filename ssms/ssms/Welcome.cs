@@ -59,7 +59,19 @@ namespace ssms
 
         private void Welcome_Load(object sender, EventArgs e)
         {
+            textBox2.UseSystemPasswordChar = true;
+        }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                textBox2.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox2.UseSystemPasswordChar = true;
+            }
         }
     }
 }

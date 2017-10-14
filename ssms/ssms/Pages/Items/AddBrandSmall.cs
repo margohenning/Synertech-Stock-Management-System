@@ -12,6 +12,7 @@ namespace ssms.Pages.Items
 {
     public partial class AddBrandSmall : UserControl
     {
+        string what;
         public AddBrandSmall()
         {
             InitializeComponent();
@@ -19,7 +20,24 @@ namespace ssms.Pages.Items
 
         private void button1_Click(object sender, EventArgs e)
         {
+            goBack();
+        }
 
+        private void goBack()
+        {
+            if (what == "ssms.Pages.Products.AddProduct")
+            {
+                ((Products.AddProduct)this.Parent.Parent).doneBrand();
+            }
+            else
+            {
+                ((Products.UpdateProduct)this.Parent.Parent).doneBrand();
+            }
+        }
+
+        private void AddBrandSmall_Load(object sender, EventArgs e)
+        {
+            what = this.Parent.Parent.ToString();
         }
     }
 }

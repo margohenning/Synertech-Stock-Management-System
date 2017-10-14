@@ -17,6 +17,7 @@ namespace ssms.Pages
             InitializeComponent();
         }
 
+        //Margo
         private void MyAccount_Load(object sender, EventArgs e)
         {
             
@@ -30,6 +31,7 @@ namespace ssms.Pages
 
         }
 
+        //Margo
         private void button3_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<UpdateMyAccount>();

@@ -27,5 +27,11 @@ namespace ssms.Pages.StockOut
         {
 
         }
+
+        //Margo
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOut>();
+        }
     }
 }

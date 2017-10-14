@@ -60,7 +60,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(15, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 33);
+            this.label1.Size = new System.Drawing.Size(146, 33);
             this.label1.TabIndex = 210;
             this.label1.Text = "Add Items";
             // 
@@ -102,6 +102,7 @@
             this.comboBoxStore.Name = "comboBoxStore";
             this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 240;
+            
             // 
             // label2
             // 
