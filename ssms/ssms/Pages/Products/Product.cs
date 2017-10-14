@@ -11,6 +11,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 
+
 namespace ssms.Pages.Products
 {
     public partial class Product : UserControl
@@ -23,7 +24,7 @@ namespace ssms.Pages.Products
         //Margo
         private void button1_Click(object sender, EventArgs e)
         {
-            ((Main)this.Parent.Parent).ChangeView<AddProduct>();
+           ((Main)this.Parent.Parent).ChangeView<AddProduct>();
         }
 
         //Margo
@@ -44,6 +45,24 @@ namespace ssms.Pages.Products
             ((Main)this.Parent.Parent).ChangeView<Items.Brands>();
         }
 
+
+        private void Product_Load(object sender, EventArgs e)
+        {
+            List<LTS.Product> prod = new List<LTS.Product>();
+            prod = DAT.DataAccess.GetProduct().ToList();
+
+            for (int i = 0; i < prod.Count; i++)
+            {
+                String barcodeNumb = DAT.DataAccess.GetBarcode().Where(o => o.BarcodeID == prod[i].BarcodeID).FirstOrDefault().BarcodeNumber;
+                String brandName = DAT.DataAccess.GetBrand().Where(o => o.BrandID == prod[i].BrandID).FirstOrDefault().BrandName;
+                String categoryName = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == prod[i].CategoryID).FirstOrDefault().CategoryName;
+                dgvProducts.Rows.Add(prod[i].ProductID, prod[i].ProductName, prod[i].ProductDescription, barcodeNumb, brandName, categoryName);
+               
+              }
+              }
+        
+        
+        
         //Margo
         private void button4_Click(object sender, EventArgs e)
         {
@@ -60,8 +79,8 @@ namespace ssms.Pages.Products
             //Creating iTextSharp Table from the DataTable data
             Document pdfDoc = new Document(PageSize.A4);
 
-            PdfPTable pdfTable = new PdfPTable(dataGridView1.ColumnCount);
-            pdfTable.DefaultCell.Padding = dataGridView1.DefaultCellStyle.Padding.All;
+            PdfPTable pdfTable = new PdfPTable(dgvProducts.ColumnCount);
+            pdfTable.DefaultCell.Padding = dgvProducts.DefaultCellStyle.Padding.All;
 
             pdfTable.WidthPercentage = 100;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -70,7 +89,7 @@ namespace ssms.Pages.Products
 
 
             //Adding Header row
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            foreach (DataGridViewColumn column in dgvProducts.Columns)
             {
                 PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
                 cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
@@ -79,7 +98,7 @@ namespace ssms.Pages.Products
             }
 
             //Adding DataRow
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dgvProducts.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
@@ -111,6 +130,7 @@ namespace ssms.Pages.Products
                 pdfDoc.Add(pdfTable);
                 pdfDoc.Close();
                 stream.Close();
+
             }
         }
     }
