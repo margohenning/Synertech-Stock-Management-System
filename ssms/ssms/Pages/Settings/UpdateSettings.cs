@@ -216,7 +216,6 @@ namespace ssms.Pages
 
         private void comboBoxSettingsName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             reader.Clear();
             int index = comboBoxSettingsName.SelectedIndex;
             int setid = setList[index].SettingsID;
@@ -302,7 +301,8 @@ namespace ssms.Pages
                                 int rid = DAT.DataAccess.AddReader(r);
                                 if (rid != -1)
                                 {
-                                    for (int y = 0; y < toAdd[q].antenna.Count; y++)
+
+                                    for(int y = 0; y < toAdd[q].antenna.Count; y++)
                                     {
                                         LTS.Antenna a = new LTS.Antenna();
                                         a.AntennaNumber = toAdd[q].antenna[y].antennaNumber;
@@ -342,6 +342,16 @@ namespace ssms.Pages
                             }
 
                         }
+
+                        else
+                        {
+                            List<Reader> toEdit = reader.Where(i => i.readerID != 0).ToList();
+                            for(int l = 0; l < toEdit.Count; l++)
+                            {
+                                Reader old = readerBackUp.Where(o => o.readerID == toEdit[l].readerID).FirstOrDefault();
+                            }
+
+                        }                        
 
 
                     }
