@@ -47,9 +47,7 @@ namespace ssms.Pages.Items
                     else
                     {
                         MessageBox.Show("Added Successfully!");
-                        this.Visible = false;
-                        Brands f1 = new Brands();
-                        f1.Show();
+                        ((Main)this.Parent.Parent).ChangeView<Brands>();
                     }
                 }
                 catch (Exception eex)

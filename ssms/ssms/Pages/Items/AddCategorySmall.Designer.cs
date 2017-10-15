@@ -36,13 +36,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(31, 233);
+            this.label5.Location = new System.Drawing.Point(19, 233);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 25);
             this.label5.TabIndex = 228;
@@ -54,11 +56,12 @@
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(15, 174);
+            this.btnAdd.Location = new System.Drawing.Point(3, 174);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 61);
             this.btnAdd.TabIndex = 227;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtCatDesc
             // 
@@ -126,11 +129,33 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(90, 225);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 16);
+            this.label3.TabIndex = 232;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(89, 189);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.TabIndex = 231;
+            // 
             // AddCategorySmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnAdd);
@@ -156,5 +181,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
