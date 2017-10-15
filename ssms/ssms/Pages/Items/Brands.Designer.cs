@@ -164,6 +164,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Brands";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.Brands_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
