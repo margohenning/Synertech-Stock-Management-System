@@ -53,6 +53,11 @@
             this.comboBoxSettingsName = new System.Windows.Forms.ComboBox();
             this.txtNewSettingsName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblStore = new System.Windows.Forms.Label();
+            this.lblReader = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblAntenna = new System.Windows.Forms.Label();
+            this.lblIP = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -148,7 +153,9 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.buttonSubmitReader);
             this.panel1.Controls.Add(this.buttonAddAntenna);
+            this.panel1.Controls.Add(this.lblAntenna);
             this.panel1.Controls.Add(this.buttonRemoveAntenna);
+            this.panel1.Controls.Add(this.lblIP);
             this.panel1.Controls.Add(this.flpAntennaConfig);
             this.panel1.Controls.Add(this.txtIP);
             this.panel1.Controls.Add(this.label7);
@@ -274,6 +281,7 @@
             this.comboBoxStore.Name = "comboBoxStore";
             this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 290;
+            this.comboBoxStore.SelectedIndexChanged += new System.EventHandler(this.comboBoxStore_SelectedIndexChanged);
             // 
             // buttonBack
             // 
@@ -296,11 +304,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(866, 493);
+            this.label5.Location = new System.Drawing.Point(852, 493);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 25);
+            this.label5.Size = new System.Drawing.Size(81, 25);
             this.label5.TabIndex = 288;
-            this.label5.Text = "Add";
+            this.label5.Text = "Update";
             // 
             // label9
             // 
@@ -324,6 +332,7 @@
             this.btnAdd.Size = new System.Drawing.Size(80, 61);
             this.btnAdd.TabIndex = 287;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // comboBoxSettingsName
             // 
@@ -333,6 +342,7 @@
             this.comboBoxSettingsName.Name = "comboBoxSettingsName";
             this.comboBoxSettingsName.Size = new System.Drawing.Size(245, 28);
             this.comboBoxSettingsName.TabIndex = 299;
+            this.comboBoxSettingsName.SelectedIndexChanged += new System.EventHandler(this.comboBoxSettingsName_SelectedIndexChanged);
             // 
             // txtNewSettingsName
             // 
@@ -353,11 +363,74 @@
             this.label1.TabIndex = 300;
             this.label1.Text = "New Settings Name:";
             // 
+            // lblStore
+            // 
+            this.lblStore.AutoSize = true;
+            this.lblStore.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStore.ForeColor = System.Drawing.Color.Red;
+            this.lblStore.Location = new System.Drawing.Point(131, 396);
+            this.lblStore.Name = "lblStore";
+            this.lblStore.Size = new System.Drawing.Size(142, 18);
+            this.lblStore.TabIndex = 304;
+            this.lblStore.Text = "Store name invalid!";
+            this.lblStore.Visible = false;
+            // 
+            // lblReader
+            // 
+            this.lblReader.AutoSize = true;
+            this.lblReader.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReader.ForeColor = System.Drawing.Color.Red;
+            this.lblReader.Location = new System.Drawing.Point(131, 456);
+            this.lblReader.Name = "lblReader";
+            this.lblReader.Size = new System.Drawing.Size(121, 18);
+            this.lblReader.TabIndex = 303;
+            this.lblReader.Text = "Readers invalid!";
+            this.lblReader.Visible = false;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.Red;
+            this.lblName.Location = new System.Drawing.Point(131, 428);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(193, 18);
+            this.lblName.TabIndex = 302;
+            this.lblName.Text = "New settings name invalid!";
+            this.lblName.Visible = false;
+            // 
+            // lblAntenna
+            // 
+            this.lblAntenna.AutoSize = true;
+            this.lblAntenna.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAntenna.ForeColor = System.Drawing.Color.Red;
+            this.lblAntenna.Location = new System.Drawing.Point(315, 295);
+            this.lblAntenna.Name = "lblAntenna";
+            this.lblAntenna.Size = new System.Drawing.Size(125, 18);
+            this.lblAntenna.TabIndex = 306;
+            this.lblAntenna.Text = "Antennas Invalid!";
+            this.lblAntenna.Visible = false;
+            // 
+            // lblIP
+            // 
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.ForeColor = System.Drawing.Color.Red;
+            this.lblIP.Location = new System.Drawing.Point(292, 49);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(136, 18);
+            this.lblIP.TabIndex = 305;
+            this.lblIP.Text = "IP Address Invalid!";
+            this.lblIP.Visible = false;
+            // 
             // UpdateSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblStore);
+            this.Controls.Add(this.lblReader);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtNewSettingsName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxSettingsName);
@@ -375,6 +448,7 @@
             this.Controls.Add(this.btnAdd);
             this.Name = "UpdateSettings";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.UpdateSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -410,5 +484,10 @@
         private System.Windows.Forms.ComboBox comboBoxSettingsName;
         private System.Windows.Forms.TextBox txtNewSettingsName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAntenna;
+        private System.Windows.Forms.Label lblIP;
+        private System.Windows.Forms.Label lblStore;
+        private System.Windows.Forms.Label lblReader;
+        private System.Windows.Forms.Label lblName;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label7 = new System.Windows.Forms.Label();
-            this.userID = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -37,17 +37,22 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSurname = new System.Windows.Forms.TextBox();
-            this.comboBoxActiv = new System.Windows.Forms.ComboBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.comboBoxAdmin = new System.Windows.Forms.ComboBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtIdentityNumber = new System.Windows.Forms.TextBox();
+            this.tbSurname = new System.Windows.Forms.TextBox();
+            this.cbActivated = new System.Windows.Forms.ComboBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.cbAdmin = new System.Windows.Forms.ComboBox();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbIdentityNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblIdentityNo = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -61,15 +66,15 @@
             this.label7.TabIndex = 172;
             this.label7.Text = "Identity Number";
             // 
-            // userID
+            // lblUserID
             // 
-            this.userID.AutoSize = true;
-            this.userID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userID.Location = new System.Drawing.Point(221, 117);
-            this.userID.Name = "userID";
-            this.userID.Size = new System.Drawing.Size(53, 18);
-            this.userID.TabIndex = 171;
-            this.userID.Text = "userID";
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserID.Location = new System.Drawing.Point(221, 117);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(53, 18);
+            this.lblUserID.TabIndex = 171;
+            this.lblUserID.Text = "userID";
             // 
             // label16
             // 
@@ -111,7 +116,7 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label13.Location = new System.Drawing.Point(33, 330);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 19);
+            this.label13.Size = new System.Drawing.Size(67, 19);
             this.label13.TabIndex = 162;
             this.label13.Text = "Pages: ";
             // 
@@ -148,55 +153,55 @@
             this.label1.TabIndex = 159;
             this.label1.Text = "Update MyAccount";
             // 
-            // txtSurname
+            // tbSurname
             // 
-            this.txtSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSurname.Location = new System.Drawing.Point(213, 212);
-            this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(245, 26);
-            this.txtSurname.TabIndex = 179;
+            this.tbSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSurname.Location = new System.Drawing.Point(213, 212);
+            this.tbSurname.Name = "tbSurname";
+            this.tbSurname.Size = new System.Drawing.Size(245, 26);
+            this.tbSurname.TabIndex = 179;
             // 
-            // comboBoxActiv
+            // cbActivated
             // 
-            this.comboBoxActiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxActiv.FormattingEnabled = true;
-            this.comboBoxActiv.Location = new System.Drawing.Point(213, 364);
-            this.comboBoxActiv.Name = "comboBoxActiv";
-            this.comboBoxActiv.Size = new System.Drawing.Size(245, 28);
-            this.comboBoxActiv.TabIndex = 178;
+            this.cbActivated.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbActivated.FormattingEnabled = true;
+            this.cbActivated.Location = new System.Drawing.Point(213, 364);
+            this.cbActivated.Name = "cbActivated";
+            this.cbActivated.Size = new System.Drawing.Size(245, 28);
+            this.cbActivated.TabIndex = 178;
             // 
-            // txtEmail
+            // tbEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(213, 249);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(245, 26);
-            this.txtEmail.TabIndex = 176;
+            this.tbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbEmail.Location = new System.Drawing.Point(213, 249);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(245, 26);
+            this.tbEmail.TabIndex = 176;
             // 
-            // comboBoxAdmin
+            // cbAdmin
             // 
-            this.comboBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxAdmin.FormattingEnabled = true;
-            this.comboBoxAdmin.Location = new System.Drawing.Point(213, 326);
-            this.comboBoxAdmin.Name = "comboBoxAdmin";
-            this.comboBoxAdmin.Size = new System.Drawing.Size(245, 28);
-            this.comboBoxAdmin.TabIndex = 175;
+            this.cbAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAdmin.FormattingEnabled = true;
+            this.cbAdmin.Location = new System.Drawing.Point(213, 326);
+            this.cbAdmin.Name = "cbAdmin";
+            this.cbAdmin.Size = new System.Drawing.Size(245, 28);
+            this.cbAdmin.TabIndex = 175;
             // 
-            // txtName
+            // tbName
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(213, 176);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(245, 26);
-            this.txtName.TabIndex = 174;
+            this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbName.Location = new System.Drawing.Point(213, 176);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(245, 26);
+            this.tbName.TabIndex = 174;
             // 
-            // txtIdentityNumber
+            // tbIdentityNo
             // 
-            this.txtIdentityNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdentityNumber.Location = new System.Drawing.Point(213, 141);
-            this.txtIdentityNumber.Name = "txtIdentityNumber";
-            this.txtIdentityNumber.Size = new System.Drawing.Size(245, 26);
-            this.txtIdentityNumber.TabIndex = 173;
+            this.tbIdentityNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdentityNo.Location = new System.Drawing.Point(213, 141);
+            this.tbIdentityNo.Name = "tbIdentityNo";
+            this.tbIdentityNo.Size = new System.Drawing.Size(245, 26);
+            this.tbIdentityNo.TabIndex = 173;
             // 
             // label5
             // 
@@ -236,14 +241,15 @@
             this.btnUpdate.Size = new System.Drawing.Size(80, 61);
             this.btnUpdate.TabIndex = 180;
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // txtPassword
+            // tbPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(213, 287);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(245, 26);
-            this.txtPassword.TabIndex = 184;
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(213, 287);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(245, 26);
+            this.tbPassword.TabIndex = 184;
             // 
             // label3
             // 
@@ -256,24 +262,84 @@
             this.label3.TabIndex = 183;
             this.label3.Text = "Password:";
             // 
+            // lblIdentityNo
+            // 
+            this.lblIdentityNo.AutoSize = true;
+            this.lblIdentityNo.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblIdentityNo.ForeColor = System.Drawing.Color.Red;
+            this.lblIdentityNo.Location = new System.Drawing.Point(465, 150);
+            this.lblIdentityNo.Name = "lblIdentityNo";
+            this.lblIdentityNo.Size = new System.Drawing.Size(42, 16);
+            this.lblIdentityNo.TabIndex = 185;
+            this.lblIdentityNo.Text = "label2";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblName.ForeColor = System.Drawing.Color.Red;
+            this.lblName.Location = new System.Drawing.Point(465, 185);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(42, 16);
+            this.lblName.TabIndex = 186;
+            this.lblName.Text = "label4";
+            // 
+            // lblSurname
+            // 
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblSurname.ForeColor = System.Drawing.Color.Red;
+            this.lblSurname.Location = new System.Drawing.Point(465, 221);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(42, 16);
+            this.lblSurname.TabIndex = 187;
+            this.lblSurname.Text = "label8";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblEmail.ForeColor = System.Drawing.Color.Red;
+            this.lblEmail.Location = new System.Drawing.Point(465, 258);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(48, 16);
+            this.lblEmail.TabIndex = 188;
+            this.lblEmail.Text = "label11";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblPassword.ForeColor = System.Drawing.Color.Red;
+            this.lblPassword.Location = new System.Drawing.Point(465, 294);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(49, 16);
+            this.lblPassword.TabIndex = 189;
+            this.lblPassword.Text = "label12";
+            // 
             // UpdateMyAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.lblSurname);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblIdentityNo);
+            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.txtSurname);
-            this.Controls.Add(this.comboBoxActiv);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.comboBoxAdmin);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtIdentityNumber);
+            this.Controls.Add(this.tbSurname);
+            this.Controls.Add(this.cbActivated);
+            this.Controls.Add(this.tbEmail);
+            this.Controls.Add(this.cbAdmin);
+            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.tbIdentityNo);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.userID);
+            this.Controls.Add(this.lblUserID);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label19);
@@ -291,7 +357,7 @@
 
         #endregion
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label userID;
+        private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label19;
@@ -299,16 +365,21 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtSurname;
-        private System.Windows.Forms.ComboBox comboBoxActiv;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.ComboBox comboBoxAdmin;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtIdentityNumber;
+        private System.Windows.Forms.TextBox tbSurname;
+        private System.Windows.Forms.ComboBox cbActivated;
+        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.ComboBox cbAdmin;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbIdentityNo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button buttonBack;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblIdentityNo;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPassword;
     }
 }

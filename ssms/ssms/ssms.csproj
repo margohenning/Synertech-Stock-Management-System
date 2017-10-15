@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataClasses\ItemMain.cs" />
+    <Compile Include="DataClasses\ReaderMain.cs" />
+    <Compile Include="DataClasses\SettingsMain.cs" />
     <Compile Include="Pages\Items\ScanItemsInStore.cs">
       <SubType>UserControl</SubType>
     </Compile>

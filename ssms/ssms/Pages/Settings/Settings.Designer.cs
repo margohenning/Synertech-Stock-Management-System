@@ -30,16 +30,17 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewSettings = new System.Windows.Forms.DataGridView();
-            this.buttonExportPDF = new System.Windows.Forms.Button();
-            this.buttonUpdateSettings = new System.Windows.Forms.Button();
-            this.buttonAddSettings = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SettingsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SettingsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SettingsSelect = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountReaders = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountAntennas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonExportPDF = new System.Windows.Forms.Button();
+            this.buttonUpdateSettings = new System.Windows.Forms.Button();
+            this.buttonAddSettings = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +76,42 @@
             this.dataGridViewSettings.Size = new System.Drawing.Size(638, 397);
             this.dataGridViewSettings.TabIndex = 81;
             // 
+            // SettingsID
+            // 
+            this.SettingsID.HeaderText = "Settings ID";
+            this.SettingsID.Name = "SettingsID";
+            this.SettingsID.ReadOnly = true;
+            // 
+            // SettingsName
+            // 
+            this.SettingsName.HeaderText = "Settings Name";
+            this.SettingsName.Name = "SettingsName";
+            this.SettingsName.ReadOnly = true;
+            // 
+            // SettingsSelect
+            // 
+            this.SettingsSelect.HeaderText = "Settings Select";
+            this.SettingsSelect.Name = "SettingsSelect";
+            this.SettingsSelect.ReadOnly = true;
+            // 
+            // AmountReaders
+            // 
+            this.AmountReaders.HeaderText = "Amount of Readers";
+            this.AmountReaders.Name = "AmountReaders";
+            this.AmountReaders.ReadOnly = true;
+            // 
+            // AmountAntennas
+            // 
+            this.AmountAntennas.HeaderText = "Amount of Antennas";
+            this.AmountAntennas.Name = "AmountAntennas";
+            this.AmountAntennas.ReadOnly = true;
+            // 
+            // StoreName
+            // 
+            this.StoreName.HeaderText = "Store Name";
+            this.StoreName.Name = "StoreName";
+            this.StoreName.ReadOnly = true;
+            // 
             // buttonExportPDF
             // 
             this.buttonExportPDF.BackColor = System.Drawing.Color.Silver;
@@ -89,6 +126,7 @@
             this.buttonExportPDF.TabIndex = 91;
             this.buttonExportPDF.Text = "Export PDF";
             this.buttonExportPDF.UseVisualStyleBackColor = false;
+            this.buttonExportPDF.Click += new System.EventHandler(this.buttonExportPDF_Click);
             // 
             // buttonUpdateSettings
             // 
@@ -138,41 +176,9 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // SettingsID
+            // saveFileDialog1
             // 
-            this.SettingsID.HeaderText = "Settings ID";
-            this.SettingsID.Name = "SettingsID";
-            this.SettingsID.ReadOnly = true;
-            // 
-            // SettingsName
-            // 
-            this.SettingsName.HeaderText = "Settings Name";
-            this.SettingsName.Name = "SettingsName";
-            this.SettingsName.ReadOnly = true;
-            // 
-            // SettingsSelect
-            // 
-            this.SettingsSelect.HeaderText = "Settings Select";
-            this.SettingsSelect.Name = "SettingsSelect";
-            this.SettingsSelect.ReadOnly = true;
-            // 
-            // AmountReaders
-            // 
-            this.AmountReaders.HeaderText = "Amount of Readers";
-            this.AmountReaders.Name = "AmountReaders";
-            this.AmountReaders.ReadOnly = true;
-            // 
-            // AmountAntennas
-            // 
-            this.AmountAntennas.HeaderText = "Amount of Antennas";
-            this.AmountAntennas.Name = "AmountAntennas";
-            this.AmountAntennas.ReadOnly = true;
-            // 
-            // StoreName
-            // 
-            this.StoreName.HeaderText = "Store Name";
-            this.StoreName.Name = "StoreName";
-            this.StoreName.ReadOnly = true;
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // Settings
             // 
@@ -187,6 +193,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Settings";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,5 +214,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountReaders;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountAntennas;
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreName;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

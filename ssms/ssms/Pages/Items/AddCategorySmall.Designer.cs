@@ -124,6 +124,7 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // AddCategorySmall
             // 
@@ -140,6 +141,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddCategorySmall";
             this.Size = new System.Drawing.Size(283, 272);
+            this.Load += new System.EventHandler(this.AddCategorySmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
