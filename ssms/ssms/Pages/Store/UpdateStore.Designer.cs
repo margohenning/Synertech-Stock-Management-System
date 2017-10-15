@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.StoreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StoreLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSur = new System.Windows.Forms.TextBox();
@@ -39,9 +42,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnlogin = new System.Windows.Forms.Button();
-            this.StoreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StoreLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +62,24 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 95;
+            // 
+            // StoreID
+            // 
+            this.StoreID.HeaderText = "Store ID";
+            this.StoreID.Name = "StoreID";
+            this.StoreID.ReadOnly = true;
+            // 
+            // StoreName
+            // 
+            this.StoreName.HeaderText = "Store Name";
+            this.StoreName.Name = "StoreName";
+            this.StoreName.ReadOnly = true;
+            // 
+            // StoreLocation
+            // 
+            this.StoreLocation.HeaderText = "Store Location";
+            this.StoreLocation.Name = "StoreLocation";
+            this.StoreLocation.ReadOnly = true;
             // 
             // label1
             // 
@@ -158,6 +176,7 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnlogin
             // 
@@ -170,24 +189,6 @@
             this.btnlogin.Size = new System.Drawing.Size(80, 61);
             this.btnlogin.TabIndex = 196;
             this.btnlogin.UseVisualStyleBackColor = true;
-            // 
-            // StoreID
-            // 
-            this.StoreID.HeaderText = "Store ID";
-            this.StoreID.Name = "StoreID";
-            this.StoreID.ReadOnly = true;
-            // 
-            // StoreName
-            // 
-            this.StoreName.HeaderText = "Store Name";
-            this.StoreName.Name = "StoreName";
-            this.StoreName.ReadOnly = true;
-            // 
-            // StoreLocation
-            // 
-            this.StoreLocation.HeaderText = "Store Location";
-            this.StoreLocation.Name = "StoreLocation";
-            this.StoreLocation.ReadOnly = true;
             // 
             // UpdateStore
             // 

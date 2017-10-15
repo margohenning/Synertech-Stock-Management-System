@@ -141,6 +141,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddBrandSmall";
             this.Size = new System.Drawing.Size(283, 272);
+            this.Load += new System.EventHandler(this.AddBrandSmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

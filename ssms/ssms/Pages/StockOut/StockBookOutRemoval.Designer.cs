@@ -39,6 +39,10 @@
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.barcode = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.StoreLoc = new System.Windows.Forms.Label();
@@ -55,10 +59,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(26, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 33);
+            this.label1.Size = new System.Drawing.Size(142, 33);
             this.label1.TabIndex = 92;
             this.label1.Text = "Items Out";
             // 
@@ -171,6 +171,7 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -198,6 +199,46 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(324, 291);
             this.panel1.TabIndex = 263;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(134, 251);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(14, 15);
+            this.label12.TabIndex = 198;
+            this.label12.Text = "a";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(134, 224);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(14, 15);
+            this.label15.TabIndex = 197;
+            this.label15.Text = "a";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(13, 251);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(48, 15);
+            this.label17.TabIndex = 196;
+            this.label17.Text = "Project:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(13, 224);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(54, 15);
+            this.label18.TabIndex = 195;
+            this.label18.Text = "Reason:";
             // 
             // barcode
             // 
@@ -358,46 +399,6 @@
             this.label11.Size = new System.Drawing.Size(89, 15);
             this.label11.TabIndex = 159;
             this.label11.Text = "Product Name:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(134, 251);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(14, 15);
-            this.label12.TabIndex = 198;
-            this.label12.Text = "a";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(134, 224);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(14, 15);
-            this.label15.TabIndex = 197;
-            this.label15.Text = "a";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(13, 251);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(48, 15);
-            this.label17.TabIndex = 196;
-            this.label17.Text = "Project:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(13, 224);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(54, 15);
-            this.label18.TabIndex = 195;
-            this.label18.Text = "Reason:";
             // 
             // StockBookOutRemoval
             // 
