@@ -216,7 +216,9 @@ namespace ssms.Pages
 
         private void comboBoxSettingsName_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             reader.Clear();
+
             int index = comboBoxSettingsName.SelectedIndex;
             int setid = setList[index].SettingsID;
 
@@ -248,12 +250,49 @@ namespace ssms.Pages
                     }
 
                 }
-                readerBackUp = reader;
+
                 dataGridViewReaders.Rows.Clear();
                 for (int x = 0; x < reader.Count; x++)
                 {
                     dataGridViewReaders.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
                 }
+            }
+
+            readerBackUp.Clear();
+
+            int indexR = comboBoxSettingsName.SelectedIndex;
+            int setidR = setList[indexR].SettingsID;
+
+            List<LTS.Reader> ri = DAT.DataAccess.GetReader().Where(w => w.SettingsID == setidR).ToList();
+            if (ri != null)
+            {
+                for (int d = 0; d < ri.Count; d++)
+                {
+                    Reader red = new Reader();
+                    red.IPaddress = ri[d].IPaddress;
+                    red.numAntennas = ri[d].NumAntennas;
+                    red.readerID = ri[d].ReaderID;
+                    List<LTS.Antenna> ant = DAT.DataAccess.GetAntenna().Where(c => c.ReaderID == red.readerID).ToList();
+                    if (ant != null)
+                    {
+                        for (int k = 0; k < ant.Count; k++)
+                        {
+                            antenna a = new antenna();
+                            a.antennaID = ant[k].AntennaID;
+                            a.antennaNumber = ant[k].AntennaNumber;
+                            a.rxPower = ant[k].RxPower;
+                            a.txPower = ant[k].TxPower;
+
+                            red.antenna.Add(a);
+                        }
+                        readerBackUp.Add(red);
+
+
+                    }
+
+                }
+
+                
             }
 
         }
@@ -262,6 +301,10 @@ namespace ssms.Pages
         {
             int antToAdd = 0;
             int antAdded = 0;
+            int antToDel = 0;
+            int antDeleted = 0;
+            int rToDel = 0;
+            int rDeleted = 0;
             bool done = false;
             LTS.Settings s;
             bool fail = false;
@@ -301,8 +344,7 @@ namespace ssms.Pages
                                 int rid = DAT.DataAccess.AddReader(r);
                                 if (rid != -1)
                                 {
-
-                                    for(int y = 0; y < toAdd[q].antenna.Count; y++)
+                                    for (int y = 0; y < toAdd[q].antenna.Count; y++)
                                     {
                                         LTS.Antenna a = new LTS.Antenna();
                                         a.AntennaNumber = toAdd[q].antenna[y].antennaNumber;
@@ -322,6 +364,8 @@ namespace ssms.Pages
 
 
                                     }
+
+
                                 }
                                 else
                                 {
@@ -332,26 +376,95 @@ namespace ssms.Pages
 
                             }
 
+                            if (antAdded == antToAdd)
+                            {
+                                List<Reader> stay = new List<Reader>();
+                                stay = reader.Where(i => i.readerID != 0).ToList();
+                                for(int x = 0; x < stay.Count; x++)
+                                {
+                                    Reader b = new Reader();
+                                    b = stay[x];
+                                    Reader c = new Reader();
+                                    c = readerBackUp.Where(t => t.readerID == b.readerID).FirstOrDefault();
+                                    if (c != null)
+                                    {
+                                        int ind = readerBackUp.IndexOf(c);
+                                        readerBackUp.RemoveAt(ind);
+                                    }
+                                    
+                                    
+                                    
+                                }
+                                if (readerBackUp.Count != 0)
+                                {
+                                    rToDel = readerBackUp.Count;
+                                    for (int r = 0; r < readerBackUp.Count; r++)
+                                    {
+                                        antToDel = antToDel + readerBackUp[r].numAntennas;
+                                        for(int z = 0; z < readerBackUp[r].antenna.Count; z++)
+                                        {
+                                            int aid = readerBackUp[r].antenna[z].antennaID;
+                                            bool remA = DAT.DataAccess.RemoveAntenna(aid);
+                                            if (remA )
+                                            {
+                                                antDeleted++;
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
+                                                ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+                                            }
+
+
+                                        }
+
+                                        int reID = readerBackUp[r].readerID;
+                                        bool remR = DAT.DataAccess.RemoveReader(reID);
+                                        if (remR)
+                                        {
+                                            rDeleted++;
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
+                                            ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+                                        }
+
+                                    }
+                                    if(antDeleted==antToDel && rDeleted == rToDel)
+                                    {
+                                        MessageBox.Show("The setting was updated succesfully!");
+                                        ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
+                                        ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("The setting was updated succesfully!");
+                                    ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+                                }
+                                
+                            }
+                            else
+                            {
+                                MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
+                                ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+                            }
+
+
+
                         }
                         else
                         {
-                            List<Reader> toEdit = reader.Where(i => i.readerID != 0).ToList();
-                            for (int l = 0; l < toEdit.Count; l++)
-                            {
-                                Reader old = readerBackUp.Where(o => o.readerID == toEdit[l].readerID).FirstOrDefault();
-                            }
+                            MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
+                            ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+                            
 
                         }
-
-                        else
-                        {
-                            List<Reader> toEdit = reader.Where(i => i.readerID != 0).ToList();
-                            for(int l = 0; l < toEdit.Count; l++)
-                            {
-                                Reader old = readerBackUp.Where(o => o.readerID == toEdit[l].readerID).FirstOrDefault();
-                            }
-
-                        }                        
 
 
                     }
@@ -373,16 +486,7 @@ namespace ssms.Pages
                 lblStore.Visible = true;
             }
 
-            if (antAdded == antToAdd)
-            {
-                MessageBox.Show("The setting was updated succesfully!");
-                ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
-            }
-            else
-            {
-                MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
-                ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
-            }
+            
         }
     }
 }
