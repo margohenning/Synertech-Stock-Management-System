@@ -32,9 +32,9 @@
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnC = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -43,6 +43,15 @@
             this.lbxMissing = new System.Windows.Forms.ListBox();
             this.lbxIn = new System.Windows.Forms.ListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.setName = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbReader = new System.Windows.Forms.ListBox();
+            this.lblConnect = new System.Windows.Forms.Label();
+            this.lblStartRead = new System.Windows.Forms.Label();
+            this.lblStop = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -64,6 +73,7 @@
             this.comboBoxStore.Name = "comboBoxStore";
             this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 322;
+            this.comboBoxStore.SelectedIndexChanged += new System.EventHandler(this.comboBoxStore_SelectedIndexChanged);
             // 
             // button4
             // 
@@ -92,53 +102,56 @@
             this.label1.TabIndex = 316;
             this.label1.Text = "Scan Items in Store";
             // 
-            // button5
+            // btnC
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.DimGray;
-            this.button5.Image = global::ssms.Properties.Resources.icons8_RFID_Signal_64;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(3, 87);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(150, 35);
-            this.button5.TabIndex = 329;
-            this.button5.Text = "Connect";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnC.BackColor = System.Drawing.Color.White;
+            this.btnC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnC.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnC.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnC.ForeColor = System.Drawing.Color.DimGray;
+            this.btnC.Image = global::ssms.Properties.Resources.icons8_RFID_Signal_64;
+            this.btnC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnC.Location = new System.Drawing.Point(3, 87);
+            this.btnC.Name = "btnC";
+            this.btnC.Size = new System.Drawing.Size(150, 35);
+            this.btnC.TabIndex = 329;
+            this.btnC.Text = "Connect";
+            this.btnC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnC.UseVisualStyleBackColor = false;
+            this.btnC.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button3
+            // btnStart
             // 
-            this.button3.BackgroundImage = global::ssms.Properties.Resources.play_button__1_;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(3, 129);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 47);
-            this.button3.TabIndex = 327;
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnStart.BackgroundImage = global::ssms.Properties.Resources.play_button__1_;
+            this.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStart.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnStart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStart.Location = new System.Drawing.Point(3, 129);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(67, 47);
+            this.btnStart.TabIndex = 327;
+            this.btnStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button1
+            // btnStop
             // 
-            this.button1.BackgroundImage = global::ssms.Properties.Resources.stop;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(3, 182);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 47);
-            this.button1.TabIndex = 326;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStop.BackgroundImage = global::ssms.Properties.Resources.stop;
+            this.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStop.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnStop.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnStop.Location = new System.Drawing.Point(3, 182);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(67, 47);
+            this.btnStop.TabIndex = 326;
+            this.btnStop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -183,7 +196,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(625, 84);
+            this.label5.Location = new System.Drawing.Point(587, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 23);
             this.label5.TabIndex = 337;
@@ -205,7 +218,7 @@
             this.lbxMissing.ForeColor = System.Drawing.Color.Red;
             this.lbxMissing.FormattingEnabled = true;
             this.lbxMissing.ItemHeight = 19;
-            this.lbxMissing.Location = new System.Drawing.Point(552, 119);
+            this.lbxMissing.Location = new System.Drawing.Point(514, 119);
             this.lbxMissing.Name = "lbxMissing";
             this.lbxMissing.Size = new System.Drawing.Size(261, 346);
             this.lbxMissing.TabIndex = 335;
@@ -225,20 +238,111 @@
             // 
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lbReader);
+            this.panel1.Controls.Add(this.setName);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(795, 119);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(219, 194);
+            this.panel1.TabIndex = 338;
+            this.panel1.Visible = false;
+            // 
+            // setName
+            // 
+            this.setName.AutoSize = true;
+            this.setName.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setName.Location = new System.Drawing.Point(119, 19);
+            this.setName.Name = "setName";
+            this.setName.Size = new System.Drawing.Size(0, 14);
+            this.setName.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 44);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 13);
+            this.label8.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 14);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Settings Name:";
+            // 
+            // lbReader
+            // 
+            this.lbReader.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReader.FormattingEnabled = true;
+            this.lbReader.ItemHeight = 16;
+            this.lbReader.Location = new System.Drawing.Point(18, 44);
+            this.lbReader.Name = "lbReader";
+            this.lbReader.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.lbReader.Size = new System.Drawing.Size(183, 132);
+            this.lbReader.TabIndex = 3;
+            // 
+            // lblConnect
+            // 
+            this.lblConnect.AutoSize = true;
+            this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnect.ForeColor = System.Drawing.Color.Red;
+            this.lblConnect.Location = new System.Drawing.Point(17, 268);
+            this.lblConnect.Name = "lblConnect";
+            this.lblConnect.Size = new System.Drawing.Size(85, 16);
+            this.lblConnect.TabIndex = 339;
+            this.lblConnect.Text = "Connecting...";
+            this.lblConnect.Visible = false;
+            // 
+            // lblStartRead
+            // 
+            this.lblStartRead.AutoSize = true;
+            this.lblStartRead.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartRead.ForeColor = System.Drawing.Color.Red;
+            this.lblStartRead.Location = new System.Drawing.Point(17, 309);
+            this.lblStartRead.Name = "lblStartRead";
+            this.lblStartRead.Size = new System.Drawing.Size(65, 16);
+            this.lblStartRead.TabIndex = 340;
+            this.lblStartRead.Text = "Starting...";
+            this.lblStartRead.Visible = false;
+            // 
+            // lblStop
+            // 
+            this.lblStop.AutoSize = true;
+            this.lblStop.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStop.ForeColor = System.Drawing.Color.Red;
+            this.lblStop.Location = new System.Drawing.Point(17, 353);
+            this.lblStop.Name = "lblStop";
+            this.lblStop.Size = new System.Drawing.Size(64, 16);
+            this.lblStop.TabIndex = 341;
+            this.lblStop.Text = "Stoping...";
+            this.lblStop.Visible = false;
+            // 
             // ScanItemsInStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblStop);
+            this.Controls.Add(this.lblStartRead);
+            this.Controls.Add(this.lblConnect);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbxMissing);
             this.Controls.Add(this.lbxIn);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnC);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxStore);
@@ -246,6 +350,9 @@
             this.Controls.Add(this.label1);
             this.Name = "ScanItemsInStore";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.ScanItemsInStore_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,9 +365,9 @@
         private System.Windows.Forms.ComboBox comboBoxStore;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        public System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnStart;
+        public System.Windows.Forms.Button btnC;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
@@ -268,5 +375,13 @@
         private System.Windows.Forms.ListBox lbxMissing;
         private System.Windows.Forms.ListBox lbxIn;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label setName;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox lbReader;
+        private System.Windows.Forms.Label lblConnect;
+        private System.Windows.Forms.Label lblStartRead;
+        private System.Windows.Forms.Label lblStop;
     }
 }

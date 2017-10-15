@@ -173,7 +173,7 @@ namespace ssms.Pages
             {
                 lblAntenna.Visible = true;
             }
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -203,20 +203,19 @@ namespace ssms.Pages
 
             setList = DAT.DataAccess.GetSettings().Where(i => i.StoreID == sid).ToList();
             List<string> scomb = new List<string>();
-            for(int q = 0; q < setList.Count; q++)
+            for (int q = 0; q < setList.Count; q++)
             {
                 string s = setList[q].SettingsName;
                 scomb.Add(s);
             }
 
             comboBoxSettingsName.DataSource = scomb;
-            
+
 
         }
 
         private void comboBoxSettingsName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             reader.Clear();
             int index = comboBoxSettingsName.SelectedIndex;
             int setid = setList[index].SettingsID;
@@ -233,7 +232,7 @@ namespace ssms.Pages
                     List<LTS.Antenna> ant = DAT.DataAccess.GetAntenna().Where(c => c.ReaderID == re.readerID).ToList();
                     if (ant != null)
                     {
-                        for(int k = 0; k < ant.Count; k++)
+                        for (int k = 0; k < ant.Count; k++)
                         {
                             antenna a = new antenna();
                             a.antennaID = ant[k].AntennaID;
@@ -256,7 +255,7 @@ namespace ssms.Pages
                     dataGridViewReaders.Rows.Add(reader[x].IPaddress, reader[x].numAntennas);
                 }
             }
-            
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -275,7 +274,7 @@ namespace ssms.Pages
                         int index = comboBoxSettingsName.SelectedIndex;
                         s = setList[index];
                         done = true;
-                        
+
                     }
                     else
                     {
@@ -283,7 +282,7 @@ namespace ssms.Pages
                         s = setList[index];
                         s.SettingsName = txtNewSettingsName.Text;
                         done = DAT.DataAccess.UpdateSettings(s);
-                        
+
 
                     }
 
@@ -292,7 +291,7 @@ namespace ssms.Pages
                         List<Reader> toAdd = reader.Where(i => i.readerID == 0).ToList();
                         if (toAdd != null)
                         {
-                            for (int q = 0; q < toAdd.Count;q++)
+                            for (int q = 0; q < toAdd.Count; q++)
                             {
                                 LTS.Reader r = new LTS.Reader();
                                 r.IPaddress = toAdd[q].IPaddress;
@@ -302,6 +301,7 @@ namespace ssms.Pages
                                 int rid = DAT.DataAccess.AddReader(r);
                                 if (rid != -1)
                                 {
+
                                     for(int y = 0; y < toAdd[q].antenna.Count; y++)
                                     {
                                         LTS.Antenna a = new LTS.Antenna();
@@ -328,11 +328,21 @@ namespace ssms.Pages
                                     MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
                                     ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
                                 }
-                         
+
 
                             }
 
                         }
+                        else
+                        {
+                            List<Reader> toEdit = reader.Where(i => i.readerID != 0).ToList();
+                            for (int l = 0; l < toEdit.Count; l++)
+                            {
+                                Reader old = readerBackUp.Where(o => o.readerID == toEdit[l].readerID).FirstOrDefault();
+                            }
+
+                        }
+
                         else
                         {
                             List<Reader> toEdit = reader.Where(i => i.readerID != 0).ToList();
@@ -341,8 +351,8 @@ namespace ssms.Pages
                                 Reader old = readerBackUp.Where(o => o.readerID == toEdit[l].readerID).FirstOrDefault();
                             }
 
-                        }
-                        
+                        }                        
+
 
                     }
                     else
@@ -361,6 +371,17 @@ namespace ssms.Pages
             else
             {
                 lblStore.Visible = true;
+            }
+
+            if (antAdded == antToAdd)
+            {
+                MessageBox.Show("The setting was updated succesfully!");
+                ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
+            }
+            else
+            {
+                MessageBox.Show("Sorry, something went wrong, the setting was not updated!");
+                ((Main)this.Parent.Parent).ChangeView<Settings.Settings>();
             }
         }
     }
