@@ -15,16 +15,12 @@ namespace ssms.Pages.Items
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
         List<LTS.Store> listS;
+        List<LTS.Barcode> listBar;
         public AddStock()
         {
             InitializeComponent();
         }
-
-        
-
-        
-
-        
+ 
         //to change the content of the small panel
         public void ChangeView<T>() where T : Control, new()
         {
@@ -69,12 +65,13 @@ namespace ssms.Pages.Items
                 S.Add(listS[x].StoreName);
             }
             comboBoxStore.DataSource = S;
-
+            
             btnlogin.Enabled = true;
             
             comboBoxStore.Enabled = true;
         }
 
+        //Devon
         private void AddStock_Load(object sender, EventArgs e)
         {
            
@@ -87,6 +84,17 @@ namespace ssms.Pages.Items
                 S.Add(listS[x].StoreName);
             }
             comboBoxStore.DataSource = S;
+
+            //load barcode into combo box from db
+            listBar = DAT.DataAccess.GetBarcode().ToList();
+            List<string> Bar = new List<string>();
+
+            for (int x = 0; x < listBar.Count; x++)
+            {
+                Bar.Add(listBar[x].BarcodeNumber);
+            }
+            comboBox1.DataSource = Bar;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -94,9 +102,87 @@ namespace ssms.Pages.Items
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
         }
 
+        //Devon
         private void btnlogin_Click(object sender, EventArgs e)
         {
+            LTS.Item i = new LTS.Item();
 
+            int storeIndex = comboBoxStore.SelectedIndex;
+            int storeID = listS[storeIndex].StoreID;
+            i.StoreID = storeID;
+
+            int barcodeIndex = comboBox1.SelectedIndex;
+            int barcodeID = listBar[barcodeIndex].BarcodeID;
+
+            LTS.Product p = DAT.DataAccess.GetProduct().Where(a => a.BarcodeID == barcodeID).FirstOrDefault();
+            if (p != null)
+            {
+                i.ProductID = p.ProductID;
+                MessageBox.Show("Item was succesfully added to the database");
+                label16.Visible = false;
+            }
+            else {
+                label16.Visible = true;
+                MessageBox.Show("Item was not added to the database!");
+            }
+
+            i.ItemStatus = true;
+            i.TagEPC = textBox2.Text;
+
+            int returnedID = DAT.DataAccess.AddItem(i);
+            textBox2.Text = "";
+
+            if (returnedID == -1)
+            {
+                //shit went wrong
+            }
         }
+
+        //Devon
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
+            try
+            {
+            //    int itemID = Int32.Parse(label5.Text);
+
+            //    int sIndex = comboBoxStore.SelectedIndex;
+            //    int storeID = listS[sIndex].StoreID;
+
+            //    int bIndex = comboBox1.SelectedIndex;
+            //    int barID = listBar[bIndex].BarcodeID;
+
+            //    LTS.Product p = new LTS.Product();
+            //    p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+
+            //    string barcode = comboBox1.Text;
+            //    string prod = p.ProductName;
+            //    string prodDesc = p.ProductDescription;
+
+
+                panel1.Controls.Clear();
+                //public ShowProductDetails(string pBarcode,string pName,string pDescription,string pBrand, string pCategory)
+                Control find = new ShowProductDetails("", "", "","","");
+                find.Parent = panel1;
+                find.Dock = DockStyle.Fill;
+                find.BringToFront();
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        //Devon
+        private void comboBoxStore_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            comboBoxStore.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxStore.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+        
     }
 }
