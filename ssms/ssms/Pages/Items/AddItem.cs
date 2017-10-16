@@ -160,6 +160,7 @@ namespace ssms.Pages.Items
 
         private void button2_Click(object sender, EventArgs e)
         {
+            epc = "";
             int iStore = comboBoxStore.SelectedIndex;
             LTS.Store s = listS[iStore];
 
@@ -265,6 +266,14 @@ namespace ssms.Pages.Items
             else
             {
                 lblConnect.Text = "Not Connected!";
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
             }
             return true;
 
