@@ -326,19 +326,15 @@ namespace ssms.Pages.Items
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-           
-
-        }
+       
 
         //read tags
         void ir_TagRead(TagInfo tag, EventArgs e)
         {
             if (tag != null)
             {
-               epc = tag.TagNo;
+                string Tag = tag.TagNo;
+                epc = Tag;
                     
                 
 
@@ -346,6 +342,6 @@ namespace ssms.Pages.Items
             }
         }
 
-
+        
     }
 }
