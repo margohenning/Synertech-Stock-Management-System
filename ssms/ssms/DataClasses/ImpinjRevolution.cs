@@ -41,8 +41,7 @@ namespace ssms.DataClasses
                 settings.Report.IncludeAntennaPortNumber = true;
                 
                 // Set the reader mode, search mode and session
-                settings.ReaderMode = ReaderMode.AutoSetDenseReader;     //AutoSetDenseReader;    //KM   DenseReaderM8;
-                settings.SearchMode = SearchMode.DualTarget;
+                
                 settings.Session = 2;
                 
                 LowDutyCycleSettings ldc = new LowDutyCycleSettings();  //KM
@@ -74,7 +73,7 @@ namespace ssms.DataClasses
                 else
                 {
                     settings.ReaderMode = ReaderMode.AutoSetDenseReader;     //AutoSetDenseReader;    //KM   DenseReaderM8;
-                    settings.SearchMode = SearchMode.SingleTarget;
+                    settings.SearchMode = SearchMode.DualTarget;
                 }
 
                 // Apply the newly modified settings.

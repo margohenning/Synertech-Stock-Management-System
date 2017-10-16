@@ -157,6 +157,7 @@
             this.Controls.Add(this.label11);
             this.Name = "ShowProductDetails";
             this.Size = new System.Drawing.Size(283, 272);
+            this.Load += new System.EventHandler(this.ShowProductDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

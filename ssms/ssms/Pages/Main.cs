@@ -41,58 +41,92 @@ namespace ssms.Pages
 
         private void buttonBooks_Click(object sender, EventArgs e)
         {
-            ChangeView<Pages.Items.Items>();
+            if (((Form1)this.Parent.Parent).scan != true)
+            {
+                ChangeView<Pages.Items.Items>();
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeView<StockOut.StockOut>();
+            if (((Form1)this.Parent.Parent).scan != true)
+            {
+                ChangeView<StockOut.StockOut>();
+            }
         }
+            
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ChangeView<Store.Store>();
+            if (((Form1)this.Parent.Parent).scan != true)
+            {
+                ChangeView<Store.Store>();
+            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ChangeView<Pages.Settings.Settings>();
+            if (((Form1)this.Parent.Parent).scan != true)
+            {
+                ChangeView<Pages.Settings.Settings>();
+            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (((Form1)this.Parent.Parent).loggedIn.UserAdmin != true ) {
+            if (((Form1)this.Parent.Parent).scan != true)
+            {
+                if (((Form1)this.Parent.Parent).loggedIn.UserAdmin != true)
+                {
 
-                MessageBox.Show("Sorry you do not have Admin Permission to access the Users section.");
-                          
+                    MessageBox.Show("Sorry you do not have Admin Permission to access the Users section.");
+
+                }
+                else
+                {
+                    ChangeView<Users>();
+                }
             }
-            else {
-                ChangeView<Users>();
-            } 
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ChangeView<MyAccount>();
+            if (((Form1)this.Parent.Parent).scan != true)
+            {
+                ChangeView<MyAccount>();
+            }
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to log out from the Synertech Items Management System?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (((Form1)this.Parent.Parent).scan != true)
             {
-                ((Form1)this.Parent.Parent).loggedIn = null;
-                ((Form1)this.Parent.Parent).ChangeView<Welcome>();
+                if (MessageBox.Show("Are you sure you want to log out from the Synertech Items Management System?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    ((Form1)this.Parent.Parent).loggedIn = null;
+                    ((Form1)this.Parent.Parent).ChangeView<Welcome>();
+                }
+                else
+                {
+
+                }
             }
-            else
-            {
-                
-            }
+           
             
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ChangeView<Products.Product>();
+            if (((Form1)this.Parent.Parent).scan != true)
+            {
+                ChangeView<Products.Product>();
+            }
+            
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

@@ -18,7 +18,9 @@ namespace ssms.Pages.Items
         public string Brand { get; set; }
         public string Category { get; set; }
 
+
         public ShowProductDetails(string pBarcode, string pName, string pDescription, string pBrand, string pCategory)
+
         {
             InitializeComponent();
             ProductBarcode = pBarcode;
@@ -32,11 +34,13 @@ namespace ssms.Pages.Items
 
         private void ShowProductDetails_Load(object sender, EventArgs e)
         {
+
             barcode.Text = ProductBarcode;
             productName.Text = ProductName;
             ProductDesc.Text = ProductDescription;
             ProductBrand.Text = Brand;
             ProductCat.Text = Category;
+
         }
     }
 }

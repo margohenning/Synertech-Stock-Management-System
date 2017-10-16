@@ -41,7 +41,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnlogin = new System.Windows.Forms.Button();
+
+            this.lblConnect = new System.Windows.Forms.Label();
+          
+
             this.label16 = new System.Windows.Forms.Label();
+
             this.SuspendLayout();
             // 
             // label5
@@ -112,7 +117,9 @@
             this.comboBoxStore.Size = new System.Drawing.Size(325, 33);
             this.comboBoxStore.TabIndex = 240;
 
+
             this.comboBoxStore.SelectedIndexChanged += new System.EventHandler(this.comboBoxStore_SelectedIndexChanged);
+
 
             // 
             // label2
@@ -181,6 +188,7 @@
             this.button2.Text = "RFID";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -214,6 +222,22 @@
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
+
+            // lblConnect
+            // 
+            this.lblConnect.AutoSize = true;
+            this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnect.ForeColor = System.Drawing.Color.Red;
+            this.lblConnect.Location = new System.Drawing.Point(572, 161);
+            this.lblConnect.Name = "lblConnect";
+            this.lblConnect.Size = new System.Drawing.Size(0, 16);
+            this.lblConnect.TabIndex = 340;
+
+            
+  
+  
+  
+  
             // label16
             // 
             this.label16.AutoSize = true;
@@ -226,13 +250,21 @@
             this.label16.TabIndex = 317;
             this.label16.Text = "Please enter information correctly!";
             this.label16.Visible = false;
+
             // 
             // AddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+
+  
+            this.Controls.Add(this.lblConnect);
+          
+          
+
             this.Controls.Add(this.label16);
+
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
@@ -270,6 +302,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ComboBox comboBox1;
+
+      
+  
+        private System.Windows.Forms.Label lblConnect;
+      
+
+      
         private System.Windows.Forms.Label label16;
+
+      
     }
 }

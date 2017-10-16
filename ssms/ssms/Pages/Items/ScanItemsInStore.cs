@@ -19,6 +19,7 @@ namespace ssms.Pages.Items
 {
     public partial class ScanItemsInStore : UserControl
     {
+        bool busy = false;
         List<LTS.Item> dbList = new List<LTS.Item>();
         List<inventory> theList = new List<inventory>();
         List<inventory> missing = new List<inventory>();
@@ -29,7 +30,7 @@ namespace ssms.Pages.Items
         LTS.Settings set = new LTS.Settings();
         SettingsMain sm = new SettingsMain();
         public List<string> check = new List<string>();
-        int firstConnect = 0;
+        
         public ScanItemsInStore()
         {
             InitializeComponent();
@@ -118,7 +119,7 @@ namespace ssms.Pages.Items
         {
             btnStart.Enabled = false;
             btnC.Enabled = true;
-            btnStop.Enabled = false;
+            
             listS = DAT.DataAccess.GetStore().ToList();
             List<string> s = new List<string>();
 
@@ -170,11 +171,14 @@ namespace ssms.Pages.Items
 
         private void button5_Click(object sender, EventArgs e)
         {
+            button4.Enabled = false;
+            button2.Enabled = false;
+            comboBoxStore.Enabled = false;
             lblConnect.Text = "Connecting ...";
             lblStartRead.Visible = false;
             lblStop.Visible = false;
             btnStart.Enabled = false;
-            btnStop.Enabled = false;
+            
             lblConnect.Visible = true;
             sm = null;
             sm = new SettingsMain();
@@ -231,7 +235,9 @@ namespace ssms.Pages.Items
                 lblConnect.Text = "Connected";
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
-                
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+
+
 
             }
             else
@@ -242,6 +248,11 @@ namespace ssms.Pages.Items
 
         private void button3_Click(object sender, EventArgs e)
         {
+            button2.Enabled = false;
+            ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+            button4.Enabled = false;
+            comboBoxStore.Enabled = false;
+            busy = true;
             missing = theList;
             populate();
             lblStartRead.Text = "Starting...";
@@ -271,6 +282,8 @@ namespace ssms.Pages.Items
 
         private void button1_Click(object sender, EventArgs e)
         {
+            button4.Enabled = true;
+            comboBoxStore.Enabled = true;
             DialogResult res = MessageBox.Show("You are about to stop scanning, Click OK to Stop Scanning, or Cancel!", "", MessageBoxButtons.OKCancel);
             if (DialogResult.OK == res)
             {
@@ -288,9 +301,12 @@ namespace ssms.Pages.Items
                     impinjrev[i].Disconnect();
 
                 }
-                lblStop.Text = "Stopped...";
+                lblStop.Text = "Stopped and Disconnected...";
                 lblConnect.Visible = false;
                 lblStartRead.Visible = false;
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                busy = false;
+                button2.Enabled = true;
 
 
             }

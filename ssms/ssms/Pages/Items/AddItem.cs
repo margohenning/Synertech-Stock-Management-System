@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ssms.DataClasses;
 
 namespace ssms.Pages.Items
 {
@@ -16,6 +17,10 @@ namespace ssms.Pages.Items
         List<LTS.Category> listC;
         List<LTS.Store> listS;
         List<LTS.Barcode> listBar;
+        SettingsMain sm = new SettingsMain();
+        List<ImpinjRevolution> impinjrev = new List<ImpinjRevolution>();
+        string epc = "";
+
         public AddStock()
         {
             InitializeComponent();
@@ -200,6 +205,147 @@ namespace ssms.Pages.Items
             comboBoxStore.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            epc = "";
+            int iStore = comboBoxStore.SelectedIndex;
+            LTS.Store s = listS[iStore];
+
+            LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID).FirstOrDefault();
+            if(set != null)
+            {
+                connect(set);
+            }
+            else
+            {
+                lblConnect.Text = ("Settings not found!");
+                
+            }
+        }
+
+        bool connect(LTS.Settings se)
+        {
+            lblConnect.Text = "Connecting...";
+            
+
+            int index = comboBoxStore.SelectedIndex;
+            int storeID = listS[index].StoreID;
+
+            LTS.Settings set = se;
+            
+            sm = null;
+            sm = new SettingsMain();
+            impinjrev.Clear();
+            sm.SettingsID = set.SettingsID;
+            sm.SettingsName = set.SettingsName;
+            sm.SettingsSelect = set.SettingsSelect;
+            sm.StoreID = set.StoreID;
+
+            LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
+            sm.StoreLocation = store.StoreLocation;
+            sm.StoreName = store.StoreName;
+
+            List<LTS.Reader> readers = new List<LTS.Reader>();
+            readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
+            for (int j = 0; j < readers.Count; j++)
+            {
+                ReaderMain rm = new ReaderMain();
+                rm.ReaderID = readers[j].ReaderID;
+                rm.IPaddress = readers[j].IPaddress;
+                rm.NumAntennas = readers[j].NumAntennas;
+                rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+
+                sm.Readers.Add(rm);
+
+            }
+            bool checks = true;
+
+            for (int x = 0; x < sm.Readers.Count; x++)
+            {
+
+                ImpinjRevolution ir = new ImpinjRevolution();
+                ir.ReaderScanMode = ScanMode.ScanItem;
+                ir.HostName = sm.Readers[x].IPaddress;
+                ir.Antennas = sm.Readers[x].antennas;
+
+                ir.TagRead += ir_TagRead;
+                ir.Connect();
+
+                impinjrev.Add(ir);
+                if (!ir.isConnected)
+                {
+                    if (checks == true)
+                    {
+                        checks = false;
+                    }
+
+                }
+            }
+
+            if (checks == true)
+            {
+                lblConnect.Text = "Connected";
+                impinjrev.ForEach(imp =>
+                {
+                    imp.TagRead += ir_TagRead;
+                    imp.StartRead();
+                });
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+                lblConnect.Text = "Reading...";
+                while (epc == "")
+                {
+                    //do nothing
+                }
+                textBox2.Text = epc;
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+                lblConnect.Text = "Disconnected!";
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+
+
+            }
+            else
+            {
+                lblConnect.Text = "Not Connected!";
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+            }
+            return true;
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+           
+
+        }
+
+        //read tags
+        void ir_TagRead(TagInfo tag, EventArgs e)
+        {
+            if (tag != null)
+            {
+               epc = tag.TagNo;
+                    
+                
+
+               
+            }
+        }
+
+
     }
 }
