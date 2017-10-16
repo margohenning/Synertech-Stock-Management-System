@@ -333,7 +333,8 @@ namespace ssms.Pages.Items
         {
             if (tag != null)
             {
-               epc = tag.TagNo;
+                string Tag = tag.TagNo;
+                epc = Tag;
                     
                 
 
