@@ -12,14 +12,32 @@ namespace ssms.Pages.Items
 {
     public partial class ShowProductDetails : UserControl
     {
-        public string ProductBarcode { get { return barcode.Text; } set { barcode.Text = value; } }
-        public string ProductName { get { return productName.Text; } set { productName.Text = value; } }
-        public string ProductDescription { get { return ProductDesc.Text; } set { ProductDesc.Text = value; } }
-        public string Brand { get { return ProductBrand.Text; } set { ProductBrand.Text = value; } }
-        public string Category { get { return ProductCat.Text; } set { ProductCat.Text = value; } }
-        public ShowProductDetails()
+        public string ProductBarcode { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
+        public string Brand { get; set; }
+        public string Category { get; set; }
+
+        public ShowProductDetails(string pBarcode, string pName, string pDescription, string pBrand, string pCategory)
         {
             InitializeComponent();
+            ProductBarcode = pBarcode;
+            ProductName = pName;
+            ProductDescription = pDescription;
+            Brand = pBrand;
+            Category = pCategory;
+
+
+        }
+
+        private void ShowProductDetails_Load(object sender, EventArgs e)
+        {
+            barcode.Text = ProductBarcode;
+            productName.Text = ProductName;
+            ProductDesc.Text = ProductDescription;
+            ProductBrand.Text = Brand;
+            ProductCat.Text = Category;
         }
     }
 }
+
