@@ -38,6 +38,72 @@ namespace ssms.Pages
             ((Main)this.Parent.Parent).ChangeView<DeactivateUser>();
         }
 
+
+        //Devon
+        private void Users_Load(object sender, EventArgs e)
+        {
+            radioButton1.Checked = true;
+        }
+
+        //Devon
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                List<LTS.User> user = new List<LTS.User>();
+                user = DAT.DataAccess.GetUser().ToList();
+                for (int i = 0; i < user.Count; i++)
+                {
+                    dataGridView1.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname,
+                        user[i].UserEmail, user[i].UserAdmin, user[i].UserActivated);
+                }
+            }
+            else
+            {
+                dataGridView1.Rows.Clear();
+            }
+        }
+
+        //Devon
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                List<LTS.User> user = new List<LTS.User>();
+                user = DAT.DataAccess.GetUser().Where(s => s.UserActivated == true).ToList();//list from db
+                for (int i = 0; i < user.Count; i++)
+                {
+                    dataGridView1.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname,
+                        user[i].UserEmail, user[i].UserAdmin, user[i].UserActivated);
+                }
+            }
+            else
+            {
+                dataGridView1.Rows.Clear();
+            }
+        }
+
+        //Devon
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                List<LTS.User> user = new List<LTS.User>();
+                user = DAT.DataAccess.GetUser().Where(s => s.UserActivated == false).ToList();//list from db
+                for (int i = 0; i < user.Count; i++)
+                {
+                    dataGridView1.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname,
+                        user[i].UserEmail, user[i].UserAdmin, user[i].UserActivated);
+                }
+            }
+            else
+            {
+                dataGridView1.Rows.Clear();
+                
+             }
+               
+         }
+
         //Margo
         private void button4_Click(object sender, EventArgs e)
         {
@@ -122,6 +188,7 @@ namespace ssms.Pages
                 pdfDoc.Add(pdfTable);
                 pdfDoc.Close();
                 stream.Close();
+
             }
         }
     }

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ssms.Pages.Items
+
+namespace ssms.DataClasses
 {
     class ItemMain
     {
@@ -12,9 +13,11 @@ namespace ssms.Pages.Items
         public string EPC { get; set; }
         public bool ItemStatus { get; set; }
 
+
         public int StoreID { get; set; }
         public string StoreName { get; set; }
         public string StoreLocation { get; set; }
+
 
         public int ProductID { get; set; }
         public string ProductName { get; set; }

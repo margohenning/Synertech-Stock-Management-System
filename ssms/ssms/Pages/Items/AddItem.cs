@@ -26,11 +26,6 @@ namespace ssms.Pages.Items
             InitializeComponent();
         }
 
-
-
-
-
-
         //to change the content of the small panel
         //Margo
         public void ChangeView<T>() where T : Control, new()
@@ -79,7 +74,7 @@ namespace ssms.Pages.Items
                 S.Add(listS[x].StoreName);
             }
             comboBoxStore.DataSource = S;
-
+            
             btnlogin.Enabled = true;
             button2.Enabled = true;
 
@@ -87,6 +82,7 @@ namespace ssms.Pages.Items
             comboBox1.Enabled = true;
         }
 
+        //Devon
         private void AddStock_Load(object sender, EventArgs e)
         {
            
@@ -99,9 +95,10 @@ namespace ssms.Pages.Items
                 S.Add(listS[x].StoreName);
             }
             comboBoxStore.DataSource = S;
-            
 
-            //load barcode numbers into combo box from db
+
+            //load barcode into combo box from db
+
             listBar = DAT.DataAccess.GetBarcode().ToList();
             List<string> Bar = new List<string>();
 
@@ -112,7 +109,6 @@ namespace ssms.Pages.Items
             comboBox1.DataSource = Bar;
 
 
-
         }
 
         //Margo
@@ -121,41 +117,92 @@ namespace ssms.Pages.Items
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
         }
 
+        //Devon
         private void btnlogin_Click(object sender, EventArgs e)
         {
             LTS.Item i = new LTS.Item();
 
             int storeIndex = comboBoxStore.SelectedIndex;
             int storeID = listS[storeIndex].StoreID;
-            // ons het die storeID, so ons assign dit
+
             i.StoreID = storeID;
-            
+
             int barcodeIndex = comboBox1.SelectedIndex;
             int barcodeID = listBar[barcodeIndex].BarcodeID;
-            //ons het die BarcodeID nou gebruik ons dit om die product te kry wat daaraan behoort
 
             LTS.Product p = DAT.DataAccess.GetProduct().Where(a => a.BarcodeID == barcodeID).FirstOrDefault();
-            //nou het ons die product
-
-            //nou kry ons net die product ID en assign dit
-            i.ProductID = p.ProductID;
-
-            i.ItemStatus = true; // want ons add dit nou eers so dit is nog in stock
-            i.TagEPC = textBox2.Text; // hier moet jy nou nog checks in werk om te kyk of dit nie leeg is nie ens.
-
-            //nou is jy reg om jou nuwe item te add in die db
-
-            int resultID = DAT.DataAccess.AddItem(i);
-
-            if(resultID == -1)
+            if (p != null)
             {
-                //iets is fout
+                i.ProductID = p.ProductID;
+                i.ItemStatus = true;
+                i.TagEPC = textBox2.Text;
+
+                int returnedID = DAT.DataAccess.AddItem(i);
+                textBox2.Text = "";
+
+                if (returnedID == -1)
+                {
+                     MessageBox.Show("Item was not added to the database!");  
+                }
+                else{
+                     MessageBox.Show("Item was succesfully added to the database");
+                }
+                
+                label16.Visible = false;
+            }
+            else {
+                label16.Visible = true;
+                
             }
 
+            
+        }
+
+        //Devon
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
+            try
+            {
+            //    int itemID = Int32.Parse(label5.Text);
+
+            //    int sIndex = comboBoxStore.SelectedIndex;
+            //    int storeID = listS[sIndex].StoreID;
+
+            //    int bIndex = comboBox1.SelectedIndex;
+            //    int barID = listBar[bIndex].BarcodeID;
+
+            //    LTS.Product p = new LTS.Product();
+            //    p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+
+            //    string barcode = comboBox1.Text;
+            //    string prod = p.ProductName;
+            //    string prodDesc = p.ProductDescription;
 
 
+                panel1.Controls.Clear();
+                //public ShowProductDetails(string pBarcode,string pName,string pDescription,string pBrand, string pCategory)
+                Control find = new ShowProductDetails("", "", "","","");
+                find.Parent = panel1;
+                find.Dock = DockStyle.Fill;
+                find.BringToFront();
+
+            }
+            catch
+            {
+
+            }
+        }
 
 
+        //Devon
+        private void comboBoxStore_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            comboBoxStore.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxStore.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void button2_Click(object sender, EventArgs e)
