@@ -13,7 +13,7 @@ namespace ssms.Pages.Items
 {
     public partial class UpdateStock : UserControl
     {
-        List<ItemMain> imList ;//goue gaans
+        
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
         List<LTS.Store> listS;
@@ -279,10 +279,7 @@ namespace ssms.Pages.Items
             
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
     }
 }

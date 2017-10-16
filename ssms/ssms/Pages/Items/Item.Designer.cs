@@ -46,8 +46,7 @@
             this.ItemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 
-            this.ssmsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ssmsDataSet = new ssms.ssmsDataSet();
+            
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -56,8 +55,6 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ssmsDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ssmsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButton4
@@ -236,15 +233,7 @@
             this.StoreName.ReadOnly = true;
             // 
 
-            // ssmsDataSetBindingSource
-            // 
-            this.ssmsDataSetBindingSource.DataSource = this.ssmsDataSet;
-            this.ssmsDataSetBindingSource.Position = 0;
-            // 
-            // ssmsDataSet
-            // 
-            this.ssmsDataSet.DataSetName = "ssmsDataSet";
-            this.ssmsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
 
             // label1
@@ -319,8 +308,7 @@
             this.Size = new System.Drawing.Size(1375, 655);
             this.Load += new System.EventHandler(this.Stock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ssmsDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ssmsDataSet)).EndInit();
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,8 +325,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.BindingSource ssmsDataSetBindingSource;
-        private ssmsDataSet ssmsDataSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TagEPC;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;

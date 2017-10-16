@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 
 namespace ssms.DataClasses
-
-
-namespace ssms.Pages.Items
-
 {
     class ItemMain
     {
