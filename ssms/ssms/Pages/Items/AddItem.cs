@@ -277,12 +277,13 @@ namespace ssms.Pages.Items
 
         }
 
+        //read tags
         void ir_TagRead(TagInfo tag, EventArgs e)
         {
             if (tag != null)
             {
-                string tagEPC = tag.TagNo;
-                    epc = tagEPC;
+               epc = tag.TagNo;
+                    
                 
 
                
