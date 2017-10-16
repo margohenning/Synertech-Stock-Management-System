@@ -4,13 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ssms.DataClasses
+
+
+namespace ssms.Pages.Items
+
 {
     class ItemMain
     {
         public int itemID { get; set; }
         public string EPC { get; set; }
         public bool ItemStatus { get; set; }
+
+
+        public int StoreID { get; set; }
+        public string StoreName { get; set; }
+        public string StoreLocation { get; set; }
+
 
         public int ProductID { get; set; }
         public string ProductName { get; set; }
@@ -27,9 +38,7 @@ namespace ssms.DataClasses
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
 
-        public int StoreID { get; set; }
-        public string StoreName { get; set; }
-        public string StoreLocation { get; set; }
+
 
         public ItemMain()
         {

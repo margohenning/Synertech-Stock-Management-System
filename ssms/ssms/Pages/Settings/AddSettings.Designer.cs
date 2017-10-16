@@ -51,6 +51,11 @@
             this.buttonRemoveReader = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblReader = new System.Windows.Forms.Label();
+            this.lblIP = new System.Windows.Forms.Label();
+            this.lblAntenna = new System.Windows.Forms.Label();
+            this.lblStore = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +63,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblAntenna);
+            this.panel1.Controls.Add(this.lblIP);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.buttonAddAntenna);
@@ -310,7 +317,7 @@
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.buttonBack.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonBack.Location = new System.Drawing.Point(938, 418);
+            this.buttonBack.Location = new System.Drawing.Point(938, 415);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(61, 113);
             this.buttonBack.TabIndex = 264;
@@ -330,12 +337,76 @@
             this.btnAdd.Size = new System.Drawing.Size(80, 61);
             this.btnAdd.TabIndex = 262;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.Red;
+            this.lblName.Location = new System.Drawing.Point(132, 402);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(161, 18);
+            this.lblName.TabIndex = 286;
+            this.lblName.Text = "Settings name invalid!";
+            this.lblName.Visible = false;
+            // 
+            // lblReader
+            // 
+            this.lblReader.AutoSize = true;
+            this.lblReader.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReader.ForeColor = System.Drawing.Color.Red;
+            this.lblReader.Location = new System.Drawing.Point(132, 430);
+            this.lblReader.Name = "lblReader";
+            this.lblReader.Size = new System.Drawing.Size(121, 18);
+            this.lblReader.TabIndex = 287;
+            this.lblReader.Text = "Readers invalid!";
+            this.lblReader.Visible = false;
+            // 
+            // lblIP
+            // 
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.ForeColor = System.Drawing.Color.Red;
+            this.lblIP.Location = new System.Drawing.Point(299, 49);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(136, 18);
+            this.lblIP.TabIndex = 288;
+            this.lblIP.Text = "IP Address Invalid!";
+            this.lblIP.Visible = false;
+            // 
+            // lblAntenna
+            // 
+            this.lblAntenna.AutoSize = true;
+            this.lblAntenna.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAntenna.ForeColor = System.Drawing.Color.Red;
+            this.lblAntenna.Location = new System.Drawing.Point(351, 273);
+            this.lblAntenna.Name = "lblAntenna";
+            this.lblAntenna.Size = new System.Drawing.Size(125, 18);
+            this.lblAntenna.TabIndex = 289;
+            this.lblAntenna.Text = "Antennas Invalid!";
+            this.lblAntenna.Visible = false;
+            // 
+            // lblStore
+            // 
+            this.lblStore.AutoSize = true;
+            this.lblStore.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStore.ForeColor = System.Drawing.Color.Red;
+            this.lblStore.Location = new System.Drawing.Point(132, 370);
+            this.lblStore.Name = "lblStore";
+            this.lblStore.Size = new System.Drawing.Size(142, 18);
+            this.lblStore.TabIndex = 288;
+            this.lblStore.Text = "Store name invalid!";
+            this.lblStore.Visible = false;
             // 
             // AddSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblStore);
+            this.Controls.Add(this.lblReader);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.buttonRemoveReader);
             this.Controls.Add(this.buttonAddReader);
             this.Controls.Add(this.label4);
@@ -384,5 +455,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPaddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn numAntennas;
+        private System.Windows.Forms.Label lblAntenna;
+        private System.Windows.Forms.Label lblIP;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblReader;
+        private System.Windows.Forms.Label lblStore;
     }
 }

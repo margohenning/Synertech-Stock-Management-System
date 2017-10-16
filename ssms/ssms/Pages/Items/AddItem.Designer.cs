@@ -63,7 +63,9 @@
             this.label1.Location = new System.Drawing.Point(20, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
+
             this.label1.Size = new System.Drawing.Size(184, 42);
+
             this.label1.TabIndex = 210;
             this.label1.Text = "Add Items";
             // 
@@ -109,7 +111,9 @@
             this.comboBoxStore.Name = "comboBoxStore";
             this.comboBoxStore.Size = new System.Drawing.Size(325, 33);
             this.comboBoxStore.TabIndex = 240;
+
             this.comboBoxStore.SelectedIndexChanged += new System.EventHandler(this.comboBoxStore_SelectedIndexChanged);
+
             // 
             // label2
             // 

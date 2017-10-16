@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ssms.DataClasses
 {
-    class antenna
+    public class antenna
     {
+        public int antennaID { get; set; }
         public int antennaNumber { get; set; }
         public decimal txPower { get; set; }
         public decimal rxPower { get; set; }

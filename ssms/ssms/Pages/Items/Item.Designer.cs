@@ -45,11 +45,16 @@
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             this.ssmsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ssmsDataSet = new ssms.ssmsDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+
+            
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ssmsDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ssmsDataSet)).BeginInit();
@@ -115,6 +120,7 @@
             this.button4.TabIndex = 83;
             this.button4.Text = "Export PDF";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -229,6 +235,7 @@
             this.StoreName.Name = "StoreName";
             this.StoreName.ReadOnly = true;
             // 
+
             // ssmsDataSetBindingSource
             // 
             this.ssmsDataSetBindingSource.DataSource = this.ssmsDataSet;
@@ -239,6 +246,7 @@
             this.ssmsDataSet.DataSetName = "ssmsDataSet";
             this.ssmsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+
             // label1
             // 
             this.label1.AutoSize = true;
@@ -285,6 +293,12 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -334,5 +348,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreName;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

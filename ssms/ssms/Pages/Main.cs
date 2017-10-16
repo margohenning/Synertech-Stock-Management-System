@@ -94,5 +94,10 @@ namespace ssms.Pages
         {
             ChangeView<Products.Product>();
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

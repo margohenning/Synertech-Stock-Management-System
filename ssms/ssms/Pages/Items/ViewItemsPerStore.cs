@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using ssms.DataClasses;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+
 
 namespace ssms.Pages.Items
 {
@@ -25,10 +27,12 @@ namespace ssms.Pages.Items
             InitializeComponent();
         }
 
+        //Margo
         private void button2_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
         }
+
 
         //Devon
         private void ViewItemsPerStore_Load(object sender, EventArgs e)
@@ -322,15 +326,45 @@ namespace ssms.Pages.Items
             
         }
 
-        //Devon
+        
+        //Margo
         private void button4_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
         }
 
-        //Devon
+        //Margo
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
+            string what = "";
+            string store = "";
+            if (radioButton1.Checked == true)
+            {
+                what = "All";
+            }
+            else if (radioButton2.Checked == true)
+            {
+                what = "Items in stock";
+            }
+            else if (radioButton4.Checked == true)
+            {
+                what = "Items out of stock";
+            }
+            else
+            {
+                what = "All";
+            }
+
+            if(comboBoxStore.SelectedText==null || comboBoxStore.SelectedText == ""|| comboBoxStore.SelectedItem == null)
+            {
+                store = "All";
+            }
+            else
+            {
+                store = comboBoxStore.SelectedText;
+            }
+
+
             iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
             string folderPath = saveFileDialog1.FileName + ".pdf";
 
@@ -344,6 +378,7 @@ namespace ssms.Pages.Items
             pdfTable.WidthPercentage = 100;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.BorderWidth = 0;
+
 
             //Adding Header row
             foreach (DataGridViewColumn column in dataGridView2.Columns)
@@ -376,7 +411,9 @@ namespace ssms.Pages.Items
 
                 }
             }
-            Paragraph writing = new iTextSharp.text.Paragraph("Items in store " + Environment.NewLine + "" + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
+
+            Paragraph writing = new iTextSharp.text.Paragraph("Synertech Stock Management System " + Environment.NewLine + "View Items per Store Information: " + what + "                " + DateTime.Now.ToString() + Environment.NewLine+ "Store Selected: " + store + "                " + Environment.NewLine + Environment.NewLine);
+
 
             using (FileStream stream = new FileStream(folderPath, FileMode.Create))
             {

@@ -47,7 +47,9 @@
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+
             this.label16 = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -259,6 +261,7 @@
             // 
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
+
             // label16
             // 
             this.label16.AutoSize = true;
@@ -272,6 +275,7 @@
             this.label16.Text = "No matches found!";
             this.label16.Visible = false;
             // 
+
             // ViewItemsPerStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -318,6 +322,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemStatus;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+
         private System.Windows.Forms.Label label16;
+
     }
 }

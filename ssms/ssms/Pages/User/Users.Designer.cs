@@ -44,6 +44,9 @@
             this.UserActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,6 +110,7 @@
             this.button4.TabIndex = 93;
             this.button4.Text = "Export PDF";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -212,10 +216,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+
             this.label1.Location = new System.Drawing.Point(40, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 42);
+
             this.label1.TabIndex = 89;
             this.label1.Text = "Users";
             // 
@@ -227,15 +233,23 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
+
             this.button2.Location = new System.Drawing.Point(1129, 282);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(215, 53);
+
             this.button2.TabIndex = 97;
             this.button2.Text = "Deactivate User";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -277,5 +291,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserAdmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserActivated;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

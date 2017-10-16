@@ -20,8 +20,9 @@ namespace ssms.Pages.Items
         {
             InitializeComponent();
         }
- 
+
         //to change the content of the small panel
+        //Margo
         public void ChangeView<T>() where T : Control, new()
         {
             try
@@ -39,19 +40,22 @@ namespace ssms.Pages.Items
             }
         }
 
-        
 
+        //Margo
         private void button5_Click(object sender, EventArgs e)
         {
             btnlogin.Enabled = false;
+            button2.Enabled = false;
             
             comboBoxStore.Enabled = false;
+            comboBox1.Enabled = false;
             ChangeView<Store.AddStoreSmall>();
         }
 
-        
+
 
         //after a store is added in the small panel you need to update the combobox
+        //Margo
         public void doneStore()
         {
             panel1.Controls.Clear();
@@ -67,8 +71,10 @@ namespace ssms.Pages.Items
             comboBoxStore.DataSource = S;
             
             btnlogin.Enabled = true;
-            
+            button2.Enabled = true;
+
             comboBoxStore.Enabled = true;
+            comboBox1.Enabled = true;
         }
 
         //Devon
@@ -85,7 +91,9 @@ namespace ssms.Pages.Items
             }
             comboBoxStore.DataSource = S;
 
+
             //load barcode into combo box from db
+
             listBar = DAT.DataAccess.GetBarcode().ToList();
             List<string> Bar = new List<string>();
 
@@ -95,8 +103,10 @@ namespace ssms.Pages.Items
             }
             comboBox1.DataSource = Bar;
 
+
         }
 
+        //Margo
         private void button1_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
@@ -109,6 +119,7 @@ namespace ssms.Pages.Items
 
             int storeIndex = comboBoxStore.SelectedIndex;
             int storeID = listS[storeIndex].StoreID;
+
             i.StoreID = storeID;
 
             int barcodeIndex = comboBox1.SelectedIndex;
@@ -118,24 +129,28 @@ namespace ssms.Pages.Items
             if (p != null)
             {
                 i.ProductID = p.ProductID;
-                MessageBox.Show("Item was succesfully added to the database");
+                i.ItemStatus = true;
+                i.TagEPC = textBox2.Text;
+
+                int returnedID = DAT.DataAccess.AddItem(i);
+                textBox2.Text = "";
+
+                if (returnedID == -1)
+                {
+                     MessageBox.Show("Item was not added to the database!");  
+                }
+                else{
+                     MessageBox.Show("Item was succesfully added to the database");
+                }
+                
                 label16.Visible = false;
             }
             else {
                 label16.Visible = true;
-                MessageBox.Show("Item was not added to the database!");
+                
             }
 
-            i.ItemStatus = true;
-            i.TagEPC = textBox2.Text;
-
-            int returnedID = DAT.DataAccess.AddItem(i);
-            textBox2.Text = "";
-
-            if (returnedID == -1)
-            {
-                //shit went wrong
-            }
+            
         }
 
         //Devon
@@ -176,6 +191,7 @@ namespace ssms.Pages.Items
             }
         }
 
+
         //Devon
         private void comboBoxStore_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -183,6 +199,7 @@ namespace ssms.Pages.Items
             comboBoxStore.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBoxStore.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
+
         
     }
 }

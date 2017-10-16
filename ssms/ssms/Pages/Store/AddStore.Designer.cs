@@ -53,16 +53,17 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(370, 214);
+            this.label5.Location = new System.Drawing.Point(384, 214);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 25);
+            this.label5.Size = new System.Drawing.Size(50, 25);
             this.label5.TabIndex = 208;
-            this.label5.Text = "Update";
+            this.label5.Text = "Add";
             // 
             // btnlogin
             // 
