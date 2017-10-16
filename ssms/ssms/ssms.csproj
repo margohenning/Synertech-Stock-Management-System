@@ -66,11 +66,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="DataClasses\ComboboxItem.cs" />
     <Compile Include="DataClasses\ItemMain.cs" />
+
     <Compile Include="DataClasses\inventory.cs" />
+    
     <Compile Include="DataClasses\ReaderMain.cs" />
     <Compile Include="DataClasses\SettingsMain.cs" />
+
     <Compile Include="Pages\Items\ScanItemsInStore.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -313,6 +317,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ssmsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ssmsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Welcome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -451,6 +460,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ssmsDataSet.xsc">
+      <DependentUpon>ssmsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ssmsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ssmsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ssmsDataSet.xss">
+      <DependentUpon>ssmsDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
