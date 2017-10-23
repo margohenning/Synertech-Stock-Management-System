@@ -41,11 +41,11 @@ namespace ssms.Pages.Store
             List<LTS.Item> item = new List<LTS.Item>();
 
             store = DAT.DataAccess.GetStore().ToList();
-            item = DAT.DataAccess.GetItem().Where(o => o.ItemID.).ToList();
+            item = DAT.DataAccess.GetItem().ToList();
 
             for (int i = 0; i < item.Count; i++)
             {
-                dataGridView1.Rows.Add(store[i].StoreID, store[i].StoreName, store[i].StoreLocation, ;
+                dataGridView1.Rows.Add(store[i].StoreID, store[i].StoreName, store[i].StoreLocation, 0) ;
             }
         }
 
