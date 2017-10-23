@@ -70,7 +70,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 33);
+            this.label1.Size = new System.Drawing.Size(216, 33);
             this.label1.TabIndex = 89;
             this.label1.Text = "Book Items Out";
             // 
@@ -93,6 +93,7 @@
             this.comboBoxStore.Name = "comboBoxStore";
             this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 242;
+            this.comboBoxStore.SelectedIndexChanged += new System.EventHandler(this.comboBoxStore_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -113,6 +114,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(245, 28);
             this.comboBox1.TabIndex = 244;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -133,6 +135,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(245, 28);
             this.comboBox2.TabIndex = 246;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -436,6 +439,7 @@
             this.Controls.Add(this.label1);
             this.Name = "BookStockOut";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.BookStockOut_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
