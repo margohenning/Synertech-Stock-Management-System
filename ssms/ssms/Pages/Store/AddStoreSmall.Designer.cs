@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.label5 = new System.Windows.Forms.Label();
             this.txtSur = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -125,6 +126,7 @@
             this.button2.Text = "Cancel";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddStoreSmall
             // 
@@ -141,8 +143,10 @@
             this.Controls.Add(this.label1);
             this.Name = "AddStoreSmall";
             this.Size = new System.Drawing.Size(283, 272);
+            this.Load += new System.EventHandler(this.AddStoreSmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
 
         }
 

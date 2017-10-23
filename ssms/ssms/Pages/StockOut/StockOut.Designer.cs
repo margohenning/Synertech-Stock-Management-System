@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -198,6 +199,13 @@
             this.button3.Text = "Items BookOut Removal";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            
+
+            
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // StockOut
             // 
@@ -217,6 +225,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+
         }
 
         #endregion
@@ -235,5 +244,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserSurname;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

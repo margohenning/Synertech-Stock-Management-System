@@ -14,6 +14,7 @@ namespace ssms
 {
     public partial class Form1 : Form
     {
+        public bool scan = false;
         public LTS.User loggedIn;
         public Form1()
         {
@@ -50,15 +51,21 @@ namespace ssms
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (scan!=true) {
+                if (MessageBox.Show("Are you sure you want to exit the Synertech Items Management System?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
 
-            if (MessageBox.Show("Are you sure you want to exit the Synertech Items Management System?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
             else
             {
                 e.Cancel = true;
             }
+            
 
 
         }

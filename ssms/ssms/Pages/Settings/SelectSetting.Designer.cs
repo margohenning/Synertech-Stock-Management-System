@@ -30,6 +30,10 @@
         {
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReaders = new System.Windows.Forms.DataGridView();
+            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
@@ -38,10 +42,7 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +78,30 @@
             this.dataGridViewReaders.Size = new System.Drawing.Size(634, 142);
             this.dataGridViewReaders.TabIndex = 295;
             // 
+            // IPaddress
+            // 
+            this.IPaddress.HeaderText = "IP Address";
+            this.IPaddress.Name = "IPaddress";
+            this.IPaddress.ReadOnly = true;
+            // 
+            // AntennaNumber
+            // 
+            this.AntennaNumber.HeaderText = "Antenna Number";
+            this.AntennaNumber.Name = "AntennaNumber";
+            this.AntennaNumber.ReadOnly = true;
+            // 
+            // TxPower
+            // 
+            this.TxPower.HeaderText = "Tx Power";
+            this.TxPower.Name = "TxPower";
+            this.TxPower.ReadOnly = true;
+            // 
+            // RxPower
+            // 
+            this.RxPower.HeaderText = "Rx Power";
+            this.RxPower.Name = "RxPower";
+            this.RxPower.ReadOnly = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -107,12 +132,13 @@
             this.comboBoxStore.Name = "comboBoxStore";
             this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 290;
+            this.comboBoxStore.SelectedIndexChanged += new System.EventHandler(this.comboBoxStore_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(580, 374);
+            this.label5.Location = new System.Drawing.Point(567, 374);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 25);
             this.label5.TabIndex = 288;
@@ -154,9 +180,10 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(572, 310);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(80, 61);
+            this.btnAdd.Size = new System.Drawing.Size(67, 61);
             this.btnAdd.TabIndex = 287;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // comboBox1
             // 
@@ -166,36 +193,26 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(245, 28);
             this.comboBox1.TabIndex = 299;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // IPaddress
+            // label6
             // 
-            this.IPaddress.HeaderText = "IP Address";
-            this.IPaddress.Name = "IPaddress";
-            this.IPaddress.ReadOnly = true;
-            // 
-            // AntennaNumber
-            // 
-            this.AntennaNumber.HeaderText = "Antenna Number";
-            this.AntennaNumber.Name = "AntennaNumber";
-            this.AntennaNumber.ReadOnly = true;
-            // 
-            // TxPower
-            // 
-            this.TxPower.HeaderText = "Tx Power";
-            this.TxPower.Name = "TxPower";
-            this.TxPower.ReadOnly = true;
-            // 
-            // RxPower
-            // 
-            this.RxPower.HeaderText = "Rx Power";
-            this.RxPower.Name = "RxPower";
-            this.RxPower.ReadOnly = true;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(185, 349);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(339, 22);
+            this.label6.TabIndex = 300;
+            this.label6.Text = "Please choose a valid setting to select!";
+            this.label6.Visible = false;
             // 
             // SelectSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridViewReaders);
@@ -208,6 +225,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SelectSetting";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.SelectSetting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,5 +247,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxPower;
         private System.Windows.Forms.DataGridViewTextBoxColumn RxPower;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
     }
 }

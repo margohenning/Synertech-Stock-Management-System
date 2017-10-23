@@ -112,5 +112,11 @@ namespace ssms.Pages.StockOut
             comboBox2.AutoCompleteSource = AutoCompleteSource.ListItems;
             EPC.Text = comboBox2.GetItemText(comboBox2.SelectedValue);
         }
+        
+        //Margo
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOut>();
+        }
     }
 }

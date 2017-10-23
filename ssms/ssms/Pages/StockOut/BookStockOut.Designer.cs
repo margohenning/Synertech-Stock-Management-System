@@ -1,3 +1,4 @@
+
 ﻿namespace ssms.Pages.StockOut
 {
     partial class BookStockOut

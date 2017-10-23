@@ -14,12 +14,14 @@ namespace ssms.Pages.Products
     {
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
+        List<LTS.Barcode> listBar;
         
         public AddProduct()
         {
             InitializeComponent();
         }
 
+        //Margo
         public void ChangeView<T>() where T : Control, new()
         {
             try
@@ -37,11 +39,11 @@ namespace ssms.Pages.Products
             }
         }
 
-       
 
+        //Margo
         private void button4_Click(object sender, EventArgs e)
         {
-            btnlogin.Enabled = false;
+            btnAdd.Enabled = false;
             comboBoxBrand.Enabled = false;
             comboBoxCategory.Enabled = false;
            
@@ -49,17 +51,27 @@ namespace ssms.Pages.Products
             ChangeView<Items.AddBrandSmall>();
         }
 
+        //Margo
         private void button3_Click(object sender, EventArgs e)
         {
-            btnlogin.Enabled = false;
+            btnAdd.Enabled = false;
             comboBoxBrand.Enabled = false;
             comboBoxCategory.Enabled = false;
             
             ChangeView<Items.AddCategorySmall>();
         }
 
+
+        
+
+        //Marius
         private void AddProduct_Load(object sender, EventArgs e)
         {
+
+            lblBarcodeVal.Visible = false;
+            lblDescVal.Visible = false;
+            lblNameVal.Visible = false;
+
             //load brand names into combo box from db
             listB = DAT.DataAccess.GetBrand().ToList();
             List<string> B = new List<string>();
@@ -84,11 +96,16 @@ namespace ssms.Pages.Products
         }
 
         //after a brand is added in the small panel you need to update the combobox
+        //Margo
         public void doneBrand()
         {
             panel1.Controls.Clear();
             comboBoxBrand.DataSource = null;
-            listB.Clear();
+            if (listB != null)
+            {
+                listB.Clear();
+            }
+            
             listB = DAT.DataAccess.GetBrand().ToList();
             List<string> B = new List<string>();
 
@@ -98,18 +115,22 @@ namespace ssms.Pages.Products
             }
             comboBoxBrand.DataSource = B;
 
-            btnlogin.Enabled = true;
+            btnAdd.Enabled = true;
             comboBoxBrand.Enabled = true;
             comboBoxCategory.Enabled = true;
             
         }
 
         //after a category is added in the small panel you need to update the combobox
+        //Margo
         public void doneCategory()
         {
             panel1.Controls.Clear();
             comboBoxCategory.DataSource = null;
-            listC.Clear();
+            if (listC != null)
+            {
+                listC.Clear();
+            }
             listC = DAT.DataAccess.GetCategory().ToList();
             List<string> C = new List<string>();
 
@@ -119,22 +140,107 @@ namespace ssms.Pages.Products
             }
             comboBoxCategory.DataSource = C;
 
-            btnlogin.Enabled = true;
+            btnAdd.Enabled = true;
             comboBoxBrand.Enabled = true;
             comboBoxCategory.Enabled = true;
            
         }
 
-        
 
+        //Margo
         private void button1_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
         }
 
-        private void btnlogin_Click(object sender, EventArgs e)
+        //Marius
+        private void btnAdd_Click(object sender, EventArgs e)
         {
+            try
+            {
+                LTS.Product prod = new LTS.Product();
 
+                int getBarcodeID = 0;
+                List<string> b = new List<string>();
+                listBar = DAT.DataAccess.GetBarcode().ToList();
+                for (int i = 0; i < listBar.Count; i++)
+                {
+                    b.Add(listBar[i].BarcodeNumber);
+                }
+
+                LTS.Brand brand = new LTS.Brand();
+                brand = DAT.DataAccess.GetBrand().Where(o => o.BrandName == comboBoxBrand.SelectedItem.ToString()).FirstOrDefault();
+
+                LTS.Category cat = new LTS.Category();
+                cat = DAT.DataAccess.GetCategory().Where(o => o.CategoryName == comboBoxCategory.SelectedItem.ToString()).FirstOrDefault();
+
+                prod.ProductName = tbProdName.Text;
+                prod.ProductDescription = tbProdDesc.Text;
+                prod.BrandID = brand.BrandID;
+                prod.CategoryID = cat.CategoryID;
+
+                LTS.Barcode barc = new LTS.Barcode();
+                if (!(b.Contains(tbBarcode.Text)))
+                {
+                    barc.BarcodeNumber = tbBarcode.Text;
+                    DAT.DataAccess.AddBarcode(barc);
+                    barc = DAT.DataAccess.GetBarcode().Where(o => o.BarcodeNumber == tbBarcode.Text).FirstOrDefault();
+                    getBarcodeID = barc.BarcodeID;
+                    prod.BarcodeID = getBarcodeID;
+                }
+                else
+                {
+                    lblBarcodeVal.Visible = true;
+                    lblBarcodeVal.Text = "The barcode value is already in use";
+                }
+
+                //validation
+                if (tbProdName.Text == "")
+                {
+                    lblNameVal.Visible = true;
+                    lblNameVal.Text = "Please enter a product name";
+
+                }if (tbProdDesc.Text == ""){
+
+                    lblDescVal.Visible = true;
+                    lblDescVal.Text = "Please enter a product description";
+                }if (tbBarcode.Text == "")
+                {
+                    lblBarcodeVal.Visible = true;
+                    lblBarcodeVal.Text = "Please enter a barcode number";
+                }
+
+                int ok = -1;
+                if (lblBarcodeVal.Visible == false || lblDescVal.Visible == false || lblNameVal.Visible == false)
+                {
+                    ok = DAT.DataAccess.AddProduct(prod);
+                }
+           
+
+
+                if (ok == -1)
+                {
+                    if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the Product was not Added!"))
+                    {
+                        //navigate to page
+                    }
+                }
+                else
+                {
+                    if (DialogResult.OK == MessageBox.Show("The Product was added successfully!"))
+                    {
+                        
+                        ChangeView<Products.Product>();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (DialogResult.OK == MessageBox.Show("The Product was not added successfully!"))
+                {
+                    //navigate to page
+                }
+            }
         }
     }
 }

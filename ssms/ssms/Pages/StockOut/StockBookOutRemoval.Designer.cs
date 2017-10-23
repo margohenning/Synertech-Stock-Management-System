@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnlogin = new System.Windows.Forms.Button();
@@ -424,6 +425,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+
         }
 
         #endregion
@@ -458,5 +460,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        public System.Windows.Forms.Button button2;
     }
 }

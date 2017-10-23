@@ -39,12 +39,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnlogin = new System.Windows.Forms.Button();
-            this.txtBarcode = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.tbBarcode = new System.Windows.Forms.TextBox();
+            this.tbProdDesc = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbProdName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblNameVal = new System.Windows.Forms.Label();
+            this.lblDescVal = new System.Windows.Forms.Label();
+            this.lblBarcodeVal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button4
@@ -175,34 +178,34 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnlogin
+            // btnAdd
             // 
-            this.btnlogin.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
-            this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(362, 255);
-            this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(80, 61);
-            this.btnlogin.TabIndex = 259;
-            this.btnlogin.UseVisualStyleBackColor = true;
-            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            this.btnAdd.BackgroundImage = global::ssms.Properties.Resources.ok_appproval_acceptance__1_;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Location = new System.Drawing.Point(362, 255);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(80, 61);
+            this.btnAdd.TabIndex = 259;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // txtBarcode
+            // tbBarcode
             // 
-            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarcode.Location = new System.Drawing.Point(197, 142);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(245, 26);
-            this.txtBarcode.TabIndex = 277;
+            this.tbBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBarcode.Location = new System.Drawing.Point(197, 142);
+            this.tbBarcode.Name = "tbBarcode";
+            this.tbBarcode.Size = new System.Drawing.Size(245, 26);
+            this.tbBarcode.TabIndex = 277;
             // 
-            // textBox1
+            // tbProdDesc
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(197, 107);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(245, 26);
-            this.textBox1.TabIndex = 279;
+            this.tbProdDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProdDesc.Location = new System.Drawing.Point(197, 107);
+            this.tbProdDesc.Name = "tbProdDesc";
+            this.tbProdDesc.Size = new System.Drawing.Size(245, 26);
+            this.tbProdDesc.TabIndex = 279;
             // 
             // label6
             // 
@@ -215,13 +218,13 @@
             this.label6.TabIndex = 278;
             this.label6.Text = "Product Description:";
             // 
-            // textBox2
+            // tbProdName
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(197, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(245, 26);
-            this.textBox2.TabIndex = 281;
+            this.tbProdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProdName.Location = new System.Drawing.Point(197, 75);
+            this.tbProdName.Name = "tbProdName";
+            this.tbProdName.Size = new System.Drawing.Size(245, 26);
+            this.tbProdName.TabIndex = 281;
             // 
             // label7
             // 
@@ -234,16 +237,52 @@
             this.label7.TabIndex = 280;
             this.label7.Text = "Product Name:";
             // 
+            // lblNameVal
+            // 
+            this.lblNameVal.AutoSize = true;
+            this.lblNameVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameVal.ForeColor = System.Drawing.Color.Red;
+            this.lblNameVal.Location = new System.Drawing.Point(445, 83);
+            this.lblNameVal.Name = "lblNameVal";
+            this.lblNameVal.Size = new System.Drawing.Size(42, 16);
+            this.lblNameVal.TabIndex = 282;
+            this.lblNameVal.Text = "label2";
+            // 
+            // lblDescVal
+            // 
+            this.lblDescVal.AutoSize = true;
+            this.lblDescVal.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblDescVal.ForeColor = System.Drawing.Color.Red;
+            this.lblDescVal.Location = new System.Drawing.Point(445, 115);
+            this.lblDescVal.Name = "lblDescVal";
+            this.lblDescVal.Size = new System.Drawing.Size(42, 16);
+            this.lblDescVal.TabIndex = 283;
+            this.lblDescVal.Text = "label9";
+            // 
+            // lblBarcodeVal
+            // 
+            this.lblBarcodeVal.AutoSize = true;
+            this.lblBarcodeVal.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblBarcodeVal.ForeColor = System.Drawing.Color.Red;
+            this.lblBarcodeVal.Location = new System.Drawing.Point(445, 150);
+            this.lblBarcodeVal.Name = "lblBarcodeVal";
+            this.lblBarcodeVal.Size = new System.Drawing.Size(49, 16);
+            this.lblBarcodeVal.TabIndex = 284;
+            this.lblBarcodeVal.Text = "label10";
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lblBarcodeVal);
+            this.Controls.Add(this.lblDescVal);
+            this.Controls.Add(this.lblNameVal);
+            this.Controls.Add(this.tbProdName);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbProdDesc);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtBarcode);
+            this.Controls.Add(this.tbBarcode);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
@@ -254,7 +293,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnlogin);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.Name = "AddProduct";
             this.Size = new System.Drawing.Size(1031, 532);
@@ -275,12 +314,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnlogin;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBarcode;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbBarcode;
+        private System.Windows.Forms.TextBox tbProdDesc;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbProdName;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblNameVal;
+        private System.Windows.Forms.Label lblDescVal;
+        private System.Windows.Forms.Label lblBarcodeVal;
     }
 }

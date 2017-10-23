@@ -20,6 +20,7 @@ namespace ssms.Pages.StockOut
         private void label5_Click(object sender, EventArgs e)
         {
 
+
         }
 
         private void StockBookOutRemoval_Load(object sender, EventArgs e)
@@ -46,5 +47,13 @@ namespace ssms.Pages.StockOut
         {
 
         }
+
+        
+        //Margo
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOut>();
+        }
+
     }
 }

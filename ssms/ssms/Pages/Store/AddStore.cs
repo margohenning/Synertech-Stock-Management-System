@@ -15,6 +15,7 @@ namespace ssms.Pages
         public AddStore()
         {
             InitializeComponent();
+
         }
         //Tiaan
         private void btnlogin_Click(object sender, EventArgs e)
@@ -45,5 +46,12 @@ namespace ssms.Pages
                 { }
             }
         }
+        
+         //Margo
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+        }
+
     }
 }

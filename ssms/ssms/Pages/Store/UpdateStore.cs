@@ -16,6 +16,7 @@ namespace ssms.Pages
         public UpdateStore()
         {
             InitializeComponent();
+
         }
         //Tiaan
         private void UpdateStore_Load(object sender, EventArgs e)
@@ -44,5 +45,12 @@ namespace ssms.Pages
         {
 
         }
+
+        //Margo
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+        }
+
     }
 }

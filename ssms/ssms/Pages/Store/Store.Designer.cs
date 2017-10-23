@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             this.StoreLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +56,7 @@
             this.button4.TabIndex = 93;
             this.button4.Text = "Export PDF";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -142,6 +145,10 @@
             this.label1.TabIndex = 89;
             this.label1.Text = "Stores";
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
             // Store
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +165,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+
         }
 
         #endregion
@@ -171,5 +179,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreName;
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountItems;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

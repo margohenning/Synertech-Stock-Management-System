@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.label7 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -222,6 +223,7 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnlogin
             // 
@@ -486,11 +488,11 @@
             this.Controls.Add(this.label1);
             this.Name = "StockOutUpdate";
             this.Size = new System.Drawing.Size(1031, 532);
-            this.Load += new System.EventHandler(this.StockOutUpdate_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
 
         }
 

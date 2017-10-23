@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.StoreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,6 +177,7 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnlogin
             // 
@@ -208,10 +210,10 @@
             this.Controls.Add(this.label1);
             this.Name = "UpdateStore";
             this.Size = new System.Drawing.Size(1031, 532);
-            this.Load += new System.EventHandler(this.UpdateStore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
 
         }
 
