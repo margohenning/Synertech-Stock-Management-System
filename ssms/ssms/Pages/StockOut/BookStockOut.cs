@@ -48,8 +48,8 @@ namespace ssms.Pages.StockOut
                 LTS.BookOut bookOut = new LTS.BookOut();
                 LTS.Store store = new LTS.Store();
 
-                int storeID = DAT.DataAccess.UpdateBookOut(bookOut);
-                if (storeID == -1)
+                bool storee = DAT.DataAccess.UpdateBookOut(bookOut);
+                if (!storee)
                 {
                     if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the store was not added"))
                     { }
