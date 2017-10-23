@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.label5 = new System.Windows.Forms.Label();
             this.txtSur = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -145,6 +146,7 @@
             this.Load += new System.EventHandler(this.AddStoreSmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
 
         }
 
