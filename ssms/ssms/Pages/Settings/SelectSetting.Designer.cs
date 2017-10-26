@@ -30,10 +30,6 @@
         {
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReaders = new System.Windows.Forms.DataGridView();
-            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
@@ -43,6 +39,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,30 +77,6 @@
             this.dataGridViewReaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReaders.Size = new System.Drawing.Size(634, 142);
             this.dataGridViewReaders.TabIndex = 295;
-            // 
-            // IPaddress
-            // 
-            this.IPaddress.HeaderText = "IP Address";
-            this.IPaddress.Name = "IPaddress";
-            this.IPaddress.ReadOnly = true;
-            // 
-            // AntennaNumber
-            // 
-            this.AntennaNumber.HeaderText = "Antenna Number";
-            this.AntennaNumber.Name = "AntennaNumber";
-            this.AntennaNumber.ReadOnly = true;
-            // 
-            // TxPower
-            // 
-            this.TxPower.HeaderText = "Tx Power";
-            this.TxPower.Name = "TxPower";
-            this.TxPower.ReadOnly = true;
-            // 
-            // RxPower
-            // 
-            this.RxPower.HeaderText = "Rx Power";
-            this.RxPower.Name = "RxPower";
-            this.RxPower.ReadOnly = true;
             // 
             // label3
             // 
@@ -207,6 +183,34 @@
             this.label6.Text = "Please choose a valid setting to select!";
             this.label6.Visible = false;
             // 
+            // IPaddress
+            // 
+            this.IPaddress.HeaderText = "IP Address";
+            this.IPaddress.Name = "IPaddress";
+            this.IPaddress.ReadOnly = true;
+            this.IPaddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AntennaNumber
+            // 
+            this.AntennaNumber.HeaderText = "Antenna Number";
+            this.AntennaNumber.Name = "AntennaNumber";
+            this.AntennaNumber.ReadOnly = true;
+            this.AntennaNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TxPower
+            // 
+            this.TxPower.HeaderText = "Tx Power";
+            this.TxPower.Name = "TxPower";
+            this.TxPower.ReadOnly = true;
+            this.TxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RxPower
+            // 
+            this.RxPower.HeaderText = "Rx Power";
+            this.RxPower.Name = "RxPower";
+            this.RxPower.ReadOnly = true;
+            this.RxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // SelectSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,11 +246,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPaddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn AntennaNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxPower;
         private System.Windows.Forms.DataGridViewTextBoxColumn RxPower;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label6;
     }
 }
