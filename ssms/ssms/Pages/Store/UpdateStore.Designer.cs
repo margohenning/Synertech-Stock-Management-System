@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.StoreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StoreLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSur = new System.Windows.Forms.TextBox();
@@ -43,6 +39,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.StoreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StoreLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,24 +62,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 95;
-            // 
-            // StoreID
-            // 
-            this.StoreID.HeaderText = "Store ID";
-            this.StoreID.Name = "StoreID";
-            this.StoreID.ReadOnly = true;
-            // 
-            // StoreName
-            // 
-            this.StoreName.HeaderText = "Store Name";
-            this.StoreName.Name = "StoreName";
-            this.StoreName.ReadOnly = true;
-            // 
-            // StoreLocation
-            // 
-            this.StoreLocation.HeaderText = "Store Location";
-            this.StoreLocation.Name = "StoreLocation";
-            this.StoreLocation.ReadOnly = true;
             // 
             // label1
             // 
@@ -192,6 +173,27 @@
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
+            // StoreID
+            // 
+            this.StoreID.HeaderText = "Store ID";
+            this.StoreID.Name = "StoreID";
+            this.StoreID.ReadOnly = true;
+            this.StoreID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // StoreName
+            // 
+            this.StoreName.HeaderText = "Store Name";
+            this.StoreName.Name = "StoreName";
+            this.StoreName.ReadOnly = true;
+            this.StoreName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // StoreLocation
+            // 
+            this.StoreLocation.HeaderText = "Store Location";
+            this.StoreLocation.Name = "StoreLocation";
+            this.StoreLocation.ReadOnly = true;
+            this.StoreLocation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // UpdateStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,7 +215,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 
         }
 

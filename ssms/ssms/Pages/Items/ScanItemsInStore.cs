@@ -51,68 +51,113 @@ namespace ssms.Pages.Items
         //Margo
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            //Object i = lbxIn.DataSource;
-            //Object imissing = lbxMissing.DataSource;
+            Object inventory = lbxIn.DataSource;
+            Object imissing = lbxMissing.DataSource;
 
-            //iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
-            //string folderPath = saveFileDialog1.FileName + ".pdf";
-
-
-            ////Creating iTextSharp Table from the DataTable data
-            //Document pdfDoc = new Document(PageSize.A4);
-
-            //PdfPTable pdfTable = new PdfPTable(dataGridView1.ColumnCount);
-            //pdfTable.DefaultCell.Padding = dataGridView1.DefaultCellStyle.Padding.All;
-
-            //pdfTable.WidthPercentage = 100;
-            //pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            //pdfTable.DefaultCell.BorderWidth = 0;
+            iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
+            string folderPath = saveFileDialog1.FileName + ".pdf";
 
 
+            //Creating iTextSharp Table from the DataTable data
+            Document pdfDoc = new Document(PageSize.A4);
 
-            ////Adding Header row
-            //foreach (DataGridViewColumn column in dataGridView1.Columns)
-            //{
-            //    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
-            //    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            //    pdfTable.AddCell(cell);
-            //}
+            PdfPTable pdfTable1 = new PdfPTable(2);
+            pdfTable1.DefaultCell.Padding = 0;
 
-            ////Adding DataRow
-            //foreach (DataGridViewRow row in dataGridView1.Rows)
-            //{
-            //    foreach (DataGridViewCell cell in row.Cells)
-            //    {
-            //        // pdfTable.AddCell(cell.Value.ToString());
-            //        PdfPCell cellRows = new PdfPCell(new Phrase(cell.Value.ToString(), font));
-            //        int R = cell.Style.BackColor.R;
-            //        int G = cell.Style.BackColor.G;
-            //        int B = cell.Style.BackColor.B;
-            //        if (R == 0 && G == 0 && B == 0)
-            //        {
-            //            R = 255;
-            //            G = 255;
-            //            B = 255;
-            //        }
-            //        cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
-            //        cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
-            //        pdfTable.AddCell(cellRows);
+            pdfTable1.WidthPercentage = 100;
+            pdfTable1.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable1.DefaultCell.BorderWidth = 0;
 
-            //    }
-            //}
-            //Paragraph writing = new iTextSharp.text.Paragraph("Route 66 Car Dealership " + Environment.NewLine + "Customers Information                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
 
-            //using (FileStream stream = new FileStream(folderPath, FileMode.Create))
-            //{
 
-            //    PdfWriter.GetInstance(pdfDoc, stream);
-            //    pdfDoc.Open();
-            //    pdfDoc.Add(writing);
-            //    pdfDoc.Add(pdfTable);
-            //    pdfDoc.Close();
-            //    stream.Close();
-            //}
+            //Adding Header row
+
+            PdfPCell cell = new PdfPCell(new Phrase("Inventory"));
+            cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable1.AddCell(cell);
+
+
+            //Adding DataRow
+            List<string> inven = lbxIn.Items.Cast<object>().Select(o => o.ToString()).ToList();
+            for (int u = 0; u < inven.Count; u++)
+            {
+                // pdfTable.AddCell(cell.Value.ToString());
+                PdfPCell cellRows = new PdfPCell(new Phrase(inven[u], font));
+                int R = 0;
+                int G = 0;
+                int B = 0;
+                if (R == 0 && G == 0 && B == 0)
+                {
+                    R = 255;
+                    G = 255;
+                    B = 255;
+                }
+                cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
+                cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfTable1.AddCell(cellRows);
+
+
+            }
+
+
+            //Creating iTextSharp Table from the DataTable data
+           // Document pdfDoc = new Document(PageSize.A4);
+
+            PdfPTable pdfTable2 = new PdfPTable(2);
+            pdfTable2.DefaultCell.Padding = 0;
+
+            pdfTable2.WidthPercentage = 100;
+            pdfTable2.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable2.DefaultCell.BorderWidth = 0;
+
+
+
+            //Adding Header row
+
+            PdfPCell cells = new PdfPCell(new Phrase("Missing Inventory"));
+            cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable2.AddCell(cell);
+
+
+
+
+            //Adding DataRow
+            List<string> miss = lbxMissing.Items.Cast<object>().Select(o => o.ToString()).ToList();
+            for (int u = 0; u < miss.Count; u++)
+            {
+                // pdfTable.AddCell(cell.Value.ToString());
+                PdfPCell cellRows = new PdfPCell(new Phrase(miss[u], font));
+                int R = 0;
+                int G = 0;
+                int B = 0;
+                if (R == 0 && G == 0 && B == 0)
+                {
+                    R = 255;
+                    G = 255;
+                    B = 255;
+                }
+                cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
+                cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfTable2.AddCell(cellRows);
+
+
+            }
+
+            Paragraph writing = new iTextSharp.text.Paragraph("Synertech Stock Management System " + Environment.NewLine + "Inventory Scan Results                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
+
+            using (FileStream stream = new FileStream(folderPath, FileMode.Create))
+            {
+
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(writing);
+                pdfDoc.Add(pdfTable1);
+                pdfDoc.Add(pdfTable2);
+                pdfDoc.Close();
+                stream.Close();
+            }
         }
 
         private void ScanItemsInStore_Load(object sender, EventArgs e)

@@ -12,7 +12,8 @@ namespace ssms.Pages.Items
 {
     public partial class UpdateCategory : UserControl
     {
-        string uCheck;
+        string oldName;
+        List<LTS.Category> cat = new List<LTS.Category>();
         public UpdateCategory()
         {
             InitializeComponent();
@@ -26,12 +27,16 @@ namespace ssms.Pages.Items
 
         private void UpdateCategory_Load(object sender, EventArgs e)
         {
-            uCheck = "All";
-            List<LTS.Category> cat = new List<LTS.Category>();
-            cat = DAT.DataAccess.GetCategory().ToList();
-            for (int i = 0; i < cat.Count; i++)
+            
+            if (cat != null)
             {
-                dataGridView1.Rows.Add(cat[i].CategoryID, cat[i].CategoryName, cat[i].CategoryDescription);
+                cat.Clear();
+                cat = DAT.DataAccess.GetCategory().ToList();
+                for (int i = 0; i < cat.Count; i++)
+                {
+                    dataGridView1.Rows.Add(cat[i].CategoryID, cat[i].CategoryName, cat[i].CategoryDescription);
+                }
+                
             }
             this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.MultiSelect = false;
@@ -40,74 +45,118 @@ namespace ssms.Pages.Items
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
                 int index = e.RowIndex;
-            DataGridViewRow selectedrow = dataGridView1.Rows[index];
-            label2.Text = selectedrow.Cells[0].Value.ToString();
-            txtName.Text = selectedrow.Cells[1].Value.ToString();
-            txtSur.Text = selectedrow.Cells[2].Value.ToString();
+
+            label2.Text = cat[index].CategoryID.ToString();
+            txtName.Text = cat[index].CategoryName;
+            txtSur.Text = cat[index].CategoryDescription;
+            oldName = cat[index].CategoryName;
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            List<string> CatID = new List<string>();
-            if (txtName.Text == "" || txtSur.Text == "")
+            label3.Text = "";
+            label4.Text = "";
+            
+            if (txtName.Text == "")
             {
                 label3.Text = "Please add a Category Name";
+               
+            }
+            if (txtSur.Text == "")
+            {
                 label4.Text = "Please add a Category Description";
             }
-            else
+
+            if(label4.Text == "" && label3.Text == "")
             {
-                try
+                if(txtName.Text == oldName)
                 {
-                    int UCatID;
-                    using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
+                    try
                     {
-                        int i = item.Index;
-                        int oldCatID = (int)dataGridView1.Rows[i].Cells[0].Value;
-                        string ooldCatID = oldCatID.ToString();
-                        UCatID = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == oldCatID).FirstOrDefault().CategoryID;
-                    }
-                        try
-                        {
-                            LTS.Category Ucat = new LTS.Category();
-                            Ucat.CategoryID = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == UCatID).FirstOrDefault().CategoryID;
-                            Ucat.CategoryName = txtName.Text;
-                            Ucat.CategoryDescription = txtSur.Text;
-                            
-                            bool update = DAT.DataAccess.UpdateCategory(Ucat);
+                        int CatID;
+                        CatID = Int32.Parse(label2.Text);
+
+                        LTS.Category Ucat = new LTS.Category();
+                        Ucat.CategoryID = CatID;
+                        Ucat.CategoryName = txtName.Text; 
+                        Ucat.CategoryDescription = txtSur.Text;
+
+                        bool update = DAT.DataAccess.UpdateCategory(Ucat);
                         if (update)
                         {
                             if (DialogResult.OK == MessageBox.Show("Category Updated Successfully"))
                             {
-                                this.Visible = false;
-                                UpdateCategory f1 = new UpdateCategory();
-                                f1.Show();
+                                ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
                             }
                         }
+                        else
+                        {
+                            if (DialogResult.OK == MessageBox.Show("Category  was not Updated Successfully"))
+                            {
+                                ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
+                            }
                         }
-                    catch(Exception eex)
+
+
+                        
+                    }
+                    catch (Exception eex)
                     {
-                        MessageBox.Show("Something went wrong, Please try again.");
+                        MessageBox.Show("Please try Again");
                     }
-                    }
-                   
-                
-                catch (Exception eex)
-                {
-                    MessageBox.Show("Please try Again");
                 }
+                else
+                {
+                    LTS.Category c = DAT.DataAccess.GetCategory().Where(i => i.CategoryName == txtName.Text).FirstOrDefault();
+                    if (c == null)
+                    {
+                        try
+                        {
+                            int CatID;
+                            CatID = Int32.Parse(label2.Text);
+
+                            LTS.Category Ucat = new LTS.Category();
+                            Ucat.CategoryID = CatID;
+                            Ucat.CategoryName = txtName.Text;
+                            Ucat.CategoryDescription = txtSur.Text;
+
+                            bool update = DAT.DataAccess.UpdateCategory(Ucat);
+                            if (update)
+                            {
+                                if (DialogResult.OK == MessageBox.Show("Category Updated Successfully"))
+                                {
+                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
+                                }
+                            }
+                            else
+                            {
+                                if (DialogResult.OK == MessageBox.Show("Category  was not Updated Successfully"))
+                                {
+                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
+                                }
+                            }
+
+
+
+                        }
+                        catch (Exception eex)
+                        {
+                            MessageBox.Show("Please try Again");
+                        }
+                    }
+                    else
+                    {
+                        label3.Text = "Sorry, the newly entered category name already exists";
+                    }
+
+                }
+              
             }
+           
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
     }
 

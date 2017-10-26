@@ -51,15 +51,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.dgvUpdateProduct = new System.Windows.Forms.DataGridView();
+            this.lblNameVal = new System.Windows.Forms.Label();
+            this.lblDesVal = new System.Windows.Forms.Label();
+            this.lblBarVal = new System.Windows.Forms.Label();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblNameVal = new System.Windows.Forms.Label();
-            this.lblDesVal = new System.Windows.Forms.Label();
-            this.lblBarVal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdateProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -332,42 +332,6 @@
             this.dgvUpdateProduct.TabIndex = 310;
             this.dgvUpdateProduct.SelectionChanged += new System.EventHandler(this.dgvUpdateProduct_SelectionChanged);
             // 
-            // ProductID
-            // 
-            this.ProductID.HeaderText = "Product ID";
-            this.ProductID.Name = "ProductID";
-            this.ProductID.ReadOnly = true;
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "Product Name";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            // 
-            // ProductDescription
-            // 
-            this.ProductDescription.HeaderText = "Product Description";
-            this.ProductDescription.Name = "ProductDescription";
-            this.ProductDescription.ReadOnly = true;
-            // 
-            // BarcodeNumber
-            // 
-            this.BarcodeNumber.HeaderText = "Bracode Number";
-            this.BarcodeNumber.Name = "BarcodeNumber";
-            this.BarcodeNumber.ReadOnly = true;
-            // 
-            // BrandName
-            // 
-            this.BrandName.HeaderText = "Brand Name";
-            this.BrandName.Name = "BrandName";
-            this.BrandName.ReadOnly = true;
-            // 
-            // CategoryName
-            // 
-            this.CategoryName.HeaderText = "Category Name";
-            this.CategoryName.Name = "CategoryName";
-            this.CategoryName.ReadOnly = true;
-            // 
             // lblNameVal
             // 
             this.lblNameVal.AutoSize = true;
@@ -400,6 +364,48 @@
             this.lblBarVal.Size = new System.Drawing.Size(42, 16);
             this.lblBarVal.TabIndex = 313;
             this.lblBarVal.Text = "label2";
+            // 
+            // ProductID
+            // 
+            this.ProductID.HeaderText = "Product ID";
+            this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
+            this.ProductID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            this.ProductName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ProductDescription
+            // 
+            this.ProductDescription.HeaderText = "Product Description";
+            this.ProductDescription.Name = "ProductDescription";
+            this.ProductDescription.ReadOnly = true;
+            this.ProductDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // BarcodeNumber
+            // 
+            this.BarcodeNumber.HeaderText = "Bracode Number";
+            this.BarcodeNumber.Name = "BarcodeNumber";
+            this.BarcodeNumber.ReadOnly = true;
+            this.BarcodeNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // BrandName
+            // 
+            this.BrandName.HeaderText = "Brand Name";
+            this.BrandName.Name = "BrandName";
+            this.BrandName.ReadOnly = true;
+            this.BrandName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CategoryName
+            // 
+            this.CategoryName.HeaderText = "Category Name";
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.ReadOnly = true;
+            this.CategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UpdateProduct
             // 
@@ -466,14 +472,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgvUpdateProduct;
+        private System.Windows.Forms.Label lblNameVal;
+        private System.Windows.Forms.Label lblDesVal;
+        private System.Windows.Forms.Label lblBarVal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
-        private System.Windows.Forms.Label lblNameVal;
-        private System.Windows.Forms.Label lblDesVal;
-        private System.Windows.Forms.Label lblBarVal;
     }
 }

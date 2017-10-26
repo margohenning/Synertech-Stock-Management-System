@@ -25,38 +25,61 @@ namespace ssms.Pages.Items
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtCatName.Text == "" || txtCatDesc.Text == "")
+            label3.Text = "";
+            label2.Text = "";
+
+            if (txtCatName.Text == "")
             {
-                label2.Text = "Please add a Category name";
-                label3.Text = "Please add a Category description";
+                label2.Text = "Please add a Category Name";
+
             }
-            else
+
+            if (txtCatDesc.Text == "")
             {
-                try
-                {
-                    LTS.Category Cat = new LTS.Category();
-                    Cat.CategoryName = txtCatName.Text;
-                    Cat.CategoryDescription = txtCatDesc.Text;
-                    int catID = DAT.DataAccess.AddCategory(Cat);
-                    if (catID == -1)
-                    {
-                        MessageBox.Show("An Error Has Occured, Please try Again");
-                        txtCatName.Text = "";
-                        txtCatDesc.Text = "";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Added Successfully!");
-                        ((Main)this.Parent.Parent).ChangeView<Categories>();
-                    }
-                }
-                catch(Exception eex)
-                {
-                    MessageBox.Show("Please try Again");
-                }
+                label3.Text = "Please add a Category Description";
             }
+
             
+            if (label2.Text == "" && label3.Text == "")
+            {
+                LTS.Category c = DAT.DataAccess.GetCategory().Where(i => i.CategoryName == txtCatName.Text).FirstOrDefault();
+                if (c == null)
+                {
+                    try
+                    {
+                        LTS.Category Cat = new LTS.Category();
+                        Cat.CategoryName = txtCatName.Text;
+                        Cat.CategoryDescription = txtCatDesc.Text;
+                        int catID = DAT.DataAccess.AddCategory(Cat);
+                        if (catID == -1)
+                        {
+                            MessageBox.Show("An Error Has Occured, Please try Again");
+                            txtCatName.Text = "";
+                            txtCatDesc.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Added Successfully!");
+                            ((Main)this.Parent.Parent).ChangeView<Categories>();
+
+                        }
+                    }
+                    catch (Exception eex)
+                    {
+                        MessageBox.Show("Please try Again");
+                    }
+
+                }
+                else
+                {
+                    label2.Text = "Sorry, this category name already exists";
+                }
+
+
+            }
+           
         }
-       
+
+        
     }
 }

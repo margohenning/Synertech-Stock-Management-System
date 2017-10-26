@@ -279,7 +279,9 @@ namespace ssms.Pages.Items
             
         }
 
-        
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }
