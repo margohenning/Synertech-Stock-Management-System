@@ -55,6 +55,11 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvUser = new System.Windows.Forms.DataGridView();
+            this.lblIdentityNo = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserIDentityNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,11 +67,6 @@
             this.UserEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblIdentityNo = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblSurname = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -379,48 +379,6 @@
             this.dgvUser.TabIndex = 232;
             this.dgvUser.SelectionChanged += new System.EventHandler(this.dgvUser_SelectionChanged);
             // 
-            // UserID
-            // 
-            this.UserID.HeaderText = "User ID";
-            this.UserID.Name = "UserID";
-            this.UserID.ReadOnly = true;
-            // 
-            // UserIDentityNumber
-            // 
-            this.UserIDentityNumber.HeaderText = "Identity Number";
-            this.UserIDentityNumber.Name = "UserIDentityNumber";
-            this.UserIDentityNumber.ReadOnly = true;
-            // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "Name";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // UserSurname
-            // 
-            this.UserSurname.HeaderText = "Surname";
-            this.UserSurname.Name = "UserSurname";
-            this.UserSurname.ReadOnly = true;
-            // 
-            // UserEmail
-            // 
-            this.UserEmail.HeaderText = "Email";
-            this.UserEmail.Name = "UserEmail";
-            this.UserEmail.ReadOnly = true;
-            // 
-            // UserAdmin
-            // 
-            this.UserAdmin.HeaderText = "Admin";
-            this.UserAdmin.Name = "UserAdmin";
-            this.UserAdmin.ReadOnly = true;
-            // 
-            // UserActivated
-            // 
-            this.UserActivated.HeaderText = "Activated";
-            this.UserActivated.Name = "UserActivated";
-            this.UserActivated.ReadOnly = true;
-            // 
             // lblIdentityNo
             // 
             this.lblIdentityNo.AutoSize = true;
@@ -475,6 +433,55 @@
             this.lblPassword.Size = new System.Drawing.Size(49, 16);
             this.lblPassword.TabIndex = 237;
             this.lblPassword.Text = "label14";
+            // 
+            // UserID
+            // 
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
+            this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserIDentityNumber
+            // 
+            this.UserIDentityNumber.HeaderText = "Identity Number";
+            this.UserIDentityNumber.Name = "UserIDentityNumber";
+            this.UserIDentityNumber.ReadOnly = true;
+            this.UserIDentityNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserName
+            // 
+            this.UserName.HeaderText = "Name";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            this.UserName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserSurname
+            // 
+            this.UserSurname.HeaderText = "Surname";
+            this.UserSurname.Name = "UserSurname";
+            this.UserSurname.ReadOnly = true;
+            this.UserSurname.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserEmail
+            // 
+            this.UserEmail.HeaderText = "Email";
+            this.UserEmail.Name = "UserEmail";
+            this.UserEmail.ReadOnly = true;
+            this.UserEmail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserAdmin
+            // 
+            this.UserAdmin.HeaderText = "Admin";
+            this.UserAdmin.Name = "UserAdmin";
+            this.UserAdmin.ReadOnly = true;
+            this.UserAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserActivated
+            // 
+            this.UserActivated.HeaderText = "Activated";
+            this.UserActivated.Name = "UserActivated";
+            this.UserActivated.ReadOnly = true;
+            this.UserActivated.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UpdateUser
             // 
@@ -551,6 +558,11 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvUser;
+        private System.Windows.Forms.Label lblIdentityNo;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserIDentityNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
@@ -558,10 +570,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserAdmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserActivated;
-        private System.Windows.Forms.Label lblIdentityNo;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblSurname;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblPassword;
     }
 }
