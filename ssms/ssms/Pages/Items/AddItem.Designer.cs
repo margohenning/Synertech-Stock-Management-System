@@ -43,6 +43,8 @@
             this.btnlogin = new System.Windows.Forms.Button();
             this.lblConnect = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
@@ -222,11 +224,33 @@
             this.label16.Text = "Please enter information correctly!";
             this.label16.Visible = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(567, 492);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 25);
+            this.label4.TabIndex = 346;
+            this.label4.Text = "RFID Timer:";
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(708, 492);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.TabIndex = 347;
+            this.lblTimer.Text = "0";
+            // 
             // AddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblTimer);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblConnect);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.comboBox1);
@@ -273,7 +297,7 @@
 
       
         private System.Windows.Forms.Label label16;
-
-      
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTimer;
     }
 }

@@ -271,6 +271,16 @@ namespace ssms.Pages.Settings
                                         }
 
                                     }
+                                    if (totalNum == sm.TotalAmountAntennas())
+                                    {
+                                        MessageBox.Show("The setting was added successfully!");
+                                        ((Main)this.Parent.Parent).ChangeView<Settings>();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Sorry, something went wrong, the setting was not added!");
+                                        ((Main)this.Parent.Parent).ChangeView<Settings>();
+                                    }
                                 }
                                 else
                                 {
@@ -303,20 +313,13 @@ namespace ssms.Pages.Settings
                 lblName.Visible = true;
             }
 
-            if(totalNum == sm.TotalAmountAntennas())
-            {
-                MessageBox.Show("The setting was added successfully!");
-                ((Main)this.Parent.Parent).ChangeView<Settings>();
-            }
-            else
-            {
-                MessageBox.Show("Sorry, something went wrong, the setting was not added!");
-                ((Main)this.Parent.Parent).ChangeView<Settings>();
-            }
+            
 
 
             
 
         }
+
+        
     }
 }
