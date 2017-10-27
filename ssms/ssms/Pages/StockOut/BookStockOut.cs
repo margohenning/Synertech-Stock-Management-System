@@ -290,7 +290,7 @@ namespace ssms.Pages.StockOut
                 }
             }));
         }
-
+        //Margo
         private void button2_Click(object sender, EventArgs e)
         {
             try
