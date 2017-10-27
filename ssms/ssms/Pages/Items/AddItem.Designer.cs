@@ -204,7 +204,7 @@
             this.lblConnect.AutoSize = true;
             this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConnect.ForeColor = System.Drawing.Color.Red;
-            this.lblConnect.Location = new System.Drawing.Point(429, 131);
+            this.lblConnect.Location = new System.Drawing.Point(457, 193);
             this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConnect.Name = "lblConnect";
             this.lblConnect.Size = new System.Drawing.Size(0, 16);
