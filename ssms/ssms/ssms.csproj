@@ -463,6 +463,8 @@
     <Content Include="Octane SDK\Impinj.OctaneSdk.dll" />
     <Content Include="Octane SDK\LLRP.dll" />
     <Content Include="Octane SDK\LLRP.Impinj.dll" />
+    <None Include="Resources\ok-like-hand-sign.png" />
+    <None Include="Resources\ok.png" />
     <None Include="Resources\play-button %281%292.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\play-button %281%29.png" />

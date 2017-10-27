@@ -211,7 +211,7 @@ namespace ssms.Pages.Items
             int iStore = comboBoxStore.SelectedIndex;
             LTS.Store s = listS[iStore];
 
-            LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID).FirstOrDefault();
+            LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID && y.SettingsSelect==true).FirstOrDefault();
             if(set != null)
             {
                 connect(set);
