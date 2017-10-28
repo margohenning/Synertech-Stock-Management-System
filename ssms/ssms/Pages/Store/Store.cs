@@ -30,7 +30,25 @@ namespace ssms.Pages.Store
         private void button3_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<UpdateStore>();
+         }
+
+        
+        //Tiaan
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            List<string> count = new List<string>();
+            List<LTS.Store> store = new List<LTS.Store>();
+            List<LTS.Item> item = new List<LTS.Item>();
+
+            store = DAT.DataAccess.GetStore().ToList();
+            item = DAT.DataAccess.GetItem().ToList();
+
+            for (int i = 0; i < item.Count; i++)
+            {
+                dataGridView1.Rows.Add(store[i].StoreID, store[i].StoreName, store[i].StoreLocation, 0) ;
+            }
         }
+
 
         //Margo
         private void button4_Click(object sender, EventArgs e)
@@ -101,5 +119,6 @@ namespace ssms.Pages.Store
                 stream.Close();
             }
         }
+
     }
 }

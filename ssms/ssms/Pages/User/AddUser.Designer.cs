@@ -176,9 +176,11 @@
             this.label13.Location = new System.Drawing.Point(40, 336);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
+
             this.label13.Size = new System.Drawing.Size(81, 24);
+
             this.label13.TabIndex = 229;
-            this.label13.Text = "Pages: ";
+            this.label13.Text = "Admin: ";
             // 
             // label9
             // 

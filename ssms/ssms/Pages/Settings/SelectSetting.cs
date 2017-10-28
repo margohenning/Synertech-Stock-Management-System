@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ssms.DataClasses;
+using System.Net.NetworkInformation;
 
 namespace ssms.Pages.Settings
 {
@@ -16,6 +17,8 @@ namespace ssms.Pages.Settings
         //Margo
         List<LTS.Store> listS = new List<LTS.Store>();
         List<LTS.Settings> listSet = new List<LTS.Settings>();
+        SettingsMain smi = new SettingsMain();
+        List<ImpinjRevolution> impinjrev = new List<ImpinjRevolution>();
         int SelectedStore;
         int SelectedSetting;
 
@@ -80,6 +83,8 @@ namespace ssms.Pages.Settings
             sm.SettingsName = listSet[settingsIndex].SettingsName;
             sm.SettingsSelect = listSet[settingsIndex].SettingsSelect;
             sm.StoreID = listSet[settingsIndex].StoreID;
+
+            smi = sm;
 
             LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
             sm.StoreLocation = store.StoreLocation;
@@ -157,6 +162,70 @@ namespace ssms.Pages.Settings
             {
                 label6.Visible = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            connect(smi);
+        }
+
+        void connect(SettingsMain smii)
+        {
+            ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+            lblConnect.Text = "Connecting...";
+            
+            bool checks = true;
+
+            for (int x = 0; x < smii.Readers.Count; x++)
+            {
+
+                ImpinjRevolution ir = new ImpinjRevolution();
+                ir.ReaderScanMode = ScanMode.FullScan;
+                ir.HostName = smii.Readers[x].IPaddress;
+                ir.Antennas = smii.Readers[x].antennas;
+
+                ir.Connect();
+
+                impinjrev.Add(ir);
+                if (!ir.isConnected)
+                {
+                    if (checks == true)
+                    {
+                        checks = false;
+                    }
+
+                }
+            }
+
+            if (checks == true)
+            {
+                lblConnect.Text = "";
+                MessageBox.Show("All the readers connected succesfully!");
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+                
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+
+
+            }
+            else
+            {
+                lblConnect.Text = "";
+                MessageBox.Show("The readers did not connect succesfully!");
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+            }
+            
+
         }
     }
 }
