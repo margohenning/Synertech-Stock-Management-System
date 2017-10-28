@@ -295,8 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AntennaNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxPower;
         private System.Windows.Forms.DataGridViewTextBoxColumn RxPower;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblConnect;
