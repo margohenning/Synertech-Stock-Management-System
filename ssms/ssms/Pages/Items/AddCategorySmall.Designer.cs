@@ -134,7 +134,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(90, 225);
+            this.label3.Location = new System.Drawing.Point(22, 328);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 16);
             this.label3.TabIndex = 232;
@@ -144,7 +144,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(89, 189);
+            this.label2.Location = new System.Drawing.Point(21, 292);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 231;
@@ -165,7 +165,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Name = "AddCategorySmall";
-            this.Size = new System.Drawing.Size(283, 272);
+            this.Size = new System.Drawing.Size(283, 363);
             this.Load += new System.EventHandler(this.AddCategorySmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
