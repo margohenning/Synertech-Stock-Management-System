@@ -134,7 +134,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(92, 220);
+            this.label3.Location = new System.Drawing.Point(18, 313);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 16);
             this.label3.TabIndex = 223;
@@ -142,9 +142,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(92, 175);
+            this.label2.Location = new System.Drawing.Point(18, 278);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 222;
@@ -165,7 +165,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Name = "AddBrandSmall";
-            this.Size = new System.Drawing.Size(283, 272);
+            this.Size = new System.Drawing.Size(283, 358);
             this.Load += new System.EventHandler(this.AddBrandSmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
