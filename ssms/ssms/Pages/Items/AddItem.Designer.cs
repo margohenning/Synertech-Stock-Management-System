@@ -44,7 +44,11 @@
             this.lblConnect = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+
+            this.lblTimer = new System.Windows.Forms.Label();
+
             this.label6 = new System.Windows.Forms.Label();
+
             this.SuspendLayout();
             // 
             // label5
@@ -240,6 +244,29 @@
             this.label16.TabIndex = 317;
             this.label16.Text = "Please choose a valid barcode!";
             this.label16.Visible = false;
+           
+
+             // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(567, 492);
+            this.label76.Name = "label4";
+            this.label76.Size = new System.Drawing.Size(126, 25);
+            this.label76.TabIndex = 346;
+            this.label76.Text = "RFID Timer:";
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(708, 492);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.TabIndex = 347;
+            this.lblTimer.Text = "0";
+
             // 
             // label4
             // 
@@ -266,14 +293,20 @@
             this.label6.TabIndex = 342;
             this.label6.Text = "Please enter the RFID Tag!";
             this.label6.Visible = false;
+
             // 
             // AddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+
+            this.Controls.Add(this.lblTimer);
+
             this.Controls.Add(this.label6);
+
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label76);
             this.Controls.Add(this.lblConnect);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.comboBox1);
@@ -322,6 +355,11 @@
       
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label76;
+
+        private System.Windows.Forms.Label lblTimer;
+
         private System.Windows.Forms.Label label6;
+
     }
 }

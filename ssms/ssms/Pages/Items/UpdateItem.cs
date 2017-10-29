@@ -12,12 +12,20 @@ using ssms.DataClasses;
 namespace ssms.Pages.Items
 {
     public partial class UpdateStock : UserControl
-    {       
+
+    {
+        Timer ScanTimer = new Timer();
+        System.Timers.Timer timer;
+        int time = 0;
+
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
         List<LTS.Store> listS;
         List<LTS.Barcode> listBar;
         List<DataClasses.ItemMain> imList = new List<ItemMain>();
+        SettingsMain sm = new SettingsMain();
+        List<ImpinjRevolution> impinjrev = new List<ImpinjRevolution>();
+        string epc = "";
 
         public UpdateStock()
         {
@@ -289,6 +297,240 @@ namespace ssms.Pages.Items
                     }
                 }
             }    
+        }
+
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        bool connect(LTS.Settings se)
+        {
+            lblConnect.Text = "Connecting...";
+
+
+            int index = comboBoxStore.SelectedIndex;
+            int storeID = listS[index].StoreID;
+
+            LTS.Settings set = se;
+
+            sm = null;
+            sm = new SettingsMain();
+            impinjrev.Clear();
+            sm.SettingsID = set.SettingsID;
+            sm.SettingsName = set.SettingsName;
+            sm.SettingsSelect = set.SettingsSelect;
+            sm.StoreID = set.StoreID;
+
+            LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
+            sm.StoreLocation = store.StoreLocation;
+            sm.StoreName = store.StoreName;
+
+            List<LTS.Reader> readers = new List<LTS.Reader>();
+            readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
+            for (int j = 0; j < readers.Count; j++)
+            {
+                ReaderMain rm = new ReaderMain();
+                rm.ReaderID = readers[j].ReaderID;
+                rm.IPaddress = readers[j].IPaddress;
+                rm.NumAntennas = readers[j].NumAntennas;
+                rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+
+                sm.Readers.Add(rm);
+
+            }
+            bool checks = true;
+
+            for (int x = 0; x < sm.Readers.Count; x++)
+            {
+
+                ImpinjRevolution ir = new ImpinjRevolution();
+                ir.ReaderScanMode = ScanMode.ScanItem;
+                ir.HostName = sm.Readers[x].IPaddress;
+                ir.Antennas = sm.Readers[x].antennas;
+
+                ir.TagRead += ir_TagRead;
+                ir.Connect();
+
+                impinjrev.Add(ir);
+                if (!ir.isConnected)
+                {
+                    if (checks == true)
+                    {
+                        checks = false;
+                    }
+
+                }
+            }
+
+            if (checks == true)
+            {
+                lblConnect.Text = "Connected";
+                timer.Start();
+                impinjrev.ForEach(imp =>
+                {
+                    imp.TagRead += ir_TagRead;
+                    imp.StartRead();
+                });
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+                lblConnect.Text = "Reading...";
+                
+
+
+            }
+            else
+            {
+                lblConnect.Text = "Not Connected!";
+                timer.Stop();
+                timer.Elapsed -= timer_Elapsed;
+                time = 0;
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+                EnableOrDisable(true);
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+            }
+            return true;
+
+        }
+
+        //Margo
+        public void EnableOrDisable(bool what)
+        {
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                if (what)
+                {
+                    
+                    comboBoxStore.Enabled = true;
+                    button1.Enabled = true;
+                    button3.Enabled = true;
+                    button5.Enabled = true;
+                    dataGridView2.Enabled = true;
+                    time = 0;
+                }
+                else
+                {
+                    
+                    comboBoxStore.Enabled = false;
+                    button1.Enabled = false;
+                    button3.Enabled = false;
+                    button5.Enabled = false;
+                    dataGridView2.Enabled = false;
+                }
+            }));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                time = 0;
+                lblTimer.Text = time.ToString();
+                timer = new System.Timers.Timer();
+                timer.Elapsed += timer_Elapsed;
+                timer.Interval = 1000;
+                EnableOrDisable(false);
+                epc = "";
+                int iStore = comboBoxStore.SelectedIndex;
+                LTS.Store s = listS[iStore];
+
+                LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID && y.SettingsSelect == true).FirstOrDefault();
+                if (set != null)
+                {
+                    connect(set);
+                }
+                else
+                {
+                    lblConnect.Text = ("Settings not found!");
+                    EnableOrDisable(true);
+
+                }
+            }
+            catch (Exception exx)
+            {
+                lblConnect.Text = ("Store not selected!");
+                EnableOrDisable(true);
+            }
+        }
+
+        //read tags
+        void ir_TagRead(TagInfo tag, EventArgs e)
+        {
+            if (tag != null && epc == "")
+            {
+                string Tag = tag.TagNo;
+                epc = Tag;
+
+
+
+
+            }
+        }
+
+       void Stop()
+        {
+            if (impinjrev != null)
+            {
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+                if (lblConnect.InvokeRequired)
+                {
+                    lblConnect.Invoke(new MethodInvoker(delegate () {
+                        lblConnect.Text = "Disconnected!";
+                    }));
+
+                }
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                EnableOrDisable(true);
+            }
+        }
+        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (time < 60 && epc == "")
+            {
+                time++;
+                if (lblTimer.InvokeRequired)
+                {
+                    lblTimer.Invoke(new MethodInvoker(delegate () {
+                        lblTimer.Text = time.ToString();
+                    }));
+
+                }
+
+            }
+            else
+            {
+                timer.Stop();
+                timer.Elapsed -= timer_Elapsed;
+                if (lblTimer.InvokeRequired)
+                {
+                    lblTimer.Invoke(new MethodInvoker(delegate () {
+                        lblTimer.Text = time.ToString();
+                        textBox2.Text = epc;
+                    }));
+
+                }
+
+                Stop();
+                time = 0;
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
