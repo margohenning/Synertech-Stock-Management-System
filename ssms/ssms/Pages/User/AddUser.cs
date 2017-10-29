@@ -28,6 +28,9 @@ namespace ssms.Pages
         //Devon
         private void AddUser_Load(object sender, EventArgs e)
         {
+            comboBoxActiv.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxAdmin.DropDownStyle = ComboBoxStyle.DropDownList;
+
             comboBoxAdmin.Items.Add("Yes");
             comboBoxAdmin.Items.Add("No");
             comboBoxAdmin.SelectedIndex = 0;
@@ -43,11 +46,30 @@ namespace ssms.Pages
             try
             {
                 LTS.User user = new LTS.User();
+                LTS.User checkID = DAT.DataAccess.GetUser().Where(u => u.UserIdentityNumber == txtName.Text).FirstOrDefault();
+                if (checkID != null)
+                {
+                    label3.Visible = true;
+                }
+                else
+                {
+                    user.UserIdentityNumber = txtName.Text;
+                    label3.Visible = false;
+                }
 
-                user.UserIdentityNumber = txtName.Text;
+                LTS.User checkEmail = DAT.DataAccess.GetUser().Where(u => u.UserEmail.ToString() == txtUsername.Text).FirstOrDefault();
+                if (checkEmail != null)
+                {
+                    label4.Visible = true;
+                }
+                else
+                {
+                    label4.Visible = false;
+                    user.UserEmail = txtUsername.Text;
+                }
+
                 user.UserName = txtSur.Text;
                 user.UserSurname = txtEmail.Text;
-                user.UserEmail = txtUsername.Text;
                 user.UserPassword = textBox1.Text;
 
                 if (comboBoxAdmin.SelectedItem.Equals("Yes"))
@@ -88,6 +110,7 @@ namespace ssms.Pages
                     {
                         if (DialogResult.OK == MessageBox.Show("The User was added successfully!"))
                         {
+                            ((Main)this.Parent.Parent).ChangeView<Pages.Users>();
                         }
                     }
                 }

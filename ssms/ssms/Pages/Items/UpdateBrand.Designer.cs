@@ -38,12 +38,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.BrandID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrandDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,6 +163,28 @@
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 200;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // BrandID
+            // 
+            this.BrandID.HeaderText = "Brand ID";
+            this.BrandID.Name = "BrandID";
+            this.BrandID.ReadOnly = true;
+            this.BrandID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // BrandName
+            // 
+            this.BrandName.HeaderText = "Brand Name";
+            this.BrandName.Name = "BrandName";
+            this.BrandName.ReadOnly = true;
+            this.BrandName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // BrandDescription
+            // 
+            this.BrandDescription.HeaderText = "Brand Description";
+            this.BrandDescription.Name = "BrandDescription";
+            this.BrandDescription.ReadOnly = true;
+            this.BrandDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label1
             // 
@@ -194,27 +216,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 16);
             this.label4.TabIndex = 211;
-            // 
-            // BrandID
-            // 
-            this.BrandID.HeaderText = "Brand ID";
-            this.BrandID.Name = "BrandID";
-            this.BrandID.ReadOnly = true;
-            this.BrandID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // BrandName
-            // 
-            this.BrandName.HeaderText = "Brand Name";
-            this.BrandName.Name = "BrandName";
-            this.BrandName.ReadOnly = true;
-            this.BrandName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // BrandDescription
-            // 
-            this.BrandDescription.HeaderText = "Brand Description";
-            this.BrandDescription.Name = "BrandDescription";
-            this.BrandDescription.ReadOnly = true;
-            this.BrandDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UpdateBrand
             // 

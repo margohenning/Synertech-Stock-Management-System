@@ -56,10 +56,17 @@
             this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             this.label16 = new System.Windows.Forms.Label();
             this.lblConnect = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+
+
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,9 +135,12 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(373, 457);
+
+            this.label12.Location = new System.Drawing.Point(497, 563);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(81, 25);
+            this.label12.Size = new System.Drawing.Size(102, 31);
+
             this.label12.TabIndex = 258;
             this.label12.Text = "Update";
             // 
@@ -312,9 +322,11 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(680, 179);
+
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(907, 220);
             this.dataGridView2.TabIndex = 315;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+
             this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
             // 
             // ItemID
@@ -371,7 +383,36 @@
             this.ItemStatus.HeaderText = "Item Status";
             this.ItemStatus.Name = "ItemStatus";
             this.ItemStatus.ReadOnly = true;
+
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(33, 484);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(310, 19);
+            this.label7.TabIndex = 344;
+            this.label7.Text = "Please choose a valid store and barcode!";
+            this.label7.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(33, 511);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(205, 19);
+            this.label4.TabIndex = 345;
+            this.label4.Text = "Please enter the RFID Tag!";
+            this.label4.Visible = false;
+
             this.ItemStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+
             // 
             // label16
             // 
@@ -408,23 +449,28 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(723, 487);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(126, 25);
-            this.label7.TabIndex = 348;
-            this.label7.Text = "RFID Timer:";
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(723, 487);
+            this.label76.Name = "label7";
+            this.label76.Size = new System.Drawing.Size(126, 25);
+            this.label76.TabIndex = 348;
+            this.label76.Text = "RFID Timer:";
             // 
             // UpdateStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+
             this.Controls.Add(this.lblTimer);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label76);
             this.Controls.Add(this.lblConnect);
             this.Controls.Add(this.label16);
+
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label7);
+
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button4);
@@ -485,8 +531,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemStatus;
+
         private System.Windows.Forms.Label lblConnect;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Label label7;
+
+
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Label label4;
+
+
     }
 }

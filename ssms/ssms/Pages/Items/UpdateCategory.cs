@@ -44,12 +44,7 @@ namespace ssms.Pages.Items
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-                int index = e.RowIndex;
-
-            label2.Text = cat[index].CategoryID.ToString();
-            txtName.Text = cat[index].CategoryName;
-            txtSur.Text = cat[index].CategoryDescription;
-            oldName = cat[index].CategoryName;
+                
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
@@ -156,7 +151,24 @@ namespace ssms.Pages.Items
 
         }
 
-        
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count >= 1)
+            {
+                using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
+                {
+                    int index = item.Index;
+
+                    label2.Text = cat[index].CategoryID.ToString();
+                    txtName.Text = cat[index].CategoryName;
+                    txtSur.Text = cat[index].CategoryDescription;
+                    oldName = cat[index].CategoryName;
+
+                }
+            }
+
+            
+        }
     }
     }
 

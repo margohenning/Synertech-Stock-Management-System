@@ -12,10 +12,12 @@ using ssms.DataClasses;
 namespace ssms.Pages.Items
 {
     public partial class UpdateStock : UserControl
+
     {
         Timer ScanTimer = new Timer();
         System.Timers.Timer timer;
         int time = 0;
+
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
         List<LTS.Store> listS;
@@ -33,7 +35,6 @@ namespace ssms.Pages.Items
         //Devon
         private void UpdateStock_Load(object sender, EventArgs e)
         {
-
             //load store names into combo box from db
             listS = DAT.DataAccess.GetStore().ToList();
             List<string> S = new List<string>();
@@ -80,7 +81,6 @@ namespace ssms.Pages.Items
 
                 im.BarcodeID = p.BarcodeID;
 
-
                 //get the specific store and assign the info to the ItemMain object
                 LTS.Store s = new LTS.Store();
                 s = DAT.DataAccess.GetStore().Where(j => j.StoreID == im.StoreID).FirstOrDefault();
@@ -92,7 +92,6 @@ namespace ssms.Pages.Items
                 b = DAT.DataAccess.GetBrand().Where(y => y.BrandID == im.BrandID).FirstOrDefault();
                 im.BrandName = b.BrandName;
                 im.BrandDescription = b.BrandDescription;
-
 
                 //get the sepcific category and assign the info to the ItemMain object
                 LTS.Category c = new LTS.Category();
@@ -110,7 +109,6 @@ namespace ssms.Pages.Items
                     , im.ItemStatus, im.StoreName);
             }
         }
-
 
         //to change the content of the small panel
         //Margo
@@ -130,8 +128,6 @@ namespace ssms.Pages.Items
             }
         }
 
-
-
         //Margo
         private void button5_Click(object sender, EventArgs e)
         {
@@ -142,8 +138,6 @@ namespace ssms.Pages.Items
 
             textBox2.Enabled = false;
             textBox3.Enabled = false;
-
-
 
             comboBoxStore.Enabled = false;
             comboBox1.Enabled = false;
@@ -182,8 +176,6 @@ namespace ssms.Pages.Items
             textBox2.Enabled = true;
             textBox3.Enabled = true;
 
-
-
             comboBoxStore.Enabled = true;
             comboBox1.Enabled = true;
             dataGridView2.Enabled = true;
@@ -195,9 +187,7 @@ namespace ssms.Pages.Items
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
         }
 
-
         //Devon
-
         private void button4_Click(object sender, EventArgs e)
         {
             string epc = textBox3.Text;
@@ -210,7 +200,6 @@ namespace ssms.Pages.Items
                 //dataGridView2.SelectedRows.Clear();
             }
         }
-
 
         //Devon
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
@@ -250,39 +239,66 @@ namespace ssms.Pages.Items
             bool status = olditem.ItemStatus;
 
             int sIndex = comboBoxStore.SelectedIndex;
-            int storeID = listS[sIndex].StoreID;
-
             int bIndex = comboBox1.SelectedIndex;
-            int barID = listBar[bIndex].BarcodeID;
-
-            LTS.Product p = new LTS.Product();
-            p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
-            int productID;
-            if (p != null)
+            if (sIndex == -1 || bIndex == -1)
             {
-                productID = p.ProductID;
-                LTS.Item newitem = new LTS.Item();
-                newitem.ItemID = itemID;
-                newitem.ItemStatus = status;
-                newitem.ProductID = productID;
-                newitem.TagEPC = textBox2.Text;
-                newitem.StoreID = storeID;
-
-                bool check = DAT.DataAccess.UpdateItem(newitem);
-                if (check)
-                {
-                    MessageBox.Show("Item has been updated!");
-                }
-                else
-                {
-                    MessageBox.Show("Item has not been updated!");
-                }
-
+                label7.Visible = true;
             }
+            else
+            {
+                label7.Visible = false;
+                int storeID = listS[sIndex].StoreID;
+                int barID = listBar[bIndex].BarcodeID;
 
+                LTS.Product p = new LTS.Product();
+                p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+                int productID;
+                LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
+                
+                if (p != null)
+                {
+                    try
+                    {
+                        if (comboBoxStore.Text == "")
+                        {
+                            label4.Visible = true;
+                        }
+                        else if (checkTag != null)
+                        {
+                            label4.Visible = true;
+                            label4.Text = "TAG alreasy exists! Please enter a different one.";
+                        }
+                        else
+                        {
+                            label4.Visible = false;
+                            productID = p.ProductID;
+                            LTS.Item newitem = new LTS.Item();
+                            newitem.ItemID = itemID;
+                            newitem.ItemStatus = status;
+                            newitem.ProductID = productID;
+                            newitem.TagEPC = textBox2.Text;
+                            newitem.StoreID = storeID;
 
-            
+                            bool check = DAT.DataAccess.UpdateItem(newitem);
+                            if (check)
+                            {
+                                MessageBox.Show("Item has been updated!");
+                                ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Item has not been updated!");
+                            }
+                        }  
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }    
         }
+
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -516,5 +532,6 @@ namespace ssms.Pages.Items
         {
 
         }
+
     }
 }
