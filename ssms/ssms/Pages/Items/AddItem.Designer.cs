@@ -43,22 +43,20 @@
             this.btnlogin = new System.Windows.Forms.Button();
             this.lblConnect = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-
+            this.label45 = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
-
             this.label6 = new System.Windows.Forms.Label();
-
+            this.label12 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(501, 316);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(376, 257);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 31);
+            this.label5.Size = new System.Drawing.Size(50, 25);
             this.label5.TabIndex = 216;
             this.label5.Text = "Add";
             // 
@@ -79,20 +77,18 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(23, 145);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(17, 118);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 24);
+            this.label3.Size = new System.Drawing.Size(80, 19);
             this.label3.TabIndex = 242;
             this.label3.Text = "Barcode:";
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(264, 193);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Location = new System.Drawing.Point(198, 157);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(325, 30);
+            this.textBox2.Size = new System.Drawing.Size(245, 26);
             this.textBox2.TabIndex = 249;
             // 
             // label9
@@ -100,10 +96,9 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(23, 198);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(17, 161);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(149, 24);
+            this.label9.Size = new System.Drawing.Size(123, 19);
             this.label9.TabIndex = 248;
             this.label9.Text = "RFID Tag EPC:";
             // 
@@ -111,10 +106,9 @@
             // 
             this.comboBoxStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxStore.FormattingEnabled = true;
-            this.comboBoxStore.Location = new System.Drawing.Point(264, 94);
-            this.comboBoxStore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxStore.Location = new System.Drawing.Point(198, 76);
             this.comboBoxStore.Name = "comboBoxStore";
-            this.comboBoxStore.Size = new System.Drawing.Size(325, 33);
+            this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 240;
             this.comboBoxStore.SelectedIndexChanged += new System.EventHandler(this.comboBoxStore_SelectedIndexChanged);
             // 
@@ -123,19 +117,17 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(23, 98);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(17, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 24);
+            this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 241;
             this.label2.Text = "Store Name:";
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(984, 9);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(738, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(377, 335);
+            this.panel1.Size = new System.Drawing.Size(283, 272);
             this.panel1.TabIndex = 253;
             // 
             // button5
@@ -146,10 +138,9 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(599, 94);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Location = new System.Drawing.Point(449, 76);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(192, 34);
+            this.button5.Size = new System.Drawing.Size(144, 28);
             this.button5.TabIndex = 256;
             this.button5.Text = "Add Store";
             this.button5.UseVisualStyleBackColor = false;
@@ -159,10 +150,9 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(264, 140);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(198, 114);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(325, 33);
+            this.comboBox1.Size = new System.Drawing.Size(245, 28);
             this.comboBox1.TabIndex = 257;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -176,10 +166,9 @@
             this.button2.ForeColor = System.Drawing.Color.DimGray;
             this.button2.Image = global::ssms.Properties.Resources.icons8_RFID_Signal_64;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(599, 187);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(449, 152);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 43);
+            this.button2.Size = new System.Drawing.Size(117, 35);
             this.button2.TabIndex = 250;
             this.button2.Text = "RFID";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -194,10 +183,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(1256, 497);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(942, 404);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 139);
+            this.button1.Size = new System.Drawing.Size(61, 113);
             this.button1.TabIndex = 217;
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -210,10 +198,9 @@
             this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(484, 238);
-            this.btnlogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnlogin.Location = new System.Drawing.Point(363, 193);
             this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(107, 75);
+            this.btnlogin.Size = new System.Drawing.Size(80, 61);
             this.btnlogin.TabIndex = 215;
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
@@ -223,13 +210,10 @@
             this.lblConnect.AutoSize = true;
             this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConnect.ForeColor = System.Drawing.Color.Red;
-
-            this.lblConnect.Location = new System.Drawing.Point(572, 161);
-
+            this.lblConnect.Location = new System.Drawing.Point(461, 193);
             this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-
             this.lblConnect.Name = "lblConnect";
-            this.lblConnect.Size = new System.Drawing.Size(0, 19);
+            this.lblConnect.Size = new System.Drawing.Size(0, 16);
             this.lblConnect.TabIndex = 340;
             // 
             // label16
@@ -237,76 +221,79 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(23, 282);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(17, 229);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(237, 19);
+            this.label16.Size = new System.Drawing.Size(187, 16);
             this.label16.TabIndex = 317;
             this.label16.Text = "Please choose a valid barcode!";
             this.label16.Visible = false;
-           
-
-             // 
-            // label76
             // 
-            this.label76.AutoSize = true;
-            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(567, 492);
-            this.label76.Name = "label4";
-            this.label76.Size = new System.Drawing.Size(126, 25);
-            this.label76.TabIndex = 346;
-            this.label76.Text = "RFID Timer:";
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.Color.Red;
+            this.label45.Location = new System.Drawing.Point(17, 204);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(170, 16);
+            this.label45.TabIndex = 341;
+            this.label45.Text = "Please choose a valid store!";
+            this.label45.Visible = false;
             // 
             // lblTimer
             // 
             this.lblTimer.AutoSize = true;
             this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.Location = new System.Drawing.Point(708, 492);
+            this.lblTimer.Location = new System.Drawing.Point(864, 487);
+            this.lblTimer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(24, 25);
             this.lblTimer.TabIndex = 347;
             this.lblTimer.Text = "0";
-
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(23, 251);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(213, 19);
-            this.label4.TabIndex = 341;
-            this.label4.Text = "Please choose a valid store!";
-            this.label4.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(23, 316);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(17, 257);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(205, 19);
+            this.label6.Size = new System.Drawing.Size(163, 16);
             this.label6.TabIndex = 342;
             this.label6.Text = "Please enter the RFID Tag!";
             this.label6.Visible = false;
-
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(733, 487);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(126, 25);
+            this.label12.TabIndex = 349;
+            this.label12.Text = "RFID Timer:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(15, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 33);
+            this.label4.TabIndex = 350;
+            this.label4.Text = "Add Item";
             // 
             // AddStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-
-            this.Controls.Add(this.lblTimer);
-
-            this.Controls.Add(this.label6);
-
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label76);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblTimer);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label45);
             this.Controls.Add(this.lblConnect);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.comboBox1);
@@ -321,10 +308,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnlogin);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddStock";
-            this.Size = new System.Drawing.Size(1375, 655);
+            this.Size = new System.Drawing.Size(1031, 532);
             this.Load += new System.EventHandler(this.AddStock_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -354,12 +339,13 @@
 
       
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Label label45;
+        
 
         private System.Windows.Forms.Label lblTimer;
 
         private System.Windows.Forms.Label label6;
-
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label4;
     }
 }

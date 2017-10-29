@@ -124,13 +124,13 @@ namespace ssms.Pages.Items
             int storeIndex = comboBoxStore.SelectedIndex;
             if (storeIndex == -1)
             {
-                label4.Visible = true;
+                label45.Visible = true;
             }
             else
             {
                 int storeID = listS[storeIndex].StoreID;
                 i.StoreID = storeID;
-                label4.Visible = false;
+                label45.Visible = false;
             }
 
             int barcodeIndex = comboBox1.SelectedIndex;
