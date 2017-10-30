@@ -26,14 +26,13 @@ namespace ssms.Pages
         {
             try
             {
-
                 panel2.Controls.Clear();
                 T find = new T();
                 find.Parent = panel2;
                 find.Dock = DockStyle.Fill;
                 find.BringToFront();
             }
-            catch
+            catch(Exception e)
             {
 
             }

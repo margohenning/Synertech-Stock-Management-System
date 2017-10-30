@@ -12,6 +12,8 @@ namespace ssms.Pages
 {
     public partial class UpdateMyAccount : UserControl
     {
+        string emailUpdateCheck;
+        string emailUpdateCheckCompare;
         public UpdateMyAccount()
         {
             InitializeComponent();
@@ -63,6 +65,8 @@ namespace ssms.Pages
 
             cbAdmin.Text = isAdminActivated;
             cbActivated.Text = isUserActivated;
+
+            emailUpdateCheckCompare = tbEmail.Text;
         }
 
         //Margo
@@ -88,8 +92,28 @@ namespace ssms.Pages
                 user.UserName = tbName.Text;
                 user.UserIdentityNumber = tbIdentityNo.Text;
                 user.UserSurname = tbSurname.Text;
-                user.UserEmail = tbEmail.Text;
                 user.UserPassword = tbPassword.Text;
+
+                List<string> emailList = new List<string>();
+
+                List<LTS.User> listEmail = new List<LTS.User>();
+                listEmail = DAT.DataAccess.GetUser().ToList();
+                for (int b = 0; b < listEmail.Count; b++)
+                {
+                    emailList.Add(listEmail[b].UserEmail);
+                }
+
+
+                if (!(emailList.Contains(tbEmail.Text)) || emailUpdateCheck == emailUpdateCheckCompare)
+                {
+                    user.UserEmail = tbEmail.Text;
+                }
+                else
+                {
+                    lblEmail.Visible = true;
+                    lblEmail.Text = "The email already exists";
+                }
+
 
                 if (cbAdmin.SelectedItem.Equals("Yes")) { user.UserAdmin = true; } else { user.UserAdmin = false; }
                 if (cbActivated.SelectedItem.Equals("Yes")) { user.UserActivated = true; } else { user.UserActivated = false; }
@@ -129,6 +153,14 @@ namespace ssms.Pages
                 {
                     ((Main)this.Parent.Parent).ChangeView<UpdateMyAccount>();
                 }
+            }
+        }
+
+        private void tbEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (tbEmail.Text != "")
+            {
+                emailUpdateCheck = tbEmail.Text;
             }
         }
     }
