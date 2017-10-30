@@ -222,15 +222,15 @@ namespace ssms.Pages.Products
                 {
                     if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the Product was not Added!"))
                     {
-                        //navigate to page
+                        ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
                     }
                 }
                 else
                 {
                     if (DialogResult.OK == MessageBox.Show("The Product was added successfully!"))
                     {
-                        
-                        ChangeView<Products.Product>();
+
+                        ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
                     }
                 }
             }
@@ -238,7 +238,7 @@ namespace ssms.Pages.Products
             {
                 if (DialogResult.OK == MessageBox.Show("The Product was not added successfully!"))
                 {
-                    //navigate to page
+                    ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
                 }
             }
         }
