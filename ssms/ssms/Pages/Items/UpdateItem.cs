@@ -14,10 +14,12 @@ namespace ssms.Pages.Items
     public partial class UpdateStock : UserControl
 
     {
+        string oldEPC;
         Timer ScanTimer = new Timer();
         System.Timers.Timer timer;
         int time = 0;
 
+        List<LTS.Item> it = new List<LTS.Item>();
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
         List<LTS.Store> listS;
@@ -218,10 +220,12 @@ namespace ssms.Pages.Items
                     string itemID = dataGridView2.Rows[i].Cells[0].Value.ToString();
                     string rfTag = dataGridView2.Rows[i].Cells[1].Value.ToString();
                     string barNum = dataGridView2.Rows[i].Cells[4].Value.ToString();
+                    oldEPC = rfTag;
 
                     label5.Text = itemID;
                     textBox2.Text = rfTag;
-                    comboBox1.Text = barNum;  
+                    comboBox1.Text = barNum;
+                    
                 }
             }
             else
@@ -233,70 +237,142 @@ namespace ssms.Pages.Items
         //Devon
         private void button3_Click(object sender, EventArgs e)
         {
-            int itemID = Int32.Parse(label5.Text);
-            LTS.Item olditem = DAT.DataAccess.GetItem().Where(d => d.ItemID == itemID).FirstOrDefault();
-
-            bool status = olditem.ItemStatus;
-
-            int sIndex = comboBoxStore.SelectedIndex;
-            int bIndex = comboBox1.SelectedIndex;
-            if (sIndex == -1 || bIndex == -1)
+            if (textBox2.Text == oldEPC)
             {
-                label7.Visible = true;
-            }
-            else
-            {
-                label7.Visible = false;
-                int storeID = listS[sIndex].StoreID;
-                int barID = listBar[bIndex].BarcodeID;
+                int itemID = Int32.Parse(label5.Text);
+                LTS.Item olditem = DAT.DataAccess.GetItem().Where(d => d.ItemID == itemID).FirstOrDefault();
 
-                LTS.Product p = new LTS.Product();
-                p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
-                int productID;
-                LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
-                
-                if (p != null)
+                bool status = olditem.ItemStatus;
+
+                int sIndex = comboBoxStore.SelectedIndex;
+                int bIndex = comboBox1.SelectedIndex;
+                if (sIndex == -1 || bIndex == -1)
                 {
-                    try
-                    {
-                        if (comboBoxStore.Text == "")
-                        {
-                            label4.Visible = true;
-                        }
-                        else if (checkTag != null)
-                        {
-                            label4.Visible = true;
-                            label4.Text = "TAG alreasy exists! Please enter a different one.";
-                        }
-                        else
-                        {
-                            label4.Visible = false;
-                            productID = p.ProductID;
-                            LTS.Item newitem = new LTS.Item();
-                            newitem.ItemID = itemID;
-                            newitem.ItemStatus = status;
-                            newitem.ProductID = productID;
-                            newitem.TagEPC = textBox2.Text;
-                            newitem.StoreID = storeID;
+                    label7.Visible = true;
+                }
+                else
+                {
+                    label7.Visible = false;
+                    int storeID = listS[sIndex].StoreID;
+                    int barID = listBar[bIndex].BarcodeID;
 
-                            bool check = DAT.DataAccess.UpdateItem(newitem);
-                            if (check)
+                    LTS.Product p = new LTS.Product();
+                    p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+                    int productID;
+                    LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
+
+                    if (p != null)
+                    {
+                        try
+                        {
+                            if (textBox2.Text == "")
                             {
-                                MessageBox.Show("Item has been updated!");
-                                ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
+                                label4.Text = "Please enter the RFID Tag!";
+                                label4.Visible = true;
                             }
                             else
                             {
-                                MessageBox.Show("Item has not been updated!");
-                            }
-                        }  
-                    }
-                    catch
-                    {
+                                label4.Visible = false;
+                                productID = p.ProductID;
+                                LTS.Item newitem = new LTS.Item();
+                                newitem.ItemID = itemID;
+                                newitem.ItemStatus = status;
+                                newitem.ProductID = productID;
+                                newitem.TagEPC = textBox2.Text;
+                                newitem.StoreID = storeID;
 
+                                bool check = DAT.DataAccess.UpdateItem(newitem);
+                                if (check)
+                                {
+                                    MessageBox.Show("Item has been updated!");
+                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Item has not been updated!");
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Item has not been updated!");
+                        }
                     }
                 }
-            }    
+            }
+            else
+            {
+                LTS.Item ite = DAT.DataAccess.GetItem().Where(i => i.TagEPC == textBox2.Text).FirstOrDefault();
+                if (ite == null)
+                {
+                    int itemID = Int32.Parse(label5.Text);
+                    LTS.Item olditem = DAT.DataAccess.GetItem().Where(d => d.ItemID == itemID).FirstOrDefault();
+
+                    bool status = olditem.ItemStatus;
+
+                    int sIndex = comboBoxStore.SelectedIndex;
+                    int bIndex = comboBox1.SelectedIndex;
+                    if (sIndex == -1 || bIndex == -1)
+                    {
+                        label7.Visible = true;
+                    }
+                    else
+                    {
+                        label7.Visible = false;
+                        int storeID = listS[sIndex].StoreID;
+                        int barID = listBar[bIndex].BarcodeID;
+
+                        LTS.Product p = new LTS.Product();
+                        p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+                        int productID;
+                        LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
+
+                        if (p != null)
+                        {
+                            try
+                            {
+                                if (textBox2.Text == "")
+                                {
+                                    label4.Text = "Please enter the RFID Tag!";
+                                    label4.Visible = true;
+                                }
+                                else
+                                {
+                                    label4.Visible = false;
+                                    productID = p.ProductID;
+                                    LTS.Item newitem = new LTS.Item();
+                                    newitem.ItemID = itemID;
+                                    newitem.ItemStatus = status;
+                                    newitem.ProductID = productID;
+                                    newitem.TagEPC = textBox2.Text;
+                                    newitem.StoreID = storeID;
+
+                                    bool check = DAT.DataAccess.UpdateItem(newitem);
+                                    if (check)
+                                    {
+                                        MessageBox.Show("Item has been updated!");
+                                        ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Item has not been updated!");
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Item has not been updated!");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    label4.Visible = true;
+                    label4.Text = "TAG alreasy exists! Please enter a different one.";
+                }
+            }
+                
         }
 
 
@@ -532,6 +608,5 @@ namespace ssms.Pages.Items
         {
 
         }
-
     }
 }
