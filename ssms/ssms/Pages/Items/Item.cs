@@ -23,6 +23,8 @@ namespace ssms.Pages.Items
         public Items()
         {
             InitializeComponent();
+
+          
         }
 
         //Devon
