@@ -44,10 +44,10 @@
             this.lbxIn = new System.Windows.Forms.ListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbReader = new System.Windows.Forms.ListBox();
             this.setName = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbReader = new System.Windows.Forms.ListBox();
             this.lblConnect = new System.Windows.Forms.Label();
             this.lblStartRead = new System.Windows.Forms.Label();
             this.lblStop = new System.Windows.Forms.Label();
@@ -217,9 +217,11 @@
             this.lbxMissing.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxMissing.ForeColor = System.Drawing.Color.Red;
             this.lbxMissing.FormattingEnabled = true;
+            this.lbxMissing.HorizontalScrollbar = true;
             this.lbxMissing.ItemHeight = 19;
             this.lbxMissing.Location = new System.Drawing.Point(514, 119);
             this.lbxMissing.Name = "lbxMissing";
+            this.lbxMissing.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lbxMissing.Size = new System.Drawing.Size(261, 346);
             this.lbxMissing.TabIndex = 335;
             // 
@@ -228,9 +230,11 @@
             this.lbxIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxIn.ForeColor = System.Drawing.Color.Black;
             this.lbxIn.FormattingEnabled = true;
+            this.lbxIn.HorizontalScrollbar = true;
             this.lbxIn.ItemHeight = 19;
             this.lbxIn.Location = new System.Drawing.Point(235, 119);
             this.lbxIn.Name = "lbxIn";
+            this.lbxIn.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lbxIn.Size = new System.Drawing.Size(261, 346);
             this.lbxIn.TabIndex = 334;
             // 
@@ -240,7 +244,6 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lbReader);
             this.panel1.Controls.Add(this.setName);
             this.panel1.Controls.Add(this.label8);
@@ -250,6 +253,17 @@
             this.panel1.Size = new System.Drawing.Size(219, 194);
             this.panel1.TabIndex = 338;
             this.panel1.Visible = false;
+            // 
+            // lbReader
+            // 
+            this.lbReader.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReader.FormattingEnabled = true;
+            this.lbReader.ItemHeight = 16;
+            this.lbReader.Location = new System.Drawing.Point(18, 44);
+            this.lbReader.Name = "lbReader";
+            this.lbReader.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.lbReader.Size = new System.Drawing.Size(183, 132);
+            this.lbReader.TabIndex = 3;
             // 
             // setName
             // 
@@ -277,17 +291,6 @@
             this.label3.Size = new System.Drawing.Size(90, 14);
             this.label3.TabIndex = 0;
             this.label3.Text = "Settings Name:";
-            // 
-            // lbReader
-            // 
-            this.lbReader.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbReader.FormattingEnabled = true;
-            this.lbReader.ItemHeight = 16;
-            this.lbReader.Location = new System.Drawing.Point(18, 44);
-            this.lbReader.Name = "lbReader";
-            this.lbReader.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lbReader.Size = new System.Drawing.Size(183, 132);
-            this.lbReader.TabIndex = 3;
             // 
             // lblConnect
             // 
@@ -320,9 +323,9 @@
             this.lblStop.ForeColor = System.Drawing.Color.Red;
             this.lblStop.Location = new System.Drawing.Point(17, 353);
             this.lblStop.Name = "lblStop";
-            this.lblStop.Size = new System.Drawing.Size(64, 16);
+            this.lblStop.Size = new System.Drawing.Size(71, 16);
             this.lblStop.TabIndex = 341;
-            this.lblStop.Text = "Stoping...";
+            this.lblStop.Text = "Stopping...";
             this.lblStop.Visible = false;
             // 
             // ScanItemsInStore

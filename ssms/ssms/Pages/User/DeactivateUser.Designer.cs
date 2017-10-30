@@ -165,42 +165,49 @@
             this.UserID.HeaderText = "User ID";
             this.UserID.Name = "UserID";
             this.UserID.ReadOnly = true;
+            this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UserIDentityNumber
             // 
             this.UserIDentityNumber.HeaderText = "Identity Number";
             this.UserIDentityNumber.Name = "UserIDentityNumber";
             this.UserIDentityNumber.ReadOnly = true;
+            this.UserIDentityNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UserName
             // 
             this.UserName.HeaderText = "Name";
             this.UserName.Name = "UserName";
             this.UserName.ReadOnly = true;
+            this.UserName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UserSurname
             // 
             this.UserSurname.HeaderText = "Surname";
             this.UserSurname.Name = "UserSurname";
             this.UserSurname.ReadOnly = true;
+            this.UserSurname.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UserEmail
             // 
             this.UserEmail.HeaderText = "Email";
             this.UserEmail.Name = "UserEmail";
             this.UserEmail.ReadOnly = true;
+            this.UserEmail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UserAdmin
             // 
             this.UserAdmin.HeaderText = "Admin";
             this.UserAdmin.Name = "UserAdmin";
             this.UserAdmin.ReadOnly = true;
+            this.UserAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UserActivated
             // 
             this.UserActivated.HeaderText = "Activated";
             this.UserActivated.Name = "UserActivated";
             this.UserActivated.ReadOnly = true;
+            this.UserActivated.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label2
             // 

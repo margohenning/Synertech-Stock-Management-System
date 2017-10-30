@@ -30,19 +30,25 @@
         {
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReaders = new System.Windows.Forms.DataGridView();
-            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonBack = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lblConnect = new System.Windows.Forms.Label();
+
+            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,37 +76,13 @@
             this.TxPower,
             this.RxPower});
             this.dataGridViewReaders.GridColor = System.Drawing.Color.White;
-            this.dataGridViewReaders.Location = new System.Drawing.Point(18, 162);
+            this.dataGridViewReaders.Location = new System.Drawing.Point(5, 162);
             this.dataGridViewReaders.MultiSelect = false;
             this.dataGridViewReaders.Name = "dataGridViewReaders";
             this.dataGridViewReaders.ReadOnly = true;
             this.dataGridViewReaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReaders.Size = new System.Drawing.Size(634, 142);
             this.dataGridViewReaders.TabIndex = 295;
-            // 
-            // IPaddress
-            // 
-            this.IPaddress.HeaderText = "IP Address";
-            this.IPaddress.Name = "IPaddress";
-            this.IPaddress.ReadOnly = true;
-            // 
-            // AntennaNumber
-            // 
-            this.AntennaNumber.HeaderText = "Antenna Number";
-            this.AntennaNumber.Name = "AntennaNumber";
-            this.AntennaNumber.ReadOnly = true;
-            // 
-            // TxPower
-            // 
-            this.TxPower.HeaderText = "Tx Power";
-            this.TxPower.Name = "TxPower";
-            this.TxPower.ReadOnly = true;
-            // 
-            // RxPower
-            // 
-            this.RxPower.HeaderText = "Rx Power";
-            this.RxPower.Name = "RxPower";
-            this.RxPower.ReadOnly = true;
             // 
             // label3
             // 
@@ -155,6 +137,51 @@
             this.label1.TabIndex = 286;
             this.label1.Text = "Select a Setting";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(148, 102);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(245, 28);
+            this.comboBox1.TabIndex = 299;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(14, 424);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(339, 22);
+            this.label6.TabIndex = 300;
+            this.label6.Text = "Please choose a valid setting to select!";
+            this.label6.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(477, 374);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 25);
+            this.label7.TabIndex = 302;
+            this.label7.Text = " Test \r";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::ssms.Properties.Resources.ok_like_hand_sign;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(482, 310);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 61);
+            this.button1.TabIndex = 301;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // buttonBack
             // 
             this.buttonBack.BackgroundImage = global::ssms.Properties.Resources.reply__1_;
@@ -185,33 +212,53 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // comboBox1
+            // lblConnect
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(148, 102);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(245, 28);
-            this.comboBox1.TabIndex = 299;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.lblConnect.AutoSize = true;
+            this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnect.ForeColor = System.Drawing.Color.Red;
+            this.lblConnect.Location = new System.Drawing.Point(296, 332);
+            this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblConnect.Name = "lblConnect";
+            this.lblConnect.Size = new System.Drawing.Size(0, 16);
+            this.lblConnect.TabIndex = 341;
             // 
-            // label6
+            // IPaddress
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(185, 349);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(339, 22);
-            this.label6.TabIndex = 300;
-            this.label6.Text = "Please choose a valid setting to select!";
-            this.label6.Visible = false;
+            this.IPaddress.HeaderText = "IP Address";
+            this.IPaddress.Name = "IPaddress";
+            this.IPaddress.ReadOnly = true;
+            this.IPaddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AntennaNumber
+            // 
+            this.AntennaNumber.HeaderText = "Antenna Number";
+            this.AntennaNumber.Name = "AntennaNumber";
+            this.AntennaNumber.ReadOnly = true;
+            this.AntennaNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TxPower
+            // 
+            this.TxPower.HeaderText = "Tx Power";
+            this.TxPower.Name = "TxPower";
+            this.TxPower.ReadOnly = true;
+            this.TxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RxPower
+            // 
+            this.RxPower.HeaderText = "Rx Power";
+            this.RxPower.Name = "RxPower";
+            this.RxPower.ReadOnly = true;
+            this.RxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SelectSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblConnect);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
@@ -242,11 +289,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPaddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn AntennaNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxPower;
         private System.Windows.Forms.DataGridViewTextBoxColumn RxPower;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblConnect;
+
     }
 }

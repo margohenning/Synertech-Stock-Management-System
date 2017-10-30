@@ -73,7 +73,6 @@
             this.label5.Size = new System.Drawing.Size(81, 25);
             this.label5.TabIndex = 219;
             this.label5.Text = "Update";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // btnlogin
             // 
@@ -123,7 +122,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 18);
             this.label2.TabIndex = 214;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label16
             // 
@@ -165,24 +163,28 @@
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 211;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // CategoryID
             // 
             this.CategoryID.HeaderText = "Category ID";
             this.CategoryID.Name = "CategoryID";
             this.CategoryID.ReadOnly = true;
+            this.CategoryID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // CategoryName
             // 
             this.CategoryName.HeaderText = "Category Name";
             this.CategoryName.Name = "CategoryName";
             this.CategoryName.ReadOnly = true;
+            this.CategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // CategoryDescription
             // 
             this.CategoryDescription.HeaderText = "Category Description";
             this.CategoryDescription.Name = "CategoryDescription";
             this.CategoryDescription.ReadOnly = true;
+            this.CategoryDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label1
             // 
@@ -255,10 +257,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryDescription;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
     }
 }

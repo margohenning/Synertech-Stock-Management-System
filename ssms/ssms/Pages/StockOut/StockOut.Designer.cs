@@ -61,7 +61,6 @@
             this.button4.TabIndex = 93;
             this.button4.Text = "Export PDF";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
@@ -240,6 +239,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserSurname;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+       private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

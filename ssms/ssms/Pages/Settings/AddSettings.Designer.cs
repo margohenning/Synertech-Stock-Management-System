@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblAntenna = new System.Windows.Forms.Label();
+            this.lblIP = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.buttonAddAntenna = new System.Windows.Forms.Button();
@@ -53,8 +55,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.lblReader = new System.Windows.Forms.Label();
-            this.lblIP = new System.Windows.Forms.Label();
-            this.lblAntenna = new System.Windows.Forms.Label();
             this.lblStore = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
@@ -78,6 +78,30 @@
             this.panel1.Size = new System.Drawing.Size(538, 326);
             this.panel1.TabIndex = 278;
             this.panel1.Visible = false;
+            // 
+            // lblAntenna
+            // 
+            this.lblAntenna.AutoSize = true;
+            this.lblAntenna.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAntenna.ForeColor = System.Drawing.Color.Red;
+            this.lblAntenna.Location = new System.Drawing.Point(351, 273);
+            this.lblAntenna.Name = "lblAntenna";
+            this.lblAntenna.Size = new System.Drawing.Size(125, 18);
+            this.lblAntenna.TabIndex = 289;
+            this.lblAntenna.Text = "Antennas Invalid!";
+            this.lblAntenna.Visible = false;
+            // 
+            // lblIP
+            // 
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.ForeColor = System.Drawing.Color.Red;
+            this.lblIP.Location = new System.Drawing.Point(299, 49);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(136, 18);
+            this.lblIP.TabIndex = 288;
+            this.lblIP.Text = "IP Address Invalid!";
+            this.lblIP.Visible = false;
             // 
             // label8
             // 
@@ -194,6 +218,7 @@
             this.comboBoxStore.Name = "comboBoxStore";
             this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
             this.comboBoxStore.TabIndex = 265;
+            
             // 
             // label5
             // 
@@ -362,30 +387,6 @@
             this.lblReader.TabIndex = 287;
             this.lblReader.Text = "Readers invalid!";
             this.lblReader.Visible = false;
-            // 
-            // lblIP
-            // 
-            this.lblIP.AutoSize = true;
-            this.lblIP.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIP.ForeColor = System.Drawing.Color.Red;
-            this.lblIP.Location = new System.Drawing.Point(299, 49);
-            this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(136, 18);
-            this.lblIP.TabIndex = 288;
-            this.lblIP.Text = "IP Address Invalid!";
-            this.lblIP.Visible = false;
-            // 
-            // lblAntenna
-            // 
-            this.lblAntenna.AutoSize = true;
-            this.lblAntenna.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAntenna.ForeColor = System.Drawing.Color.Red;
-            this.lblAntenna.Location = new System.Drawing.Point(351, 273);
-            this.lblAntenna.Name = "lblAntenna";
-            this.lblAntenna.Size = new System.Drawing.Size(125, 18);
-            this.lblAntenna.TabIndex = 289;
-            this.lblAntenna.Text = "Antennas Invalid!";
-            this.lblAntenna.Visible = false;
             // 
             // lblStore
             // 

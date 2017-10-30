@@ -116,9 +116,11 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label13.Location = new System.Drawing.Point(33, 330);
             this.label13.Name = "label13";
+
             this.label13.Size = new System.Drawing.Size(64, 19);
             this.label13.TabIndex = 162;
             this.label13.Text = "Admin:";
+
             // 
             // label9
             // 
