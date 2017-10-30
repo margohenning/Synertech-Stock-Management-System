@@ -68,11 +68,7 @@
             this.UserAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
 
-            this.lblIdentityNo = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblSurname = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
+            
             this.tbSearchName = new System.Windows.Forms.TextBox();
             this.btnSearchName = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -623,11 +619,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserAdmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserActivated;
 
-        private System.Windows.Forms.Label lblIdentityNo;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblSurname;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblPassword;
+       
         private System.Windows.Forms.TextBox tbSearchName;
         private System.Windows.Forms.Button btnSearchName;
         private System.Windows.Forms.Label label2;
