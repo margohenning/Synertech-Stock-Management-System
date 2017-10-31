@@ -62,9 +62,9 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(32, 145);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 19);
+            this.label7.Size = new System.Drawing.Size(136, 19);
             this.label7.TabIndex = 172;
-            this.label7.Text = "Identity Number";
+            this.label7.Text = "Identity Number:";
             // 
             // lblUserID
             // 
@@ -116,9 +116,11 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label13.Location = new System.Drawing.Point(33, 330);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 19);
+
+            this.label13.Size = new System.Drawing.Size(64, 19);
             this.label13.TabIndex = 162;
-            this.label13.Text = "Admin: ";
+            this.label13.Text = "Admin:";
+
             // 
             // label9
             // 
@@ -177,6 +179,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(245, 26);
             this.tbEmail.TabIndex = 176;
+            this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
             // cbAdmin
             // 

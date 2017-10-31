@@ -13,6 +13,8 @@ namespace ssms.Pages
     public partial class UpdateUser : UserControl
     {
         bool activated;
+        string emailUpdateCheck;
+        string emailUpdateCheckCompare;
 
         public UpdateUser()
         {
@@ -70,6 +72,10 @@ namespace ssms.Pages
             {
                 dgvUser.Rows.Clear();
             }
+            foreach (DataGridViewColumn column in dgvUser.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         //Marius
@@ -90,10 +96,18 @@ namespace ssms.Pages
                     dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
 
                 }
+                            foreach (DataGridViewColumn column in dgvUser.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             }
             else
             {
                 dgvUser.Rows.Clear();
+            }
+            foreach (DataGridViewColumn column in dgvUser.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
 
@@ -118,14 +132,19 @@ namespace ssms.Pages
             {
                 dgvUser.Rows.Clear();
             }
+            foreach (DataGridViewColumn column in dgvUser.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         //Marius
         private void button2_Click(object sender, EventArgs e)
         {
-            //Search button clicked
+            //ID Search button clicked
             string searchValue = tbSearch.Text;
-
+            bool foundSearch = false;
+            if (tbSearch.Text == "") { MessageBox.Show("No User Identity number was entered"); }
             dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             try
             {
@@ -135,14 +154,16 @@ namespace ssms.Pages
                     {
                         dgvUser.ClearSelection();
                         row.Selected = true;
+                        tbSearch.Text = "";
+                        foundSearch = true;
                         break;
                     }
                 }
+                if (foundSearch == false) { MessageBox.Show("No user was found"); }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("The user could not be found");
-                
             }
         }
 
@@ -166,6 +187,7 @@ namespace ssms.Pages
                     cbActivated.SelectedItem = dgvUser.Rows[i].Cells[6].Value.ToString();
                 }
             }
+            emailUpdateCheckCompare = tbEmail.Text;
         }
 
         //Marius
@@ -185,8 +207,29 @@ namespace ssms.Pages
                 user.UserName = tbName.Text;
                 user.UserIdentityNumber = tbIDentityNo.Text;
                 user.UserSurname = tbSurname.Text;
-                user.UserEmail = tbEmail.Text;
+                
                 user.UserPassword = tbPassword.Text;
+
+                List<string> emailList = new List<string>();
+
+                List<LTS.User> listEmail = new List<LTS.User>();
+                listEmail = DAT.DataAccess.GetUser().ToList();
+                for (int b = 0; b < listEmail.Count; b++)
+                {
+                    emailList.Add(listEmail[b].UserEmail);
+                }
+
+
+                if (!(emailList.Contains(tbEmail.Text)) || emailUpdateCheck == emailUpdateCheckCompare)
+                {
+                    user.UserEmail = tbEmail.Text;
+                }
+                else
+                {
+                    lblEmail.Visible = true;
+                    lblEmail.Text = "The email already exists";
+                }
+
 
                 if (cbAdmin.SelectedItem.Equals("Yes")) { user.UserAdmin = true; } else { user.UserAdmin = false; }
                 if (cbActivated.SelectedItem.Equals("Yes")) { user.UserActivated = true; } else { user.UserActivated = false; }
@@ -208,14 +251,14 @@ namespace ssms.Pages
                 {
                     if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the User was not Updated!"))
                     {
-                        ((Main)this.Parent.Parent).ChangeView<UpdateUser>();
+                        //((Main)this.Parent.Parent).ChangeView<UpdateUser>();
                     }
                 }
                 else
                 {
                     if (DialogResult.OK == MessageBox.Show("The User was updated successfully!"))
                     {
-                        ((Main)this.Parent.Parent).ChangeView<UpdateUser>();
+                        ((Main)this.Parent.Parent).ChangeView<Users>();
                     }
                 }
 
@@ -226,6 +269,42 @@ namespace ssms.Pages
                 {
                     ((Main)this.Parent.Parent).ChangeView<UpdateUser>();
                 }
+            }
+        }
+
+        private void btnSearchName_Click(object sender, EventArgs e)
+        {
+            //Search button clicked
+            string searchValue = tbSearchName.Text;
+            bool foundSearch = false;
+            if (tbSearchName.Text == "") { MessageBox.Show("No User name was entered"); }
+            dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dgvUser.Rows)
+                {
+                    if (row.Cells[2].Value.ToString().Equals(searchValue))
+                    {
+                        dgvUser.ClearSelection();
+                        row.Selected = true;
+                        tbSearchName.Text = "";
+                        foundSearch = true;
+                        break;
+                    }
+                }
+                if (foundSearch == false) { MessageBox.Show("No user was found"); }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The user could not be found");
+            }
+        }
+
+        private void tbEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (tbEmail.Text != "")
+            {
+                emailUpdateCheck = tbEmail.Text;
             }
         }
     }

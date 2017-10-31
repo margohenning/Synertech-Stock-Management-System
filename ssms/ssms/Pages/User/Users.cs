@@ -62,6 +62,7 @@ namespace ssms.Pages
             {
                 dataGridView1.Rows.Clear();
             }
+            dataGridView1.ClearSelection();
         }
 
         //Devon
@@ -81,6 +82,7 @@ namespace ssms.Pages
             {
                 dataGridView1.Rows.Clear();
             }
+            dataGridView1.ClearSelection();
         }
 
         //Devon
@@ -101,8 +103,8 @@ namespace ssms.Pages
                 dataGridView1.Rows.Clear();
                 
              }
-               
-         }
+            dataGridView1.ClearSelection();
+        }
 
         //Margo
         private void button4_Click(object sender, EventArgs e)

@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
-
+using ssms.DataClasses;
 
 namespace ssms.Pages.Products
 {
     public partial class Product : UserControl
     {
+        List<ProductMain> pm = new List<ProductMain>();
         public Product()
         {
             InitializeComponent();
@@ -45,21 +46,43 @@ namespace ssms.Pages.Products
             ((Main)this.Parent.Parent).ChangeView<Items.Brands>();
         }
 
-
+        //Marius
         private void Product_Load(object sender, EventArgs e)
         {
             List<LTS.Product> prod = new List<LTS.Product>();
             prod = DAT.DataAccess.GetProduct().ToList();
-
+            
             for (int i = 0; i < prod.Count; i++)
             {
-                String barcodeNumb = DAT.DataAccess.GetBarcode().Where(o => o.BarcodeID == prod[i].BarcodeID).FirstOrDefault().BarcodeNumber;
-                String brandName = DAT.DataAccess.GetBrand().Where(o => o.BrandID == prod[i].BrandID).FirstOrDefault().BrandName;
-                String categoryName = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == prod[i].CategoryID).FirstOrDefault().CategoryName;
-                dgvProducts.Rows.Add(prod[i].ProductID, prod[i].ProductName, prod[i].ProductDescription, barcodeNumb, brandName, categoryName);
-               
-              }
-              }
+                ProductMain pmThis = new ProductMain();
+                pmThis.ProductID = prod[i].ProductID;
+                pmThis.ProductName = prod[i].ProductName;
+                pmThis.ProductDescription = prod[i].ProductDescription;
+                pmThis.CategoryID = prod[i].CategoryID;
+                pmThis.BrandID = prod[i].BrandID;
+                pmThis.BarcodeID = prod[i].BarcodeID;
+
+                LTS.Category c = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == prod[i].CategoryID).FirstOrDefault();
+                pmThis.CategoryName = c.CategoryName;
+                pmThis.CategoryDescription = c.CategoryDescription;
+
+                LTS.Brand b = DAT.DataAccess.GetBrand().Where(o => o.BrandID == prod[i].BrandID).FirstOrDefault();
+                pmThis.BrandName = b.BrandName;
+                pmThis.BrandDescription = b.BrandDescription;
+
+                LTS.Barcode bar = DAT.DataAccess.GetBarcode().Where(o => o.BarcodeID == prod[i].BarcodeID).FirstOrDefault();
+                pmThis.BarcodeNumber = bar.BarcodeNumber;
+
+                pm.Add(pmThis);
+                
+                dgvProducts.Rows.Add(pmThis.ProductID, pmThis.ProductName, pmThis.ProductDescription, pmThis.BarcodeNumber, pmThis.BrandName, pmThis.CategoryName);
+                foreach (DataGridViewColumn column in dgvProducts.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
+                dgvProducts.ClearSelection();
+            }
+        }
         
         
         

@@ -67,6 +67,12 @@
             this.UserEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
+            
+            this.tbSearchName = new System.Windows.Forms.TextBox();
+            this.btnSearchName = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,6 +163,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(245, 26);
             this.tbEmail.TabIndex = 222;
+            this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
             // cbAdmin
             // 
@@ -434,6 +441,43 @@
             this.lblPassword.TabIndex = 237;
             this.lblPassword.Text = "label14";
             // 
+
+            // tbSearchName
+            // 
+            this.tbSearchName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearchName.Location = new System.Drawing.Point(739, 137);
+            this.tbSearchName.Name = "tbSearchName";
+            this.tbSearchName.Size = new System.Drawing.Size(162, 26);
+            this.tbSearchName.TabIndex = 238;
+            // 
+            // btnSearchName
+            // 
+            this.btnSearchName.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSearchName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSearchName.Image = global::ssms.Properties.Resources.search;
+            this.btnSearchName.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSearchName.Location = new System.Drawing.Point(907, 124);
+            this.btnSearchName.Name = "btnSearchName";
+            this.btnSearchName.Size = new System.Drawing.Size(56, 56);
+            this.btnSearchName.TabIndex = 239;
+            this.btnSearchName.Text = "Search";
+            this.btnSearchName.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSearchName.UseVisualStyleBackColor = true;
+            this.btnSearchName.Click += new System.EventHandler(this.btnSearchName_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(743, 118);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.TabIndex = 240;
+            this.label2.Text = "Name: ";
+
             // UserID
             // 
             this.UserID.HeaderText = "User ID";
@@ -482,12 +526,16 @@
             this.UserActivated.Name = "UserActivated";
             this.UserActivated.ReadOnly = true;
             this.UserActivated.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+
             // 
             // UpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSearchName);
+            this.Controls.Add(this.tbSearchName);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblSurname);
@@ -570,5 +618,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserAdmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserActivated;
+
+       
+        private System.Windows.Forms.TextBox tbSearchName;
+        private System.Windows.Forms.Button btnSearchName;
+        private System.Windows.Forms.Label label2;
+
     }
 }
