@@ -17,7 +17,7 @@ namespace ssms.Pages
             InitializeComponent();
 
         }
-        //Tiaan
+        //Tiaan1
         private void btnlogin_Click(object sender, EventArgs e)
         {
             LTS.Store store = new LTS.Store();
