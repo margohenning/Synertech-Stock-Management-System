@@ -24,7 +24,7 @@ namespace ssms.Pages.Store
                 LTS.Store store = new LTS.Store();
                 if (txtName.Text == "")
                 {
-                labelError1.Text = "Please enter store name!";
+                labelError1.Text = "Please enter store name!"; //validation
                 labelError1.Visible = true;
             }
                 else if (txtSur.Text == "")
