@@ -127,14 +127,12 @@
             // 
             this.panel1.Location = new System.Drawing.Point(738, 7);
             this.panel1.Name = "panel1";
-
             this.panel1.Size = new System.Drawing.Size(283, 358);
-
             this.panel1.TabIndex = 253;
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

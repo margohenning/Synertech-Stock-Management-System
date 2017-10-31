@@ -70,6 +70,10 @@
             this.barcode = new System.Windows.Forms.Label();
             this.labelError2 = new System.Windows.Forms.Label();
             this.labelError3 = new System.Windows.Forms.Label();
+            this.lblerrorEPC = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.txtEPC = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -128,7 +132,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(350, 384);
+            this.label7.Location = new System.Drawing.Point(634, 309);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 25);
             this.label7.TabIndex = 254;
@@ -144,13 +148,14 @@
             this.button2.ForeColor = System.Drawing.Color.DimGray;
             this.button2.Image = global::ssms.Properties.Resources.icons8_RFID_Signal_64;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(655, 7);
+            this.button2.Location = new System.Drawing.Point(741, 159);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 35);
+            this.button2.Size = new System.Drawing.Size(116, 35);
             this.button2.TabIndex = 256;
             this.button2.Text = "RFID";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -167,6 +172,7 @@
             this.button1.Text = "Back";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnlogin
             // 
@@ -174,9 +180,9 @@
             this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(355, 314);
+            this.btnlogin.Location = new System.Drawing.Point(639, 243);
             this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(80, 61);
+            this.btnlogin.Size = new System.Drawing.Size(96, 61);
             this.btnlogin.TabIndex = 253;
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
@@ -186,7 +192,7 @@
             this.labelError1.AutoSize = true;
             this.labelError1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError1.ForeColor = System.Drawing.Color.Red;
-            this.labelError1.Location = new System.Drawing.Point(471, 247);
+            this.labelError1.Location = new System.Drawing.Point(441, 249);
             this.labelError1.Name = "labelError1";
             this.labelError1.Size = new System.Drawing.Size(201, 16);
             this.labelError1.TabIndex = 318;
@@ -214,7 +220,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(763, 186);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(726, 186);
             this.dataGridView1.TabIndex = 319;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -276,7 +283,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(10, 387);
+            this.label11.Location = new System.Drawing.Point(10, 392);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 15);
             this.label11.TabIndex = 159;
@@ -326,7 +333,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(10, 314);
+            this.label16.Location = new System.Drawing.Point(11, 320);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(77, 15);
             this.label16.TabIndex = 164;
@@ -341,7 +348,6 @@
             this.productName.Size = new System.Drawing.Size(14, 15);
             this.productName.TabIndex = 165;
             this.productName.Text = "a";
-            this.productName.Click += new System.EventHandler(this.name_Click);
             // 
             // ProductDesc
             // 
@@ -397,7 +403,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(11, 341);
+            this.label8.Location = new System.Drawing.Point(11, 346);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 15);
             this.label8.TabIndex = 171;
@@ -417,7 +423,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(11, 363);
+            this.label14.Location = new System.Drawing.Point(11, 368);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(106, 15);
             this.label14.TabIndex = 173;
@@ -428,7 +434,7 @@
             this.lblConnect.AutoSize = true;
             this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConnect.ForeColor = System.Drawing.Color.Red;
-            this.lblConnect.Location = new System.Drawing.Point(559, 153);
+            this.lblConnect.Location = new System.Drawing.Point(883, 170);
             this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConnect.Name = "lblConnect";
             this.lblConnect.Size = new System.Drawing.Size(0, 16);
@@ -437,20 +443,20 @@
             // lblTimer
             // 
             this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.Location = new System.Drawing.Point(843, 487);
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(882, 197);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.Size = new System.Drawing.Size(18, 20);
             this.lblTimer.TabIndex = 349;
             this.lblTimer.Text = "0";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(702, 487);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(747, 197);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(126, 25);
+            this.label12.Size = new System.Drawing.Size(95, 20);
             this.label12.TabIndex = 348;
             this.label12.Text = "RFID Timer:";
             // 
@@ -469,7 +475,7 @@
             this.labelError2.AutoSize = true;
             this.labelError2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError2.ForeColor = System.Drawing.Color.Red;
-            this.labelError2.Location = new System.Drawing.Point(471, 285);
+            this.labelError2.Location = new System.Drawing.Point(441, 284);
             this.labelError2.Name = "labelError2";
             this.labelError2.Size = new System.Drawing.Size(163, 16);
             this.labelError2.TabIndex = 320;
@@ -481,38 +487,90 @@
             this.labelError3.AutoSize = true;
             this.labelError3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError3.ForeColor = System.Drawing.Color.Red;
-            this.labelError3.Location = new System.Drawing.Point(471, 319);
+            this.labelError3.Location = new System.Drawing.Point(441, 316);
             this.labelError3.Name = "labelError3";
             this.labelError3.Size = new System.Drawing.Size(119, 16);
             this.labelError3.TabIndex = 321;
             this.labelError3.Text = "Please select data!";
             this.labelError3.Visible = false;
             // 
+            // lblerrorEPC
+            // 
+            this.lblerrorEPC.AutoSize = true;
+            this.lblerrorEPC.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblerrorEPC.ForeColor = System.Drawing.Color.Red;
+            this.lblerrorEPC.Location = new System.Drawing.Point(748, 232);
+            this.lblerrorEPC.Name = "lblerrorEPC";
+            this.lblerrorEPC.Size = new System.Drawing.Size(146, 16);
+            this.lblerrorEPC.TabIndex = 364;
+            this.lblerrorEPC.Text = "Tag EPC was not found!";
+            this.lblerrorEPC.Visible = false;
+            // 
+            // button4
+            // 
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button4.Image = global::ssms.Properties.Resources.search;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button4.Location = new System.Drawing.Point(942, 197);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(56, 56);
+            this.button4.TabIndex = 363;
+            this.button4.Text = "Search";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // txtEPC
+            // 
+            this.txtEPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEPC.Location = new System.Drawing.Point(747, 127);
+            this.txtEPC.Name = "txtEPC";
+            this.txtEPC.Size = new System.Drawing.Size(256, 26);
+            this.txtEPC.TabIndex = 362;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(748, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 16);
+            this.label3.TabIndex = 361;
+            this.label3.Text = "RFID Tag EPC:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(778, 45);
+            this.label2.Location = new System.Drawing.Point(748, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 19);
-            this.label2.TabIndex = 351;
+            this.label2.Size = new System.Drawing.Size(73, 16);
+            this.label2.TabIndex = 360;
             this.label2.Text = "Store Name:";
             // 
             // comboBoxStore
             // 
             this.comboBoxStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxStore.FormattingEnabled = true;
-            this.comboBoxStore.Location = new System.Drawing.Point(778, 67);
+            this.comboBoxStore.Location = new System.Drawing.Point(747, 64);
             this.comboBoxStore.Name = "comboBoxStore";
-            this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
-            this.comboBoxStore.TabIndex = 350;
+            this.comboBoxStore.Size = new System.Drawing.Size(256, 28);
+            this.comboBoxStore.TabIndex = 359;
             // 
             // BookStockOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblerrorEPC);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.txtEPC);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxStore);
             this.Controls.Add(this.labelError3);
@@ -598,6 +656,10 @@
         private System.Windows.Forms.Label barcode;
         private System.Windows.Forms.Label labelError2;
         private System.Windows.Forms.Label labelError3;
+        private System.Windows.Forms.Label lblerrorEPC;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtEPC;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxStore;
     }

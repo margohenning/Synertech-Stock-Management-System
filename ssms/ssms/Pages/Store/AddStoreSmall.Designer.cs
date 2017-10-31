@@ -38,6 +38,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.labelError1 = new System.Windows.Forms.Label();
             this.labelError2 = new System.Windows.Forms.Label();
+            this.labelError3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
@@ -153,11 +154,24 @@
             this.labelError2.Text = "Please enter store location!";
             this.labelError2.Visible = false;
             // 
+            // labelError3
+            // 
+            this.labelError3.AutoSize = true;
+            this.labelError3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError3.ForeColor = System.Drawing.Color.Red;
+            this.labelError3.Location = new System.Drawing.Point(12, 330);
+            this.labelError3.Name = "labelError3";
+            this.labelError3.Size = new System.Drawing.Size(127, 16);
+            this.labelError3.TabIndex = 322;
+            this.labelError3.Text = "Store already exists!";
+            this.labelError3.Visible = false;
+            // 
             // AddStoreSmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.labelError3);
             this.Controls.Add(this.labelError2);
             this.Controls.Add(this.labelError1);
             this.Controls.Add(this.button2);
@@ -187,5 +201,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label labelError1;
         private System.Windows.Forms.Label labelError2;
+        private System.Windows.Forms.Label labelError3;
     }
 }

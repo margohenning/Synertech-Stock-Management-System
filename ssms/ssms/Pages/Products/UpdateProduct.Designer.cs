@@ -51,15 +51,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.dgvUpdateProduct = new System.Windows.Forms.DataGridView();
-            this.lblNameVal = new System.Windows.Forms.Label();
-            this.lblDesVal = new System.Windows.Forms.Label();
-            this.lblBarVal = new System.Windows.Forms.Label();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblNameVal = new System.Windows.Forms.Label();
+            this.lblDesVal = new System.Windows.Forms.Label();
+            this.lblBarVal = new System.Windows.Forms.Label();
+            this.AmountItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdateProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -322,7 +323,8 @@
             this.ProductDescription,
             this.BarcodeNumber,
             this.BrandName,
-            this.CategoryName});
+            this.CategoryName,
+            this.AmountItems});
             this.dgvUpdateProduct.Location = new System.Drawing.Point(26, 54);
             this.dgvUpdateProduct.Name = "dgvUpdateProduct";
             this.dgvUpdateProduct.ReadOnly = true;
@@ -332,39 +334,6 @@
             this.dgvUpdateProduct.TabIndex = 310;
             this.dgvUpdateProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUpdateProduct_CellContentClick);
             this.dgvUpdateProduct.SelectionChanged += new System.EventHandler(this.dgvUpdateProduct_SelectionChanged);
-            // 
-            // lblNameVal
-            // 
-            this.lblNameVal.AutoSize = true;
-            this.lblNameVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameVal.ForeColor = System.Drawing.Color.Red;
-            this.lblNameVal.Location = new System.Drawing.Point(454, 261);
-            this.lblNameVal.Name = "lblNameVal";
-            this.lblNameVal.Size = new System.Drawing.Size(42, 16);
-            this.lblNameVal.TabIndex = 311;
-            this.lblNameVal.Text = "label2";
-            // 
-            // lblDesVal
-            // 
-            this.lblDesVal.AutoSize = true;
-            this.lblDesVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesVal.ForeColor = System.Drawing.Color.Red;
-            this.lblDesVal.Location = new System.Drawing.Point(454, 295);
-            this.lblDesVal.Name = "lblDesVal";
-            this.lblDesVal.Size = new System.Drawing.Size(42, 16);
-            this.lblDesVal.TabIndex = 312;
-            this.lblDesVal.Text = "label2";
-            // 
-            // lblBarVal
-            // 
-            this.lblBarVal.AutoSize = true;
-            this.lblBarVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBarVal.ForeColor = System.Drawing.Color.Red;
-            this.lblBarVal.Location = new System.Drawing.Point(454, 330);
-            this.lblBarVal.Name = "lblBarVal";
-            this.lblBarVal.Size = new System.Drawing.Size(42, 16);
-            this.lblBarVal.TabIndex = 313;
-            this.lblBarVal.Text = "label2";
             // 
             // ProductID
             // 
@@ -407,6 +376,45 @@
             this.CategoryName.Name = "CategoryName";
             this.CategoryName.ReadOnly = true;
             this.CategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // lblNameVal
+            // 
+            this.lblNameVal.AutoSize = true;
+            this.lblNameVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameVal.ForeColor = System.Drawing.Color.Red;
+            this.lblNameVal.Location = new System.Drawing.Point(454, 261);
+            this.lblNameVal.Name = "lblNameVal";
+            this.lblNameVal.Size = new System.Drawing.Size(42, 16);
+            this.lblNameVal.TabIndex = 311;
+            this.lblNameVal.Text = "label2";
+            // 
+            // lblDesVal
+            // 
+            this.lblDesVal.AutoSize = true;
+            this.lblDesVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesVal.ForeColor = System.Drawing.Color.Red;
+            this.lblDesVal.Location = new System.Drawing.Point(454, 295);
+            this.lblDesVal.Name = "lblDesVal";
+            this.lblDesVal.Size = new System.Drawing.Size(42, 16);
+            this.lblDesVal.TabIndex = 312;
+            this.lblDesVal.Text = "label2";
+            // 
+            // lblBarVal
+            // 
+            this.lblBarVal.AutoSize = true;
+            this.lblBarVal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBarVal.ForeColor = System.Drawing.Color.Red;
+            this.lblBarVal.Location = new System.Drawing.Point(454, 330);
+            this.lblBarVal.Name = "lblBarVal";
+            this.lblBarVal.Size = new System.Drawing.Size(42, 16);
+            this.lblBarVal.TabIndex = 313;
+            this.lblBarVal.Text = "label2";
+            // 
+            // AmountItems
+            // 
+            this.AmountItems.HeaderText = "Amount Items in Stock overall";
+            this.AmountItems.Name = "AmountItems";
+            this.AmountItems.ReadOnly = true;
             // 
             // UpdateProduct
             // 
@@ -482,5 +490,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmountItems;
     }
 }

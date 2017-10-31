@@ -45,6 +45,8 @@
             this.btnlogin = new System.Windows.Forms.Button();
             this.labelError1 = new System.Windows.Forms.Label();
             this.labelError2 = new System.Windows.Forms.Label();
+            this.labelError3 = new System.Windows.Forms.Label();
+            this.txterror = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +65,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 95;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -219,11 +222,37 @@
             this.labelError2.Text = "Please enter store location!";
             this.labelError2.Visible = false;
             // 
+            // labelError3
+            // 
+            this.labelError3.AutoSize = true;
+            this.labelError3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError3.ForeColor = System.Drawing.Color.Red;
+            this.labelError3.Location = new System.Drawing.Point(453, 355);
+            this.labelError3.Name = "labelError3";
+            this.labelError3.Size = new System.Drawing.Size(127, 16);
+            this.labelError3.TabIndex = 322;
+            this.labelError3.Text = "Store already exists!";
+            this.labelError3.Visible = false;
+            // 
+            // txterror
+            // 
+            this.txterror.AutoSize = true;
+            this.txterror.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txterror.ForeColor = System.Drawing.Color.Red;
+            this.txterror.Location = new System.Drawing.Point(453, 390);
+            this.txterror.Name = "txterror";
+            this.txterror.Size = new System.Drawing.Size(134, 16);
+            this.txterror.TabIndex = 323;
+            this.txterror.Text = "Please select a store!";
+            this.txterror.Visible = false;
+            // 
             // UpdateStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.txterror);
+            this.Controls.Add(this.labelError3);
             this.Controls.Add(this.labelError2);
             this.Controls.Add(this.labelError1);
             this.Controls.Add(this.button1);
@@ -263,5 +292,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreLocation;
         private System.Windows.Forms.Label labelError1;
         private System.Windows.Forms.Label labelError2;
+        private System.Windows.Forms.Label labelError3;
+        private System.Windows.Forms.Label txterror;
     }
 }

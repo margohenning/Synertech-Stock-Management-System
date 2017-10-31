@@ -184,6 +184,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddStore";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.AddStore_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

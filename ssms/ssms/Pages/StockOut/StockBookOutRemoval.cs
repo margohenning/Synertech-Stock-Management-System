@@ -80,8 +80,8 @@ namespace ssms.Pages.StockOut
                 //get the specific brand and assign the info to the ItemMain object
                 LTS.Brand br = new LTS.Brand();
                 br = DAT.DataAccess.GetBrand().Where(y => y.BrandID == b.BrandID).FirstOrDefault();
-                b.BrandName = b.BrandName;
-                b.BrandDescription = b.BrandDescription;
+                b.BrandName = br.BrandName;
+                b.BrandDescription = br.BrandDescription;
 
                 //get the sepcific category and assign the info to the ItemMain object
                 LTS.Category c = new LTS.Category();
@@ -102,7 +102,7 @@ namespace ssms.Pages.StockOut
 
                 bom.Add(b);
 
-                dataGridView1.Rows.Add(b.BookOutID, b.EPC, b.ProductName, b.Reason, b.Project, b.Date, b.UserName, b.UserSurname);
+                dataGridView1.Rows.Add(b.BookOutID, b.EPC,b.BarcodeNumber, b.ProductName, b.Reason, b.Project, b.Date, b.UserName, b.UserSurname);
 
             }
 
@@ -428,6 +428,7 @@ namespace ssms.Pages.StockOut
                     if (removed)
                     {
                         MessageBox.Show("The items out removal was succesful!");
+                        ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOut>();
 
                     }
                     else
@@ -451,5 +452,7 @@ namespace ssms.Pages.StockOut
 
             
         }
+
+        
     }
 }

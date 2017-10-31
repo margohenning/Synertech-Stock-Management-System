@@ -238,6 +238,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(701, 196);
             this.dataGridView1.TabIndex = 353;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -304,7 +305,7 @@
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button4.Image = global::ssms.Properties.Resources.search;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(942, 248);
+            this.button4.Location = new System.Drawing.Point(942, 210);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(56, 56);
             this.button4.TabIndex = 362;
@@ -541,7 +542,7 @@
             this.lblEPCerror.AutoSize = true;
             this.lblEPCerror.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEPCerror.ForeColor = System.Drawing.Color.Red;
-            this.lblEPCerror.Location = new System.Drawing.Point(739, 267);
+            this.lblEPCerror.Location = new System.Drawing.Point(748, 245);
             this.lblEPCerror.Name = "lblEPCerror";
             this.lblEPCerror.Size = new System.Drawing.Size(146, 16);
             this.lblEPCerror.TabIndex = 381;
