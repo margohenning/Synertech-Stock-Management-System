@@ -1,3 +1,4 @@
+
 ﻿namespace ssms.Pages.StockOut
 {
     partial class StockBookOutRemoval
@@ -31,6 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxStore = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
@@ -53,18 +60,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.BookOutID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TagEPC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Project = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblConnect = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,7 +82,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(355, 453);
+            this.label5.Location = new System.Drawing.Point(369, 289);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 25);
             this.label5.TabIndex = 255;
@@ -95,12 +95,73 @@
             this.btnlogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnlogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlogin.Location = new System.Drawing.Point(360, 389);
+            this.btnlogin.Location = new System.Drawing.Point(374, 225);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(80, 61);
             this.btnlogin.TabIndex = 254;
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(28, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 19);
+            this.label4.TabIndex = 261;
+            this.label4.Text = "Tag EPC:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(209, 136);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(245, 28);
+            this.comboBox2.TabIndex = 260;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(28, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(145, 19);
+            this.label3.TabIndex = 259;
+            this.label3.Text = "Product Barcode:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(209, 97);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(245, 28);
+            this.comboBox1.TabIndex = 258;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(28, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 19);
+            this.label2.TabIndex = 257;
+            this.label2.Text = "Store Name:";
+            // 
+            // comboBoxStore
+            // 
+            this.comboBoxStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxStore.FormattingEnabled = true;
+            this.comboBoxStore.Location = new System.Drawing.Point(209, 60);
+            this.comboBoxStore.Name = "comboBoxStore";
+            this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
+            this.comboBoxStore.TabIndex = 256;
             // 
             // button1
             // 
@@ -140,7 +201,7 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Location = new System.Drawing.Point(692, 20);
+            this.panel1.Location = new System.Drawing.Point(661, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(324, 291);
             this.panel1.TabIndex = 263;
@@ -345,92 +406,73 @@
             this.label11.TabIndex = 159;
             this.label11.Text = "Product Name:";
             // 
-            // dataGridView1
+            // button2
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BookOutID,
-            this.TagEPC,
-            this.BarcodeNumber,
-            this.dataGridViewTextBoxColumn1,
-            this.reason,
-            this.Project,
-            this.Date,
-            this.UserName,
-            this.UserSurname});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 56);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(668, 203);
-            this.dataGridView1.TabIndex = 264;
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.DimGray;
+            this.button2.Image = global::ssms.Properties.Resources.icons8_RFID_Signal_64;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(460, 132);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(117, 35);
+            this.button2.TabIndex = 272;
+            this.button2.Text = "RFID";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // BookOutID
+            // lblConnect
             // 
-            this.BookOutID.HeaderText = "BookOut ID";
-            this.BookOutID.Name = "BookOutID";
-            this.BookOutID.ReadOnly = true;
+            this.lblConnect.AutoSize = true;
+            this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnect.ForeColor = System.Drawing.Color.Red;
+            this.lblConnect.Location = new System.Drawing.Point(469, 181);
+            this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblConnect.Name = "lblConnect";
+            this.lblConnect.Size = new System.Drawing.Size(0, 16);
+            this.lblConnect.TabIndex = 342;
             // 
-            // TagEPC
+            // lblTimer
             // 
-            this.TagEPC.HeaderText = "EPC";
-            this.TagEPC.Name = "TagEPC";
-            this.TagEPC.ReadOnly = true;
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(797, 487);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.TabIndex = 351;
+            this.lblTimer.Text = "0";
             // 
-            // BarcodeNumber
+            // label6
             // 
-            this.BarcodeNumber.HeaderText = "Barcode Number";
-            this.BarcodeNumber.Name = "BarcodeNumber";
-            this.BarcodeNumber.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Product Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // reason
-            // 
-            this.reason.HeaderText = "Reason for Book Out";
-            this.reason.Name = "reason";
-            this.reason.ReadOnly = true;
-            // 
-            // Project
-            // 
-            this.Project.HeaderText = "Project";
-            this.Project.Name = "Project";
-            this.Project.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "User Name";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // UserSurname
-            // 
-            this.UserSurname.HeaderText = "User Surname";
-            this.UserSurname.Name = "UserSurname";
-            this.UserSurname.ReadOnly = true;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(656, 487);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 25);
+            this.label6.TabIndex = 350;
+            this.label6.Text = "RFID Timer:";
             // 
             // StockBookOutRemoval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblTimer);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblConnect);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxStore);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnlogin);
             this.Controls.Add(this.label1);
@@ -439,7 +481,6 @@
             this.Load += new System.EventHandler(this.StockBookOutRemoval_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,6 +490,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnlogin;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxStore;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label barcode;
@@ -472,15 +519,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookOutID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TagEPC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reason;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Project;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserSurname;
+        private System.Windows.Forms.Label lblConnect;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Label label6;
     }
 }
+

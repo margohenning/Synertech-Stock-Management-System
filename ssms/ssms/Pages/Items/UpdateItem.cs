@@ -12,13 +12,22 @@ using ssms.DataClasses;
 namespace ssms.Pages.Items
 {
     public partial class UpdateStock : UserControl
+
     {
-        
+        string oldEPC;
+        Timer ScanTimer = new Timer();
+        System.Timers.Timer timer;
+        int time = 0;
+
+        List<LTS.Item> it = new List<LTS.Item>();
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
         List<LTS.Store> listS;
         List<LTS.Barcode> listBar;
         List<DataClasses.ItemMain> imList = new List<ItemMain>();
+        SettingsMain sm = new SettingsMain();
+        List<ImpinjRevolution> impinjrev = new List<ImpinjRevolution>();
+        string epc = "";
 
         public UpdateStock()
         {
@@ -28,7 +37,6 @@ namespace ssms.Pages.Items
         //Devon
         private void UpdateStock_Load(object sender, EventArgs e)
         {
-
             //load store names into combo box from db
             listS = DAT.DataAccess.GetStore().ToList();
             List<string> S = new List<string>();
@@ -75,7 +83,6 @@ namespace ssms.Pages.Items
 
                 im.BarcodeID = p.BarcodeID;
 
-
                 //get the specific store and assign the info to the ItemMain object
                 LTS.Store s = new LTS.Store();
                 s = DAT.DataAccess.GetStore().Where(j => j.StoreID == im.StoreID).FirstOrDefault();
@@ -87,7 +94,6 @@ namespace ssms.Pages.Items
                 b = DAT.DataAccess.GetBrand().Where(y => y.BrandID == im.BrandID).FirstOrDefault();
                 im.BrandName = b.BrandName;
                 im.BrandDescription = b.BrandDescription;
-
 
                 //get the sepcific category and assign the info to the ItemMain object
                 LTS.Category c = new LTS.Category();
@@ -105,7 +111,6 @@ namespace ssms.Pages.Items
                     , im.ItemStatus, im.StoreName);
             }
         }
-
 
         //to change the content of the small panel
         //Margo
@@ -125,8 +130,6 @@ namespace ssms.Pages.Items
             }
         }
 
-
-
         //Margo
         private void button5_Click(object sender, EventArgs e)
         {
@@ -137,8 +140,6 @@ namespace ssms.Pages.Items
 
             textBox2.Enabled = false;
             textBox3.Enabled = false;
-
-
 
             comboBoxStore.Enabled = false;
             comboBox1.Enabled = false;
@@ -177,8 +178,6 @@ namespace ssms.Pages.Items
             textBox2.Enabled = true;
             textBox3.Enabled = true;
 
-
-
             comboBoxStore.Enabled = true;
             comboBox1.Enabled = true;
             dataGridView2.Enabled = true;
@@ -190,9 +189,7 @@ namespace ssms.Pages.Items
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
         }
 
-
         //Devon
-
         private void button4_Click(object sender, EventArgs e)
         {
             string epc = textBox3.Text;
@@ -205,7 +202,6 @@ namespace ssms.Pages.Items
                 //dataGridView2.SelectedRows.Clear();
             }
         }
-
 
         //Devon
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
@@ -224,10 +220,12 @@ namespace ssms.Pages.Items
                     string itemID = dataGridView2.Rows[i].Cells[0].Value.ToString();
                     string rfTag = dataGridView2.Rows[i].Cells[1].Value.ToString();
                     string barNum = dataGridView2.Rows[i].Cells[4].Value.ToString();
+                    oldEPC = rfTag;
 
                     label5.Text = itemID;
                     textBox2.Text = rfTag;
-                    comboBox1.Text = barNum;  
+                    comboBox1.Text = barNum;
+                    
                 }
             }
             else
@@ -239,47 +237,376 @@ namespace ssms.Pages.Items
         //Devon
         private void button3_Click(object sender, EventArgs e)
         {
-            int itemID = Int32.Parse(label5.Text);
-            LTS.Item olditem = DAT.DataAccess.GetItem().Where(d => d.ItemID == itemID).FirstOrDefault();
-
-            bool status = olditem.ItemStatus;
-
-            int sIndex = comboBoxStore.SelectedIndex;
-            int storeID = listS[sIndex].StoreID;
-
-            int bIndex = comboBox1.SelectedIndex;
-            int barID = listBar[bIndex].BarcodeID;
-
-            LTS.Product p = new LTS.Product();
-            p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
-            int productID;
-            if (p != null)
+            if (textBox2.Text == oldEPC)
             {
-                productID = p.ProductID;
-                LTS.Item newitem = new LTS.Item();
-                newitem.ItemID = itemID;
-                newitem.ItemStatus = status;
-                newitem.ProductID = productID;
-                newitem.TagEPC = textBox2.Text;
-                newitem.StoreID = storeID;
+                int itemID = Int32.Parse(label5.Text);
+                LTS.Item olditem = DAT.DataAccess.GetItem().Where(d => d.ItemID == itemID).FirstOrDefault();
 
-                bool check = DAT.DataAccess.UpdateItem(newitem);
-                if (check)
+                bool status = olditem.ItemStatus;
+
+                int sIndex = comboBoxStore.SelectedIndex;
+                int bIndex = comboBox1.SelectedIndex;
+                if (sIndex == -1 || bIndex == -1)
                 {
-                    MessageBox.Show("Item has been updated!");
+                    label7.Visible = true;
                 }
                 else
                 {
-                    MessageBox.Show("Item has not been updated!");
+                    label7.Visible = false;
+                    int storeID = listS[sIndex].StoreID;
+                    int barID = listBar[bIndex].BarcodeID;
+
+                    LTS.Product p = new LTS.Product();
+                    p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+                    int productID;
+                    LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
+
+                    if (p != null)
+                    {
+                        try
+                        {
+                            if (textBox2.Text == "")
+                            {
+                                label4.Text = "Please enter the RFID Tag!";
+                                label4.Visible = true;
+                            }
+                            else
+                            {
+                                label4.Visible = false;
+                                productID = p.ProductID;
+                                LTS.Item newitem = new LTS.Item();
+                                newitem.ItemID = itemID;
+                                newitem.ItemStatus = status;
+                                newitem.ProductID = productID;
+                                newitem.TagEPC = textBox2.Text;
+                                newitem.StoreID = storeID;
+
+                                bool check = DAT.DataAccess.UpdateItem(newitem);
+                                if (check)
+                                {
+                                    MessageBox.Show("Item has been updated!");
+                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Item has not been updated!");
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Item has not been updated!");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                LTS.Item ite = DAT.DataAccess.GetItem().Where(i => i.TagEPC == textBox2.Text).FirstOrDefault();
+                if (ite == null)
+                {
+                    int itemID = Int32.Parse(label5.Text);
+                    LTS.Item olditem = DAT.DataAccess.GetItem().Where(d => d.ItemID == itemID).FirstOrDefault();
+
+                    bool status = olditem.ItemStatus;
+
+                    int sIndex = comboBoxStore.SelectedIndex;
+                    int bIndex = comboBox1.SelectedIndex;
+                    if (sIndex == -1 || bIndex == -1)
+                    {
+                        label7.Visible = true;
+                    }
+                    else
+                    {
+                        label7.Visible = false;
+                        int storeID = listS[sIndex].StoreID;
+                        int barID = listBar[bIndex].BarcodeID;
+
+                        LTS.Product p = new LTS.Product();
+                        p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+                        int productID;
+                        LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
+
+                        if (p != null)
+                        {
+                            try
+                            {
+                                if (textBox2.Text == "")
+                                {
+                                    label4.Text = "Please enter the RFID Tag!";
+                                    label4.Visible = true;
+                                }
+                                else
+                                {
+                                    label4.Visible = false;
+                                    productID = p.ProductID;
+                                    LTS.Item newitem = new LTS.Item();
+                                    newitem.ItemID = itemID;
+                                    newitem.ItemStatus = status;
+                                    newitem.ProductID = productID;
+                                    newitem.TagEPC = textBox2.Text;
+                                    newitem.StoreID = storeID;
+
+                                    bool check = DAT.DataAccess.UpdateItem(newitem);
+                                    if (check)
+                                    {
+                                        MessageBox.Show("Item has been updated!");
+                                        ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Item has not been updated!");
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Item has not been updated!");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    label4.Visible = true;
+                    label4.Text = "TAG alreasy exists! Please enter a different one.";
+                }
+            }
+                
+        }
+
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        bool connect(LTS.Settings se)
+        {
+            lblConnect.Text = "Connecting...";
+
+
+            int index = comboBoxStore.SelectedIndex;
+            int storeID = listS[index].StoreID;
+
+            LTS.Settings set = se;
+
+            sm = null;
+            sm = new SettingsMain();
+            impinjrev.Clear();
+            sm.SettingsID = set.SettingsID;
+            sm.SettingsName = set.SettingsName;
+            sm.SettingsSelect = set.SettingsSelect;
+            sm.StoreID = set.StoreID;
+
+            LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
+            sm.StoreLocation = store.StoreLocation;
+            sm.StoreName = store.StoreName;
+
+            List<LTS.Reader> readers = new List<LTS.Reader>();
+            readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
+            for (int j = 0; j < readers.Count; j++)
+            {
+                ReaderMain rm = new ReaderMain();
+                rm.ReaderID = readers[j].ReaderID;
+                rm.IPaddress = readers[j].IPaddress;
+                rm.NumAntennas = readers[j].NumAntennas;
+                rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+
+                sm.Readers.Add(rm);
+
+            }
+            bool checks = true;
+
+            for (int x = 0; x < sm.Readers.Count; x++)
+            {
+
+                ImpinjRevolution ir = new ImpinjRevolution();
+                ir.ReaderScanMode = ScanMode.ScanItem;
+                ir.HostName = sm.Readers[x].IPaddress;
+                ir.Antennas = sm.Readers[x].antennas;
+
+                ir.TagRead += ir_TagRead;
+                ir.Connect();
+
+                impinjrev.Add(ir);
+                if (!ir.isConnected)
+                {
+                    if (checks == true)
+                    {
+                        checks = false;
+                    }
+
+                }
+            }
+
+            if (checks == true)
+            {
+                lblConnect.Text = "Connected";
+                timer.Start();
+                impinjrev.ForEach(imp =>
+                {
+                    imp.TagRead += ir_TagRead;
+                    imp.StartRead();
+                });
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+                lblConnect.Text = "Reading...";
+                
+
+
+            }
+            else
+            {
+                lblConnect.Text = "Not Connected!";
+                timer.Stop();
+                timer.Elapsed -= timer_Elapsed;
+                time = 0;
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+                EnableOrDisable(true);
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+            }
+            return true;
+
+        }
+
+        //Margo
+        public void EnableOrDisable(bool what)
+        {
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                if (what)
+                {
+                    
+                    comboBoxStore.Enabled = true;
+                    button1.Enabled = true;
+                    button3.Enabled = true;
+                    button5.Enabled = true;
+                    dataGridView2.Enabled = true;
+                    time = 0;
+                }
+                else
+                {
+                    
+                    comboBoxStore.Enabled = false;
+                    button1.Enabled = false;
+                    button3.Enabled = false;
+                    button5.Enabled = false;
+                    dataGridView2.Enabled = false;
+                }
+            }));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                time = 0;
+                lblTimer.Text = time.ToString();
+                timer = new System.Timers.Timer();
+                timer.Elapsed += timer_Elapsed;
+                timer.Interval = 1000;
+                EnableOrDisable(false);
+                epc = "";
+                int iStore = comboBoxStore.SelectedIndex;
+                LTS.Store s = listS[iStore];
+
+                LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID && y.SettingsSelect == true).FirstOrDefault();
+                if (set != null)
+                {
+                    connect(set);
+                }
+                else
+                {
+                    lblConnect.Text = ("Settings not found!");
+                    EnableOrDisable(true);
+
+                }
+            }
+            catch (Exception exx)
+            {
+                lblConnect.Text = ("Store not selected!");
+                EnableOrDisable(true);
+            }
+        }
+
+        //read tags
+        void ir_TagRead(TagInfo tag, EventArgs e)
+        {
+            if (tag != null && epc == "")
+            {
+                string Tag = tag.TagNo;
+                epc = Tag;
+
+
+
+
+            }
+        }
+
+       void Stop()
+        {
+            if (impinjrev != null)
+            {
+                for (int i = 0; i < impinjrev.Count; i++)
+                {
+                    impinjrev[i].StopRead();
+                    impinjrev[i].Disconnect();
+
+                }
+                if (lblConnect.InvokeRequired)
+                {
+                    lblConnect.Invoke(new MethodInvoker(delegate () {
+                        lblConnect.Text = "Disconnected!";
+                    }));
+
+                }
+
+                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                EnableOrDisable(true);
+            }
+        }
+        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (time < 60 && epc == "")
+            {
+                time++;
+                if (lblTimer.InvokeRequired)
+                {
+                    lblTimer.Invoke(new MethodInvoker(delegate () {
+                        lblTimer.Text = time.ToString();
+                    }));
+
                 }
 
             }
+            else
+            {
+                timer.Stop();
+                timer.Elapsed -= timer_Elapsed;
+                if (lblTimer.InvokeRequired)
+                {
+                    lblTimer.Invoke(new MethodInvoker(delegate () {
+                        lblTimer.Text = time.ToString();
+                        textBox2.Text = epc;
+                    }));
 
+                }
 
-            
+                Stop();
+                time = 0;
+            }
+
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

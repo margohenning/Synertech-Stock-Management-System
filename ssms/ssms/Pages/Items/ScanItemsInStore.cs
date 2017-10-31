@@ -51,68 +51,123 @@ namespace ssms.Pages.Items
         //Margo
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            //Object i = lbxIn.DataSource;
-            //Object imissing = lbxMissing.DataSource;
+            Object inventory = lbxIn.DataSource;
+            Object imissing = lbxMissing.DataSource;
 
-            //iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
-            //string folderPath = saveFileDialog1.FileName + ".pdf";
+            iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
+            string folderPath = saveFileDialog1.FileName + ".pdf";
+
+            //TABLE 1
+            //Creating iTextSharp Table from the DataTable data
+            Document pdfDoc = new Document(PageSize.A4);
+
+            PdfPTable pdfTable1 = new PdfPTable(1);
+            pdfTable1.DefaultCell.Padding = 0;
+
+            pdfTable1.WidthPercentage = 100;
+            pdfTable1.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable1.DefaultCell.BorderWidth = 0;
 
 
-            ////Creating iTextSharp Table from the DataTable data
-            //Document pdfDoc = new Document(PageSize.A4);
 
-            //PdfPTable pdfTable = new PdfPTable(dataGridView1.ColumnCount);
-            //pdfTable.DefaultCell.Padding = dataGridView1.DefaultCellStyle.Padding.All;
+            //Adding Header row
 
-            //pdfTable.WidthPercentage = 100;
-            //pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            //pdfTable.DefaultCell.BorderWidth = 0;
+            PdfPCell cell = new PdfPCell(new Phrase("Inventory"));
+            cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable1.AddCell(cell);
 
 
+            //Adding DataRow
+            List<string> inven = lbxIn.Items.Cast<object>().Select(o => o.ToString()).ToList();
+            for (int u = 0; u < inven.Count; u++)
+            {
+                // pdfTable.AddCell(cell.Value.ToString());
+                PdfPCell cellRows = new PdfPCell(new Phrase(inven[u], font));
+                int R = 0;
+                int G = 0;
+                int B = 0;
+                if (R == 0 && G == 0 && B == 0)
+                {
+                    R = 255;
+                    G = 255;
+                    B = 255;
+                }
+                cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
+                cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfTable1.AddCell(cellRows);
 
-            ////Adding Header row
-            //foreach (DataGridViewColumn column in dataGridView1.Columns)
-            //{
-            //    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
-            //    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            //    pdfTable.AddCell(cell);
-            //}
 
-            ////Adding DataRow
-            //foreach (DataGridViewRow row in dataGridView1.Rows)
-            //{
-            //    foreach (DataGridViewCell cell in row.Cells)
-            //    {
-            //        // pdfTable.AddCell(cell.Value.ToString());
-            //        PdfPCell cellRows = new PdfPCell(new Phrase(cell.Value.ToString(), font));
-            //        int R = cell.Style.BackColor.R;
-            //        int G = cell.Style.BackColor.G;
-            //        int B = cell.Style.BackColor.B;
-            //        if (R == 0 && G == 0 && B == 0)
-            //        {
-            //            R = 255;
-            //            G = 255;
-            //            B = 255;
-            //        }
-            //        cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
-            //        cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
-            //        pdfTable.AddCell(cellRows);
+            }
 
-            //    }
-            //}
-            //Paragraph writing = new iTextSharp.text.Paragraph("Route 66 Car Dealership " + Environment.NewLine + "Customers Information                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
 
-            //using (FileStream stream = new FileStream(folderPath, FileMode.Create))
-            //{
 
-            //    PdfWriter.GetInstance(pdfDoc, stream);
-            //    pdfDoc.Open();
-            //    pdfDoc.Add(writing);
-            //    pdfDoc.Add(pdfTable);
-            //    pdfDoc.Close();
-            //    stream.Close();
-            //}
+
+
+
+
+
+
+            //TABLE2
+            //Creating iTextSharp Table from the DataTable data
+           // Document pdfDoc = new Document(PageSize.A4);
+
+            PdfPTable pdfTable2 = new PdfPTable(1);
+            pdfTable2.DefaultCell.Padding = 0;
+
+            pdfTable2.WidthPercentage = 100;
+            pdfTable2.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTable2.DefaultCell.BorderWidth = 0;
+
+
+
+            //Adding Header row
+
+            PdfPCell cells = new PdfPCell(new Phrase("Missing Inventory"));
+            cells.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
+            cells.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable2.AddCell(cells);
+
+
+
+
+            //Adding DataRow
+            List<string> miss = lbxMissing.Items.Cast<object>().Select(o => o.ToString()).ToList();
+            for (int u = 0; u < miss.Count; u++)
+            {
+                // pdfTable.AddCell(cell.Value.ToString());
+                PdfPCell cellRows = new PdfPCell(new Phrase(miss[u], font));
+                int R = 0;
+                int G = 0;
+                int B = 0;
+                if (R == 0 && G == 0 && B == 0)
+                {
+                    R = 255;
+                    G = 255;
+                    B = 255;
+                }
+                cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
+                cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfTable2.AddCell(cellRows);
+
+
+            }
+
+            Paragraph writing = new iTextSharp.text.Paragraph("Synertech Stock Management System " + Environment.NewLine + "Inventory Scan Results                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
+            Paragraph writing2 = new iTextSharp.text.Paragraph(Environment.NewLine + Environment.NewLine + Environment.NewLine);
+
+            using (FileStream stream = new FileStream(folderPath, FileMode.Create))
+            {
+
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(writing);
+                pdfDoc.Add(pdfTable1);
+                pdfDoc.Add(writing2);
+                pdfDoc.Add(pdfTable2);
+                pdfDoc.Close();
+                stream.Close();
+            }
         }
 
         private void ScanItemsInStore_Load(object sender, EventArgs e)
@@ -171,79 +226,87 @@ namespace ssms.Pages.Items
 
         private void button5_Click(object sender, EventArgs e)
         {
-            button4.Enabled = false;
-            button2.Enabled = false;
-            comboBoxStore.Enabled = false;
-            lblConnect.Text = "Connecting ...";
-            lblStartRead.Visible = false;
-            lblStop.Visible = false;
-            btnStart.Enabled = false;
-            
-            lblConnect.Visible = true;
-            sm = null;
-            sm = new SettingsMain();
-            impinjrev.Clear();
-            sm.SettingsID = set.SettingsID;
-            sm.SettingsName = set.SettingsName;
-            sm.SettingsSelect = set.SettingsSelect;
-            sm.StoreID = set.StoreID;
-
-            LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
-            sm.StoreLocation = store.StoreLocation;
-            sm.StoreName = store.StoreName;
-
-            List<LTS.Reader> readers = new List<LTS.Reader>();
-            readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
-            for (int j = 0; j < readers.Count; j++)
+            if (set != null)
             {
-                ReaderMain rm = new ReaderMain();
-                rm.ReaderID = readers[j].ReaderID;
-                rm.IPaddress = readers[j].IPaddress;
-                rm.NumAntennas = readers[j].NumAntennas;
-                rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+                button4.Enabled = false;
+                button2.Enabled = false;
+                comboBoxStore.Enabled = false;
+                lblConnect.Text = "Connecting ...";
+                lblStartRead.Visible = false;
+                lblStop.Visible = false;
+                btnStart.Enabled = false;
 
-                sm.Readers.Add(rm);
+                lblConnect.Visible = true;
+                sm = null;
+                sm = new SettingsMain();
+                impinjrev.Clear();
+                sm.SettingsID = set.SettingsID;
+                sm.SettingsName = set.SettingsName;
+                sm.SettingsSelect = set.SettingsSelect;
+                sm.StoreID = set.StoreID;
 
-            }
-            bool checks = true;
+                LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
+                sm.StoreLocation = store.StoreLocation;
+                sm.StoreName = store.StoreName;
 
-            for (int x = 0; x < sm.Readers.Count; x++)
-            {
-
-                ImpinjRevolution ir = new ImpinjRevolution();
-                ir.ReaderScanMode = ScanMode.FullScan;
-                ir.HostName = sm.Readers[x].IPaddress;
-                ir.Antennas = sm.Readers[x].antennas;
-
-                ir.TagRead += ir_TagRead;
-                ir.Connect();
-
-                impinjrev.Add(ir);
-                if (!ir.isConnected)
+                List<LTS.Reader> readers = new List<LTS.Reader>();
+                readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
+                for (int j = 0; j < readers.Count; j++)
                 {
-                    if (checks == true)
-                    {
-                        checks = false; 
-                    }
+                    ReaderMain rm = new ReaderMain();
+                    rm.ReaderID = readers[j].ReaderID;
+                    rm.IPaddress = readers[j].IPaddress;
+                    rm.NumAntennas = readers[j].NumAntennas;
+                    rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+
+                    sm.Readers.Add(rm);
 
                 }
-            }
+                bool checks = true;
 
-            if (checks == true)
-            {
-                config = true;
-                lblConnect.Text = "Connected";
-                btnStart.Enabled = true;
-                btnStop.Enabled = false;
-                ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+                for (int x = 0; x < sm.Readers.Count; x++)
+                {
+
+                    ImpinjRevolution ir = new ImpinjRevolution();
+                    ir.ReaderScanMode = ScanMode.FullScan;
+                    ir.HostName = sm.Readers[x].IPaddress;
+                    ir.Antennas = sm.Readers[x].antennas;
+
+                    ir.TagRead += ir_TagRead;
+                    ir.Connect();
+
+                    impinjrev.Add(ir);
+                    if (!ir.isConnected)
+                    {
+                        if (checks == true)
+                        {
+                            checks = false;
+                        }
+
+                    }
+                }
+
+                if (checks == true)
+                {
+                    config = true;
+                    lblConnect.Text = "Connected";
+                    btnStart.Enabled = true;
+                    btnStop.Enabled = false;
+                    ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
 
 
 
+                }
+                else
+                {
+                    lblConnect.Text = "Not Connected";
+                }
             }
             else
             {
-                lblConnect.Text = "Not Connected";
+                MessageBox.Show("The Store selected does not have a setting set, please go to the Select Setting page and choose a setting!", "", MessageBoxButtons.OKCancel);
             }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -347,7 +410,7 @@ namespace ssms.Pages.Items
                 lbxIn.Items.Clear();
             for(int i = 0; i < found.Count; i++)
             {
-                lbxIn.Items.Add("ItemID: " + found[i].itemID + "  Product: " + found[i].ProductName);
+                lbxIn.Items.Add("ItemID: " + found[i].itemID + "  Product: " + found[i].ProductName + "  Tag EPC: "+ found[i].EPC);
             }
             
 
@@ -355,7 +418,7 @@ namespace ssms.Pages.Items
             lbxMissing.Items.Clear();
             for (int i = 0; i < missing.Count; i++)
             {
-                lbxMissing.Items.Add("ItemID: " + missing[i].itemID + "  Product: " + missing[i].ProductName);
+                lbxMissing.Items.Add("ItemID: " + missing[i].itemID + "  Product: " + missing[i].ProductName + "  Tag EPC: " + missing[i].EPC);
             }
             }));
 

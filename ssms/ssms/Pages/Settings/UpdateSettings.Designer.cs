@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numAntennas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonRemoveReader = new System.Windows.Forms.Button();
             this.buttonAddReader = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReaders = new System.Windows.Forms.DataGridView();
-            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonSubmitReader = new System.Windows.Forms.Button();
             this.buttonAddAntenna = new System.Windows.Forms.Button();
+            this.lblAntenna = new System.Windows.Forms.Label();
             this.buttonRemoveAntenna = new System.Windows.Forms.Button();
+            this.lblIP = new System.Windows.Forms.Label();
             this.flpAntennaConfig = new System.Windows.Forms.FlowLayoutPanel();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,17 +56,11 @@
             this.lblStore = new System.Windows.Forms.Label();
             this.lblReader = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblAntenna = new System.Windows.Forms.Label();
-            this.lblIP = new System.Windows.Forms.Label();
+            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numAntennas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // numAntennas
-            // 
-            this.numAntennas.HeaderText = "Number of Antennas";
-            this.numAntennas.Name = "numAntennas";
-            this.numAntennas.ReadOnly = true;
             // 
             // buttonRemoveReader
             // 
@@ -129,12 +123,6 @@
             this.dataGridViewReaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReaders.Size = new System.Drawing.Size(394, 142);
             this.dataGridViewReaders.TabIndex = 295;
-            // 
-            // IPaddress
-            // 
-            this.IPaddress.HeaderText = "IP Address";
-            this.IPaddress.Name = "IPaddress";
-            this.IPaddress.ReadOnly = true;
             // 
             // label3
             // 
@@ -205,6 +193,18 @@
             this.buttonAddAntenna.UseVisualStyleBackColor = false;
             this.buttonAddAntenna.Click += new System.EventHandler(this.button4_Click);
             // 
+            // lblAntenna
+            // 
+            this.lblAntenna.AutoSize = true;
+            this.lblAntenna.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAntenna.ForeColor = System.Drawing.Color.Red;
+            this.lblAntenna.Location = new System.Drawing.Point(315, 295);
+            this.lblAntenna.Name = "lblAntenna";
+            this.lblAntenna.Size = new System.Drawing.Size(125, 18);
+            this.lblAntenna.TabIndex = 306;
+            this.lblAntenna.Text = "Antennas Invalid!";
+            this.lblAntenna.Visible = false;
+            // 
             // buttonRemoveAntenna
             // 
             this.buttonRemoveAntenna.BackColor = System.Drawing.Color.MidnightBlue;
@@ -220,6 +220,18 @@
             this.buttonRemoveAntenna.Text = "Remove Antenna";
             this.buttonRemoveAntenna.UseVisualStyleBackColor = false;
             this.buttonRemoveAntenna.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // lblIP
+            // 
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.ForeColor = System.Drawing.Color.Red;
+            this.lblIP.Location = new System.Drawing.Point(292, 49);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(136, 18);
+            this.lblIP.TabIndex = 305;
+            this.lblIP.Text = "IP Address Invalid!";
+            this.lblIP.Visible = false;
             // 
             // flpAntennaConfig
             // 
@@ -399,29 +411,19 @@
             this.lblName.Text = "New settings name invalid!";
             this.lblName.Visible = false;
             // 
-            // lblAntenna
+            // IPaddress
             // 
-            this.lblAntenna.AutoSize = true;
-            this.lblAntenna.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAntenna.ForeColor = System.Drawing.Color.Red;
-            this.lblAntenna.Location = new System.Drawing.Point(315, 295);
-            this.lblAntenna.Name = "lblAntenna";
-            this.lblAntenna.Size = new System.Drawing.Size(125, 18);
-            this.lblAntenna.TabIndex = 306;
-            this.lblAntenna.Text = "Antennas Invalid!";
-            this.lblAntenna.Visible = false;
+            this.IPaddress.HeaderText = "IP Address";
+            this.IPaddress.Name = "IPaddress";
+            this.IPaddress.ReadOnly = true;
+            this.IPaddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // lblIP
+            // numAntennas
             // 
-            this.lblIP.AutoSize = true;
-            this.lblIP.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIP.ForeColor = System.Drawing.Color.Red;
-            this.lblIP.Location = new System.Drawing.Point(292, 49);
-            this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(136, 18);
-            this.lblIP.TabIndex = 305;
-            this.lblIP.Text = "IP Address Invalid!";
-            this.lblIP.Visible = false;
+            this.numAntennas.HeaderText = "Number of Antennas";
+            this.numAntennas.Name = "numAntennas";
+            this.numAntennas.ReadOnly = true;
+            this.numAntennas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UpdateSettings
             // 
@@ -458,13 +460,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn numAntennas;
         private System.Windows.Forms.Button buttonRemoveReader;
         private System.Windows.Forms.Button buttonAddReader;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridViewReaders;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IPaddress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
@@ -489,5 +488,7 @@
         private System.Windows.Forms.Label lblStore;
         private System.Windows.Forms.Label lblReader;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IPaddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numAntennas;
     }
 }

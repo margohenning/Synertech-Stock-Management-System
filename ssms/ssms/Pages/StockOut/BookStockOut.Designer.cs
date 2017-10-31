@@ -34,6 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            
             this.label7 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -64,6 +65,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.StoreLoc = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+           this.lblConnect = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.barcode = new System.Windows.Forms.Label();
             this.labelError2 = new System.Windows.Forms.Label();
             this.labelError3 = new System.Windows.Forms.Label();
@@ -175,6 +179,37 @@
             this.btnlogin.TabIndex = 253;
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            // 
+            // lblConnect
+            // 
+            this.lblConnect.AutoSize = true;
+            this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnect.ForeColor = System.Drawing.Color.Red;
+            this.lblConnect.Location = new System.Drawing.Point(559, 153);
+            this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblConnect.Name = "lblConnect";
+            this.lblConnect.Size = new System.Drawing.Size(0, 16);
+            this.lblConnect.TabIndex = 341;
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(843, 487);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.TabIndex = 349;
+            this.lblTimer.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(702, 487);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(126, 25);
+            this.label12.TabIndex = 348;
+            this.label12.Text = "RFID Timer:";
             // 
             // labelError1
             // 
@@ -483,6 +518,9 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTimer);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblConnect);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
@@ -530,6 +568,9 @@
         private System.Windows.Forms.Label storeName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label StoreLoc;
+        private System.Windows.Forms.Label lblConnect;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label barcode;
         private System.Windows.Forms.Label labelError2;

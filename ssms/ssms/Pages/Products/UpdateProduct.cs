@@ -7,16 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ssms.DataClasses;
 
 namespace ssms.Pages.Products
 {
     public partial class UpdateProduct : UserControl
     {
+        List<ProductMain> pm = new List<ProductMain>();
+
+
         List<LTS.Brand> listB;
         List<LTS.Category> listC;
         List<LTS.Barcode> listBar;
-        int barcodeUpdateCheck;
-        int barcodeUpdateCheckCompare;
+        List<string> Brand = new List<string>();
+        List<string> Category = new List<string>();
+        string barcodeUpdateCheck;
+        string barcodeUpdateCheckCompare;
         public UpdateProduct()
         {
             InitializeComponent();
@@ -61,7 +67,6 @@ namespace ssms.Pages.Products
         private void button6_Click(object sender, EventArgs e)
         {
             button3.Enabled = false;
-
             cbBrandName.Enabled = false;
             cbCategoryName.Enabled = false;
             
@@ -84,41 +89,61 @@ namespace ssms.Pages.Products
         //Marius
         private void UpdateProduct_Load(object sender, EventArgs e)
         {
+            listB = new List<LTS.Brand>();
+            listB = DAT.DataAccess.GetBrand().ToList();
+            for (int a = 0; a < listB.Count; a++)
+            {
+                Brand.Add(listB[a].BrandName);
+            }
+
+
+            listC = new List<LTS.Category>();
+            listC = DAT.DataAccess.GetCategory().ToList();
+            for (int b = 0; b < listC.Count; b++)
+            {
+                Category.Add(listC[b].CategoryName);
+            }
+
+            cbBrandName.DataSource = Brand;
+            cbCategoryName.DataSource = Category;
+
             lblBarVal.Visible = false;
             lblDesVal.Visible = false;
             lblNameVal.Visible = false;
+
             List<LTS.Product> prod = new List<LTS.Product>();
             prod = DAT.DataAccess.GetProduct().ToList();
 
             for (int i = 0; i < prod.Count; i++)
             {
-                String barcodeNumb = DAT.DataAccess.GetBarcode().Where(o => o.BarcodeID == prod[i].BarcodeID).FirstOrDefault().BarcodeNumber;
-                String brandName = DAT.DataAccess.GetBrand().Where(o => o.BrandID == prod[i].BrandID).FirstOrDefault().BrandName;
-                String categoryName = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == prod[i].CategoryID).FirstOrDefault().CategoryName;
+                ProductMain pmThis = new ProductMain();
+                pmThis.ProductID = prod[i].ProductID;
+                pmThis.ProductName = prod[i].ProductName;
+                pmThis.ProductDescription = prod[i].ProductDescription;
+                pmThis.CategoryID = prod[i].CategoryID;
+                pmThis.BrandID = prod[i].BrandID;
+                pmThis.BarcodeID = prod[i].BarcodeID;
 
-                dgvUpdateProduct.Rows.Add(prod[i].ProductID, prod[i].ProductName, prod[i].ProductDescription, barcodeNumb, brandName, categoryName);
+                LTS.Category c = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == prod[i].CategoryID).FirstOrDefault();
+                pmThis.CategoryName = c.CategoryName;
+                pmThis.CategoryDescription = c.CategoryDescription;
+
+                LTS.Brand b = DAT.DataAccess.GetBrand().Where(o => o.BrandID == prod[i].BrandID).FirstOrDefault();
+                pmThis.BrandName = b.BrandName;
+                pmThis.BrandDescription = b.BrandDescription;
+
+                LTS.Barcode bar = DAT.DataAccess.GetBarcode().Where(o => o.BarcodeID == prod[i].BarcodeID).FirstOrDefault();
+                pmThis.BarcodeNumber = bar.BarcodeNumber;
+
+                pm.Add(pmThis);
+
+                dgvUpdateProduct.Rows.Add(pmThis.ProductID, pmThis.ProductName, pmThis.ProductDescription, pmThis.BarcodeNumber, pmThis.BrandName, pmThis.CategoryName);
+
             }
-
-            List<string> BrandName = new List<string>();
-            List<string> CategoryName = new List<string>();
-
-            List<LTS.Brand> brand = new List<LTS.Brand>();
-            brand = DAT.DataAccess.GetBrand().ToList();
-            for (int a = 0; a < brand.Count; a++ )
+            foreach (DataGridViewColumn column in dgvUpdateProduct.Columns)
             {
-                BrandName.Add(brand[a].BrandName);
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-
-
-            List<LTS.Category> cat = new List<LTS.Category>();
-            cat = DAT.DataAccess.GetCategory().ToList();
-            for (int b = 0; b < brand.Count; b++)
-            {
-                CategoryName.Add(cat[b].CategoryName);
-            }
-
-            cbBrandName.DataSource = BrandName;
-            cbCategoryName.DataSource = CategoryName;
         }
 
         //after a brand is added in the small panel you need to update the combobox
@@ -126,10 +151,7 @@ namespace ssms.Pages.Products
         public void doneBrand()
         {
             panel1.Controls.Clear();
-
             cbBrandName.DataSource = null;
-            
-
             
             if (listB != null)
             {
@@ -149,14 +171,10 @@ namespace ssms.Pages.Products
 
             cbBrandName.Enabled = true;
             cbCategoryName.Enabled = true;
-            
-
-            
            
             button2.Enabled = true;
             dgvUpdateProduct.Enabled = true;
-
-
+            
         }
 
         //after a category is added in the small panel you need to update the combobox
@@ -166,9 +184,7 @@ namespace ssms.Pages.Products
             panel1.Controls.Clear();
 
             cbCategoryName.DataSource = null;
-            
 
-            
             if (listC != null)
             {
                 listC.Clear();
@@ -188,12 +204,8 @@ namespace ssms.Pages.Products
             cbBrandName.Enabled = true;
             cbCategoryName.Enabled = true;
             
-
-            
             button2.Enabled = true;
             dgvUpdateProduct.Enabled = true;
-
-
         }
 
         //Marius
@@ -201,8 +213,9 @@ namespace ssms.Pages.Products
         {
             //Search field
             string searchValue = tbSearch.Text;
-
+            bool foundSearch = false;
             dgvUpdateProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            if (tbSearch.Text == "") { MessageBox.Show("A barcode was not entered");}
             try
             {
                 foreach (DataGridViewRow row in dgvUpdateProduct.Rows)
@@ -211,9 +224,12 @@ namespace ssms.Pages.Products
                     {
                         dgvUpdateProduct.ClearSelection();
                         row.Selected = true;
+                        foundSearch = true;
+                        tbSearch.Text = "";
                         break;
                     }
                 }
+                if (foundSearch == false) { MessageBox.Show("No product found"); }
             }
             catch (Exception exc)
             {
@@ -230,19 +246,33 @@ namespace ssms.Pages.Products
         {
             if (dgvUpdateProduct.SelectedRows.Count == 1)
             {
-                using (DataGridViewRow item = this.dgvUpdateProduct.SelectedRows[0])
-                {
-                    int i = item.Index;
+                int index = dgvUpdateProduct.SelectedRows[0].Index;
 
-                    lblProdID.Text = dgvUpdateProduct.Rows[i].Cells[0].Value.ToString();
-                    tbProdName.Text = dgvUpdateProduct.Rows[i].Cells[1].Value.ToString();
-                    tbProdDescr.Text = dgvUpdateProduct.Rows[i].Cells[2].Value.ToString();
-                    tbBarcode.Text = dgvUpdateProduct.Rows[i].Cells[3].Value.ToString();
-                    cbBrandName.Text = dgvUpdateProduct.Rows[i].Cells[4].Value.ToString();
-                    cbCategoryName.Text = dgvUpdateProduct.Rows[i].Cells[5].Value.ToString();
+                ProductMain p = new ProductMain();
+                p = pm[index];
+
+                lblProdID.Text = p.ProductID.ToString();
+                tbProdName.Text = p.ProductName.ToString();
+                tbProdDescr.Text = p.ProductDescription.ToString();
+                tbBarcode.Text = p.BarcodeNumber.ToString();
+
+                LTS.Category cat = new LTS.Category();
+                cat = listC.Where(o => o.CategoryID == p.CategoryID).FirstOrDefault();
+                if (cat != null)
+                {
+                    int catIndex = listC.IndexOf(cat);
+                    cbCategoryName.SelectedIndex = catIndex;
+                }
+
+                LTS.Brand brand = new LTS.Brand();
+                brand = listB.Where(z => z.BrandID == p.BrandID).FirstOrDefault();
+                if (brand != null) {
+                    int brandInd = listB.IndexOf(brand);
+                    cbBrandName.SelectedIndex = brandInd;
                 }
             }
-            barcodeUpdateCheckCompare = int.Parse(tbBarcode.Text);
+
+            barcodeUpdateCheckCompare = tbBarcode.Text;
         }
 
         //Marius
@@ -301,20 +331,21 @@ namespace ssms.Pages.Products
                 if (lblBarVal.Visible == false && lblDesVal.Visible == false && lblNameVal.Visible == false)
                 {
                     ok = DAT.DataAccess.UpdateProduct(prod);
+                    //((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
                 }
 
                 if (ok == false)
                 {
                     if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the Product was not Updated!"))
                     {
-
+                        
                     }
                 }
                 else
                 {
                     if (DialogResult.OK == MessageBox.Show("The Product was updated successfully!"))
                     {
-                        ((Main)this.Parent.Parent).ChangeView<UpdateProduct>();
+                        ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
                     }
                 }
             }
@@ -322,7 +353,7 @@ namespace ssms.Pages.Products
             {
                 if (DialogResult.OK == MessageBox.Show("The Product was not updated successfully!"))
                 {
-                    ((Main)this.Parent.Parent).ChangeView<UpdateProduct>();
+                    
                 }
             }
         }
@@ -330,7 +361,7 @@ namespace ssms.Pages.Products
         private void tbBarcode_TextChanged(object sender, EventArgs e)
         {
             if (tbBarcode.Text != "") {
-                barcodeUpdateCheck = int.Parse(tbBarcode.Text);
+                barcodeUpdateCheck = tbBarcode.Text;
             }
         }
 

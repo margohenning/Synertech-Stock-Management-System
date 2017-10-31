@@ -43,6 +43,11 @@
             this.btnlogin = new System.Windows.Forms.Button();
             this.lblConnect = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
@@ -60,9 +65,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(15, 16);
+            this.label1.Location = new System.Drawing.Point(20, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 33);
+            this.label1.Size = new System.Drawing.Size(184, 42);
             this.label1.TabIndex = 210;
             this.label1.Text = "Add Items";
             // 
@@ -204,7 +210,7 @@
             this.lblConnect.AutoSize = true;
             this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConnect.ForeColor = System.Drawing.Color.Red;
-            this.lblConnect.Location = new System.Drawing.Point(429, 131);
+            this.lblConnect.Location = new System.Drawing.Point(461, 193);
             this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConnect.Name = "lblConnect";
             this.lblConnect.Size = new System.Drawing.Size(0, 16);
@@ -215,18 +221,79 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(17, 193);
+            this.label16.Location = new System.Drawing.Point(17, 229);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(205, 16);
+            this.label16.Size = new System.Drawing.Size(187, 16);
             this.label16.TabIndex = 317;
-            this.label16.Text = "Please enter information correctly!";
+            this.label16.Text = "Please choose a valid barcode!";
             this.label16.Visible = false;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.Color.Red;
+            this.label45.Location = new System.Drawing.Point(17, 204);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(170, 16);
+            this.label45.TabIndex = 341;
+            this.label45.Text = "Please choose a valid store!";
+            this.label45.Visible = false;
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(864, 487);
+            this.lblTimer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.TabIndex = 347;
+            this.lblTimer.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(17, 257);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(163, 16);
+            this.label6.TabIndex = 342;
+            this.label6.Text = "Please enter the RFID Tag!";
+            this.label6.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(733, 487);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(126, 25);
+            this.label12.TabIndex = 349;
+            this.label12.Text = "RFID Timer:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(15, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 33);
+            this.label4.TabIndex = 350;
+            this.label4.Text = "Add Item";
             // 
             // AddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblTimer);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label45);
             this.Controls.Add(this.lblConnect);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.comboBox1);
@@ -241,7 +308,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnlogin);
-            this.Controls.Add(this.label1);
             this.Name = "AddStock";
             this.Size = new System.Drawing.Size(1031, 532);
             this.Load += new System.EventHandler(this.AddStock_Load);
@@ -273,7 +339,13 @@
 
       
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label45;
+        
 
-      
+        private System.Windows.Forms.Label lblTimer;
+
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label4;
     }
 }

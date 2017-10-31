@@ -38,6 +38,7 @@ namespace ssms.Pages.Items
         private void ViewItemsPerStore_Load(object sender, EventArgs e)
         {
             radioButton1.Checked = true;
+            comboBoxStore.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //load store names into combo box from db
             listS = DAT.DataAccess.GetStore().ToList();
@@ -271,10 +272,6 @@ namespace ssms.Pages.Items
                 i = DAT.DataAccess.GetItem().Where(f => f.StoreID == storeID ).ToList();
             }
 
-
-            
-
-            
             for (int x = 0; x < i.Count; x++)
                 {
                     ItemMain im = new ItemMain();

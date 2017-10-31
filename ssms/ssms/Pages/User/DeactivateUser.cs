@@ -40,14 +40,19 @@ namespace ssms.Pages
                 dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
 
             }
+            foreach (DataGridViewColumn column in dgvUser.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         //Marius
         private void button2_Click(object sender, EventArgs e)
         {
-            //Search button clicked
+            //ID Search button clicked
             string searchValue = tbSearch.Text;
-
+            bool foundSearch = false;
+            if (tbSearch.Text == "") { MessageBox.Show("No User Identity number was entered"); }
             dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             try
             {
@@ -57,13 +62,16 @@ namespace ssms.Pages
                     {
                         dgvUser.ClearSelection();
                         row.Selected = true;
+                        tbSearch.Text = "";
+                        foundSearch = true;
                         break;
                     }
                 }
+                if (foundSearch == false) { MessageBox.Show("No user was found"); }
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show("User could not be found!");
+                MessageBox.Show("The user could not be found");
             }
         }
 
@@ -128,6 +136,34 @@ namespace ssms.Pages
                     getID = dgvUser.Rows[i].Cells[0].Value.ToString();
 
                 }
+            }
+        }
+
+        private void btnSearchName_Click(object sender, EventArgs e)
+        {
+            //Search button clicked
+            string searchValue = tbSearchName.Text;
+            bool foundSearch = false;
+            if (tbSearchName.Text == "") { MessageBox.Show("No User name was entered"); }
+            dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dgvUser.Rows)
+                {
+                    if (row.Cells[2].Value.ToString().Equals(searchValue))
+                    {
+                        dgvUser.ClearSelection();
+                        row.Selected = true;
+                        tbSearchName.Text = "";
+                        foundSearch = true;
+                        break;
+                    }
+                }
+                if (foundSearch == false) { MessageBox.Show("No user was found"); }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The user could not be found");
             }
         }
     }

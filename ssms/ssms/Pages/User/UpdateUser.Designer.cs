@@ -55,6 +55,11 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvUser = new System.Windows.Forms.DataGridView();
+            this.lblIdentityNo = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserIDentityNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,11 +67,12 @@
             this.UserEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserActivated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblIdentityNo = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblSurname = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
+
+            
+            this.tbSearchName = new System.Windows.Forms.TextBox();
+            this.btnSearchName = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,6 +163,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(245, 26);
             this.tbEmail.TabIndex = 222;
+            this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
             // cbAdmin
             // 
@@ -379,48 +386,6 @@
             this.dgvUser.TabIndex = 232;
             this.dgvUser.SelectionChanged += new System.EventHandler(this.dgvUser_SelectionChanged);
             // 
-            // UserID
-            // 
-            this.UserID.HeaderText = "User ID";
-            this.UserID.Name = "UserID";
-            this.UserID.ReadOnly = true;
-            // 
-            // UserIDentityNumber
-            // 
-            this.UserIDentityNumber.HeaderText = "Identity Number";
-            this.UserIDentityNumber.Name = "UserIDentityNumber";
-            this.UserIDentityNumber.ReadOnly = true;
-            // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "Name";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // UserSurname
-            // 
-            this.UserSurname.HeaderText = "Surname";
-            this.UserSurname.Name = "UserSurname";
-            this.UserSurname.ReadOnly = true;
-            // 
-            // UserEmail
-            // 
-            this.UserEmail.HeaderText = "Email";
-            this.UserEmail.Name = "UserEmail";
-            this.UserEmail.ReadOnly = true;
-            // 
-            // UserAdmin
-            // 
-            this.UserAdmin.HeaderText = "Admin";
-            this.UserAdmin.Name = "UserAdmin";
-            this.UserAdmin.ReadOnly = true;
-            // 
-            // UserActivated
-            // 
-            this.UserActivated.HeaderText = "Activated";
-            this.UserActivated.Name = "UserActivated";
-            this.UserActivated.ReadOnly = true;
-            // 
             // lblIdentityNo
             // 
             this.lblIdentityNo.AutoSize = true;
@@ -476,11 +441,101 @@
             this.lblPassword.TabIndex = 237;
             this.lblPassword.Text = "label14";
             // 
+
+            // tbSearchName
+            // 
+            this.tbSearchName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearchName.Location = new System.Drawing.Point(739, 137);
+            this.tbSearchName.Name = "tbSearchName";
+            this.tbSearchName.Size = new System.Drawing.Size(162, 26);
+            this.tbSearchName.TabIndex = 238;
+            // 
+            // btnSearchName
+            // 
+            this.btnSearchName.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSearchName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSearchName.Image = global::ssms.Properties.Resources.search;
+            this.btnSearchName.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSearchName.Location = new System.Drawing.Point(907, 124);
+            this.btnSearchName.Name = "btnSearchName";
+            this.btnSearchName.Size = new System.Drawing.Size(56, 56);
+            this.btnSearchName.TabIndex = 239;
+            this.btnSearchName.Text = "Search";
+            this.btnSearchName.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSearchName.UseVisualStyleBackColor = true;
+            this.btnSearchName.Click += new System.EventHandler(this.btnSearchName_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(743, 118);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.TabIndex = 240;
+            this.label2.Text = "Name: ";
+
+            // UserID
+            // 
+            this.UserID.HeaderText = "User ID";
+            this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
+            this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserIDentityNumber
+            // 
+            this.UserIDentityNumber.HeaderText = "Identity Number";
+            this.UserIDentityNumber.Name = "UserIDentityNumber";
+            this.UserIDentityNumber.ReadOnly = true;
+            this.UserIDentityNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserName
+            // 
+            this.UserName.HeaderText = "Name";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            this.UserName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserSurname
+            // 
+            this.UserSurname.HeaderText = "Surname";
+            this.UserSurname.Name = "UserSurname";
+            this.UserSurname.ReadOnly = true;
+            this.UserSurname.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserEmail
+            // 
+            this.UserEmail.HeaderText = "Email";
+            this.UserEmail.Name = "UserEmail";
+            this.UserEmail.ReadOnly = true;
+            this.UserEmail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserAdmin
+            // 
+            this.UserAdmin.HeaderText = "Admin";
+            this.UserAdmin.Name = "UserAdmin";
+            this.UserAdmin.ReadOnly = true;
+            this.UserAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UserActivated
+            // 
+            this.UserActivated.HeaderText = "Activated";
+            this.UserActivated.Name = "UserActivated";
+            this.UserActivated.ReadOnly = true;
+            this.UserActivated.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+
+            // 
             // UpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSearchName);
+            this.Controls.Add(this.tbSearchName);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblSurname);
@@ -551,6 +606,11 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvUser;
+        private System.Windows.Forms.Label lblIdentityNo;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserIDentityNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
@@ -558,10 +618,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserAdmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserActivated;
-        private System.Windows.Forms.Label lblIdentityNo;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblSurname;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblPassword;
+
+       
+        private System.Windows.Forms.TextBox tbSearchName;
+        private System.Windows.Forms.Button btnSearchName;
+        private System.Windows.Forms.Label label2;
+
     }
 }
