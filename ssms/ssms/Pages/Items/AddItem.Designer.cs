@@ -127,7 +127,9 @@
             // 
             this.panel1.Location = new System.Drawing.Point(738, 7);
             this.panel1.Name = "panel1";
+
             this.panel1.Size = new System.Drawing.Size(283, 358);
+
             this.panel1.TabIndex = 253;
             // 
             // button5
@@ -210,7 +212,7 @@
             this.lblConnect.AutoSize = true;
             this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConnect.ForeColor = System.Drawing.Color.Red;
-            this.lblConnect.Location = new System.Drawing.Point(461, 193);
+            this.lblConnect.Location = new System.Drawing.Point(593, 167);
             this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConnect.Name = "lblConnect";
             this.lblConnect.Size = new System.Drawing.Size(0, 16);
@@ -243,11 +245,11 @@
             // lblTimer
             // 
             this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.Location = new System.Drawing.Point(864, 487);
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(592, 200);
             this.lblTimer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.Size = new System.Drawing.Size(18, 20);
             this.lblTimer.TabIndex = 347;
             this.lblTimer.Text = "0";
             // 
@@ -266,10 +268,10 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(733, 487);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(459, 200);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(126, 25);
+            this.label12.Size = new System.Drawing.Size(95, 20);
             this.label12.TabIndex = 349;
             this.label12.Text = "RFID Timer:";
             // 

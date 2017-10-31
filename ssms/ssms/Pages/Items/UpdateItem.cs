@@ -37,6 +37,7 @@ namespace ssms.Pages.Items
         //Devon
         private void UpdateStock_Load(object sender, EventArgs e)
         {
+            ChangeView<SearchWithEPC>();
             //load store names into combo box from db
             listS = DAT.DataAccess.GetStore().ToList();
             List<string> S = new List<string>();
@@ -133,14 +134,9 @@ namespace ssms.Pages.Items
         //Margo
         private void button5_Click(object sender, EventArgs e)
         {
-            button3.Enabled = false;
-            button2.Enabled = false;
-            button4.Enabled = false;
+            button3.Enabled = false;            
             button7.Enabled = false;
-
-            textBox2.Enabled = false;
-            textBox3.Enabled = false;
-
+            textBox2.Enabled = false;           
             comboBoxStore.Enabled = false;
             comboBox1.Enabled = false;
             dataGridView2.Enabled = false;
@@ -171,16 +167,16 @@ namespace ssms.Pages.Items
 
             button3.Enabled = true;
 
-            button2.Enabled = true;
-            button4.Enabled = true;
+            
             button7.Enabled = true;
 
             textBox2.Enabled = true;
-            textBox3.Enabled = true;
-
+            
             comboBoxStore.Enabled = true;
             comboBox1.Enabled = true;
             dataGridView2.Enabled = true;
+            ChangeView<SearchWithEPC>();
+
         }
 
         //Margo
@@ -189,17 +185,33 @@ namespace ssms.Pages.Items
             ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
         }
 
-        //Devon
-        private void button4_Click(object sender, EventArgs e)
-        {
-            string epc = textBox3.Text;
+       
+
+        //Devon and Margo
+        public bool Search(string epc)
+        {            
             if (epc != "")
             {
                 ItemMain find = imList.Where(i => i.EPC == epc).FirstOrDefault();
-
-                int index = imList.IndexOf(find);
-                dataGridView2.Rows[index].Selected = true;
-                //dataGridView2.SelectedRows.Clear();
+                if (find != null)
+                {
+                    int index = imList.IndexOf(find);
+                    if (dataGridView2.SelectedRows.Count != 0)
+                    {
+                        dataGridView2.ClearSelection();
+                    }
+                    dataGridView2.Rows[index].Selected = true;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }                
+                
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -575,13 +587,34 @@ namespace ssms.Pages.Items
         {
             if (time < 60 && epc == "")
             {
-                time++;
-                if (lblTimer.InvokeRequired)
+                if (time >= 60)
                 {
-                    lblTimer.Invoke(new MethodInvoker(delegate () {
-                        lblTimer.Text = time.ToString();
-                    }));
+                    timer.Stop();
+                    timer.Elapsed -= timer_Elapsed;
+                    if (lblTimer.InvokeRequired)
+                    {
+                        lblTimer.Invoke(new MethodInvoker(delegate () {
+                            lblTimer.Text = time.ToString();
+                            textBox2.Text = epc;
+                        }));
 
+                    }
+
+                    Stop();
+                    time = 0;
+                    
+                }
+                else
+                {
+                    time++;
+                    if (lblTimer.InvokeRequired)
+                    {
+                        lblTimer.Invoke(new MethodInvoker(delegate ()
+                        {
+                            lblTimer.Text = time.ToString();
+                        }));
+
+                    }
                 }
 
             }

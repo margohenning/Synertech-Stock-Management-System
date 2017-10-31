@@ -1,4 +1,3 @@
-
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,84 +9,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ssms.DataClasses;
 
-namespace ssms.Pages.StockOut
+namespace ssms.Pages.Items
 {
-    public partial class StockOutUpdate : UserControl
+    public partial class SearchWithEPC : UserControl
     {
         Timer ScanTimer = new Timer();
-        System.Timers.Timer timer;
         int time = 0;
+        System.Timers.Timer timer;
         SettingsMain sm = new SettingsMain();
         List<ImpinjRevolution> impinjrev = new List<ImpinjRevolution>();
         string epc = "";
-        BookOutMain current = new BookOutMain();
-        List<BookOutMain> bom = new List<BookOutMain>();
         List<LTS.Store> st = new List<LTS.Store>();
-
-        public StockOutUpdate()
+        public SearchWithEPC()
         {
             InitializeComponent();
-
         }
 
         //Margo
-        private void comboBoxStore_SelectedIndexChanged(object sender, EventArgs e)
+        private void SearchWithEPC_Load(object sender, EventArgs e)
         {
-            List<LTS.Product> product = new List<LTS.Product>();
-            product = DAT.DataAccess.GetProduct().ToList();
-            storeName.Text = comboBoxStore.GetItemText(comboBoxStore.SelectedValue);
-        }
+            st = DAT.DataAccess.GetStore().ToList();
+            List<string> S = new List<string>();
 
-        //Margo
-        private void btnlogin_Click(object sender, EventArgs e)
-        {
-            lblReason.Visible = false;
-            lblProject.Visible = false;
-            bool check = true;
-            if(textBox1.Text == "")
+            for (int x = 0; x < st.Count; x++)
             {
-                lblReason.Visible = true;
-                check = false;
+                S.Add(st[x].StoreName);
             }
+            comboBoxStore.DataSource = S;
 
-            if (textBox2.Text == "")
-            {
-                lblProject.Visible = true;
-                check = false;
-            }
 
-            if (check == true)
-            {
-                int BookOutID = current.BookOutID;
-                LTS.BookOut bo = new LTS.BookOut();
-                bo = DAT.DataAccess.GetBookOut().Where(u => u.BookOutID == BookOutID).FirstOrDefault();
-                if (bo != null)
-                {
-                    bo.Reason = textBox1.Text;
-                    bo.Project = textBox2.Text;
-
-                    bool update = DAT.DataAccess.UpdateBookOut(bo);
-                    if (update)
-                    {
-                        MessageBox.Show("The book out update was succesful!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("The book out update was unsuccesful!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("The book out update was unsuccesful!");
-                }
-            }
-            
-        }
-
-        //Margo
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOut>();
         }
 
         //Margo
@@ -95,13 +45,13 @@ namespace ssms.Pages.StockOut
         {
             try
             {
-                
+
                 time = 0;
                 lblTimer.Text = time.ToString();
                 timer = new System.Timers.Timer();
                 timer.Elapsed += timer_Elapsed;
                 timer.Interval = 1000;
-
+                ((UpdateStock)this.Parent.Parent).EnableOrDisable(false);
                 EnableOrDisable(false);
                 epc = "";
                 int iStore = comboBoxStore.SelectedIndex;
@@ -116,6 +66,7 @@ namespace ssms.Pages.StockOut
                 {
                     lblConnect.Text = ("Settings not found!");
                     EnableOrDisable(true);
+                    ((UpdateStock)this.Parent.Parent).EnableOrDisable(true);
 
                 }
             }
@@ -123,6 +74,7 @@ namespace ssms.Pages.StockOut
             {
                 lblConnect.Text = ("Store not selected!");
                 EnableOrDisable(true);
+                ((UpdateStock)this.Parent.Parent).EnableOrDisable(true);
             }
         }
 
@@ -130,7 +82,7 @@ namespace ssms.Pages.StockOut
         bool connect(LTS.Settings se)
         {
             lblConnect.Text = "Connecting...";
-           
+
 
             int index = comboBoxStore.SelectedIndex;
             if (st != null)
@@ -198,10 +150,10 @@ namespace ssms.Pages.StockOut
                         imp.StartRead();
                     });
 
-                    ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+                    ((Form1)this.Parent.Parent.Parent.Parent.Parent.Parent).scan = true;
                     lblConnect.Text = "Reading...";
                     lblTimer.Text = time.ToString();
-                   
+
                 }
                 else
                 {
@@ -216,13 +168,14 @@ namespace ssms.Pages.StockOut
 
                     }
                     EnableOrDisable(true);
-                    ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                    ((UpdateStock)this.Parent.Parent).EnableOrDisable(true);
+                    ((Form1)this.Parent.Parent.Parent.Parent.Parent.Parent).scan = false;
                 }
             }
             return true;
 
         }
-        
+
         //Margo
         void ir_TagRead(TagInfo tag, EventArgs e)
         {
@@ -234,6 +187,7 @@ namespace ssms.Pages.StockOut
             }
         }
 
+        //Margo
         void Stop()
         {
             if (impinjrev != null)
@@ -252,7 +206,8 @@ namespace ssms.Pages.StockOut
 
                 }
 
-                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                ((Form1)this.Parent.Parent.Parent.Parent.Parent.Parent).scan = false;
+                ((UpdateStock)this.Parent.Parent).EnableOrDisable(true);
                 EnableOrDisable(true);
             }
         }
@@ -264,23 +219,19 @@ namespace ssms.Pages.StockOut
             {
                 if (what)
                 {
-                    
+                    ((UpdateStock)this.Parent.Parent).EnableOrDisable(true);
                     button4.Enabled = true;
                     comboBoxStore.Enabled = true;
-                    button1.Enabled = true;
-                    btnlogin.Enabled = true;
                     time = 0;
                 }
                 else
                 {
-
+                    ((UpdateStock)this.Parent.Parent).EnableOrDisable(false);
                     button4.Enabled = false;
                     comboBoxStore.Enabled = false;
-                    button1.Enabled = false;
-                    btnlogin.Enabled = false;
+                    
                 }
             }));
-
         }
 
         //Margo
@@ -300,7 +251,6 @@ namespace ssms.Pages.StockOut
                         }));
 
                     }
-
                     Stop();
                     time = 0;
                 }
@@ -315,7 +265,6 @@ namespace ssms.Pages.StockOut
 
                     }
                 }
-               
             }
             else
             {
@@ -334,137 +283,29 @@ namespace ssms.Pages.StockOut
                 time = 0;
             }
 
-        }
-               
-        //Margo
-        private void StockOutUpdate_Load_1(object sender, EventArgs e)
-        {
-            st = DAT.DataAccess.GetStore().ToList();
-            List<string> S = new List<string>();
 
-            for (int x = 0; x < st.Count; x++)
-            {
-                S.Add(st[x].StoreName);
-            }
-            comboBoxStore.DataSource = S;
-
-            List<LTS.BookOut> bo = new List<LTS.BookOut>();
-            bo = DAT.DataAccess.GetBookOut().ToList();
-
-            for (int i = 0; i < bo.Count; i++)
-            {
-                BookOutMain b = new BookOutMain();
-                b.BookOutID = bo[i].BookOutID;
-                b.itemID = bo[i].ItemID;
-                b.UserID = bo[i].UserID;
-                b.Reason = bo[i].Reason;
-                b.Project = bo[i].Project;
-                b.Date = bo[i].Date;
-
-                LTS.Item it = new LTS.Item();
-                it = DAT.DataAccess.GetItem().Where(u => u.ItemID == b.itemID).FirstOrDefault();
-                b.ItemStatus = it.ItemStatus;
-                b.EPC = it.TagEPC;
-                b.ProductID = it.ProductID;
-                b.StoreID = it.StoreID;
-
-                //get the specific product and assign the info to the ItemMain object
-                LTS.Product p = new LTS.Product();
-                p = DAT.DataAccess.GetProduct().Where(h => h.ProductID == b.ProductID).FirstOrDefault();
-                b.ProductName = p.ProductName;
-                b.ProductDescription = p.ProductDescription;
-                b.BrandID = p.BrandID;
-                b.CategoryID = p.CategoryID;
-                b.BarcodeID = p.BarcodeID;
-
-                //get the specific store and assign the info to the ItemMain object
-                LTS.Store s = new LTS.Store();
-                s = DAT.DataAccess.GetStore().Where(j => j.StoreID == b.StoreID).FirstOrDefault();
-                b.StoreName = s.StoreName;
-                b.StoreLocation = s.StoreLocation;
-
-                //get the specific brand and assign the info to the ItemMain object
-                LTS.Brand br = new LTS.Brand();
-                br = DAT.DataAccess.GetBrand().Where(y => y.BrandID == b.BrandID).FirstOrDefault();
-                b.BrandName = b.BrandName;
-                b.BrandDescription = b.BrandDescription;
-
-                //get the sepcific category and assign the info to the ItemMain object
-                LTS.Category c = new LTS.Category();
-                c = DAT.DataAccess.GetCategory().Where(z => z.CategoryID == b.CategoryID).FirstOrDefault();
-                b.CategoryName = c.CategoryName;
-                b.CategoryDescription = c.CategoryDescription;
-
-                //get the sepcific category and assign the info to the ItemMain object
-                LTS.Barcode ba = new LTS.Barcode();
-                ba = DAT.DataAccess.GetBarcode().Where(a => a.BarcodeID == b.BarcodeID).FirstOrDefault();
-                b.BarcodeNumber = ba.BarcodeNumber;
-
-                LTS.User us = new LTS.User();
-                us = DAT.DataAccess.GetUser().Where(h => h.UserID == b.UserID).FirstOrDefault();
-                b.UserIdentityNumber = us.UserIdentityNumber;
-                b.UserName = us.UserName;
-                b.UserSurname = us.UserSurname;
-
-                bom.Add(b);
-
-                dataGridView1.Rows.Add(b.BookOutID, b.EPC, b.ProductName, b.Reason, b.Project, b.Date, b.UserName, b.UserSurname);
-
-            }
-        }
-
-        //Margo
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count >= 1)
-            {
-                using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
-                {
-                    BookOutMain bo = new BookOutMain();
-                    bo = bom[this.dataGridView1.SelectedRows[0].Index];
-                    current = bo;
-                    storeName.Text = bo.StoreName;
-                    StoreLoc.Text = bo.StoreLocation;
-                    barcode.Text = bo.BarcodeNumber;
-                    productName.Text = bo.ProductName;
-                    ProductDesc.Text = bo.ProductDescription;
-                    ProductBrand.Text = bo.BrandName;
-                    ProductCat.Text = bo.CategoryName;
-                    lblEPC.Text = bo.EPC;
-                    textBox1.Text = bo.Reason;
-                    textBox2.Text = bo.Project;
-
-                }
-            }
         }
 
         //Margo
         private void button4_Click(object sender, EventArgs e)
         {
-            lblEPCerror.Visible = false;
+            lblerrorEPC.Visible = false;
             if (txtEPC.Text != "")
             {
-                BookOutMain boo = new BookOutMain();
-                boo = bom.Where(u => u.EPC == txtEPC.Text).FirstOrDefault();
-                if (boo != null)
+                bool search =((UpdateStock)this.Parent.Parent).Search(txtEPC.Text);
+                if (search != true)
                 {
-                    int index = bom.IndexOf(boo);
-                    if (dataGridView1.SelectedRows.Count != 0)
-                    {
-                        dataGridView1.ClearSelection();
-                    }
-                    dataGridView1.Rows[index].Selected = true;
+                    lblerrorEPC.Visible = true;
                 }
                 else
                 {
-                    lblEPCerror.Visible = true;
+                    lblerrorEPC.Visible = false;
                 }
             }
             else
             {
-                lblEPCerror.Visible = true;
+                lblerrorEPC.Visible = true;
             }
-            
         }
     }
 }

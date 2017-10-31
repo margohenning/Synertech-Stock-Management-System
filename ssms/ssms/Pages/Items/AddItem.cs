@@ -23,14 +23,14 @@ namespace ssms.Pages.Items
         List<ImpinjRevolution> impinjrev = new List<ImpinjRevolution>();
         string epc = "";
         int time = 0;
-        bool wait = false;
+        
 
         public AddStock()
         {
             InitializeComponent();
         }
 
-        //to change the content of the small panel
+        
         //Margo
         public void ChangeView<T>() where T : Control, new()
         {
@@ -60,7 +60,7 @@ namespace ssms.Pages.Items
             ChangeView<Store.AddStoreSmall>();
         }
 
-        //after a store is added in the small panel you need to update the combobox
+        
         //Margo
         public void doneStore()
         {
@@ -334,22 +334,7 @@ namespace ssms.Pages.Items
                 lblConnect.Text = "Reading...";
 
                 lblTimer.Text = time.ToString();
-                //while (wait!=true)
-                //{
-                //    if (epc == "")
-                //    {
-                //        lblTimer.Text = time.ToString();
-                //    }
-                //    else
-                //    {
-                //        wait = true;
-                //    }
-                    
-                   
-                //}
-                
-                
-
+               
 
 
             }
@@ -372,7 +357,7 @@ namespace ssms.Pages.Items
 
         }
 
-        //read tags
+        //Margo
         void ir_TagRead(TagInfo tag, EventArgs e)
         {
             if (tag != null && epc=="")
@@ -436,40 +421,63 @@ namespace ssms.Pages.Items
             }
         }
 
-        
 
+        //Margo
         void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-           if (time < 60 && epc=="")
-                {
-                    time++;
-                    if (lblTimer.InvokeRequired)
-                    {
-                        lblTimer.Invoke(new MethodInvoker(delegate () {
-                            lblTimer.Text = time.ToString();
-                        }));
-
-                    }
-                   
-                }
-                else
+            if (time < 60 && epc == "")
+            {
+                if (time >= 60)
                 {
                     timer.Stop();
                     timer.Elapsed -= timer_Elapsed;
                     if (lblTimer.InvokeRequired)
+                    {
+                        lblTimer.Invoke(new MethodInvoker(delegate ()
                         {
-                            lblTimer.Invoke(new MethodInvoker(delegate () {
-                                lblTimer.Text = time.ToString();
-                                textBox2.Text = epc;
-                            }));
+                            lblTimer.Text = time.ToString();
+                            textBox2.Text = epc;
+                        }));
 
-                        }
-                        
-                        Stop();
-                        time = 0;
                     }
-           
+
+                    Stop();
+                    time = 0;
+
+                }
+                else
+                {
+                    time++;
+                    if (lblTimer.InvokeRequired)
+                    {
+                        lblTimer.Invoke(new MethodInvoker(delegate ()
+                        {
+                            lblTimer.Text = time.ToString();
+                        }));
+
+                    }
+                }
+
+            }
+            else
+            {
+                timer.Stop();
+                timer.Elapsed -= timer_Elapsed;
+                if (lblTimer.InvokeRequired)
+                {
+                    lblTimer.Invoke(new MethodInvoker(delegate ()
+                    {
+                        lblTimer.Text = time.ToString();
+                        textBox2.Text = epc;
+                    }));
+
+                }
+
+                Stop();
+                time = 0;
+            }
         }
-        }
+
+    }
 
 }
