@@ -330,6 +330,7 @@
             this.dgvUpdateProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUpdateProduct.Size = new System.Drawing.Size(681, 175);
             this.dgvUpdateProduct.TabIndex = 310;
+            this.dgvUpdateProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUpdateProduct_CellContentClick);
             this.dgvUpdateProduct.SelectionChanged += new System.EventHandler(this.dgvUpdateProduct_SelectionChanged);
             // 
             // ProductID

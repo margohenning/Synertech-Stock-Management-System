@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.StoreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +42,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.labelError1 = new System.Windows.Forms.Label();
+            this.labelError2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(750, 162);
             this.dataGridView1.TabIndex = 95;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // StoreID
             // 
@@ -192,11 +194,37 @@
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
+            // labelError1
+            // 
+            this.labelError1.AutoSize = true;
+            this.labelError1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError1.ForeColor = System.Drawing.Color.Red;
+            this.labelError1.Location = new System.Drawing.Point(453, 282);
+            this.labelError1.Name = "labelError1";
+            this.labelError1.Size = new System.Drawing.Size(153, 16);
+            this.labelError1.TabIndex = 320;
+            this.labelError1.Text = "Please enter store name!";
+            this.labelError1.Visible = false;
+            // 
+            // labelError2
+            // 
+            this.labelError2.AutoSize = true;
+            this.labelError2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError2.ForeColor = System.Drawing.Color.Red;
+            this.labelError2.Location = new System.Drawing.Point(453, 317);
+            this.labelError2.Name = "labelError2";
+            this.labelError2.Size = new System.Drawing.Size(166, 16);
+            this.labelError2.TabIndex = 321;
+            this.labelError2.Text = "Please enter store location!";
+            this.labelError2.Visible = false;
+            // 
             // UpdateStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.labelError2);
+            this.Controls.Add(this.labelError1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnlogin);
@@ -210,10 +238,10 @@
             this.Controls.Add(this.label1);
             this.Name = "UpdateStore";
             this.Size = new System.Drawing.Size(1031, 532);
+            this.Load += new System.EventHandler(this.UpdateStore_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 
         }
 
@@ -232,5 +260,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreID;
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreName;
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreLocation;
+        private System.Windows.Forms.Label labelError1;
+        private System.Windows.Forms.Label labelError2;
     }
 }

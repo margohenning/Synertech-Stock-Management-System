@@ -19,7 +19,7 @@ namespace ssms.Pages.StockOut
         {
             InitializeComponent();
         }
-
+        //Tiaan
         private void StockOut_Load(object sender, EventArgs e)
         {
             List<LTS.Item> item = new List<LTS.Item>();
@@ -27,15 +27,21 @@ namespace ssms.Pages.StockOut
             List<LTS.BookOut> bookOut = new List<LTS.BookOut>();
             List<LTS.Product> product = new List<LTS.Product>();
             List<LTS.User> user = new List<LTS.User>();
-            item = DAT.DataAccess.GetItem().ToList();
+            item = DAT.DataAccess.GetItem().Where(y => y.ItemStatus == false).ToList();
             barcode = DAT.DataAccess.GetBarcode().ToList();
             bookOut = DAT.DataAccess.GetBookOut().ToList();
             product = DAT.DataAccess.GetProduct();
             user = DAT.DataAccess.GetUser().ToList();
-            for (int i = 0; i < item.Count; i++)
+            for (int i = 0; i < bookOut.Count; i++)
             {
-                dataGridView1.Rows.Add(bookOut[i].BookOutID, item[i].TagEPC, barcode[i].BarcodeNumber, product[i].ProductName,
-                                       bookOut[i].Reason, bookOut[i].Project, bookOut[i].Date, user[i].UserName, user[i].UserSurname);
+                LTS.Item it  = item.Where(a => a.ItemID == bookOut[i].ItemID).FirstOrDefault();
+                LTS.Product p = product.Where(r => r.ProductID == it.ProductID).FirstOrDefault();
+                LTS.Barcode b = barcode.Where(q => q.BarcodeID == p.BarcodeID).FirstOrDefault();
+                LTS.User u = user.Where(w => w.UserID == bookOut[i].UserID).FirstOrDefault();
+
+                
+                dataGridView1.Rows.Add(bookOut[i].BookOutID, it.TagEPC, b.BarcodeNumber, p.ProductName,
+                                       bookOut[i].Reason, bookOut[i].Project, bookOut[i].Date, u.UserName, u.UserSurname);
             }
         }
 

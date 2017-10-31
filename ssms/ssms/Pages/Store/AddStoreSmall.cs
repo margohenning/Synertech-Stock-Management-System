@@ -24,12 +24,14 @@ namespace ssms.Pages.Store
                 LTS.Store store = new LTS.Store();
                 if (txtName.Text == "")
                 {
-                    //error
-                }
+                labelError1.Text = "Please enter store name!";
+                labelError1.Visible = true;
+            }
                 else if (txtSur.Text == "")
                 {
-                 //error
-                }
+                labelError2.Text = "Please enter store location!";
+                labelError2.Visible = true;
+            }
                 else
                 {
                     store.StoreName = txtName.Text;

@@ -333,5 +333,10 @@ namespace ssms.Pages.Products
                 barcodeUpdateCheck = int.Parse(tbBarcode.Text);
             }
         }
+
+        private void dgvUpdateProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
