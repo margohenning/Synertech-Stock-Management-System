@@ -1,3 +1,4 @@
+
 ﻿namespace ssms.Pages.StockOut
 {
     partial class StockBookOutRemoval
@@ -523,3 +524,4 @@
         private System.Windows.Forms.Label label6;
     }
 }
+

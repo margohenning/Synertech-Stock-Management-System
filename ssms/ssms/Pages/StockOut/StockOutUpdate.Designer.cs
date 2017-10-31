@@ -1,3 +1,4 @@
+
 ﻿namespace ssms.Pages.StockOut
 {
     partial class StockOutUpdate
@@ -575,3 +576,4 @@
         private System.Windows.Forms.Label label20;
     }
 }
+

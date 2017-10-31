@@ -15,6 +15,8 @@ namespace ssms.Pages.Store
 {
     public partial class Store : UserControl
     {
+        List<LTS.Store> store = new List<LTS.Store>();
+        List<LTS.Item> item = new List<LTS.Item>();
         public Store()
         {
             InitializeComponent();
@@ -30,25 +32,7 @@ namespace ssms.Pages.Store
         private void button3_Click(object sender, EventArgs e)
         {
             ((Main)this.Parent.Parent).ChangeView<UpdateStore>();
-         }
-
-        
-        //Tiaan
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            List<string> count = new List<string>();
-            List<LTS.Store> store = new List<LTS.Store>();
-            List<LTS.Item> item = new List<LTS.Item>();
-
-            store = DAT.DataAccess.GetStore().ToList();
-            item = DAT.DataAccess.GetItem().ToList();
-
-            for (int i = 0; i < item.Count; i++)
-            {
-                dataGridView1.Rows.Add(store[i].StoreID, store[i].StoreName, store[i].StoreLocation, 0) ;
-            }
         }
-
 
         //Margo
         private void button4_Click(object sender, EventArgs e)
@@ -119,6 +103,20 @@ namespace ssms.Pages.Store
                 stream.Close();
             }
         }
+        //Tiaan
+        private void Store_Load(object sender, EventArgs e)
+        {
+            store = DAT.DataAccess.GetStore();
+            item = DAT.DataAccess.GetItem();
+            
 
+            for (int k = 0; k < store.Count; k++)
+            {
+                int total = 0;
+                total = item.Where(y => y.StoreID == store[k].StoreID).ToList().Count;
+                
+                dataGridView1.Rows.Add(store[k].StoreID, store[k].StoreName, store[k].StoreLocation, total);
+            }
+        }
     }
 }

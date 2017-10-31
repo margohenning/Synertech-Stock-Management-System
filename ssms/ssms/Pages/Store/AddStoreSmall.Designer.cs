@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             this.label5 = new System.Windows.Forms.Label();
             this.txtSur = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -37,6 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnlogin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.labelError1 = new System.Windows.Forms.Label();
+            this.labelError2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
@@ -128,11 +129,37 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // labelError1
+            // 
+            this.labelError1.AutoSize = true;
+            this.labelError1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError1.ForeColor = System.Drawing.Color.Red;
+            this.labelError1.Location = new System.Drawing.Point(12, 274);
+            this.labelError1.Name = "labelError1";
+            this.labelError1.Size = new System.Drawing.Size(153, 16);
+            this.labelError1.TabIndex = 320;
+            this.labelError1.Text = "Please enter store name!";
+            this.labelError1.Visible = false;
+            // 
+            // labelError2
+            // 
+            this.labelError2.AutoSize = true;
+            this.labelError2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError2.ForeColor = System.Drawing.Color.Red;
+            this.labelError2.Location = new System.Drawing.Point(12, 303);
+            this.labelError2.Name = "labelError2";
+            this.labelError2.Size = new System.Drawing.Size(166, 16);
+            this.labelError2.TabIndex = 321;
+            this.labelError2.Text = "Please enter store location!";
+            this.labelError2.Visible = false;
+            // 
             // AddStoreSmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.labelError2);
+            this.Controls.Add(this.labelError1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnlogin);
@@ -142,11 +169,10 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Name = "AddStoreSmall";
-            this.Size = new System.Drawing.Size(283, 272);
+            this.Size = new System.Drawing.Size(283, 358);
             this.Load += new System.EventHandler(this.AddStoreSmall_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
 
         }
 
@@ -159,5 +185,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label labelError1;
+        private System.Windows.Forms.Label labelError2;
     }
 }

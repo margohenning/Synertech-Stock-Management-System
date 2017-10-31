@@ -112,7 +112,9 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(24, 274);
+
+            this.label11.Location = new System.Drawing.Point(25, 269);
+
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(104, 19);
             this.label11.TabIndex = 260;
@@ -131,8 +133,12 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(497, 563);
+
+            this.label12.Location = new System.Drawing.Point(373, 457);
+
+            
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 25);
             this.label12.TabIndex = 258;
@@ -179,7 +185,9 @@
             // 
             this.panel1.Location = new System.Drawing.Point(728, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(283, 272);
+
+            this.panel1.Size = new System.Drawing.Size(283, 358);
+
             this.panel1.TabIndex = 278;
             // 
             // textBox3
@@ -317,6 +325,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+
             this.dataGridView2.Size = new System.Drawing.Size(680, 179);
             this.dataGridView2.TabIndex = 315;
             this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);

@@ -94,6 +94,7 @@ namespace ssms.Pages
                 user.UserSurname = tbSurname.Text;
                 user.UserPassword = tbPassword.Text;
 
+
                 List<string> emailList = new List<string>();
 
                 List<LTS.User> listEmail = new List<LTS.User>();
@@ -118,15 +119,32 @@ namespace ssms.Pages
                 if (cbAdmin.SelectedItem.Equals("Yes")) { user.UserAdmin = true; } else { user.UserAdmin = false; }
                 if (cbActivated.SelectedItem.Equals("Yes")) { user.UserActivated = true; } else { user.UserActivated = false; }
 
+
                 //Validation checks
-                if (tbIdentityNo.Text == "") { lblIdentityNo.Visible = true; lblIdentityNo.Text = "Please enter a valid ID number"; }
-                if (tbName.Text == "") { lblName.Visible = true; lblName.Text = "Please enter a name"; }
-                if (tbSurname.Text == "") { lblSurname.Visible = true; lblSurname.Text = "Please enter a surname"; }
-                if (tbEmail.Text == "") { lblEmail.Visible = true; lblEmail.Text = "Please enter a valid email"; }
-                if (tbPassword.Text == "") { lblPassword.Visible = true; lblPassword.Text = "Please enter a valid password"; }
+                if (tbIdentityNo.Text == "")
+                {
+                    lblIdentityNo.Visible = true; lblIdentityNo.Text = "Please enter a valid ID number";
+                }
+                if (tbName.Text == "")
+                {
+                    lblName.Visible = true; lblName.Text = "Please enter a name";
+                }
+                if (tbSurname.Text == "")
+                {
+                    lblSurname.Visible = true; lblSurname.Text = "Please enter a surname";
+                }
+                if (tbEmail.Text == "")
+                {
+                    lblEmail.Visible = true; lblEmail.Text = "Please enter a valid email";
+                }
+                if (tbPassword.Text == "")
+                {
+                    lblPassword.Visible = true; lblPassword.Text = "Please enter a valid password";
+                }
 
                 bool ok = false;
-                if (lblEmail.Visible == false && lblIdentityNo.Visible == false && lblName.Visible == false && lblSurname.Visible == false && lblPassword.Visible == false)
+                if (lblEmail.Visible == false && lblIdentityNo.Visible == false && lblName.Visible == false
+                    && lblSurname.Visible == false && lblPassword.Visible == false)
                 {
                     ok = DAT.DataAccess.UpdateUser(user);
                 }
