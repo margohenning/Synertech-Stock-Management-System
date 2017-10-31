@@ -345,8 +345,7 @@ namespace ssms.Pages.StockOut
                 if (what)
                 {
                
-                    
-                    comboBox2.Enabled = true;
+                   
                     comboBoxStore.Enabled = true;
                     button1.Enabled = true;
                     btnlogin.Enabled = true;
@@ -356,7 +355,7 @@ namespace ssms.Pages.StockOut
                 {
                 
                     
-                    comboBox2.Enabled = false;
+                    
                     comboBoxStore.Enabled = false;
                     button1.Enabled = false;
                     btnlogin.Enabled = false;
@@ -440,39 +439,7 @@ namespace ssms.Pages.StockOut
             }
             else
             {
-                int find = comboBox2.FindStringExact(epc);
-                if (find != -1)
-                {
-                    timer.Stop();
-                    timer.Elapsed -= timer_Elapsed;
-                    foundIt = true;
-
-                    if (comboBox2.InvokeRequired)
-                    {
-                        comboBox2.Invoke(new MethodInvoker(delegate () {
-                            comboBox2.SelectedIndex = find;
-                        }));
-
-                    }
-
-                    Stop();
-                    time = 0;
-
-                }
-                else
-                {
-                    epc = "";
-                    time++;
-                    if (lblTimer.InvokeRequired)
-                    {
-                        lblTimer.Invoke(new MethodInvoker(delegate () {
-                            lblTimer.Text = time.ToString();
-                        }));
-
-                    }
-
-
-                }
+                
                 
             }
 

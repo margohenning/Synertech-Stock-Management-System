@@ -34,7 +34,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            
             this.label7 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -65,12 +64,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.StoreLoc = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-           this.lblConnect = new System.Windows.Forms.Label();
+            this.lblConnect = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.barcode = new System.Windows.Forms.Label();
             this.labelError2 = new System.Windows.Forms.Label();
             this.labelError3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxStore = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,37 +180,6 @@
             this.btnlogin.TabIndex = 253;
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
-            // 
-            // lblConnect
-            // 
-            this.lblConnect.AutoSize = true;
-            this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConnect.ForeColor = System.Drawing.Color.Red;
-            this.lblConnect.Location = new System.Drawing.Point(559, 153);
-            this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblConnect.Name = "lblConnect";
-            this.lblConnect.Size = new System.Drawing.Size(0, 16);
-            this.lblConnect.TabIndex = 341;
-            // 
-            // lblTimer
-            // 
-            this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.Location = new System.Drawing.Point(843, 487);
-            this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(24, 25);
-            this.lblTimer.TabIndex = 349;
-            this.lblTimer.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(702, 487);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(126, 25);
-            this.label12.TabIndex = 348;
-            this.label12.Text = "RFID Timer:";
             // 
             // labelError1
             // 
@@ -453,6 +423,37 @@
             this.label14.TabIndex = 173;
             this.label14.Text = "Product Barcode:";
             // 
+            // lblConnect
+            // 
+            this.lblConnect.AutoSize = true;
+            this.lblConnect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnect.ForeColor = System.Drawing.Color.Red;
+            this.lblConnect.Location = new System.Drawing.Point(559, 153);
+            this.lblConnect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblConnect.Name = "lblConnect";
+            this.lblConnect.Size = new System.Drawing.Size(0, 16);
+            this.lblConnect.TabIndex = 341;
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(843, 487);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(24, 25);
+            this.lblTimer.TabIndex = 349;
+            this.lblTimer.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(702, 487);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(126, 25);
+            this.label12.TabIndex = 348;
+            this.label12.Text = "RFID Timer:";
+            // 
             // barcode
             // 
             this.barcode.AutoSize = true;
@@ -480,18 +481,40 @@
             this.labelError3.AutoSize = true;
             this.labelError3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError3.ForeColor = System.Drawing.Color.Red;
-            this.labelError3.Location = new System.Drawing.Point(778, 140);
+            this.labelError3.Location = new System.Drawing.Point(471, 319);
             this.labelError3.Name = "labelError3";
             this.labelError3.Size = new System.Drawing.Size(119, 16);
             this.labelError3.TabIndex = 321;
             this.labelError3.Text = "Please select data!";
             this.labelError3.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(778, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 19);
+            this.label2.TabIndex = 351;
+            this.label2.Text = "Store Name:";
+            // 
+            // comboBoxStore
+            // 
+            this.comboBoxStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxStore.FormattingEnabled = true;
+            this.comboBoxStore.Location = new System.Drawing.Point(778, 67);
+            this.comboBoxStore.Name = "comboBoxStore";
+            this.comboBoxStore.Size = new System.Drawing.Size(245, 28);
+            this.comboBoxStore.TabIndex = 350;
+            // 
             // BookStockOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxStore);
             this.Controls.Add(this.labelError3);
             this.Controls.Add(this.labelError2);
             this.Controls.Add(this.barcode);
@@ -575,5 +598,7 @@
         private System.Windows.Forms.Label barcode;
         private System.Windows.Forms.Label labelError2;
         private System.Windows.Forms.Label labelError3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxStore;
     }
 }
