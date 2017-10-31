@@ -11,6 +11,7 @@ namespace ssms.DataClasses
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
+        public int amountItems { get; set; }
 
         public int BarcodeID { get; set; }
         public string BarcodeNumber { get; set; }

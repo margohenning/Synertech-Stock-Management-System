@@ -12,6 +12,7 @@ namespace ssms.Pages
 {
     public partial class AddStore : UserControl
     {
+        List<LTS.Store> st = new List<LTS.Store>();
         public AddStore()
         {
             InitializeComponent();
@@ -21,23 +22,32 @@ namespace ssms.Pages
         private void btnlogin_Click(object sender, EventArgs e)
         {
             LTS.Store store = new LTS.Store();
-            string name = txtName.Text;
+            bool check = true;
+
             if (txtName.Text == "")
             {
                 labelError1.Text = "Please enter store name!";
                 labelError1.Visible = true;
+                check = false;
             }
-            else if (txtSur.Text == "")
+            if (txtSur.Text == "")
             {
                 labelError2.Text = "Please enter store location!";
                 labelError2.Visible = true;
+                check = false;
             }
-            else if (txtName.Text == name)
+            if (st != null)
             {
-                labelError3.Text = "Store already exists";
-                labelError3.Visible = true;
+                if (st.Where(u => u.StoreName == txtName.Text).FirstOrDefault() != null)
+                {
+                    labelError3.Text = "Store already exists";
+                    labelError3.Visible = true;
+                    check = false;
+                }
+                
             }
-            else
+
+            if (check)
             {
                 store.StoreName = txtName.Text;
                 store.StoreLocation = txtSur.Text;
@@ -45,17 +55,18 @@ namespace ssms.Pages
                 int storeID = DAT.DataAccess.AddStore(store);
                 if (storeID == -1)
                 {
-                    if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the store was not added"))
-                    {
-                        ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
-                    }
+                    MessageBox.Show("Sorry something went wrong, the store was not added");
+                    ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+
                 }
                 else
                 {
-                    if (DialogResult.OK == MessageBox.Show("The store was added successfully"))
-                    { }
+                    MessageBox.Show("The store was added successfully");
+                    ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+
                 }
             }
+
         }
         
          //Margo
@@ -64,5 +75,9 @@ namespace ssms.Pages
             ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
         }
 
+        private void AddStore_Load(object sender, EventArgs e)
+        {
+            st = DAT.DataAccess.GetStore().ToList();
+        }
     }
 }

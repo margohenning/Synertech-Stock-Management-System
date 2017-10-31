@@ -62,6 +62,8 @@ namespace ssms.Pages.Products
                 pmThis.BrandID = prod[i].BrandID;
                 pmThis.BarcodeID = prod[i].BarcodeID;
 
+                pmThis.amountItems = DAT.DataAccess.GetItem().Where(u => u.ProductID == pmThis.ProductID && u.ItemStatus == true).ToList().Count;
+
                 LTS.Category c = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == prod[i].CategoryID).FirstOrDefault();
                 pmThis.CategoryName = c.CategoryName;
                 pmThis.CategoryDescription = c.CategoryDescription;
@@ -75,12 +77,8 @@ namespace ssms.Pages.Products
 
                 pm.Add(pmThis);
                 
-                dgvProducts.Rows.Add(pmThis.ProductID, pmThis.ProductName, pmThis.ProductDescription, pmThis.BarcodeNumber, pmThis.BrandName, pmThis.CategoryName);
-                foreach (DataGridViewColumn column in dgvProducts.Columns)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                }
-                dgvProducts.ClearSelection();
+                dgvProducts.Rows.Add(pmThis.ProductID, pmThis.ProductName, pmThis.ProductDescription, pmThis.BarcodeNumber, pmThis.BrandName, pmThis.CategoryName,pmThis.amountItems);
+                
             }
         }
         

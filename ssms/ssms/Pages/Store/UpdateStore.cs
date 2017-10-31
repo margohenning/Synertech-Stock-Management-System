@@ -15,92 +15,92 @@ namespace ssms.Pages
     {
         List<LTS.Store> listS;
         List<LTS.Store> store = new List<LTS.Store>();
+        LTS.Store current = new LTS.Store();
         public UpdateStore()
         {
             InitializeComponent();
 
         }
-        //Tiaan
-        private void UpdateStore_Load(object sender, EventArgs e)
-        {
-            listS = DAT.DataAccess.GetStore().ToList();
-            List<string> S = new List<string>();
-
-            for (int x = 0; x < listS.Count; x++)
-            {
-                S.Add(listS[x].StoreID.ToString());
-                S.Add(listS[x].StoreName);
-                S.Add(listS[x].StoreLocation);
-            }
-
-            List<LTS.Store> store = new List<LTS.Store>();
-
-            store = DAT.DataAccess.GetStore().ToList();
-
-            for (int i = 0; i < store.Count; i++)
-            {
-                dataGridView1.Rows.Add(store[i].StoreID, store[i].StoreName, store[i].StoreLocation);
-            }
-        }
+        
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            LTS.Store store = new LTS.Store(); 
+            labelError1.Visible = false;
+            labelError2.Visible = false;
+            labelError3.Visible = false;
+            txterror.Visible = false;
+            bool check = true;
             if (txtName.Text == "")
             {
                 labelError1.Text = "Please enter store name!";
                 labelError1.Visible = true;
+                check = false;
 
             }
-            else if (txtSur.Text == "")
+            if (txtSur.Text == "")
             {
                 labelError2.Text = "Please enter store location!";
                 labelError2.Visible = true;
+                check = false;
             }
-            else
-            {
-                try
-                {
-                    int UStoreID;
-                    using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
-                    {
-                        int i = item.Index;
-                        int oldStoreID = (int)dataGridView1.Rows[i].Cells[0].Value;
-                        string ooldStoreID = oldStoreID.ToString();
-                        UStoreID = DAT.DataAccess.GetStore().Where(o => o.StoreID == oldStoreID).FirstOrDefault().StoreID;
-                    }
-                    try
-                    {
-                        LTS.Store Ustore = new LTS.Store();
-                        Ustore.StoreID = DAT.DataAccess.GetStore().Where(o => o.StoreID == UStoreID).FirstOrDefault().StoreID;
-                        Ustore.StoreName = txtName.Text;
-                        Ustore.StoreLocation = txtSur.Text;
 
-                        bool update = DAT.DataAccess.UpdateStore(Ustore);
+            if (current == null)
+            {
+                txterror.Visible = true;
+                check = false;
+            }
+
+            if (check)
+            {
+                bool update = false;
+                if (current.StoreName == txtName.Text)
+                {
+                    current.StoreName = txtName.Text;
+                    current.StoreLocation = txtSur.Text;
+                    update = DAT.DataAccess.UpdateStore(current);
+                    if (update)
+                    {
+                        MessageBox.Show("The store updated successfully");
+                        ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("The store was not updated successfully");
+                        ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+                    }
+
+                }
+                else
+                {
+                    LTS.Store s = DAT.DataAccess.GetStore().Where(y => y.StoreName == txtName.Text).FirstOrDefault();
+                    if (s == null)
+                    {
+                        current.StoreName = txtName.Text;
+                        current.StoreLocation = txtSur.Text;
+                        update = DAT.DataAccess.UpdateStore(current);
                         if (update)
                         {
-                            if (DialogResult.OK == MessageBox.Show("Store Updated Successfully"))
-                            {
-                                this.Visible = false;
-                                UpdateStore f1 = new UpdateStore();
-                                f1.Show();
-                                ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
-                            }
+                            MessageBox.Show("The store updated successfully");
+                            ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("The store was not updated successfully");
+                            ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
                         }
                     }
-                    catch (Exception eex)
+                    else
                     {
-                        MessageBox.Show("Something went wrong, Please try again.");
+                        labelError3.Visible = true;
                     }
                 }
-
-
-                catch (Exception eex)
-                {
-                    MessageBox.Show("Please select data from the list");
-                }
             }
+
+
         }
+
 
         //Margo
         private void button1_Click(object sender, EventArgs e)
@@ -120,20 +120,19 @@ namespace ssms.Pages
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.MultiSelect = false;
+            
             if (dataGridView1.SelectedRows.Count >= 1)
             {
                 using (DataGridViewRow index = this.dataGridView1.SelectedRows[0])
                 {
                     int i = index.Index;
-
+                    current = store[i];
                     label2.Text = store[i].StoreID.ToString();
                     txtName.Text = store[i].StoreName;
                     txtSur.Text = store[i].StoreLocation;
                 }
             }
-            else {}
+            
         }
     }
 }
