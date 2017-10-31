@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataClasses\BookOutMain.cs" />
     <Compile Include="DataClasses\ComboboxItem.cs" />
     <Compile Include="DataClasses\ItemMain.cs" />
     <Compile Include="DataClasses\inventory.cs" />
@@ -92,6 +93,12 @@
     </Compile>
     <Compile Include="Pages\Items\ScanItemsInStore.Designer.cs">
       <DependentUpon>ScanItemsInStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Items\SearchWithEPC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Items\SearchWithEPC.Designer.cs">
+      <DependentUpon>SearchWithEPC.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Items\ViewItemsPerStore.cs">
       <SubType>UserControl</SubType>
@@ -337,6 +344,9 @@
     </Compile>
     <EmbeddedResource Include="Pages\Items\ScanItemsInStore.resx">
       <DependentUpon>ScanItemsInStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Items\SearchWithEPC.resx">
+      <DependentUpon>SearchWithEPC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Items\ViewItemsPerStore.resx">
       <DependentUpon>ViewItemsPerStore.cs</DependentUpon>
