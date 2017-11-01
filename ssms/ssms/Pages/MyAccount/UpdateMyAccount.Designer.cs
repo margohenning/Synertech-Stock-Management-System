@@ -53,6 +53,7 @@
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
+            this.lblAdmin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -116,11 +117,9 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label13.Location = new System.Drawing.Point(33, 330);
             this.label13.Name = "label13";
-
             this.label13.Size = new System.Drawing.Size(64, 19);
             this.label13.TabIndex = 162;
             this.label13.Text = "Admin:";
-
             // 
             // label9
             // 
@@ -320,11 +319,25 @@
             this.lblPassword.TabIndex = 189;
             this.lblPassword.Text = "label12";
             // 
+            // lblAdmin
+            // 
+            this.lblAdmin.AutoSize = true;
+            this.lblAdmin.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblAdmin.ForeColor = System.Drawing.Color.Red;
+            this.lblAdmin.Location = new System.Drawing.Point(465, 346);
+            this.lblAdmin.Name = "lblAdmin";
+            this.lblAdmin.Size = new System.Drawing.Size(391, 32);
+            this.lblAdmin.TabIndex = 190;
+            this.lblAdmin.Text = "There is a minimum of two admin users registered to this system ,\r\ntherefore you " +
+    "can not unregister or deactivate as an admin user.";
+            this.lblAdmin.Visible = false;
+            // 
             // UpdateMyAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblAdmin);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblSurname);
@@ -384,5 +397,6 @@
         private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblAdmin;
     }
 }

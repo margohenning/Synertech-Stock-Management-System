@@ -23,6 +23,7 @@ namespace ssms.Pages
         //Marius
         private void UpdateMyAccount_Load(object sender, EventArgs e)
         {
+            lblAdmin.Visible = false;
             //Margo
             if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserAdmin == false)
             {
@@ -30,7 +31,15 @@ namespace ssms.Pages
                 cbActivated.Enabled = false;
 
             }
+            int amountAdmin = DAT.DataAccess.GetUser().Where(u => u.UserActivated == true && u.UserAdmin == true).ToList().Count;
+            if(amountAdmin <= 2 && ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserAdmin==true)
+            {
+                cbAdmin.Enabled = false;
+                cbActivated.Enabled = false;
+                lblAdmin.Visible = true;
+            }
 
+            lblAdmin.Visible = true;
             lblEmail.Visible = false;
             lblIdentityNo.Visible = false;
             lblName.Visible = false;
