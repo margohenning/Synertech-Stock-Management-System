@@ -35,15 +35,16 @@ namespace ssms.Pages
             user = DAT.DataAccess.GetUser().Where(o => o.UserActivated.Equals(activated)).ToList();
             for (int i = 0; i < user.Count; i++)
             {
-                if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
-                if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
-                dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                if(((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID != user[i].UserID)
+                {
+                    if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
+                    if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
+                    dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                }
+               
 
             }
-            foreach (DataGridViewColumn column in dgvUser.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
+            
         }
 
         //Marius

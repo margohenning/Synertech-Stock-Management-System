@@ -15,6 +15,7 @@ namespace ssms.Pages
         bool activated;
         string emailUpdateCheck;
         string emailUpdateCheckCompare;
+        List<LTS.User> us = new List<LTS.User>();
 
         public UpdateUser()
         {
@@ -30,6 +31,7 @@ namespace ssms.Pages
         //Marius
         private void UpdateUser_Load(object sender, EventArgs e)
         {
+            us = DAT.DataAccess.GetUser().ToList();
             List<string> ComboVal = new List<string>();
             ComboVal.Add("Yes");
             ComboVal.Add("No");
@@ -62,9 +64,13 @@ namespace ssms.Pages
                 user = DAT.DataAccess.GetUser().ToList();
                 for (int i = 0; i < user.Count; i++)
                 {
-                    if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
-                    if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
-                    dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                    if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID != user[i].UserID)
+                    {
+                        if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
+                        if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
+                        dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                    }
+                    
 
                 }
             }
@@ -90,10 +96,14 @@ namespace ssms.Pages
                 user = DAT.DataAccess.GetUser().Where(o => o.UserActivated.Equals(activated)).ToList();
                 for (int i = 0; i < user.Count; i++)
                 {
-                    if (user[i].UserAdmin ==true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
-                    if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
+                    if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID != user[i].UserID)
+                    {
+                        if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
+                        if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
 
-                    dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                        dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                    }
+                   
 
                 }
                             foreach (DataGridViewColumn column in dgvUser.Columns)
@@ -123,9 +133,13 @@ namespace ssms.Pages
                 user = DAT.DataAccess.GetUser().Where(o => o.UserActivated.Equals(activated)).ToList();
                 for (int i = 0; i < user.Count; i++)
                 {
-                    if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
-                    if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
-                    dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                    if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID != user[i].UserID)
+                    {
+                        if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
+                        if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
+                        dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                    }
+                    
                 }
             }
             else
@@ -170,6 +184,9 @@ namespace ssms.Pages
         //Marius
         private void dgvUser_SelectionChanged(object sender, EventArgs e)
         {
+            lblAdmin.Visible = false;
+            cbAdmin.Enabled = true;
+            cbActivated.Enabled = true;
             if (dgvUser.SelectedRows.Count == 1)
             {
                 using (DataGridViewRow item = this.dgvUser.SelectedRows[0])
@@ -185,6 +202,14 @@ namespace ssms.Pages
                     tbPassword.Text = getPass[0].UserPassword;
                     cbAdmin.SelectedItem = dgvUser.Rows[i].Cells[5].Value.ToString();
                     cbActivated.SelectedItem = dgvUser.Rows[i].Cells[6].Value.ToString();
+
+                    int amountAdmin = us.Where(u => u.UserActivated == true && u.UserAdmin == true).ToList().Count;
+                    if (amountAdmin <= 2 && cbAdmin.SelectedItem.ToString()=="Yes" && cbActivated.SelectedItem.ToString()=="Yes")
+                    {
+                        cbAdmin.Enabled = false;
+                        cbActivated.Enabled = false;
+                        lblAdmin.Visible = true;
+                    }
                 }
             }
             emailUpdateCheckCompare = tbEmail.Text;
@@ -245,30 +270,28 @@ namespace ssms.Pages
                 if (lblEmail.Visible == false && lblIdentityNo.Visible == false && lblName.Visible == false && lblSurname.Visible == false && lblPassword.Visible == false)
                 {
                     ok = DAT.DataAccess.UpdateUser(user);
+                    if (ok == false)
+                    {
+                        MessageBox.Show("Sorry something went wrong, the User was not Updated!");
+                        ((Main)this.Parent.Parent).ChangeView<Users>();
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("The User was updated successfully!");
+                        ((Main)this.Parent.Parent).ChangeView<Users>();
+                        
+                    }
                 }
 
-                if (ok == false)
-                {
-                    if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the User was not Updated!"))
-                    {
-                        //((Main)this.Parent.Parent).ChangeView<UpdateUser>();
-                    }
-                }
-                else
-                {
-                    if (DialogResult.OK == MessageBox.Show("The User was updated successfully!"))
-                    {
-                        ((Main)this.Parent.Parent).ChangeView<Users>();
-                    }
-                }
+                
 
             }
             catch(Exception ex)
             {
-                if (DialogResult.OK == MessageBox.Show("The User was not updated successfully!"))
-                {
-                    ((Main)this.Parent.Parent).ChangeView<UpdateUser>();
-                }
+                MessageBox.Show("The User was not updated successfully!");
+                ((Main)this.Parent.Parent).ChangeView<Users>();
+                
             }
         }
 
