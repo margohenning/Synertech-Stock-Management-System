@@ -17,10 +17,7 @@ namespace ssms.Pages
             InitializeComponent();
         }
 
-        private void AdminMain_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         public void ChangeView<T>() where T : Control, new()
         {
@@ -128,9 +125,6 @@ namespace ssms.Pages
             
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
     }
 }

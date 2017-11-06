@@ -48,6 +48,8 @@
             this.lblNameVal = new System.Windows.Forms.Label();
             this.lblDescVal = new System.Windows.Forms.Label();
             this.lblBarcodeVal = new System.Windows.Forms.Label();
+            this.catlbl = new System.Windows.Forms.Label();
+            this.brandlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button4
@@ -270,11 +272,37 @@
             this.lblBarcodeVal.TabIndex = 284;
             this.lblBarcodeVal.Text = "label10";
             // 
+            // catlbl
+            // 
+            this.catlbl.AutoSize = true;
+            this.catlbl.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.catlbl.ForeColor = System.Drawing.Color.Red;
+            this.catlbl.Location = new System.Drawing.Point(17, 301);
+            this.catlbl.Name = "catlbl";
+            this.catlbl.Size = new System.Drawing.Size(155, 16);
+            this.catlbl.TabIndex = 286;
+            this.catlbl.Text = "Invalid category Selected!";
+            this.catlbl.Visible = false;
+            // 
+            // brandlbl
+            // 
+            this.brandlbl.AutoSize = true;
+            this.brandlbl.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.brandlbl.ForeColor = System.Drawing.Color.Red;
+            this.brandlbl.Location = new System.Drawing.Point(17, 266);
+            this.brandlbl.Name = "brandlbl";
+            this.brandlbl.Size = new System.Drawing.Size(139, 16);
+            this.brandlbl.TabIndex = 285;
+            this.brandlbl.Text = "Invalid Brand Selected!";
+            this.brandlbl.Visible = false;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.catlbl);
+            this.Controls.Add(this.brandlbl);
             this.Controls.Add(this.lblBarcodeVal);
             this.Controls.Add(this.lblDescVal);
             this.Controls.Add(this.lblNameVal);
@@ -324,5 +352,7 @@
         private System.Windows.Forms.Label lblNameVal;
         private System.Windows.Forms.Label lblDescVal;
         private System.Windows.Forms.Label lblBarcodeVal;
+        private System.Windows.Forms.Label catlbl;
+        private System.Windows.Forms.Label brandlbl;
     }
 }

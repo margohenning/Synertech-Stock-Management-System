@@ -32,9 +32,13 @@
             this.buttonAddReader = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReaders = new System.Windows.Forms.DataGridView();
+            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numAntennas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSubmitReader = new System.Windows.Forms.Button();
             this.buttonAddAntenna = new System.Windows.Forms.Button();
             this.lblAntenna = new System.Windows.Forms.Label();
@@ -56,8 +60,6 @@
             this.lblStore = new System.Windows.Forms.Label();
             this.lblReader = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numAntennas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -124,6 +126,20 @@
             this.dataGridViewReaders.Size = new System.Drawing.Size(394, 142);
             this.dataGridViewReaders.TabIndex = 295;
             // 
+            // IPaddress
+            // 
+            this.IPaddress.HeaderText = "IP Address";
+            this.IPaddress.Name = "IPaddress";
+            this.IPaddress.ReadOnly = true;
+            this.IPaddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // numAntennas
+            // 
+            this.numAntennas.HeaderText = "Number of Antennas";
+            this.numAntennas.Name = "numAntennas";
+            this.numAntennas.ReadOnly = true;
+            this.numAntennas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -138,7 +154,9 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.buttonCancel);
             this.panel1.Controls.Add(this.buttonSubmitReader);
             this.panel1.Controls.Add(this.buttonAddAntenna);
             this.panel1.Controls.Add(this.lblAntenna);
@@ -154,15 +172,41 @@
             this.panel1.TabIndex = 292;
             this.panel1.Visible = false;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(482, 306);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 18);
+            this.label10.TabIndex = 305;
+            this.label10.Text = "Cancel";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(479, 307);
+            this.label8.Location = new System.Drawing.Point(422, 307);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 18);
             this.label8.TabIndex = 286;
             this.label8.Text = "Submit";
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancel.Image = global::ssms.Properties.Resources.cancel_music;
+            this.buttonCancel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonCancel.Location = new System.Drawing.Point(482, 263);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(51, 41);
+            this.buttonCancel.TabIndex = 306;
+            this.buttonCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSubmitReader
             // 
@@ -170,7 +214,7 @@
             this.buttonSubmitReader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonSubmitReader.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonSubmitReader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSubmitReader.Location = new System.Drawing.Point(482, 263);
+            this.buttonSubmitReader.Location = new System.Drawing.Point(425, 263);
             this.buttonSubmitReader.Name = "buttonSubmitReader";
             this.buttonSubmitReader.Size = new System.Drawing.Size(51, 41);
             this.buttonSubmitReader.TabIndex = 286;
@@ -198,7 +242,7 @@
             this.lblAntenna.AutoSize = true;
             this.lblAntenna.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAntenna.ForeColor = System.Drawing.Color.Red;
-            this.lblAntenna.Location = new System.Drawing.Point(315, 295);
+            this.lblAntenna.Location = new System.Drawing.Point(6, 263);
             this.lblAntenna.Name = "lblAntenna";
             this.lblAntenna.Size = new System.Drawing.Size(125, 18);
             this.lblAntenna.TabIndex = 306;
@@ -303,7 +347,7 @@
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.buttonBack.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonBack.Location = new System.Drawing.Point(939, 408);
+            this.buttonBack.Location = new System.Drawing.Point(948, 410);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(61, 113);
             this.buttonBack.TabIndex = 289;
@@ -406,24 +450,10 @@
             this.lblName.ForeColor = System.Drawing.Color.Red;
             this.lblName.Location = new System.Drawing.Point(131, 428);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(193, 18);
+            this.lblName.Size = new System.Drawing.Size(161, 18);
             this.lblName.TabIndex = 302;
-            this.lblName.Text = "New settings name invalid!";
+            this.lblName.Text = "Settings name invalid!";
             this.lblName.Visible = false;
-            // 
-            // IPaddress
-            // 
-            this.IPaddress.HeaderText = "IP Address";
-            this.IPaddress.Name = "IPaddress";
-            this.IPaddress.ReadOnly = true;
-            this.IPaddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // numAntennas
-            // 
-            this.numAntennas.HeaderText = "Number of Antennas";
-            this.numAntennas.Name = "numAntennas";
-            this.numAntennas.ReadOnly = true;
-            this.numAntennas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UpdateSettings
             // 
@@ -490,5 +520,7 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPaddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn numAntennas;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }

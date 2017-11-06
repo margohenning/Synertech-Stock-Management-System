@@ -64,50 +64,65 @@ namespace ssms.Pages.Items
         //Margo
         public void doneStore()
         {
-            panel1.Controls.Clear();
-            comboBoxStore.DataSource = null;
-            listS.Clear();
-            listS = DAT.DataAccess.GetStore().ToList();
-            List<string> S = new List<string>();
-
-            for (int x = 0; x < listS.Count; x++)
+            try
             {
-                S.Add(listS[x].StoreName);
-            }
-            comboBoxStore.DataSource = S;
-            
-            btnlogin.Enabled = true;
-            button2.Enabled = true;
+                panel1.Controls.Clear();
+                comboBoxStore.DataSource = null;
+                listS.Clear();
+                listS = DAT.DataAccess.GetStore().ToList();
+                List<string> S = new List<string>();
 
-            comboBoxStore.Enabled = true;
-            comboBox1.Enabled = true;
+                for (int x = 0; x < listS.Count; x++)
+                {
+                    S.Add(listS[x].StoreName);
+                }
+                comboBoxStore.DataSource = S;
+
+                btnlogin.Enabled = true;
+                button2.Enabled = true;
+
+                comboBoxStore.Enabled = true;
+                comboBox1.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
         }
 
         //Devon
         private void AddStock_Load(object sender, EventArgs e)
         {
-           
-            //load store names into combo box from db
-            listS = DAT.DataAccess.GetStore().ToList();
-            List<string> S = new List<string>();
-
-            for (int x = 0; x < listS.Count; x++)
+            try
             {
-                S.Add(listS[x].StoreName);
+                //load store names into combo box from db
+                listS = DAT.DataAccess.GetStore().ToList();
+                List<string> S = new List<string>();
+
+                for (int x = 0; x < listS.Count; x++)
+                {
+                    S.Add(listS[x].StoreName);
+                }
+                comboBoxStore.DataSource = S;
+
+
+                //load barcode into combo box from db
+
+                listBar = DAT.DataAccess.GetBarcode().ToList();
+                List<string> Bar = new List<string>();
+
+                for (int x = 0; x < listBar.Count; x++)
+                {
+                    Bar.Add(listBar[x].BarcodeNumber);
+                }
+                comboBox1.DataSource = Bar;
             }
-            comboBoxStore.DataSource = S;
-
-
-            //load barcode into combo box from db
-
-            listBar = DAT.DataAccess.GetBarcode().ToList();
-            List<string> Bar = new List<string>();
-
-            for (int x = 0; x < listBar.Count; x++)
+            catch (Exception ex)
             {
-                Bar.Add(listBar[x].BarcodeNumber);
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
-            comboBox1.DataSource = Bar;
+            
         }
 
         //Margo
@@ -119,241 +134,282 @@ namespace ssms.Pages.Items
         //Devon
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            LTS.Item i = new LTS.Item();
-
-            int storeIndex = comboBoxStore.SelectedIndex;
-            if (storeIndex == -1)
+            try
             {
-                label45.Visible = true;
-            }
-            else
-            {
-                int storeID = listS[storeIndex].StoreID;
-                i.StoreID = storeID;
-                label45.Visible = false;
-            }
+                LTS.Item i = new LTS.Item();
 
-            int barcodeIndex = comboBox1.SelectedIndex;
-            if (barcodeIndex == -1)
-            {
-                label16.Visible = true;
-            }
-            else
-            {
-                int barcodeID = listBar[barcodeIndex].BarcodeID;
-                LTS.Product p = DAT.DataAccess.GetProduct().Where(a => a.BarcodeID == barcodeID).FirstOrDefault();
-                LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
-
-                label6.Visible = false;
-
-                if (p != null && checkTag == null)
+                int storeIndex = comboBoxStore.SelectedIndex;
+                if (storeIndex == -1)
                 {
-                    if (textBox2.Text != "")
+                    label45.Visible = true;
+                }
+                else
+                {
+                    int storeID = listS[storeIndex].StoreID;
+                    i.StoreID = storeID;
+                    label45.Visible = false;
+                }
+
+                int barcodeIndex = comboBox1.SelectedIndex;
+                if (barcodeIndex == -1)
+                {
+                    label16.Visible = true;
+                }
+                else
+                {
+                    int barcodeID = listBar[barcodeIndex].BarcodeID;
+                    LTS.Product p = DAT.DataAccess.GetProduct().Where(a => a.BarcodeID == barcodeID).FirstOrDefault();
+                    LTS.Item checkTag = DAT.DataAccess.GetItem().Where(b => b.TagEPC == textBox2.Text).FirstOrDefault();
+
+                    label6.Visible = false;
+
+                    if (p != null && checkTag == null)
                     {
-                        i.TagEPC = textBox2.Text;
-                        label6.Visible = false;
+                        if (textBox2.Text != "")
+                        {
+                            i.TagEPC = textBox2.Text;
+                            label6.Visible = false;
+                        }
+                        else
+                        {
+                            label6.Visible = true;
+                        }
+
+                        i.ProductID = p.ProductID;
+                        i.ItemStatus = true;
+                        label16.Visible = false;
+
+                        int returnedID = DAT.DataAccess.AddItem(i);
+                        if (returnedID == -1)
+                        {
+                            MessageBox.Show("Item was not added to the database!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item was succesfully added to the database");
+                            ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
+                        }
                     }
                     else
                     {
                         label6.Visible = true;
+                        label6.Text = "TAG alreasy exists! Please enter a different one.";
                     }
-
-                    i.ProductID = p.ProductID;
-                    i.ItemStatus = true;
-                    label16.Visible = false;
-
-                    int returnedID = DAT.DataAccess.AddItem(i);
-                    if (returnedID == -1)
-                    {
-                        MessageBox.Show("Item was not added to the database!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Item was succesfully added to the database");
-                        ((Main)this.Parent.Parent).ChangeView<Pages.Items.Items>();
-                    }
-                }
-                else
-                {
-                    label6.Visible = true;
-                    label6.Text = "TAG alreasy exists! Please enter a different one.";
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
         }
 
         //Devon
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
             try
             {
-                int bIndex = comboBox1.SelectedIndex;
-                int barID = listBar[bIndex].BarcodeID;
-
-                LTS.Product p = new LTS.Product();
-                p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
-
-                string pBarcode = comboBox1.Text;
-                
-                int sIndex = comboBoxStore.SelectedIndex;
-                int storeID = listS[sIndex].StoreID;
-                string brand = DAT.DataAccess.GetBrand().Where(o => o.BrandID == p.BrandID).FirstOrDefault().BrandName;
-                string cat = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == p.CategoryID).FirstOrDefault().CategoryName;
-
+                comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+                comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
                 try
                 {
-                    panel1.Controls.Clear();
-                    Control find = new ShowProductDetails(pBarcode, p.ProductName, p.ProductDescription, brand, cat);
-                    find.Parent = panel1;
-                    find.Dock = DockStyle.Fill;
-                    find.BringToFront();
+                    int bIndex = comboBox1.SelectedIndex;
+                    int barID = listBar[bIndex].BarcodeID;
+
+                    LTS.Product p = new LTS.Product();
+                    p = DAT.DataAccess.GetProduct().Where(f => f.BarcodeID == barID).FirstOrDefault();
+
+                    string pBarcode = comboBox1.Text;
+
+                    int sIndex = comboBoxStore.SelectedIndex;
+                    int storeID = listS[sIndex].StoreID;
+                    string brand = DAT.DataAccess.GetBrand().Where(o => o.BrandID == p.BrandID).FirstOrDefault().BrandName;
+                    string cat = DAT.DataAccess.GetCategory().Where(o => o.CategoryID == p.CategoryID).FirstOrDefault().CategoryName;
+
+                    try
+                    {
+                        panel1.Controls.Clear();
+                        Control find = new ShowProductDetails(pBarcode, p.ProductName, p.ProductDescription, brand, cat);
+                        find.Parent = panel1;
+                        find.Dock = DockStyle.Fill;
+                        find.BringToFront();
+                    }
+                    catch
+                    {
+
+                    }
                 }
                 catch
                 {
 
-                }               
+                }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
         }
 
         //Devon
         private void comboBoxStore_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            comboBoxStore.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBoxStore.AutoCompleteSource = AutoCompleteSource.ListItems;
+            try
+            {
+                comboBoxStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+                comboBoxStore.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                comboBoxStore.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
             try
             {
-                time = 0;
-                lblTimer.Text = time.ToString();
-                timer = new System.Timers.Timer();
-                timer.Elapsed += timer_Elapsed;
-                timer.Interval = 1000;
-                
-                EnableOrDisable(false);
-                epc = "";
-                int iStore = comboBoxStore.SelectedIndex;
-                LTS.Store s = listS[iStore];
+                try
+                {
+                    time = 0;
+                    lblTimer.Text = time.ToString();
+                    timer = new System.Timers.Timer();
+                    timer.Elapsed += timer_Elapsed;
+                    timer.Interval = 1000;
 
-                LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID && y.SettingsSelect == true).FirstOrDefault();
-                if (set != null)
-                {
-                    connect(set);
+                    EnableOrDisable(false);
+                    epc = "";
+                    int iStore = comboBoxStore.SelectedIndex;
+                    LTS.Store s = listS[iStore];
+
+                    LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID && y.SettingsSelect == true).FirstOrDefault();
+                    if (set != null)
+                    {
+                        connect(set);
+                    }
+                    else
+                    {
+                        lblConnect.Text = ("Settings not found!");
+                        EnableOrDisable(true);
+
+                    }
                 }
-                else
+                catch (Exception exx)
                 {
-                    lblConnect.Text = ("Settings not found!");
+
+                    lblConnect.Text = ("Store not selected!");
                     EnableOrDisable(true);
 
                 }
             }
-            catch (Exception exx)
+            catch (Exception ex)
             {
-
-                lblConnect.Text = ("Store not selected!");
-                EnableOrDisable(true);
-
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+
+           
         }
 
         bool connect(LTS.Settings se)
         {
-            lblConnect.Text = "Connecting...";
-            int index = comboBoxStore.SelectedIndex;
-            int storeID = listS[index].StoreID;
-
-            LTS.Settings set = se;
-            
-            sm = null;
-            sm = new SettingsMain();
-            impinjrev.Clear();
-            sm.SettingsID = set.SettingsID;
-            sm.SettingsName = set.SettingsName;
-            sm.SettingsSelect = set.SettingsSelect;
-            sm.StoreID = set.StoreID;
-
-            LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
-            sm.StoreLocation = store.StoreLocation;
-            sm.StoreName = store.StoreName;
-
-            List<LTS.Reader> readers = new List<LTS.Reader>();
-            readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
-            for (int j = 0; j < readers.Count; j++)
+            try
             {
-                ReaderMain rm = new ReaderMain();
-                rm.ReaderID = readers[j].ReaderID;
-                rm.IPaddress = readers[j].IPaddress;
-                rm.NumAntennas = readers[j].NumAntennas;
-                rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
-                sm.Readers.Add(rm);
-            }
-            bool checks = true;
+                lblConnect.Text = "Connecting...";
+                int index = comboBoxStore.SelectedIndex;
+                int storeID = listS[index].StoreID;
 
-            for (int x = 0; x < sm.Readers.Count; x++)
-            {
+                LTS.Settings set = se;
 
-                ImpinjRevolution ir = new ImpinjRevolution();
-                ir.ReaderScanMode = ScanMode.ScanItem;
-                ir.HostName = sm.Readers[x].IPaddress;
-                ir.Antennas = sm.Readers[x].antennas;
+                sm = null;
+                sm = new SettingsMain();
+                impinjrev.Clear();
+                sm.SettingsID = set.SettingsID;
+                sm.SettingsName = set.SettingsName;
+                sm.SettingsSelect = set.SettingsSelect;
+                sm.StoreID = set.StoreID;
 
-                ir.TagRead += ir_TagRead;
-                ir.Connect();
+                LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
+                sm.StoreLocation = store.StoreLocation;
+                sm.StoreName = store.StoreName;
 
-                impinjrev.Add(ir);
-                if (!ir.isConnected)
+                List<LTS.Reader> readers = new List<LTS.Reader>();
+                readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
+                for (int j = 0; j < readers.Count; j++)
                 {
-                    if (checks == true)
+                    ReaderMain rm = new ReaderMain();
+                    rm.ReaderID = readers[j].ReaderID;
+                    rm.IPaddress = readers[j].IPaddress;
+                    rm.NumAntennas = readers[j].NumAntennas;
+                    rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+                    sm.Readers.Add(rm);
+                }
+                bool checks = true;
+
+                for (int x = 0; x < sm.Readers.Count; x++)
+                {
+
+                    ImpinjRevolution ir = new ImpinjRevolution();
+                    ir.ReaderScanMode = ScanMode.ScanItem;
+                    ir.HostName = sm.Readers[x].IPaddress;
+                    ir.Antennas = sm.Readers[x].antennas;
+
+                    ir.TagRead += ir_TagRead;
+                    ir.Connect();
+
+                    impinjrev.Add(ir);
+                    if (!ir.isConnected)
                     {
-                        checks = false;
+                        if (checks == true)
+                        {
+                            checks = false;
+                        }
                     }
                 }
-            }
 
-            if (checks == true)
-            {
-                lblConnect.Text = "Connected.";
-                timer.Start();
-                impinjrev.ForEach(imp =>
+                if (checks == true)
                 {
-                    imp.TagRead += ir_TagRead;
-                    imp.StartRead();
-                });
+                    lblConnect.Text = "Connected.";
+                    timer.Start();
+                    impinjrev.ForEach(imp =>
+                    {
+                        imp.TagRead += ir_TagRead;
+                        imp.StartRead();
+                    });
 
-                ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
-                lblConnect.Text = "Reading...";
+                    ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+                    lblConnect.Text = "Reading...";
 
-                lblTimer.Text = time.ToString();
-               
+                    lblTimer.Text = time.ToString();
 
 
-            }
-            else
-            {
-                lblConnect.Text = "Not Connected!";
-                timer.Stop();
-                timer.Elapsed -= timer_Elapsed;
-                time = 0;
-                for (int i = 0; i < impinjrev.Count; i++)
-                {
-                    impinjrev[i].StopRead();
-                    impinjrev[i].Disconnect();
 
                 }
-                EnableOrDisable(true);
-                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                else
+                {
+                    lblConnect.Text = "Not Connected!";
+                    timer.Stop();
+                    timer.Elapsed -= timer_Elapsed;
+                    time = 0;
+                    for (int i = 0; i < impinjrev.Count; i++)
+                    {
+                        impinjrev[i].StopRead();
+                        impinjrev[i].Disconnect();
+
+                    }
+                    EnableOrDisable(true);
+                    ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                }
+                return true;
             }
-            return true;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+                return true;
+            }
+            
 
         }
 
@@ -374,60 +430,110 @@ namespace ssms.Pages.Items
         //Margo
         public void EnableOrDisable(bool what)
         {
-            this.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                if (what)
+                this.Invoke(new MethodInvoker(delegate ()
                 {
+                    if (what)
+                    {
 
-                    comboBoxStore.Enabled = true;
-                    button1.Enabled = true;
-                    btnlogin.Enabled = true;
-                    button5.Enabled = true;
+                        comboBoxStore.Enabled = true;
+                        button1.Enabled = true;
+                        btnlogin.Enabled = true;
+                        button5.Enabled = true;
 
-                    time = 0;
-                }
-                else
-                {
+                        time = 0;
+                    }
+                    else
+                    {
 
-                    comboBoxStore.Enabled = false;
-                    button1.Enabled = false;
-                    btnlogin.Enabled = false;
-                    button5.Enabled = false;
-                }
-            }));
+                        comboBoxStore.Enabled = false;
+                        button1.Enabled = false;
+                        btnlogin.Enabled = false;
+                        button5.Enabled = false;
+                    }
+                }));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
             
         }
 
        void Stop()
         {
-            if (impinjrev != null)
+            try
             {
-                for (int i = 0; i < impinjrev.Count; i++)
+                if (impinjrev != null)
                 {
-                    impinjrev[i].StopRead();
-                    impinjrev[i].Disconnect();
+                    for (int i = 0; i < impinjrev.Count; i++)
+                    {
+                        impinjrev[i].StopRead();
+                        impinjrev[i].Disconnect();
 
-                }
-                if (lblConnect.InvokeRequired)
-                {
-                    lblConnect.Invoke(new MethodInvoker(delegate () {
-                        lblConnect.Text = "Disconnected!";
-                    }));
+                    }
+                    if (lblConnect.InvokeRequired)
+                    {
+                        lblConnect.Invoke(new MethodInvoker(delegate () {
+                            lblConnect.Text = "Disconnected!";
+                        }));
 
+                    }
+
+                    EnableOrDisable(true);
+                    ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
                 }
-                
-                EnableOrDisable(true);
-                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
         }
 
 
         //Margo
         void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (time < 60 && epc == "")
+            try
             {
-                if (time >= 60)
+                if (time < 60 && epc == "")
+                {
+                    if (time >= 60)
+                    {
+                        timer.Stop();
+                        timer.Elapsed -= timer_Elapsed;
+                        if (lblTimer.InvokeRequired)
+                        {
+                            lblTimer.Invoke(new MethodInvoker(delegate ()
+                            {
+                                lblTimer.Text = time.ToString();
+                                textBox2.Text = epc;
+                            }));
+
+                        }
+
+                        Stop();
+                        time = 0;
+
+                    }
+                    else
+                    {
+                        time++;
+                        if (lblTimer.InvokeRequired)
+                        {
+                            lblTimer.Invoke(new MethodInvoker(delegate ()
+                            {
+                                lblTimer.Text = time.ToString();
+                            }));
+
+                        }
+                    }
+
+                }
+                else
                 {
                     timer.Stop();
                     timer.Elapsed -= timer_Elapsed;
@@ -443,39 +549,13 @@ namespace ssms.Pages.Items
 
                     Stop();
                     time = 0;
-
                 }
-                else
-                {
-                    time++;
-                    if (lblTimer.InvokeRequired)
-                    {
-                        lblTimer.Invoke(new MethodInvoker(delegate ()
-                        {
-                            lblTimer.Text = time.ToString();
-                        }));
-
-                    }
-                }
-
             }
-            else
+            catch (Exception ex)
             {
-                timer.Stop();
-                timer.Elapsed -= timer_Elapsed;
-                if (lblTimer.InvokeRequired)
-                {
-                    lblTimer.Invoke(new MethodInvoker(delegate ()
-                    {
-                        lblTimer.Text = time.ToString();
-                        textBox2.Text = epc;
-                    }));
-
-                }
-
-                Stop();
-                time = 0;
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+           
         }
 
     }

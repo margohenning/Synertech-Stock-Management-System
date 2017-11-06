@@ -20,63 +20,74 @@ namespace ssms.Pages.Items
         //Margo
         private void button1_Click(object sender, EventArgs e)
         {
-            ((Main)this.Parent.Parent).ChangeView<Pages.Items.Brands>();
+            
+                ((Main)this.Parent.Parent).ChangeView<Pages.Items.Brands>();
+           
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            label3.Text = "";
-            label2.Text = "";
-
-            if (txtBrandName.Text == "")
+            try
             {
-                label2.Text = "Please add a Brand Name";
+                label3.Text = "";
+                label2.Text = "";
 
-            }
-
-            if (txtBrandDesc.Text == "")
-            {
-                label3.Text = "Please add a Brand Description";
-            }
-
-
-            if (label2.Text == "" && label3.Text == "")
-            {
-                LTS.Brand c = DAT.DataAccess.GetBrand().Where(i => i.BrandName == txtBrandName.Text).FirstOrDefault();
-                if (c == null)
+                if (txtBrandName.Text == "")
                 {
-                    try
-                    {
-                        LTS.Brand b = new LTS.Brand();
-                        b.BrandName = txtBrandName.Text;
-                        b.BrandDescription = txtBrandDesc.Text;
-                        int bID = DAT.DataAccess.AddBrand(b);
-                        if (bID == -1)
-                        {
-                            MessageBox.Show("An Error Has Occured, Please try Again");
-                            txtBrandName.Text = "";
-                            txtBrandDesc.Text = "";
-                        }
-                        else
-                        {
-                            MessageBox.Show("Added Successfully!");
-                            ((Main)this.Parent.Parent).ChangeView<Categories>();
-
-                        }
-                    }
-                    catch (Exception eex)
-                    {
-                        MessageBox.Show("Please try Again");
-                    }
+                    label2.Text = "Please add a Brand Name";
 
                 }
-                else
+
+                if (txtBrandDesc.Text == "")
                 {
-                    label2.Text = "Sorry, this brand name already exists";
+                    label3.Text = "Please add a Brand Description";
                 }
 
 
+                if (label2.Text == "" && label3.Text == "")
+                {
+                    LTS.Brand c = DAT.DataAccess.GetBrand().Where(i => i.BrandName == txtBrandName.Text).FirstOrDefault();
+                    if (c == null)
+                    {
+                        try
+                        {
+                            LTS.Brand b = new LTS.Brand();
+                            b.BrandName = txtBrandName.Text;
+                            b.BrandDescription = txtBrandDesc.Text;
+                            int bID = DAT.DataAccess.AddBrand(b);
+                            if (bID == -1)
+                            {
+                                MessageBox.Show("An Error Has Occured, Please try Again");
+                                txtBrandName.Text = "";
+                                txtBrandDesc.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Added Successfully!");
+                                ((Main)this.Parent.Parent).ChangeView<Categories>();
+
+                            }
+                        }
+                        catch (Exception eex)
+                        {
+                            MessageBox.Show("Please try Again");
+                        }
+
+                    }
+                    else
+                    {
+                        label2.Text = "Sorry, this brand name already exists";
+                    }
+
+
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
 
         }
     }
