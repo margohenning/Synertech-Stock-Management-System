@@ -57,10 +57,13 @@
             this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblNameVal = new System.Windows.Forms.Label();
             this.lblDesVal = new System.Windows.Forms.Label();
             this.lblBarVal = new System.Windows.Forms.Label();
-            this.AmountItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.catlbl = new System.Windows.Forms.Label();
+            this.brandlbl = new System.Windows.Forms.Label();
+            this.selsectError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdateProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,7 +174,6 @@
             this.tbBarcode.Name = "tbBarcode";
             this.tbBarcode.Size = new System.Drawing.Size(245, 26);
             this.tbBarcode.TabIndex = 291;
-            this.tbBarcode.TextChanged += new System.EventHandler(this.tbBarcode_TextChanged);
             // 
             // label3
             // 
@@ -280,7 +282,6 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(245, 26);
             this.tbSearch.TabIndex = 308;
-            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // label6
             // 
@@ -332,7 +333,6 @@
             this.dgvUpdateProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUpdateProduct.Size = new System.Drawing.Size(681, 175);
             this.dgvUpdateProduct.TabIndex = 310;
-            this.dgvUpdateProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUpdateProduct_CellContentClick);
             this.dgvUpdateProduct.SelectionChanged += new System.EventHandler(this.dgvUpdateProduct_SelectionChanged);
             // 
             // ProductID
@@ -377,6 +377,12 @@
             this.CategoryName.ReadOnly = true;
             this.CategoryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // AmountItems
+            // 
+            this.AmountItems.HeaderText = "Amount Items in Stock overall";
+            this.AmountItems.Name = "AmountItems";
+            this.AmountItems.ReadOnly = true;
+            // 
             // lblNameVal
             // 
             this.lblNameVal.AutoSize = true;
@@ -410,17 +416,50 @@
             this.lblBarVal.TabIndex = 313;
             this.lblBarVal.Text = "label2";
             // 
-            // AmountItems
+            // catlbl
             // 
-            this.AmountItems.HeaderText = "Amount Items in Stock overall";
-            this.AmountItems.Name = "AmountItems";
-            this.AmountItems.ReadOnly = true;
+            this.catlbl.AutoSize = true;
+            this.catlbl.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.catlbl.ForeColor = System.Drawing.Color.Red;
+            this.catlbl.Location = new System.Drawing.Point(25, 469);
+            this.catlbl.Name = "catlbl";
+            this.catlbl.Size = new System.Drawing.Size(155, 16);
+            this.catlbl.TabIndex = 315;
+            this.catlbl.Text = "Invalid category Selected!";
+            this.catlbl.Visible = false;
+            // 
+            // brandlbl
+            // 
+            this.brandlbl.AutoSize = true;
+            this.brandlbl.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.brandlbl.ForeColor = System.Drawing.Color.Red;
+            this.brandlbl.Location = new System.Drawing.Point(25, 434);
+            this.brandlbl.Name = "brandlbl";
+            this.brandlbl.Size = new System.Drawing.Size(139, 16);
+            this.brandlbl.TabIndex = 314;
+            this.brandlbl.Text = "Invalid Brand Selected!";
+            this.brandlbl.Visible = false;
+            // 
+            // selsectError
+            // 
+            this.selsectError.AutoSize = true;
+            this.selsectError.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.selsectError.ForeColor = System.Drawing.Color.Red;
+            this.selsectError.Location = new System.Drawing.Point(454, 460);
+            this.selsectError.Name = "selsectError";
+            this.selsectError.Size = new System.Drawing.Size(152, 16);
+            this.selsectError.TabIndex = 316;
+            this.selsectError.Text = "Please Select a Product!";
+            this.selsectError.Visible = false;
             // 
             // UpdateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.selsectError);
+            this.Controls.Add(this.catlbl);
+            this.Controls.Add(this.brandlbl);
             this.Controls.Add(this.lblBarVal);
             this.Controls.Add(this.lblDesVal);
             this.Controls.Add(this.lblNameVal);
@@ -491,5 +530,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountItems;
+        private System.Windows.Forms.Label catlbl;
+        private System.Windows.Forms.Label brandlbl;
+        private System.Windows.Forms.Label selsectError;
     }
 }

@@ -59,6 +59,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblSelect = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -397,11 +398,24 @@
             this.label10.TabIndex = 351;
             this.label10.Text = "RFID Timer";
             // 
+            // lblSelect
+            // 
+            this.lblSelect.AutoSize = true;
+            this.lblSelect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelect.ForeColor = System.Drawing.Color.Red;
+            this.lblSelect.Location = new System.Drawing.Point(26, 393);
+            this.lblSelect.Name = "lblSelect";
+            this.lblSelect.Size = new System.Drawing.Size(137, 16);
+            this.lblSelect.TabIndex = 352;
+            this.lblSelect.Text = "Please select an item!";
+            this.lblSelect.Visible = false;
+            // 
             // UpdateStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblSelect);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblTimer);
@@ -471,5 +485,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblSelect;
     }
 }

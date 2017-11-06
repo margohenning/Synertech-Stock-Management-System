@@ -38,6 +38,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblConnect = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblerrorEPC
@@ -158,11 +159,24 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(23, 267);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(203, 16);
+            this.label1.TabIndex = 369;
+            this.label1.Text = "Please select a valid Store Name!";
+            this.label1.Visible = false;
+            // 
             // SearchWithEPC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblerrorEPC);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.txtEPC);
@@ -193,5 +207,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblConnect;
         public System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }

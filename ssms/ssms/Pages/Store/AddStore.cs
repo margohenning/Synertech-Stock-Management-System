@@ -21,51 +21,62 @@ namespace ssms.Pages
         //Tiaan
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            LTS.Store store = new LTS.Store();
-            bool check = true;
+            try
+            {
+                labelError1.Visible = false;
+                labelError2.Visible = false;
+                labelError3.Visible = false;
+                LTS.Store store = new LTS.Store();
+                bool check = true;
 
-            if (txtName.Text == "")
-            {
-                labelError1.Text = "Please enter store name!";
-                labelError1.Visible = true;
-                check = false;
-            }
-            if (txtSur.Text == "")
-            {
-                labelError2.Text = "Please enter store location!";
-                labelError2.Visible = true;
-                check = false;
-            }
-            if (st != null)
-            {
-                if (st.Where(u => u.StoreName == txtName.Text).FirstOrDefault() != null)
+                if (txtName.Text == "")
                 {
-                    labelError3.Text = "Store already exists";
-                    labelError3.Visible = true;
+                    labelError1.Text = "Please enter store name!";
+                    labelError1.Visible = true;
                     check = false;
                 }
-                
-            }
+                if (txtSur.Text == "")
+                {
+                    labelError2.Text = "Please enter store location!";
+                    labelError2.Visible = true;
+                    check = false;
+                }
+                if (st != null)
+                {
+                    if (st.Where(u => u.StoreName == txtName.Text).FirstOrDefault() != null)
+                    {
+                        labelError3.Text = "Store already exists";
+                        labelError3.Visible = true;
+                        check = false;
+                    }
 
-            if (check)
+                }
+
+                if (check)
+                {
+                    store.StoreName = txtName.Text;
+                    store.StoreLocation = txtSur.Text;
+
+                    int storeID = DAT.DataAccess.AddStore(store);
+                    if (storeID == -1)
+                    {
+                        MessageBox.Show("Sorry something went wrong, the store was not added");
+                        ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("The store was added successfully");
+                        ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
+
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                store.StoreName = txtName.Text;
-                store.StoreLocation = txtSur.Text;
-
-                int storeID = DAT.DataAccess.AddStore(store);
-                if (storeID == -1)
-                {
-                    MessageBox.Show("Sorry something went wrong, the store was not added");
-                    ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
-
-                }
-                else
-                {
-                    MessageBox.Show("The store was added successfully");
-                    ((Main)this.Parent.Parent).ChangeView<Pages.Store.Store>();
-
-                }
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
 
         }
         
@@ -77,7 +88,15 @@ namespace ssms.Pages
 
         private void AddStore_Load(object sender, EventArgs e)
         {
-            st = DAT.DataAccess.GetStore().ToList();
+            try
+            {
+                st = DAT.DataAccess.GetStore().ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
         }
     }
 }

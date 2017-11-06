@@ -27,83 +27,50 @@ namespace ssms.Pages.Items
 
         private void UpdateCategory_Load(object sender, EventArgs e)
         {
-            
-            if (cat != null)
+            try
             {
-                cat.Clear();
-                cat = DAT.DataAccess.GetCategory().ToList();
-                for (int i = 0; i < cat.Count; i++)
+                if (cat != null)
                 {
-                    dataGridView1.Rows.Add(cat[i].CategoryID, cat[i].CategoryName, cat[i].CategoryDescription);
+                    cat.Clear();
+                    cat = DAT.DataAccess.GetCategory().ToList();
+                    for (int i = 0; i < cat.Count; i++)
+                    {
+                        dataGridView1.Rows.Add(cat[i].CategoryID, cat[i].CategoryName, cat[i].CategoryDescription);
+                    }
+
                 }
-                
+                this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                this.dataGridView1.MultiSelect = false;
             }
-            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.MultiSelect = false;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-                
-        }
+        
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            label3.Text = "";
-            label4.Text = "";
-            
-            if (txtName.Text == "")
+            try
             {
-                label3.Text = "Please add a Category Name";
-               
-            }
-            if (txtSur.Text == "")
-            {
-                label4.Text = "Please add a Category Description";
-            }
+                label3.Text = "";
+                label4.Text = "";
 
-            if(label4.Text == "" && label3.Text == "")
-            {
-                if(txtName.Text == oldName)
+                if (txtName.Text == "")
                 {
-                    try
-                    {
-                        int CatID;
-                        CatID = Int32.Parse(label2.Text);
+                    label3.Text = "Please add a Category Name";
 
-                        LTS.Category Ucat = new LTS.Category();
-                        Ucat.CategoryID = CatID;
-                        Ucat.CategoryName = txtName.Text; 
-                        Ucat.CategoryDescription = txtSur.Text;
-
-                        bool update = DAT.DataAccess.UpdateCategory(Ucat);
-                        if (update)
-                        {
-                            if (DialogResult.OK == MessageBox.Show("Category Updated Successfully"))
-                            {
-                                ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
-                            }
-                        }
-                        else
-                        {
-                            if (DialogResult.OK == MessageBox.Show("Category  was not Updated Successfully"))
-                            {
-                                ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
-                            }
-                        }
-
-
-                        
-                    }
-                    catch (Exception eex)
-                    {
-                        MessageBox.Show("Please try Again");
-                    }
                 }
-                else
+                if (txtSur.Text == "")
                 {
-                    LTS.Category c = DAT.DataAccess.GetCategory().Where(i => i.CategoryName == txtName.Text).FirstOrDefault();
-                    if (c == null)
+                    label4.Text = "Please add a Category Description";
+                }
+
+                if (label4.Text == "" && label3.Text == "")
+                {
+                    if (txtName.Text == oldName)
                     {
                         try
                         {
@@ -141,11 +108,56 @@ namespace ssms.Pages.Items
                     }
                     else
                     {
-                        label3.Text = "Sorry, the newly entered category name already exists";
+                        LTS.Category c = DAT.DataAccess.GetCategory().Where(i => i.CategoryName == txtName.Text).FirstOrDefault();
+                        if (c == null)
+                        {
+                            try
+                            {
+                                int CatID;
+                                CatID = Int32.Parse(label2.Text);
+
+                                LTS.Category Ucat = new LTS.Category();
+                                Ucat.CategoryID = CatID;
+                                Ucat.CategoryName = txtName.Text;
+                                Ucat.CategoryDescription = txtSur.Text;
+
+                                bool update = DAT.DataAccess.UpdateCategory(Ucat);
+                                if (update)
+                                {
+                                    if (DialogResult.OK == MessageBox.Show("Category Updated Successfully"))
+                                    {
+                                        ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
+                                    }
+                                }
+                                else
+                                {
+                                    if (DialogResult.OK == MessageBox.Show("Category  was not Updated Successfully"))
+                                    {
+                                        ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
+                                    }
+                                }
+
+
+
+                            }
+                            catch (Exception eex)
+                            {
+                                MessageBox.Show("Please try Again");
+                            }
+                        }
+                        else
+                        {
+                            label3.Text = "Sorry, the newly entered category name already exists";
+                        }
+
                     }
 
                 }
-              
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
            
 
@@ -153,22 +165,31 @@ namespace ssms.Pages.Items
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count >= 1)
+            try
             {
-                using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
+                if (dataGridView1.SelectedRows.Count >= 1)
                 {
-                    int index = item.Index;
+                    using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
+                    {
+                        int index = item.Index;
 
-                    label2.Text = cat[index].CategoryID.ToString();
-                    txtName.Text = cat[index].CategoryName;
-                    txtSur.Text = cat[index].CategoryDescription;
-                    oldName = cat[index].CategoryName;
+                        label2.Text = cat[index].CategoryID.ToString();
+                        txtName.Text = cat[index].CategoryName;
+                        txtSur.Text = cat[index].CategoryDescription;
+                        oldName = cat[index].CategoryName;
 
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
 
             
         }
     }
-    }
+
+}
 

@@ -22,51 +22,59 @@ namespace ssms.Pages.Store
         //Tiaan
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            LTS.Store store = new LTS.Store();
-            bool check = true;
+            try
+            {
+                LTS.Store store = new LTS.Store();
+                bool check = true;
 
-            if (txtName.Text == "")
-            {
-                labelError1.Text = "Please enter store name!";
-                labelError1.Visible = true;
-                check = false;
-            }
-            if (txtSur.Text == "")
-            {
-                labelError2.Text = "Please enter store location!";
-                labelError2.Visible = true;
-                check = false;
-            }
-            if (st != null)
-            {
-                if (st.Where(u => u.StoreName == txtName.Text).FirstOrDefault() != null)
+                if (txtName.Text == "")
                 {
-                    labelError3.Text = "Store already exists";
-                    labelError3.Visible = true;
+                    labelError1.Text = "Please enter store name!";
+                    labelError1.Visible = true;
                     check = false;
                 }
+                if (txtSur.Text == "")
+                {
+                    labelError2.Text = "Please enter store location!";
+                    labelError2.Visible = true;
+                    check = false;
+                }
+                if (st != null)
+                {
+                    if (st.Where(u => u.StoreName == txtName.Text).FirstOrDefault() != null)
+                    {
+                        labelError3.Text = "Store already exists";
+                        labelError3.Visible = true;
+                        check = false;
+                    }
 
+                }
+
+                if (check)
+                {
+                    store.StoreName = txtName.Text;
+                    store.StoreLocation = txtSur.Text;
+
+                    int storeID = DAT.DataAccess.AddStore(store);
+                    if (storeID == -1)
+                    {
+                        MessageBox.Show("Sorry something went wrong, the store was not added");
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("The store was added successfully");
+                        goBack();
+
+                    }
+                }
             }
-
-            if (check)
+            catch (Exception ex)
             {
-                store.StoreName = txtName.Text;
-                store.StoreLocation = txtSur.Text;
-
-                int storeID = DAT.DataAccess.AddStore(store);
-                if (storeID == -1)
-                {
-                    MessageBox.Show("Sorry something went wrong, the store was not added");
-                    
-
-                }
-                else
-                {
-                    MessageBox.Show("The store was added successfully");
-                    goBack();
-
-                }
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
         }
 
               
@@ -80,8 +88,16 @@ namespace ssms.Pages.Store
         //Margo
         private void AddStoreSmall_Load(object sender, EventArgs e)
         {
-            what = this.Parent.Parent.ToString();
-            st = DAT.DataAccess.GetStore().ToList();
+            try
+            {
+                what = this.Parent.Parent.ToString();
+                st = DAT.DataAccess.GetStore().ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
         }
 
         //Margo

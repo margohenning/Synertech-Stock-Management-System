@@ -30,6 +30,10 @@
         {
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewReaders = new System.Windows.Forms.DataGridView();
+            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxStore = new System.Windows.Forms.ComboBox();
@@ -37,18 +41,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblConnect = new System.Windows.Forms.Label();
-
-            this.IPaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AntennaNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RxPower = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
+            this.test = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReaders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +81,34 @@
             this.dataGridViewReaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReaders.Size = new System.Drawing.Size(634, 142);
             this.dataGridViewReaders.TabIndex = 295;
+            // 
+            // IPaddress
+            // 
+            this.IPaddress.HeaderText = "IP Address";
+            this.IPaddress.Name = "IPaddress";
+            this.IPaddress.ReadOnly = true;
+            this.IPaddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AntennaNumber
+            // 
+            this.AntennaNumber.HeaderText = "Antenna Number";
+            this.AntennaNumber.Name = "AntennaNumber";
+            this.AntennaNumber.ReadOnly = true;
+            this.AntennaNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TxPower
+            // 
+            this.TxPower.HeaderText = "Tx Power";
+            this.TxPower.Name = "TxPower";
+            this.TxPower.ReadOnly = true;
+            this.TxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RxPower
+            // 
+            this.RxPower.HeaderText = "Rx Power";
+            this.RxPower.Name = "RxPower";
+            this.RxPower.ReadOnly = true;
+            this.RxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label3
             // 
@@ -223,39 +249,24 @@
             this.lblConnect.Size = new System.Drawing.Size(0, 16);
             this.lblConnect.TabIndex = 341;
             // 
-            // IPaddress
+            // test
             // 
-            this.IPaddress.HeaderText = "IP Address";
-            this.IPaddress.Name = "IPaddress";
-            this.IPaddress.ReadOnly = true;
-            this.IPaddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // AntennaNumber
-            // 
-            this.AntennaNumber.HeaderText = "Antenna Number";
-            this.AntennaNumber.Name = "AntennaNumber";
-            this.AntennaNumber.ReadOnly = true;
-            this.AntennaNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TxPower
-            // 
-            this.TxPower.HeaderText = "Tx Power";
-            this.TxPower.Name = "TxPower";
-            this.TxPower.ReadOnly = true;
-            this.TxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // RxPower
-            // 
-            this.RxPower.HeaderText = "Rx Power";
-            this.RxPower.Name = "RxPower";
-            this.RxPower.ReadOnly = true;
-            this.RxPower.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.test.AutoSize = true;
+            this.test.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.test.ForeColor = System.Drawing.Color.Red;
+            this.test.Location = new System.Drawing.Point(14, 393);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(319, 22);
+            this.test.TabIndex = 342;
+            this.test.Text = "Please choose a valid setting to test!";
+            this.test.Visible = false;
             // 
             // SelectSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.test);
             this.Controls.Add(this.lblConnect);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button1);
@@ -298,6 +309,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblConnect;
-
+        private System.Windows.Forms.Label test;
     }
 }

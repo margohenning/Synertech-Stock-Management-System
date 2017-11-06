@@ -51,6 +51,7 @@
             this.lblConnect = new System.Windows.Forms.Label();
             this.lblStartRead = new System.Windows.Forms.Label();
             this.lblStop = new System.Windows.Forms.Label();
+            this.lblSelect = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -328,11 +329,24 @@
             this.lblStop.Text = "Stopping...";
             this.lblStop.Visible = false;
             // 
+            // lblSelect
+            // 
+            this.lblSelect.AutoSize = true;
+            this.lblSelect.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelect.ForeColor = System.Drawing.Color.Red;
+            this.lblSelect.Location = new System.Drawing.Point(559, 43);
+            this.lblSelect.Name = "lblSelect";
+            this.lblSelect.Size = new System.Drawing.Size(203, 16);
+            this.lblSelect.TabIndex = 342;
+            this.lblSelect.Text = "Please select a valid Store Name!";
+            this.lblSelect.Visible = false;
+            // 
             // ScanItemsInStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblSelect);
             this.Controls.Add(this.lblStop);
             this.Controls.Add(this.lblStartRead);
             this.Controls.Add(this.lblConnect);
@@ -386,5 +400,6 @@
         private System.Windows.Forms.Label lblConnect;
         private System.Windows.Forms.Label lblStartRead;
         private System.Windows.Forms.Label lblStop;
+        private System.Windows.Forms.Label lblSelect;
     }
 }

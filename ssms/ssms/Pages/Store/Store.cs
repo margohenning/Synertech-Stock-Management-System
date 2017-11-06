@@ -43,80 +43,97 @@ namespace ssms.Pages.Store
         //Margo
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
-            string folderPath = saveFileDialog1.FileName + ".pdf";
-
-
-            //Creating iTextSharp Table from the DataTable data
-            Document pdfDoc = new Document(PageSize.A4);
-
-            PdfPTable pdfTable = new PdfPTable(dataGridView1.ColumnCount);
-            pdfTable.DefaultCell.Padding = dataGridView1.DefaultCellStyle.Padding.All;
-
-            pdfTable.WidthPercentage = 100;
-            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            pdfTable.DefaultCell.BorderWidth = 0;
-
-
-
-            //Adding Header row
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            try
             {
-                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pdfTable.AddCell(cell);
-            }
+                iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
+                string folderPath = saveFileDialog1.FileName + ".pdf";
 
-            //Adding DataRow
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
+
+                //Creating iTextSharp Table from the DataTable data
+                Document pdfDoc = new Document(PageSize.A4);
+
+                PdfPTable pdfTable = new PdfPTable(dataGridView1.ColumnCount);
+                pdfTable.DefaultCell.Padding = dataGridView1.DefaultCellStyle.Padding.All;
+
+                pdfTable.WidthPercentage = 100;
+                pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                pdfTable.DefaultCell.BorderWidth = 0;
+
+
+
+                //Adding Header row
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
                 {
-                    // pdfTable.AddCell(cell.Value.ToString());
-                    PdfPCell cellRows = new PdfPCell(new Phrase(cell.Value.ToString(), font));
-                    int R = cell.Style.BackColor.R;
-                    int G = cell.Style.BackColor.G;
-                    int B = cell.Style.BackColor.B;
-                    if (R == 0 && G == 0 && B == 0)
-                    {
-                        R = 255;
-                        G = 255;
-                        B = 255;
-                    }
-                    cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
-                    cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
-                    pdfTable.AddCell(cellRows);
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                    cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pdfTable.AddCell(cell);
+                }
 
+                //Adding DataRow
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        // pdfTable.AddCell(cell.Value.ToString());
+                        PdfPCell cellRows = new PdfPCell(new Phrase(cell.Value.ToString(), font));
+                        int R = cell.Style.BackColor.R;
+                        int G = cell.Style.BackColor.G;
+                        int B = cell.Style.BackColor.B;
+                        if (R == 0 && G == 0 && B == 0)
+                        {
+                            R = 255;
+                            G = 255;
+                            B = 255;
+                        }
+                        cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
+                        cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
+                        pdfTable.AddCell(cellRows);
+
+                    }
+                }
+                Paragraph writing = new iTextSharp.text.Paragraph("Synertech Stock Management System " + Environment.NewLine + "Stores Information                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
+
+                using (FileStream stream = new FileStream(folderPath, FileMode.Create))
+                {
+
+                    PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(writing);
+                    pdfDoc.Add(pdfTable);
+                    pdfDoc.Close();
+                    stream.Close();
                 }
             }
-            Paragraph writing = new iTextSharp.text.Paragraph("Synertech Stock Management System " + Environment.NewLine + "Stores Information                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
-
-            using (FileStream stream = new FileStream(folderPath, FileMode.Create))
+            catch (Exception ex)
             {
-
-                PdfWriter.GetInstance(pdfDoc, stream);
-                pdfDoc.Open();
-                pdfDoc.Add(writing);
-                pdfDoc.Add(pdfTable);
-                pdfDoc.Close();
-                stream.Close();
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+           
         }
+
         //Tiaan
         private void Store_Load(object sender, EventArgs e)
         {
-            store = DAT.DataAccess.GetStore();
-            item = DAT.DataAccess.GetItem();
-            
-
-            for (int k = 0; k < store.Count; k++)
+            try
             {
-                int total = 0;
-                total = item.Where(y => y.StoreID == store[k].StoreID).ToList().Count;
-                
-                dataGridView1.Rows.Add(store[k].StoreID, store[k].StoreName, store[k].StoreLocation, total);
+                store = DAT.DataAccess.GetStore();
+                item = DAT.DataAccess.GetItem();
+
+
+                for (int k = 0; k < store.Count; k++)
+                {
+                    int total = 0;
+                    total = item.Where(y => y.StoreID == store[k].StoreID).ToList().Count;
+
+                    dataGridView1.Rows.Add(store[k].StoreID, store[k].StoreName, store[k].StoreLocation, total);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
         }
     }
 }

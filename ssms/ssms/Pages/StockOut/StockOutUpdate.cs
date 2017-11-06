@@ -32,54 +32,70 @@ namespace ssms.Pages.StockOut
         //Margo
         private void comboBoxStore_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<LTS.Product> product = new List<LTS.Product>();
-            product = DAT.DataAccess.GetProduct().ToList();
-            storeName.Text = comboBoxStore.GetItemText(comboBoxStore.SelectedValue);
+            try
+            {
+                List<LTS.Product> product = new List<LTS.Product>();
+                product = DAT.DataAccess.GetProduct().ToList();
+                storeName.Text = comboBoxStore.GetItemText(comboBoxStore.SelectedValue);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
         }
 
         //Margo
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            lblReason.Visible = false;
-            lblProject.Visible = false;
-            bool check = true;
-            if(textBox1.Text == "")
+            try
             {
-                lblReason.Visible = true;
-                check = false;
-            }
-
-            if (textBox2.Text == "")
-            {
-                lblProject.Visible = true;
-                check = false;
-            }
-
-            if (check == true)
-            {
-                int BookOutID = current.BookOutID;
-                LTS.BookOut bo = new LTS.BookOut();
-                bo = DAT.DataAccess.GetBookOut().Where(u => u.BookOutID == BookOutID).FirstOrDefault();
-                if (bo != null)
+                lblReason.Visible = false;
+                lblProject.Visible = false;
+                bool check = true;
+                if (textBox1.Text == "")
                 {
-                    bo.Reason = textBox1.Text;
-                    bo.Project = textBox2.Text;
+                    lblReason.Visible = true;
+                    check = false;
+                }
 
-                    bool update = DAT.DataAccess.UpdateBookOut(bo);
-                    if (update)
+                if (textBox2.Text == "")
+                {
+                    lblProject.Visible = true;
+                    check = false;
+                }
+
+                if (check == true)
+                {
+                    int BookOutID = current.BookOutID;
+                    LTS.BookOut bo = new LTS.BookOut();
+                    bo = DAT.DataAccess.GetBookOut().Where(u => u.BookOutID == BookOutID).FirstOrDefault();
+                    if (bo != null)
                     {
-                        MessageBox.Show("The book out update was succesful!");
-                        ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOut>();
+                        bo.Reason = textBox1.Text;
+                        bo.Project = textBox2.Text;
+
+                        bool update = DAT.DataAccess.UpdateBookOut(bo);
+                        if (update)
+                        {
+                            MessageBox.Show("The book out update was succesful!");
+                            ((Main)this.Parent.Parent).ChangeView<Pages.StockOut.StockOut>();
+                        }
+                        else
+                        {
+                            MessageBox.Show("The book out update was unsuccesful!");
+                        }
                     }
                     else
                     {
                         MessageBox.Show("The book out update was unsuccesful!");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("The book out update was unsuccesful!");
-                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
             
         }
@@ -95,130 +111,146 @@ namespace ssms.Pages.StockOut
         {
             try
             {
-                
-                time = 0;
-                lblTimer.Text = time.ToString();
-                timer = new System.Timers.Timer();
-                timer.Elapsed += timer_Elapsed;
-                timer.Interval = 1000;
-
-                EnableOrDisable(false);
-                epc = "";
-                int iStore = comboBoxStore.SelectedIndex;
-                LTS.Store s = st[iStore];
-
-                LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID && y.SettingsSelect == true).FirstOrDefault();
-                if (set != null)
+                try
                 {
-                    connect(set);
+
+                    time = 0;
+                    lblTimer.Text = time.ToString();
+                    timer = new System.Timers.Timer();
+                    timer.Elapsed += timer_Elapsed;
+                    timer.Interval = 1000;
+
+                    EnableOrDisable(false);
+                    epc = "";
+                    int iStore = comboBoxStore.SelectedIndex;
+                    LTS.Store s = st[iStore];
+
+                    LTS.Settings set = DAT.DataAccess.GetSettings().Where(y => y.StoreID == s.StoreID && y.SettingsSelect == true).FirstOrDefault();
+                    if (set != null)
+                    {
+                        connect(set);
+                    }
+                    else
+                    {
+                        lblConnect.Text = ("Settings not found!");
+                        EnableOrDisable(true);
+
+                    }
                 }
-                else
+                catch (Exception exx)
                 {
-                    lblConnect.Text = ("Settings not found!");
+                    lblConnect.Text = ("Store not selected!");
                     EnableOrDisable(true);
-
                 }
             }
-            catch (Exception exx)
+            catch (Exception ex)
             {
-                lblConnect.Text = ("Store not selected!");
-                EnableOrDisable(true);
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
         }
 
         //Margo
         bool connect(LTS.Settings se)
         {
-            lblConnect.Text = "Connecting...";
-           
-
-            int index = comboBoxStore.SelectedIndex;
-            if (st != null)
+            try
             {
-                int storeID = st[index].StoreID;
+                lblConnect.Text = "Connecting...";
 
-                LTS.Settings set = se;
 
-                sm = null;
-                sm = new SettingsMain();
-                impinjrev.Clear();
-                sm.SettingsID = set.SettingsID;
-                sm.SettingsName = set.SettingsName;
-                sm.SettingsSelect = set.SettingsSelect;
-                sm.StoreID = set.StoreID;
-
-                LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
-                sm.StoreLocation = store.StoreLocation;
-                sm.StoreName = store.StoreName;
-
-                List<LTS.Reader> readers = new List<LTS.Reader>();
-                readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
-                for (int j = 0; j < readers.Count; j++)
+                int index = comboBoxStore.SelectedIndex;
+                if (st != null)
                 {
-                    ReaderMain rm = new ReaderMain();
-                    rm.ReaderID = readers[j].ReaderID;
-                    rm.IPaddress = readers[j].IPaddress;
-                    rm.NumAntennas = readers[j].NumAntennas;
-                    rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+                    int storeID = st[index].StoreID;
 
-                    sm.Readers.Add(rm);
+                    LTS.Settings set = se;
 
-                }
-                bool checks = true;
+                    sm = null;
+                    sm = new SettingsMain();
+                    impinjrev.Clear();
+                    sm.SettingsID = set.SettingsID;
+                    sm.SettingsName = set.SettingsName;
+                    sm.SettingsSelect = set.SettingsSelect;
+                    sm.StoreID = set.StoreID;
 
-                for (int x = 0; x < sm.Readers.Count; x++)
-                {
+                    LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
+                    sm.StoreLocation = store.StoreLocation;
+                    sm.StoreName = store.StoreName;
 
-                    ImpinjRevolution ir = new ImpinjRevolution();
-                    ir.ReaderScanMode = ScanMode.ScanItem;
-                    ir.HostName = sm.Readers[x].IPaddress;
-                    ir.Antennas = sm.Readers[x].antennas;
-
-                    ir.TagRead += ir_TagRead;
-                    ir.Connect();
-
-                    impinjrev.Add(ir);
-                    if (!ir.isConnected)
+                    List<LTS.Reader> readers = new List<LTS.Reader>();
+                    readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
+                    for (int j = 0; j < readers.Count; j++)
                     {
-                        if (checks == true)
+                        ReaderMain rm = new ReaderMain();
+                        rm.ReaderID = readers[j].ReaderID;
+                        rm.IPaddress = readers[j].IPaddress;
+                        rm.NumAntennas = readers[j].NumAntennas;
+                        rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+
+                        sm.Readers.Add(rm);
+
+                    }
+                    bool checks = true;
+
+                    for (int x = 0; x < sm.Readers.Count; x++)
+                    {
+
+                        ImpinjRevolution ir = new ImpinjRevolution();
+                        ir.ReaderScanMode = ScanMode.ScanItem;
+                        ir.HostName = sm.Readers[x].IPaddress;
+                        ir.Antennas = sm.Readers[x].antennas;
+
+                        ir.TagRead += ir_TagRead;
+                        ir.Connect();
+
+                        impinjrev.Add(ir);
+                        if (!ir.isConnected)
                         {
-                            checks = false;
+                            if (checks == true)
+                            {
+                                checks = false;
+                            }
+
                         }
+                    }
+
+                    if (checks == true)
+                    {
+                        lblConnect.Text = "Connected";
+                        timer.Start();
+                        impinjrev.ForEach(imp =>
+                        {
+                            imp.TagRead += ir_TagRead;
+                            imp.StartRead();
+                        });
+
+                        ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
+                        lblConnect.Text = "Reading...";
+                        lblTimer.Text = time.ToString();
 
                     }
-                }
-
-                if (checks == true)
-                {
-                    lblConnect.Text = "Connected";
-                    timer.Start();
-                    impinjrev.ForEach(imp =>
+                    else
                     {
-                        imp.TagRead += ir_TagRead;
-                        imp.StartRead();
-                    });
+                        lblConnect.Text = "Not Connected!";
+                        timer.Stop();
+                        timer.Elapsed -= timer_Elapsed;
+                        time = 0;
+                        for (int i = 0; i < impinjrev.Count; i++)
+                        {
+                            impinjrev[i].StopRead();
+                            impinjrev[i].Disconnect();
 
-                    ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
-                    lblConnect.Text = "Reading...";
-                    lblTimer.Text = time.ToString();
-                   
-                }
-                else
-                {
-                    lblConnect.Text = "Not Connected!";
-                    timer.Stop();
-                    timer.Elapsed -= timer_Elapsed;
-                    time = 0;
-                    for (int i = 0; i < impinjrev.Count; i++)
-                    {
-                        impinjrev[i].StopRead();
-                        impinjrev[i].Disconnect();
-
+                        }
+                        EnableOrDisable(true);
+                        ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
                     }
-                    EnableOrDisable(true);
-                    ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
             return true;
 
         }
@@ -236,59 +268,106 @@ namespace ssms.Pages.StockOut
 
         void Stop()
         {
-            if (impinjrev != null)
+            try
             {
-                for (int i = 0; i < impinjrev.Count; i++)
+                if (impinjrev != null)
                 {
-                    impinjrev[i].StopRead();
-                    impinjrev[i].Disconnect();
+                    for (int i = 0; i < impinjrev.Count; i++)
+                    {
+                        impinjrev[i].StopRead();
+                        impinjrev[i].Disconnect();
 
+                    }
+                    if (lblConnect.InvokeRequired)
+                    {
+                        lblConnect.Invoke(new MethodInvoker(delegate () {
+                            lblConnect.Text = "Disconnected!";
+                        }));
+
+                    }
+
+                                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
+                    EnableOrDisable(true);
                 }
-                if (lblConnect.InvokeRequired)
-                {
-                    lblConnect.Invoke(new MethodInvoker(delegate () {
-                        lblConnect.Text = "Disconnected!";
-                    }));
-
-                }
-
-                ((Form1)this.Parent.Parent.Parent.Parent).scan = false;
-                EnableOrDisable(true);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
         }
 
         //Margo
         public void EnableOrDisable(bool what)
         {
-            this.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                if (what)
+                this.Invoke(new MethodInvoker(delegate ()
                 {
-                    
-                    button4.Enabled = true;
-                    comboBoxStore.Enabled = true;
-                    button1.Enabled = true;
-                    btnlogin.Enabled = true;
-                    time = 0;
-                }
-                else
-                {
+                    if (what)
+                    {
 
-                    button4.Enabled = false;
-                    comboBoxStore.Enabled = false;
-                    button1.Enabled = false;
-                    btnlogin.Enabled = false;
-                }
-            }));
+                        button4.Enabled = true;
+                        comboBoxStore.Enabled = true;
+                        button1.Enabled = true;
+                        btnlogin.Enabled = true;
+                        time = 0;
+                    }
+                    else
+                    {
+
+                        button4.Enabled = false;
+                        comboBoxStore.Enabled = false;
+                        button1.Enabled = false;
+                        btnlogin.Enabled = false;
+                    }
+                }));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+           
 
         }
 
         //Margo
         void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (time < 60 && epc == "")
+            try
             {
-                if (time >= 60)
+                if (time < 60 && epc == "")
+                {
+                    if (time >= 60)
+                    {
+                        timer.Stop();
+                        timer.Elapsed -= timer_Elapsed;
+                        if (lblTimer.InvokeRequired)
+                        {
+                            lblTimer.Invoke(new MethodInvoker(delegate () {
+                                lblTimer.Text = time.ToString();
+                                txtEPC.Text = epc;
+                            }));
+
+                        }
+
+                        Stop();
+                        time = 0;
+                    }
+                    else
+                    {
+                        time++;
+                        if (lblTimer.InvokeRequired)
+                        {
+                            lblTimer.Invoke(new MethodInvoker(delegate () {
+                                lblTimer.Text = time.ToString();
+                            }));
+
+                        }
+                    }
+
+                }
+                else
                 {
                     timer.Stop();
                     timer.Elapsed -= timer_Elapsed;
@@ -304,166 +383,167 @@ namespace ssms.Pages.StockOut
                     Stop();
                     time = 0;
                 }
-                else
-                {
-                    time++;
-                    if (lblTimer.InvokeRequired)
-                    {
-                        lblTimer.Invoke(new MethodInvoker(delegate () {
-                            lblTimer.Text = time.ToString();
-                        }));
-
-                    }
-                }
-               
             }
-            else
+            catch (Exception ex)
             {
-                timer.Stop();
-                timer.Elapsed -= timer_Elapsed;
-                if (lblTimer.InvokeRequired)
-                {
-                    lblTimer.Invoke(new MethodInvoker(delegate () {
-                        lblTimer.Text = time.ToString();
-                        txtEPC.Text = epc;
-                    }));
-
-                }
-
-                Stop();
-                time = 0;
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
 
         }
                
         //Margo
         private void StockOutUpdate_Load_1(object sender, EventArgs e)
         {
-            st = DAT.DataAccess.GetStore().ToList();
-            List<string> S = new List<string>();
-
-            for (int x = 0; x < st.Count; x++)
+            try
             {
-                S.Add(st[x].StoreName);
+                st = DAT.DataAccess.GetStore().ToList();
+                List<string> S = new List<string>();
+
+                for (int x = 0; x < st.Count; x++)
+                {
+                    S.Add(st[x].StoreName);
+                }
+                comboBoxStore.DataSource = S;
+
+                List<LTS.BookOut> bo = new List<LTS.BookOut>();
+                bo = DAT.DataAccess.GetBookOut().ToList();
+
+                for (int i = 0; i < bo.Count; i++)
+                {
+                    BookOutMain b = new BookOutMain();
+                    b.BookOutID = bo[i].BookOutID;
+                    b.itemID = bo[i].ItemID;
+                    b.UserID = bo[i].UserID;
+                    b.Reason = bo[i].Reason;
+                    b.Project = bo[i].Project;
+                    b.Date = bo[i].Date;
+
+                    LTS.Item it = new LTS.Item();
+                    it = DAT.DataAccess.GetItem().Where(u => u.ItemID == b.itemID).FirstOrDefault();
+                    b.ItemStatus = it.ItemStatus;
+                    b.EPC = it.TagEPC;
+                    b.ProductID = it.ProductID;
+                    b.StoreID = it.StoreID;
+
+                    //get the specific product and assign the info to the ItemMain object
+                    LTS.Product p = new LTS.Product();
+                    p = DAT.DataAccess.GetProduct().Where(h => h.ProductID == b.ProductID).FirstOrDefault();
+                    b.ProductName = p.ProductName;
+                    b.ProductDescription = p.ProductDescription;
+                    b.BrandID = p.BrandID;
+                    b.CategoryID = p.CategoryID;
+                    b.BarcodeID = p.BarcodeID;
+
+                    //get the specific store and assign the info to the ItemMain object
+                    LTS.Store s = new LTS.Store();
+                    s = DAT.DataAccess.GetStore().Where(j => j.StoreID == b.StoreID).FirstOrDefault();
+                    b.StoreName = s.StoreName;
+                    b.StoreLocation = s.StoreLocation;
+
+                    //get the specific brand and assign the info to the ItemMain object
+                    LTS.Brand br = new LTS.Brand();
+                    br = DAT.DataAccess.GetBrand().Where(y => y.BrandID == b.BrandID).FirstOrDefault();
+                    b.BrandName = br.BrandName;
+                    b.BrandDescription = br.BrandDescription;
+
+                    //get the sepcific category and assign the info to the ItemMain object
+                    LTS.Category c = new LTS.Category();
+                    c = DAT.DataAccess.GetCategory().Where(z => z.CategoryID == b.CategoryID).FirstOrDefault();
+                    b.CategoryName = c.CategoryName;
+                    b.CategoryDescription = c.CategoryDescription;
+
+                    //get the sepcific category and assign the info to the ItemMain object
+                    LTS.Barcode ba = new LTS.Barcode();
+                    ba = DAT.DataAccess.GetBarcode().Where(a => a.BarcodeID == b.BarcodeID).FirstOrDefault();
+                    b.BarcodeNumber = ba.BarcodeNumber;
+
+                    LTS.User us = new LTS.User();
+                    us = DAT.DataAccess.GetUser().Where(h => h.UserID == b.UserID).FirstOrDefault();
+                    b.UserIdentityNumber = us.UserIdentityNumber;
+                    b.UserName = us.UserName;
+                    b.UserSurname = us.UserSurname;
+
+                    bom.Add(b);
+
+                    dataGridView1.Rows.Add(b.BookOutID, b.EPC, b.BarcodeNumber, b.ProductName, b.Reason, b.Project, b.Date, b.UserName, b.UserSurname);
+
+                }
             }
-            comboBoxStore.DataSource = S;
-
-            List<LTS.BookOut> bo = new List<LTS.BookOut>();
-            bo = DAT.DataAccess.GetBookOut().ToList();
-
-            for (int i = 0; i < bo.Count; i++)
+            catch (Exception ex)
             {
-                BookOutMain b = new BookOutMain();
-                b.BookOutID = bo[i].BookOutID;
-                b.itemID = bo[i].ItemID;
-                b.UserID = bo[i].UserID;
-                b.Reason = bo[i].Reason;
-                b.Project = bo[i].Project;
-                b.Date = bo[i].Date;
-
-                LTS.Item it = new LTS.Item();
-                it = DAT.DataAccess.GetItem().Where(u => u.ItemID == b.itemID).FirstOrDefault();
-                b.ItemStatus = it.ItemStatus;
-                b.EPC = it.TagEPC;
-                b.ProductID = it.ProductID;
-                b.StoreID = it.StoreID;
-
-                //get the specific product and assign the info to the ItemMain object
-                LTS.Product p = new LTS.Product();
-                p = DAT.DataAccess.GetProduct().Where(h => h.ProductID == b.ProductID).FirstOrDefault();
-                b.ProductName = p.ProductName;
-                b.ProductDescription = p.ProductDescription;
-                b.BrandID = p.BrandID;
-                b.CategoryID = p.CategoryID;
-                b.BarcodeID = p.BarcodeID;
-
-                //get the specific store and assign the info to the ItemMain object
-                LTS.Store s = new LTS.Store();
-                s = DAT.DataAccess.GetStore().Where(j => j.StoreID == b.StoreID).FirstOrDefault();
-                b.StoreName = s.StoreName;
-                b.StoreLocation = s.StoreLocation;
-
-                //get the specific brand and assign the info to the ItemMain object
-                LTS.Brand br = new LTS.Brand();
-                br = DAT.DataAccess.GetBrand().Where(y => y.BrandID == b.BrandID).FirstOrDefault();
-                b.BrandName = br.BrandName;
-                b.BrandDescription = br.BrandDescription;
-
-                //get the sepcific category and assign the info to the ItemMain object
-                LTS.Category c = new LTS.Category();
-                c = DAT.DataAccess.GetCategory().Where(z => z.CategoryID == b.CategoryID).FirstOrDefault();
-                b.CategoryName = c.CategoryName;
-                b.CategoryDescription = c.CategoryDescription;
-
-                //get the sepcific category and assign the info to the ItemMain object
-                LTS.Barcode ba = new LTS.Barcode();
-                ba = DAT.DataAccess.GetBarcode().Where(a => a.BarcodeID == b.BarcodeID).FirstOrDefault();
-                b.BarcodeNumber = ba.BarcodeNumber;
-
-                LTS.User us = new LTS.User();
-                us = DAT.DataAccess.GetUser().Where(h => h.UserID == b.UserID).FirstOrDefault();
-                b.UserIdentityNumber = us.UserIdentityNumber;
-                b.UserName = us.UserName;
-                b.UserSurname = us.UserSurname;
-
-                bom.Add(b);
-
-                dataGridView1.Rows.Add(b.BookOutID, b.EPC,b.BarcodeNumber, b.ProductName, b.Reason, b.Project, b.Date, b.UserName, b.UserSurname);
-
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
         }
 
         //Margo
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count >= 1)
+            try
             {
-                using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
+                if (dataGridView1.SelectedRows.Count >= 1)
                 {
-                    BookOutMain bo = new BookOutMain();
-                    bo = bom[this.dataGridView1.SelectedRows[0].Index];
-                    current = bo;
-                    storeName.Text = bo.StoreName;
-                    StoreLoc.Text = bo.StoreLocation;
-                    barcode.Text = bo.BarcodeNumber;
-                    productName.Text = bo.ProductName;
-                    ProductDesc.Text = bo.ProductDescription;
-                    ProductBrand.Text = bo.BrandName;
-                    ProductCat.Text = bo.CategoryName;
-                    lblEPC.Text = bo.EPC;
-                    textBox1.Text = bo.Reason;
-                    textBox2.Text = bo.Project;
+                    using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
+                    {
+                        BookOutMain bo = new BookOutMain();
+                        bo = bom[this.dataGridView1.SelectedRows[0].Index];
+                        current = bo;
+                        storeName.Text = bo.StoreName;
+                        StoreLoc.Text = bo.StoreLocation;
+                        barcode.Text = bo.BarcodeNumber;
+                        productName.Text = bo.ProductName;
+                        ProductDesc.Text = bo.ProductDescription;
+                        ProductBrand.Text = bo.BrandName;
+                        ProductCat.Text = bo.CategoryName;
+                        lblEPC.Text = bo.EPC;
+                        textBox1.Text = bo.Reason;
+                        textBox2.Text = bo.Project;
 
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
         }
 
         //Margo
         private void button4_Click(object sender, EventArgs e)
         {
-            lblEPCerror.Visible = false;
-            if (txtEPC.Text != "")
+            try
             {
-                BookOutMain boo = new BookOutMain();
-                boo = bom.Where(u => u.EPC == txtEPC.Text).FirstOrDefault();
-                if (boo != null)
+                lblEPCerror.Visible = false;
+                if (txtEPC.Text != "")
                 {
-                    int index = bom.IndexOf(boo);
-                    if (dataGridView1.SelectedRows.Count != 0)
+                    BookOutMain boo = new BookOutMain();
+                    boo = bom.Where(u => u.EPC == txtEPC.Text).FirstOrDefault();
+                    if (boo != null)
                     {
-                        dataGridView1.ClearSelection();
+                        int index = bom.IndexOf(boo);
+                        if (dataGridView1.SelectedRows.Count != 0)
+                        {
+                            dataGridView1.ClearSelection();
+                        }
+                        dataGridView1.Rows[index].Selected = true;
                     }
-                    dataGridView1.Rows[index].Selected = true;
+                    else
+                    {
+                        lblEPCerror.Visible = true;
+                    }
                 }
                 else
                 {
                     lblEPCerror.Visible = true;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                lblEPCerror.Visible = true;
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
             
         }
     }

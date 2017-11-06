@@ -51,107 +51,123 @@ namespace ssms.Pages.Settings
         //Margo
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
-            string folderPath = saveFileDialog1.FileName + ".pdf";
-
-
-            //Creating iTextSharp Table from the DataTable data
-            Document pdfDoc = new Document(PageSize.A4);
-
-            PdfPTable pdfTable = new PdfPTable(dataGridViewSettings.ColumnCount);
-            pdfTable.DefaultCell.Padding = dataGridViewSettings.DefaultCellStyle.Padding.All;
-
-            pdfTable.WidthPercentage = 100;
-            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            pdfTable.DefaultCell.BorderWidth = 0;
-
-
-
-            //Adding Header row
-            foreach (DataGridViewColumn column in dataGridViewSettings.Columns)
+            try
             {
-                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pdfTable.AddCell(cell);
-            }
+                iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 8);
+                string folderPath = saveFileDialog1.FileName + ".pdf";
 
-            //Adding DataRow
-            foreach (DataGridViewRow row in dataGridViewSettings.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
+
+                //Creating iTextSharp Table from the DataTable data
+                Document pdfDoc = new Document(PageSize.A4);
+
+                PdfPTable pdfTable = new PdfPTable(dataGridViewSettings.ColumnCount);
+                pdfTable.DefaultCell.Padding = dataGridViewSettings.DefaultCellStyle.Padding.All;
+
+                pdfTable.WidthPercentage = 100;
+                pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                pdfTable.DefaultCell.BorderWidth = 0;
+
+
+
+                //Adding Header row
+                foreach (DataGridViewColumn column in dataGridViewSettings.Columns)
                 {
-                    // pdfTable.AddCell(cell.Value.ToString());
-                    PdfPCell cellRows = new PdfPCell(new Phrase(cell.Value.ToString(), font));
-                    int R = cell.Style.BackColor.R;
-                    int G = cell.Style.BackColor.G;
-                    int B = cell.Style.BackColor.B;
-                    if (R == 0 && G == 0 && B == 0)
-                    {
-                        R = 255;
-                        G = 255;
-                        B = 255;
-                    }
-                    cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
-                    cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
-                    pdfTable.AddCell(cellRows);
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                    cell.BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255);
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pdfTable.AddCell(cell);
+                }
 
+                //Adding DataRow
+                foreach (DataGridViewRow row in dataGridViewSettings.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        // pdfTable.AddCell(cell.Value.ToString());
+                        PdfPCell cellRows = new PdfPCell(new Phrase(cell.Value.ToString(), font));
+                        int R = cell.Style.BackColor.R;
+                        int G = cell.Style.BackColor.G;
+                        int B = cell.Style.BackColor.B;
+                        if (R == 0 && G == 0 && B == 0)
+                        {
+                            R = 255;
+                            G = 255;
+                            B = 255;
+                        }
+                        cellRows.BackgroundColor = new iTextSharp.text.BaseColor(R, G, B);
+                        cellRows.HorizontalAlignment = Element.ALIGN_CENTER;
+                        pdfTable.AddCell(cellRows);
+
+                    }
+                }
+                Paragraph writing = new iTextSharp.text.Paragraph("Synertech Stock Management System " + Environment.NewLine + "Settings Information                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
+
+                using (FileStream stream = new FileStream(folderPath, FileMode.Create))
+                {
+
+                    PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(writing);
+                    pdfDoc.Add(pdfTable);
+                    pdfDoc.Close();
+                    stream.Close();
                 }
             }
-            Paragraph writing = new iTextSharp.text.Paragraph("Synertech Stock Management System " + Environment.NewLine + "Settings Information                " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine);
-
-            using (FileStream stream = new FileStream(folderPath, FileMode.Create))
+            catch (Exception ex)
             {
-
-                PdfWriter.GetInstance(pdfDoc, stream);
-                pdfDoc.Open();
-                pdfDoc.Add(writing);
-                pdfDoc.Add(pdfTable);
-                pdfDoc.Close();
-                stream.Close();
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+           
         }
 
         //Margo
         private void Settings_Load(object sender, EventArgs e)
         {
-            List<LTS.Settings> set = new List<LTS.Settings>();
-            set = DAT.DataAccess.GetSettings().ToList();
-
-            for(int x =0; x < set.Count; x++)
+            try
             {
-                SettingsMain sm = new SettingsMain();
-                sm.SettingsID = set[x].SettingsID;
-                sm.SettingsName = set[x].SettingsName;
-                sm.SettingsSelect = set[x].SettingsSelect;
-                sm.StoreID = set[x].StoreID;
+                List<LTS.Settings> set = new List<LTS.Settings>();
+                set = DAT.DataAccess.GetSettings().ToList();
 
-                LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
-                sm.StoreLocation = store.StoreLocation;
-                sm.StoreName = store.StoreName;
-
-                List<LTS.Reader> readers = new List<LTS.Reader>();
-                readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
-                for(int j = 0; j < readers.Count; j++)
+                for (int x = 0; x < set.Count; x++)
                 {
-                    ReaderMain rm = new ReaderMain();
-                    rm.ReaderID = readers[j].ReaderID;
-                    rm.IPaddress = readers[j].IPaddress;
-                    rm.NumAntennas = readers[j].NumAntennas;
-                    rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+                    SettingsMain sm = new SettingsMain();
+                    sm.SettingsID = set[x].SettingsID;
+                    sm.SettingsName = set[x].SettingsName;
+                    sm.SettingsSelect = set[x].SettingsSelect;
+                    sm.StoreID = set[x].StoreID;
 
-                    sm.Readers.Add(rm);
+                    LTS.Store store = DAT.DataAccess.GetStore().Where(i => i.StoreID == sm.StoreID).FirstOrDefault();
+                    sm.StoreLocation = store.StoreLocation;
+                    sm.StoreName = store.StoreName;
+
+                    List<LTS.Reader> readers = new List<LTS.Reader>();
+                    readers = DAT.DataAccess.GetReader().Where(j => j.SettingsID == sm.SettingsID).ToList();
+                    for (int j = 0; j < readers.Count; j++)
+                    {
+                        ReaderMain rm = new ReaderMain();
+                        rm.ReaderID = readers[j].ReaderID;
+                        rm.IPaddress = readers[j].IPaddress;
+                        rm.NumAntennas = readers[j].NumAntennas;
+                        rm.antennas = DAT.DataAccess.GetAntenna().Where(q => q.ReaderID == rm.ReaderID).ToList();
+
+                        sm.Readers.Add(rm);
+
+                    }
+
+                    settings.Add(sm);
 
                 }
 
-                settings.Add(sm);
-
+                for (int i = 0; i < settings.Count; i++)
+                {
+                    dataGridViewSettings.Rows.Add(settings[i].SettingsID, settings[i].SettingsName, settings[i].SettingsSelect, settings[i].Readers.Count, settings[i].TotalAmountAntennas().ToString(), settings[i].StoreName);
+                }
             }
-
-            for (int i = 0; i < settings.Count; i++)
+            catch (Exception ex)
             {
-                dataGridViewSettings.Rows.Add(settings[i].SettingsID, settings[i].SettingsName, settings[i].SettingsSelect, settings[i].Readers.Count, settings[i].TotalAmountAntennas().ToString(), settings[i].StoreName);
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+           
 
 
         }

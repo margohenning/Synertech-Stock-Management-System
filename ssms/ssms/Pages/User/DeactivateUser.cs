@@ -28,52 +28,68 @@ namespace ssms.Pages
         //Marius
         private void DeactivateUser_Load(object sender, EventArgs e)
         {
-            activated = true;
-            string isAdminActivated = "";
-            string isUserActivated = "";
-            List<LTS.User> user = new List<LTS.User>();
-            user = DAT.DataAccess.GetUser().Where(o => o.UserActivated.Equals(activated)).ToList();
-            for (int i = 0; i < user.Count; i++)
+            try
             {
-                if(((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID != user[i].UserID)
+                activated = true;
+                string isAdminActivated = "";
+                string isUserActivated = "";
+                List<LTS.User> user = new List<LTS.User>();
+                user = DAT.DataAccess.GetUser().Where(o => o.UserActivated.Equals(activated)).ToList();
+                for (int i = 0; i < user.Count; i++)
                 {
-                    if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
-                    if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
-                    dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
-                }
-               
+                    if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID != user[i].UserID)
+                    {
+                        if (user[i].UserAdmin == true) { isAdminActivated = "Yes"; } else { isAdminActivated = "No"; }
+                        if (user[i].UserActivated == true) { isUserActivated = "Yes"; } else { isUserActivated = "No"; }
+                        dgvUser.Rows.Add(user[i].UserID, user[i].UserIdentityNumber, user[i].UserName, user[i].UserSurname, user[i].UserEmail, isAdminActivated, isUserActivated);
+                    }
 
+
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+            
             
         }
 
         //Marius
         private void button2_Click(object sender, EventArgs e)
         {
-            //ID Search button clicked
-            string searchValue = tbSearch.Text;
-            bool foundSearch = false;
-            if (tbSearch.Text == "") { MessageBox.Show("No User Identity number was entered"); }
-            dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             try
             {
-                foreach (DataGridViewRow row in dgvUser.Rows)
+                //ID Search button clicked
+                string searchValue = tbSearch.Text;
+                bool foundSearch = false;
+                if (tbSearch.Text == "") { MessageBox.Show("No User Identity number was entered"); }
+                dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                try
                 {
-                    if (row.Cells[1].Value.ToString().Equals(searchValue))
+                    foreach (DataGridViewRow row in dgvUser.Rows)
                     {
-                        dgvUser.ClearSelection();
-                        row.Selected = true;
-                        tbSearch.Text = "";
-                        foundSearch = true;
-                        break;
+                        if (row.Cells[1].Value.ToString().Equals(searchValue))
+                        {
+                            dgvUser.ClearSelection();
+                            row.Selected = true;
+                            tbSearch.Text = "";
+                            foundSearch = true;
+                            break;
+                        }
                     }
+                    if (foundSearch == false) { MessageBox.Show("No user was found"); }
                 }
-                if (foundSearch == false) { MessageBox.Show("No user was found"); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The user could not be found");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The user could not be found");
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
         }
 
         //Marius
@@ -81,46 +97,54 @@ namespace ssms.Pages
         {
             try
             {
-                LTS.User user = new LTS.User();
-                bool activated = false;
-
-                List<LTS.User> userList = new List<LTS.User>();
-                userList = DAT.DataAccess.GetUser().Where(o => o.UserID == int.Parse(getID)).ToList();
-                
-
-                user.UserID = userList[0].UserID;
-                user.UserActivated = false;
-                user.UserAdmin = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserAdmin;
-                user.UserEmail = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserEmail;
-                user.UserIdentityNumber = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserIdentityNumber;
-                user.UserName = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserSurname;
-                user.UserSurname = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserSurname;
-                user.UserPassword = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserPassword;
-
-                bool ok;
-
-                ok = DAT.DataAccess.UpdateUser(user);
-
-                if (ok == false)
+                try
                 {
-                    if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the User was not Deactivated!"))
+                    LTS.User user = new LTS.User();
+                    bool activated = false;
+
+                    List<LTS.User> userList = new List<LTS.User>();
+                    userList = DAT.DataAccess.GetUser().Where(o => o.UserID == int.Parse(getID)).ToList();
+
+
+                    user.UserID = userList[0].UserID;
+                    user.UserActivated = false;
+                    user.UserAdmin = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserAdmin;
+                    user.UserEmail = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserEmail;
+                    user.UserIdentityNumber = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserIdentityNumber;
+                    user.UserName = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserSurname;
+                    user.UserSurname = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserSurname;
+                    user.UserPassword = DAT.DataAccess.GetUser().Where(o => o.UserID == userList[0].UserID).FirstOrDefault().UserPassword;
+
+                    bool ok;
+
+                    ok = DAT.DataAccess.UpdateUser(user);
+
+                    if (ok == false)
                     {
-                        ((Main)this.Parent.Parent).ChangeView<DeactivateUser>();
+                        if (DialogResult.OK == MessageBox.Show("Sorry something went wrong, the User was not Deactivated!"))
+                        {
+                            ((Main)this.Parent.Parent).ChangeView<DeactivateUser>();
+                        }
+                    }
+                    else
+                    {
+                        if (DialogResult.OK == MessageBox.Show("The User was Deactivated successfully!"))
+                        {
+                            ((Main)this.Parent.Parent).ChangeView<DeactivateUser>();
+                        }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    if (DialogResult.OK == MessageBox.Show("The User was Deactivated successfully!"))
-                    {
-                        ((Main)this.Parent.Parent).ChangeView<DeactivateUser>();
-                    }
+                    MessageBox.Show("The User was not Deactivated successfully!");
+                    ((Main)this.Parent.Parent).ChangeView<DeactivateUser>();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The User was not Deactivated successfully!");
-                ((Main)this.Parent.Parent).ChangeView<DeactivateUser>();
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
 
         }
 
@@ -142,30 +166,38 @@ namespace ssms.Pages
 
         private void btnSearchName_Click(object sender, EventArgs e)
         {
-            //Search button clicked
-            string searchValue = tbSearchName.Text;
-            bool foundSearch = false;
-            if (tbSearchName.Text == "") { MessageBox.Show("No User name was entered"); }
-            dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             try
             {
-                foreach (DataGridViewRow row in dgvUser.Rows)
+                //Search button clicked
+                string searchValue = tbSearchName.Text;
+                bool foundSearch = false;
+                if (tbSearchName.Text == "") { MessageBox.Show("No User name was entered"); }
+                dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                try
                 {
-                    if (row.Cells[2].Value.ToString().Equals(searchValue))
+                    foreach (DataGridViewRow row in dgvUser.Rows)
                     {
-                        dgvUser.ClearSelection();
-                        row.Selected = true;
-                        tbSearchName.Text = "";
-                        foundSearch = true;
-                        break;
+                        if (row.Cells[2].Value.ToString().Equals(searchValue))
+                        {
+                            dgvUser.ClearSelection();
+                            row.Selected = true;
+                            tbSearchName.Text = "";
+                            foundSearch = true;
+                            break;
+                        }
                     }
+                    if (foundSearch == false) { MessageBox.Show("No user was found"); }
                 }
-                if (foundSearch == false) { MessageBox.Show("No user was found"); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The user could not be found");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The user could not be found");
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
             }
+            
         }
     }
 }

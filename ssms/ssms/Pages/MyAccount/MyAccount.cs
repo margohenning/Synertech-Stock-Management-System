@@ -20,14 +20,22 @@ namespace ssms.Pages
         //Margo
         private void MyAccount_Load(object sender, EventArgs e)
         {
+            try
+            {
+                id.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID.ToString();
+                idNum.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserIdentityNumber.ToString();
+                name.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserName.ToString();
+                surname.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserSurname.ToString();
+                email.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserEmail.ToString();
+                Pages.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserAdmin.ToString();
+                activated.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserActivated.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry Something went wrong, the action was not completed!");
+            }
+
             
-            id.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID.ToString();
-            idNum.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserIdentityNumber.ToString();
-            name.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserName.ToString();
-            surname.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserSurname.ToString();
-            email.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserEmail.ToString();
-            Pages.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserAdmin.ToString();
-            activated.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserActivated.ToString();
 
         }
 
