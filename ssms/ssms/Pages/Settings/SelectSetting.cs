@@ -304,7 +304,7 @@ namespace ssms.Pages.Settings
             catch (Exception ex)
             {
                 MessageBox.Show("Sorry Something went wrong, the action was not completed!");
-                return true;
+                
             }
             
             
