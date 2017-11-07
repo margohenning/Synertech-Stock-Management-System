@@ -47,6 +47,7 @@ namespace ssms.Pages.Items
             {
                 dataGridView1.Rows.Add(brand[i].BrandID, brand[i].BrandName, brand[i].BrandDescription);
             }
+            dataGridView1.ClearSelection();
         }
 
 

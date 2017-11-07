@@ -123,6 +123,7 @@ namespace ssms.Pages.Items
                 {
                     dataGridView1.Rows.Clear();
                 }
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -193,6 +194,7 @@ namespace ssms.Pages.Items
                 {
                     dataGridView1.Rows.Clear();
                 }
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {

@@ -45,6 +45,7 @@ namespace ssms.Pages.StockOut
                     dataGridView1.Rows.Add(bookOut[i].BookOutID, it.TagEPC, b.BarcodeNumber, p.ProductName,
                                            bookOut[i].Reason, bookOut[i].Project, bookOut[i].Date, u.UserName, u.UserSurname);
                 }
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {

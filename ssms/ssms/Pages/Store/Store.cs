@@ -128,6 +128,7 @@ namespace ssms.Pages.Store
 
                     dataGridView1.Rows.Add(store[k].StoreID, store[k].StoreName, store[k].StoreLocation, total);
                 }
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {

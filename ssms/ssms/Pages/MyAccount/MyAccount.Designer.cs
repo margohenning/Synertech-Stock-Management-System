@@ -95,7 +95,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(68, 19);
             this.label13.TabIndex = 143;
-            this.label13.Text = "Pages: ";
+            this.label13.Text = "Admin: ";
             // 
             // label9
             // 

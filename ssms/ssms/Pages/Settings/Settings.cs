@@ -162,6 +162,7 @@ namespace ssms.Pages.Settings
                 {
                     dataGridViewSettings.Rows.Add(settings[i].SettingsID, settings[i].SettingsName, settings[i].SettingsSelect, settings[i].Readers.Count, settings[i].TotalAmountAntennas().ToString(), settings[i].StoreName);
                 }
+                dataGridViewSettings.ClearSelection();
             }
             catch (Exception ex)
             {

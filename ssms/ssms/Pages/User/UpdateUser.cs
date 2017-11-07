@@ -16,7 +16,7 @@ namespace ssms.Pages
         string emailUpdateCheck;
         string emailUpdateCheckCompare;
         List<LTS.User> us = new List<LTS.User>();
-
+        LTS.User current = new LTS.User();
         public UpdateUser()
         {
             InitializeComponent();
@@ -192,27 +192,33 @@ namespace ssms.Pages
                 //ID Search button clicked
                 string searchValue = tbSearch.Text;
                 bool foundSearch = false;
-                if (tbSearch.Text == "") { MessageBox.Show("No User Identity number was entered"); }
-                dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                try
+                if (tbSearch.Text == "") {
+                    MessageBox.Show("No User Identity number was entered");
+                }
+                else
                 {
-                    foreach (DataGridViewRow row in dgvUser.Rows)
+                    dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    try
                     {
-                        if (row.Cells[1].Value.ToString().Equals(searchValue))
+                        foreach (DataGridViewRow row in dgvUser.Rows)
                         {
-                            dgvUser.ClearSelection();
-                            row.Selected = true;
-                            tbSearch.Text = "";
-                            foundSearch = true;
-                            break;
+                            if (row.Cells[1].Value.ToString().Equals(searchValue))
+                            {
+                                dgvUser.ClearSelection();
+                                row.Selected = true;
+                                tbSearch.Text = "";
+                                foundSearch = true;
+                                break;
+                            }
                         }
+                        if (foundSearch == false) { MessageBox.Show("No user was found"); }
                     }
-                    if (foundSearch == false) { MessageBox.Show("No user was found"); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The user could not be found");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("The user could not be found");
-                }
+               
             }
             catch (Exception ex)
             {
@@ -234,8 +240,9 @@ namespace ssms.Pages
                     using (DataGridViewRow item = this.dgvUser.SelectedRows[0])
                     {
                         int i = item.Index;
-
+                        
                         lblUserID.Text = dgvUser.Rows[i].Cells[0].Value.ToString();
+                        current = DAT.DataAccess.GetUser().Where(u => u.UserID == int.Parse(lblUserID.Text)).FirstOrDefault();
                         List<LTS.User> getPass = DAT.DataAccess.GetUser().Where(o => o.UserID == int.Parse(lblUserID.Text)).ToList();
                         tbIDentityNo.Text = dgvUser.Rows[i].Cells[1].Value.ToString();
                         tbName.Text = dgvUser.Rows[i].Cells[2].Value.ToString();
@@ -280,7 +287,7 @@ namespace ssms.Pages
 
                     user.UserID = int.Parse(lblUserID.Text);
                     user.UserName = tbName.Text;
-                    user.UserIdentityNumber = tbIDentityNo.Text;
+                   
                     user.UserSurname = tbSurname.Text;
 
                     user.UserPassword = tbPassword.Text;
@@ -303,6 +310,23 @@ namespace ssms.Pages
                     {
                         lblEmail.Visible = true;
                         lblEmail.Text = "The email already exists";
+                    }
+
+                    if (current.UserIdentityNumber == tbIDentityNo.Text)
+                    {
+                        user.UserIdentityNumber = tbIDentityNo.Text;
+                    }
+                    else
+                    {
+                        if (DAT.DataAccess.GetUser().Where(u => u.UserIdentityNumber == tbIDentityNo.Text).FirstOrDefault() != null)
+                        {
+                            lblIdentityNo.Visible = true;
+                            lblIdentityNo.Text = "The identity number already exists";
+                        }
+                        else
+                        {
+                            user.UserIdentityNumber = tbIDentityNo.Text;
+                        }
                     }
 
 
@@ -358,27 +382,33 @@ namespace ssms.Pages
                 //Search button clicked
                 string searchValue = tbSearchName.Text;
                 bool foundSearch = false;
-                if (tbSearchName.Text == "") { MessageBox.Show("No User name was entered"); }
-                dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                try
+                if (tbSearchName.Text == "") {
+                    MessageBox.Show("No User name was entered");
+                }
+                else
                 {
-                    foreach (DataGridViewRow row in dgvUser.Rows)
+                    dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    try
                     {
-                        if (row.Cells[2].Value.ToString().Equals(searchValue))
+                        foreach (DataGridViewRow row in dgvUser.Rows)
                         {
-                            dgvUser.ClearSelection();
-                            row.Selected = true;
-                            tbSearchName.Text = "";
-                            foundSearch = true;
-                            break;
+                            if (row.Cells[2].Value.ToString().Equals(searchValue))
+                            {
+                                dgvUser.ClearSelection();
+                                row.Selected = true;
+                                tbSearchName.Text = "";
+                                foundSearch = true;
+                                break;
+                            }
                         }
+                        if (foundSearch == false) { MessageBox.Show("No user was found"); }
                     }
-                    if (foundSearch == false) { MessageBox.Show("No user was found"); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The user could not be found");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("The user could not be found");
-                }
+               
             }
             catch (Exception ex)
             {
