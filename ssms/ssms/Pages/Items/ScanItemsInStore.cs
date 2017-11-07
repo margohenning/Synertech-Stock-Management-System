@@ -255,6 +255,7 @@ namespace ssms.Pages.Items
         {
             try
             {
+                
                 lblSelect.Visible = false;
                 if (listS.Where(u => u.StoreName == comboBoxStore.SelectedItem.ToString()).FirstOrDefault() != null)
                 {
@@ -359,12 +360,30 @@ namespace ssms.Pages.Items
         {
             try
             {
+                
+                
                 button2.Enabled = false;
                 ((Form1)this.Parent.Parent.Parent.Parent).scan = true;
                 button4.Enabled = false;
                 comboBoxStore.Enabled = false;
                 busy = true;
+                theList.Clear();
+                for (int h = 0; h < dbList.Count; h++)
+                {
+                    inventory i = new inventory();
+                    i.itemID = dbList[h].ItemID;
+                    i.EPC = dbList[h].TagEPC;
+                    LTS.Product p = DAT.DataAccess.GetProduct().Where(t => t.ProductID == dbList[h].ProductID).FirstOrDefault();
+                    if (p != null)
+                    {
+                        i.ProductName = p.ProductName;
+                        i.ProductDescription = p.ProductDescription;
+                        theList.Add(i);
+                    }
+                }
                 missing = theList;
+                found = new List<inventory>();
+                check = new List<string>();
                 populate();
                 lblStartRead.Text = "Starting...";
                 lblStartRead.Visible = true;
