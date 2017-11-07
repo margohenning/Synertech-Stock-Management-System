@@ -82,14 +82,14 @@ namespace ssms.Pages.Items
                             {
                                 if (DialogResult.OK == MessageBox.Show("Category Updated Successfully"))
                                 {
-                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
+                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Brands>();
                                 }
                             }
                             else
                             {
                                 if (DialogResult.OK == MessageBox.Show("Category  was not Updated Successfully"))
                                 {
-                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Categories>();
+                                    ((Main)this.Parent.Parent).ChangeView<Pages.Items.Brands>();
                                 }
                             }
 
