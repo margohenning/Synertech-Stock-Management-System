@@ -79,7 +79,7 @@ namespace ssms.Pages.Items
                             else
                             {
                                 MessageBox.Show("Added Successfully!");
-                                //((Main)this.Parent.Parent).ChangeView<Categories>();
+                                goBack();
 
                             }
                         }

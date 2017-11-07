@@ -26,6 +26,12 @@ namespace ssms.Pages
             try
             {
                 lblAdmin.Visible = false;
+                lblEmail.Visible = false;
+                lblIdentityNo.Visible = false;
+                lblName.Visible = false;
+                lblPassword.Visible = false;
+                lblSurname.Visible = false;
+                
                 //Margo
                 if (((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserAdmin == false)
                 {
@@ -41,12 +47,7 @@ namespace ssms.Pages
                     lblAdmin.Visible = true;
                 }
 
-                lblAdmin.Visible = true;
-                lblEmail.Visible = false;
-                lblIdentityNo.Visible = false;
-                lblName.Visible = false;
-                lblPassword.Visible = false;
-                lblSurname.Visible = false;
+                
 
                 List<string> ComboVal = new List<string>();
                 ComboVal.Add("Yes");
@@ -61,11 +62,11 @@ namespace ssms.Pages
 
                 lblUserID.Text = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn.UserID.ToString();
 
-                LTS.User user = DAT.DataAccess.GetUser().Where(o => o.UserID == int.Parse(lblUserID.Text)).FirstOrDefault();
+                LTS.User user = ((Form1)this.Parent.Parent.Parent.Parent).loggedIn;
                 tbPassword.Text = user.UserPassword;
                 tbIdentityNo.Text = user.UserIdentityNumber;
                 tbName.Text = user.UserName;
-                tbSurname.Text = user.UserEmail;
+                tbSurname.Text = user.UserSurname;
                 tbEmail.Text = user.UserEmail;
 
                 string isAdminActivated = "";

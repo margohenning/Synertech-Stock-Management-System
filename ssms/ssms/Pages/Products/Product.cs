@@ -82,6 +82,7 @@ namespace ssms.Pages.Products
                     dgvProducts.Rows.Add(pmThis.ProductID, pmThis.ProductName, pmThis.ProductDescription, pmThis.BarcodeNumber, pmThis.BrandName, pmThis.CategoryName, pmThis.amountItems);
 
                 }
+                dgvProducts.ClearSelection();
             }
             catch (Exception ex)
             {

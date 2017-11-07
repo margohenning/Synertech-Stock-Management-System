@@ -222,16 +222,7 @@ namespace ssms.Pages.Products
                     if (listBar.Where(u => u.BarcodeNumber == tbBarcode.Text).FirstOrDefault() == null)
                     {
                         barc.BarcodeNumber = tbBarcode.Text;
-                        getBarcodeID = DAT.DataAccess.AddBarcode(barc);
-                        if (getBarcodeID != -1)
-                        {
-                            prod.BarcodeID = getBarcodeID;
-                        }
-                        else
-                        {
-                            lblBarcodeVal.Visible = true;
-                            lblBarcodeVal.Text = "The barcode could not be created!";
-                        }
+                        
 
                     }
                     else
@@ -262,21 +253,33 @@ namespace ssms.Pages.Products
                     int ok;
                     if (lblBarcodeVal.Visible == false && lblDescVal.Visible == false && lblNameVal.Visible == false && brandlbl.Visible == false && catlbl.Visible == false)
                     {
-                        prod.ProductName = tbProdName.Text;
-                        prod.ProductDescription = tbProdDesc.Text;
-                        ok = DAT.DataAccess.AddProduct(prod);
-
-                        if (ok == -1)
+                        getBarcodeID = DAT.DataAccess.AddBarcode(barc);
+                        if (getBarcodeID != -1)
                         {
-                            MessageBox.Show("Sorry something went wrong, the Product was not Added!");
-                            ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
+                            prod.BarcodeID = getBarcodeID;
+                            prod.ProductName = tbProdName.Text;
+                            prod.ProductDescription = tbProdDesc.Text;
+                            ok = DAT.DataAccess.AddProduct(prod);
+
+                            if (ok == -1)
+                            {
+                                DAT.DataAccess.RemoveBarcode(prod.BarcodeID);
+                                MessageBox.Show("Sorry something went wrong, the Product was not Added!");
+                                ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
+                            }
+                            else
+                            {
+                                MessageBox.Show("The Product was added successfully!");
+                                ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
+
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("The Product was added successfully!");
-                            ((Main)this.Parent.Parent).ChangeView<Pages.Products.Product>();
-
+                            lblBarcodeVal.Visible = true;
+                            lblBarcodeVal.Text = "The barcode could not be created!";
                         }
+                        
                     }
 
 

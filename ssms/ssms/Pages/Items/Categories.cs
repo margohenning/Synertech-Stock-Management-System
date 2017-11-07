@@ -33,8 +33,9 @@ namespace ssms.Pages.Items
                     dataGridView1.Rows.Add(cat[i].CategoryID, cat[i].CategoryName, cat[i].CategoryDescription);
                 }
             }
+            dataGridView1.ClearSelection();
 
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)

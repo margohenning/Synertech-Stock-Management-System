@@ -14,6 +14,7 @@ namespace ssms.Pages.Items
     {
         string uCheck;
         string oldName;
+       
         public UpdateBrand()
         {
             InitializeComponent();
@@ -168,10 +169,11 @@ namespace ssms.Pages.Items
                     using (DataGridViewRow item = this.dataGridView1.SelectedRows[0])
                     {
                         int index = item.Index;
-
+                        
 
                         DataGridViewRow selectedrow = dataGridView1.Rows[index];
                         label2.Text = selectedrow.Cells[0].Value.ToString();
+                        oldName = selectedrow.Cells[1].Value.ToString();
                         txtName.Text = selectedrow.Cells[1].Value.ToString();
                         txtSur.Text = selectedrow.Cells[2].Value.ToString();
 
