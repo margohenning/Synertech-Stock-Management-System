@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace ssms.Pages
 {
@@ -334,10 +335,10 @@ namespace ssms.Pages
                     if (cbActivated.SelectedItem.Equals("Yes")) { user.UserActivated = true; } else { user.UserActivated = false; }
 
                     //Validation checks
-                    if (tbIDentityNo.Text == "") { lblIdentityNo.Visible = true; lblIdentityNo.Text = "Please enter a valid ID number"; }
+                    if (tbIDentityNo.Text == "" || tbIDentityNo.Text.Length<13 ||!IsDigitsOnly(tbIDentityNo.Text)) { lblIdentityNo.Visible = true; lblIdentityNo.Text = "Please enter a valid ID number"; }
                     if (tbName.Text == "") { lblName.Visible = true; lblName.Text = "Please enter a name"; }
                     if (tbSurname.Text == "") { lblSurname.Visible = true; lblSurname.Text = "Please enter a surname"; }
-                    if (tbEmail.Text == "") { lblEmail.Visible = true; lblEmail.Text = "Please enter a valid email"; }
+                    if (tbEmail.Text == "" || !Regex.IsMatch(tbEmail.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase)) { lblEmail.Visible = true; lblEmail.Text = "Please enter a valid email"; }
                     if (tbPassword.Text == "") { lblPassword.Visible = true; lblPassword.Text = "Please enter a valid password"; }
 
                     bool ok = false;
@@ -423,6 +424,17 @@ namespace ssms.Pages
             {
                 emailUpdateCheck = tbEmail.Text;
             }
+        }
+
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
         }
     }
 }

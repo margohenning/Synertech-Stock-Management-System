@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ssms.DataClasses;
+using System.Text.RegularExpressions;
 
 namespace ssms.Pages
 {
@@ -62,7 +63,7 @@ namespace ssms.Pages
 
                 try
                 {
-                    if (txtName.Text == "")
+                    if (txtName.Text == "" || txtName.Text.Length<13 ||!IsDigitsOnly(txtName.Text))
                     {
                         label11.Visible = true;
                     }
@@ -77,7 +78,7 @@ namespace ssms.Pages
                         lblSurname.Visible = true;
                     }
 
-                    if (txtUsername.Text == "")
+                    if (txtUsername.Text == ""|| !Regex.IsMatch(txtUsername.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
                     {
                         lblEmail.Visible = true;
                     }
@@ -171,6 +172,17 @@ namespace ssms.Pages
             }
            
 
+        }
+
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
         }
     }
 }

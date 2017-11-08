@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace ssms.Pages
 {
@@ -141,7 +142,7 @@ namespace ssms.Pages
 
 
                     //Validation checks
-                    if (tbIdentityNo.Text == "")
+                    if (tbIdentityNo.Text == "" || tbIdentityNo.Text.Length<13 ||!IsDigitsOnly(tbIdentityNo.Text))
                     {
                         lblIdentityNo.Visible = true; lblIdentityNo.Text = "Please enter a valid ID number";
                     }
@@ -153,7 +154,7 @@ namespace ssms.Pages
                     {
                         lblSurname.Visible = true; lblSurname.Text = "Please enter a surname";
                     }
-                    if (tbEmail.Text == "")
+                    if (tbEmail.Text == ""|| !Regex.IsMatch(tbEmail.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
                     {
                         lblEmail.Visible = true; lblEmail.Text = "Please enter a valid email";
                     }
@@ -206,6 +207,18 @@ namespace ssms.Pages
             {
                 emailUpdateCheck = tbEmail.Text;
             }
+        }
+
+
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
         }
     }
 }
